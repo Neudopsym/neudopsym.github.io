@@ -4,65 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI videá – Neudopsym Photo</title>
-  <meta name="description" content="Promo videá vytvorené pomocou umelej inteligencie – realitné projekty a marketingové koncepty.">
+  <meta name="description" content="Videá vytvorené pomocou umelej inteligencie – kreatívne vizuálne príbehy generované AI nástrojmi.">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Filip Kubus">
-  <link rel="canonical" href="https://www.neudopsymphoto.sk/ai-videa.html">
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Open Graph -->
+  <link rel="canonical" href="https://neudopsym.github.io/video/ai-videa.html">
   <meta property="og:title" content="AI videá – Neudopsym Photo">
-  <meta property="og:description" content="Promo videá vytvorené pomocou umelej inteligencie – realitné projekty a marketingové koncepty.">
-  <meta property="og:image" content="https://www.neudopsymphoto.sk/img/video/ai-preview.jpg">
+  <meta property="og:description" content="Videá vytvorené pomocou umelej inteligencie – kreatívne vizuálne príbehy generované AI nástrojmi.">
+  <meta property="og:image" content="https://neudopsym.github.io/img/video/preview.jpg">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.neudopsymphoto.sk/ai-videa.html">
-
-  <!-- Twitter Meta Tags -->
+  <meta property="og:url" content="https://neudopsym.github.io/video/ai-videa.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AI videá – Neudopsym Photo">
-  <meta name="twitter:description" content="Promo videá vytvorené pomocou umelej inteligencie – realitné projekty a marketingové koncepty.">
-  <meta name="twitter:image" content="https://www.neudopsymphoto.sk/img/video/ai-preview.jpg">
+  <meta name="twitter:description" content="Videá vytvorené pomocou umelej inteligencie – kreatívne vizuálne príbehy generované AI nástrojmi.">
+  <meta name="twitter:image" content="https://neudopsym.github.io/img/video/preview.jpg">
+  <link rel="stylesheet" href="https://neudopsym.github.io/style.css">
+  <style>
+    .video-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      padding: 20px;
+    }
+    .video-card {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .video-card video {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .video-card h2 {
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
   <header>
     <nav>
       <ul>
-        <li><a href="index.html">Úvod</a></li>
-        <li><a href="foto.html">Foto</a></li>
-        <li><a href="video.html">Video</a></li>
-        <li><a href="o-mne.html">O mne</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="https://neudopsym.github.io/index.html">Úvod</a></li>
+        <li><a href="https://neudopsym.github.io/foto.html">Foto</a></li>
+        <li><a href="https://neudopsym.github.io/video.html">Video</a></li>
+        <li><a href="https://neudopsym.github.io/o-mne.html">O mne</a></li>
+        <li><a href="https://neudopsym.github.io/kontakt.html">Kontakt</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="video-gallery">
+  <main>
     <h1>AI videá</h1>
+    <div class="video-gallery">
+      <div class="video-card">
+        <video controls poster="https://neudopsym.github.io/img/video/rezidence_na_karmeli.jpg">
+          <source src="https://neudopsym.github.io/movie/ai-videa/rezidence_na_karmeli.mp4" type="video/mp4">
+        </video>
+        <h2>Rezidence Na Karmeli, Mladá Boleslav</h2>
+      </div>
 
-    <div class="video-item">
-      <h2>Promo video pre Homeland: Rezidence Na Karmeli, Mladá Boleslav</h2>
-      <video controls>
-        <source src="video/Homeland_NKR_music_16x9_final.mp4" type="video/mp4">
-        Váš prehliadač nepodporuje prehrávanie videa.
-      </video>
+      <div class="video-card">
+        <video controls poster="https://neudopsym.github.io/img/video/green_mlada_boleslav.jpg">
+          <source src="https://neudopsym.github.io/movie/ai-videa/green_mlada_boleslav.mp4" type="video/mp4">
+        </video>
+        <h2>Green Mladá Boleslav</h2>
+      </div>
     </div>
-
-    <div class="video-item">
-      <h2>Promo video pre Homeland: Green Mladá Boleslav</h2>
-      <video controls>
-        <source src="video/Green_MB_new_final.mp4" type="video/mp4">
-        Váš prehliadač nepodporuje prehrávanie videa.
-      </video>
-    </div>
-
-    <div class="video-item">
-      <h2>Promo video – AI marketing</h2>
-      <video controls>
-        <source src="video/Promo_video_AI_marketing.mp4" type="video/mp4">
-        Váš prehliadač nepodporuje prehrávanie videa.
-      </video>
-    </div>
-
   </main>
 
   <footer>
