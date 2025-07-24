@@ -5,10 +5,10 @@
   box-sizing: border-box;
 }
 
-/* Updated Body with Gradient Background */
+/* Updated Body with Gradient Background - Light from RIGHT upper corner */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 25%, #0f0f0f 50%, #080808 75%, #030303 100%);
+  background: linear-gradient(225deg, #2a2a2a 0%, #1a1a1a 25%, #0f0f0f 50%, #080808 75%, #030303 100%);
   background-attachment: fixed; /* Keeps gradient fixed during scroll */
   color: #ffffff;
   line-height: 1.6;
@@ -405,7 +405,7 @@ footer {
   color: #cccccc;
 }
 
-/* Optional: Add subtle animation to make gradient feel alive */
+/* Animation keyframes for optional animated gradient */
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -421,7 +421,7 @@ footer {
 /* Alternative animated gradient (uncomment if you want subtle movement) */
 /*
 body {
-  background: linear-gradient(135deg, #2a2a2a, #1a1a1a, #0f0f0f, #080808, #030303);
+  background: linear-gradient(225deg, #2a2a2a, #1a1a1a, #0f0f0f, #080808, #030303);
   background-size: 400% 400%;
   animation: gradientShift 20s ease infinite;
   background-attachment: fixed;
