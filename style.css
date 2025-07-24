@@ -484,7 +484,7 @@ nav a.active {
   width: 100%;
   max-width: 800px;
   height: 120px;
-  background-image: url('https://neudopsym.github.io/img/banner.jpg'); /* Update this path to your banner */
+  background-image: url('https://neudopsym.github.io/img/systemove/banner.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
