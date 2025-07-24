@@ -19,88 +19,85 @@
   <meta name="twitter:image" content="https://neudopsym.github.io/img/video/preview.jpg">
   <link rel="stylesheet" href="https://neudopsym.github.io/style.css">
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #000;
-      color: #fff;
-      margin: 0;
-      padding-top: 60px;
-    }
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #000;
-      border-bottom: 1px solid #333;
-      z-index: 999;
-    }
-    nav ul {
-      display: flex;
-      justify-content: center;
-      padding: 15px 0;
-      margin: 0;
-      list-style: none;
-    }
-    nav li { margin: 0 20px; }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 14px;
-    }
-    nav a:hover { color: #ccc; }
-    main {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h1 {
-      text-align: center;
-      font-size: 36px;
-      margin-bottom: 40px;
-      color: #fff;
-    }
     .video-gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
-      padding: 20px 0;
+      padding: 20px;
     }
     .video-card {
-      background: #111;
+      background: #f9f9f9;
       border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 15px rgba(255,255,255,0.1);
-      border: 1px solid #333;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
     }
-    .video-wrapper {
+    .video-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+    }
+    .video-card h2 {
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      position: relative;
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 90%;
+      max-width: 900px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .modal-video-wrapper {
       position: relative;
       width: 100%;
+      padding-bottom: 56.25%;
       height: 0;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      overflow: hidden;
       margin-bottom: 15px;
     }
-    .video-wrapper iframe {
+    .modal-video-wrapper iframe {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      border-radius: 10px;
     }
-    .video-card h2 {
-      font-size: 1.2rem;
-      margin: 0;
-      color: #fff;
+    .close-button {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
     }
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #111;
-      border-top: 1px solid #333;
-      margin-top: 60px;
-      color: #ccc;
+    .close-button:hover,
+    .close-button:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -119,40 +116,73 @@
   <main>
     <h1>AI videá</h1>
     <div class="video-gallery">
-      <div class="video-card">
-        <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/3iJldCxdgNY" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen>
-          </iframe>
-        </div>
+      <div class="video-card" data-video-id="3iJldCxdgNY" data-video-title="Rezidence Na Karmeli, Mladá Boleslav">
+        <img src="https://img.youtube.com/vi/3iJldCxdgNY/maxresdefault.jpg" alt="Miniatúra videa: Na Karmeli">
         <h2>Rezidence Na Karmeli, Mladá Boleslav</h2>
       </div>
-      <div class="video-card">
-        <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/btPGsgiskbY" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen>
-          </iframe>
-        </div>
+      <div class="video-card" data-video-id="btPGsgiskbY" data-video-title="Green Mladá Boleslav">
+        <img src="https://img.youtube.com/vi/btPGsgiskbY/maxresdefault.jpg" alt="Miniatúra videa: Green Mladá Boleslav">
         <h2>Green Mladá Boleslav</h2>
       </div>
-      <div class="video-card">
-        <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/mwVM7vBka1U" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen>
-          </iframe>
-        </div>
-        <h2>AI - budoucnost marketingu</h2>
+      <div class="video-card" data-video-id="mwVM7vBka1U" data-video-title="AI – budúcnosť marketingu">
+        <img src="https://img.youtube.com/vi/mwVM7vBka1U/maxresdefault.jpg" alt="Miniatúra videa: AI – budúcnosť marketingu">
+        <h2>AI – budúcnosť marketingu</h2>
       </div>
     </div>
   </main>
   <footer>
-    <p>&copy; 2025 Neudopsym Photo</p>
+    <p>© 2025 Neudopsym Photo</p>
   </footer>
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">×</span>
+      <h2 id="modalVideoTitle"></h2>
+      <div class="modal-video-wrapper"></div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const videoCards = document.querySelectorAll('.video-card');
+      const videoModal = document.getElementById('videoModal');
+      const closeButton = document.querySelector('.close-button');
+      const modalVideoWrapper = videoModal.querySelector('.modal-video-wrapper');
+      const modalVideoTitle = document.getElementById('modalVideoTitle');
+
+      videoCards.forEach(card => {
+        card.addEventListener('click', function() {
+          const videoId = this.dataset.videoId;
+          const videoTitle = this.dataset.videoTitle;
+          const iframe = document.createElement('iframe');
+          iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&vq=hd1080`);
+          iframe.setAttribute('frameborder', '0');
+          iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+          iframe.setAttribute('allowfullscreen', '');
+          modalVideoWrapper.innerHTML = '';
+          modalVideoWrapper.appendChild(iframe);
+          modalVideoTitle.textContent = videoTitle;
+          videoModal.style.display = 'flex';
+        });
+      });
+
+      closeButton.addEventListener('click', function() {
+        videoModal.style.display = 'none';
+        modalVideoWrapper.innerHTML = '';
+      });
+
+      window.addEventListener('click', function(event) {
+        if (event.target === videoModal) {
+          videoModal.style.display = 'none';
+          modalVideoWrapper.innerHTML = '';
+        }
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && videoModal.style.display === 'flex') {
+          videoModal.style.display = 'none';
+          modalVideoWrapper.innerHTML = '';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
