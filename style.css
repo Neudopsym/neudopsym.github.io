@@ -85,54 +85,22 @@ h2 {
   margin: 20px 0 10px;
 }
 
-/* Banner Section - Elegant Design */
-.banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px 20px 40px 20px;
-  background: transparent;
-  position: relative;
-}
-
-.banner img {
-  max-width: 280px;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
-  transition: all 0.3s ease;
-  border-radius: 15px;
-  /* Add subtle glow effect */
-  box-shadow: 
-    0 0 20px rgba(255, 255, 255, 0.1),
-    0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.banner img:hover {
-  transform: translateY(-5px) scale(1.02);
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.7));
-  box-shadow: 
-    0 0 30px rgba(255, 255, 255, 0.15),
-    0 12px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* Optional: Add animated border around banner */
-.banner::before {
+/* Camera Logo Background */
+.hero::before {
   content: '';
   position: absolute;
-  top: 30px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 320px;
-  height: calc(100% - 20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTc2IiBoZWlnaHQ9IjU3NiIgdmlld0JveD0iMCAwIDU3NiA1NzYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xNDQgMTkySDk2QzQzLjAzNzYgMTkyIDAgMjM1LjAzOCAwIDI4OFY0ODBDMCA1MzIuOTYyIDQzLjAzNzYgNTc2IDk2IDU3Nkg0ODBDNTM2LjQ0OSA1NzYgNTc2IDUzNi40NDkgNTc2IDQ4MFYyODhDNTc2IDIzNS4wMzggNTMyLjk2MiAxOTIgNDgwIDE5MkgxNDQiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA4KSIgc3Ryb2tlLXdpZHRoPSIxNiIvPgo8cGF0aCBkPSJNMTQ0IDE5Mkw5NiAxNDRDOTYgMTQ0IDE5MiA5NiAyNDAgOTZINzJINzJDNzIgOTYgMTUgMTA4IDAgMTIwIDEyIDEzMiAyNCAxNDQgMjQgMTQ0TDE0NCAxOTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA4KSIgc3Ryb2tlLXdpZHRoPSIxNiIvPgo8Y2lyY2xlIGN4PSIyODgiIGN5PSIzMzYiIHI9IjEwNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDgpIiBzdHJva2Utd2lkdGg9IjE2Ii8+CjxwYXRoIGQ9Ik0yNzIgMjk2QzMxMiAzMDQgMzIwIDMzNiAzMDQgMzY4IiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wOCkiIHN0cm9rZS13aWR0aD0iOCIvPgo8dGV4dCB4PSIyODgiIHk9IjM1MiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TlA8L3RleHQ+Cjwvc3ZnPgo=');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.4;
+  z-index: -1;
   pointer-events: none;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.05) 0%, 
-    transparent 50%, 
-    rgba(255, 255, 255, 0.02) 100%);
-  backdrop-filter: blur(5px);
 }
 
 /* Homepage Hero Section - Updated */
