@@ -482,8 +482,8 @@ nav a.active {
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 800px;
-  height: 120px;
+  max-width: 1087px;
+  height: 252px;
   background-image: url('https://neudopsym.github.io/img/systemove/banner_white.png');
   background-size: contain;
   background-repeat: no-repeat;
