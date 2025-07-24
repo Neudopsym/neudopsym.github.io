@@ -178,8 +178,6 @@ footer {
   border-top: 1px solid #ddd;
 }
 
-/* Add this section to the end of your existing style.css file */
-
 /* Photo Albums Grid Layout */
 .photo-grid.albums {
   display: grid;
