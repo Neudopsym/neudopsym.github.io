@@ -276,16 +276,16 @@
   <main>
     <h1>Promo videá</h1>
     <div class="video-gallery">
-      <div class="video-card" data-video-id="3nTE5ngicOY" data-video-title="Kino Aero: Leto v kine Aero">
-        <img src="https://img.youtube.com/vi/3nTE5ngicOY/maxresdefault.jpg" alt="Miniatúra videa: Leto v kine Aero" loading="lazy">
+      <div class="video-card" data-video-id="1104261030" data-video-title="Kino Aero: Leto v kine Aero" data-video-platform="vimeo">
+        <img src="https://vumbnail.com/1104261030.jpg" alt="Miniatúra videa: Leto v kine Aero" loading="lazy">
         <h2>Kino Aero: Leto v kine Aero</h2>
       </div>
-      <div class="video-card" data-video-id="LKdZrynWouo" data-video-title="Kino Aero: Chambord Spritz">
-        <img src="https://img.youtube.com/vi/LKdZrynWouo/maxresdefault.jpg" alt="Miniatúra videa: Chambord Spritz" loading="lazy">
+      <div class="video-card" data-video-id="1104260907" data-video-title="Kino Aero: Chambord Spritz" data-video-platform="vimeo">
+        <img src="https://vumbnail.com/1104260907.jpg" alt="Miniatúra videa: Chambord Spritz" loading="lazy">
         <h2>Kino Aero: Chambord Spritz</h2>
       </div>
-      <div class="video-card" data-video-id="btPGsgiskbY" data-video-title="Kino Aero: Apple Jack Sour">
-        <img src="https://img.youtube.com/vi/btPGsgiskbY/maxresdefault.jpg" alt="Miniatúra videa: Apple Jack Sour" loading="lazy">
+      <div class="video-card" data-video-id="1104260988" data-video-title="Kino Aero: Apple Jack Sour" data-video-platform="vimeo">
+        <img src="https://vumbnail.com/1104260988.jpg" alt="Miniatúra videa: Apple Jack Sour" loading="lazy">
         <h2>Kino Aero: Apple Jack Sour</h2>
       </div>
     </div>
@@ -314,24 +314,51 @@
       const modalVideoWrapper = videoModal.querySelector('.modal-video-wrapper');
       const modalVideoTitle = document.getElementById('modalVideoTitle');
 
-      // Function to create high-quality YouTube embed
-      function createHighQualityEmbed(videoId) {
+      // Function to create high-quality Vimeo embed
+      function createVimeoEmbed(videoId) {
         const iframe = document.createElement('iframe');
         
-        // High-quality YouTube embed parameters
+        // High-quality Vimeo embed parameters
         const params = new URLSearchParams({
           autoplay: '1',
-          rel: '0',                    // Don't show related videos
-          modestbranding: '1',         // Minimal YouTube branding
-          iv_load_policy: '3',         // Hide annotations
-          cc_load_policy: '0',         // No captions by default
-          disablekb: '0',              // Enable keyboard controls
-          fs: '1',                     // Allow fullscreen
-          hd: '1',                     // Prefer HD
-          vq: 'hd1080',               // Force 1080p when available
-          quality: 'hd1080',          // Set quality preference
-          start: '0',                  // Start from beginning
-          enablejsapi: '1',           // Enable JavaScript API
+          loop: '0',
+          muted: '0',
+          quality: 'auto',      // Auto-select best quality
+          responsive: '1',      // Responsive player
+          dnt: '1',            // Do not track
+          portrait: '0',       // Hide portrait
+          title: '0',          // Hide title
+          byline: '0',         // Hide byline
+          color: 'ffffff'      // White controls to match theme
+        });
+        
+        iframe.setAttribute('src', `https://player.vimeo.com/video/${videoId}?${params.toString()}`);
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('width', '100%');
+        iframe.setAttribute('height', '100%');
+        iframe.style.borderRadius = '15px';
+        
+        return iframe;
+      }
+
+      // Function to create YouTube embed (fallback)
+      function createYouTubeEmbed(videoId) {
+        const iframe = document.createElement('iframe');
+        
+        const params = new URLSearchParams({
+          autoplay: '1',
+          rel: '0',
+          modestbranding: '1',
+          iv_load_policy: '3',
+          cc_load_policy: '0',
+          disablekb: '0',
+          fs: '1',
+          hd: '1',
+          vq: 'hd1080',
+          quality: 'hd1080',
+          enablejsapi: '1',
           origin: window.location.origin
         });
         
@@ -351,6 +378,7 @@
         card.addEventListener('click', function() {
           const videoId = this.dataset.videoId;
           const videoTitle = this.dataset.videoTitle;
+          const platform = this.dataset.videoPlatform || 'youtube';
           
           // Clear previous content and show loading
           modalVideoWrapper.innerHTML = '<div class="loading">Načítava sa video...</div>';
@@ -360,9 +388,15 @@
           // Prevent body scroll when modal is open
           document.body.style.overflow = 'hidden';
           
-          // Create and load high-quality embed
+          // Create and load appropriate embed
           setTimeout(() => {
-            const iframe = createHighQualityEmbed(videoId);
+            let iframe;
+            if (platform === 'vimeo') {
+              iframe = createVimeoEmbed(videoId);
+            } else {
+              iframe = createYouTubeEmbed(videoId);
+            }
+            
             modalVideoWrapper.innerHTML = '';
             modalVideoWrapper.appendChild(iframe);
           }, 100);
@@ -393,13 +427,16 @@
         }
       });
 
-      // Improve thumbnail loading
+      // Improve thumbnail loading with fallback
       const thumbnails = document.querySelectorAll('.video-card img');
       thumbnails.forEach(img => {
         img.addEventListener('error', function() {
-          // Fallback to standard quality thumbnail if maxres fails
-          const videoId = this.src.match(/vi\/([^\/]+)/)[1];
-          this.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+          // If Vimeo thumbnail fails, try alternative
+          const videoId = this.src.match(/(\d+)/)[1];
+          if (this.src.includes('vumbnail.com')) {
+            // Fallback to Vimeo's official thumbnail API
+            this.src = `https://i.vimeocdn.com/video/${videoId}_640x360.jpg`;
+          }
         });
       });
     });
