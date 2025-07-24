@@ -8,13 +8,13 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="Filip Kubus">
   <link rel="canonical" href="https://neudopsym.github.io/video/produktove-videa.html">
-  <meta property="og:title" content="Produktové videá – Neudopsym Photo">
+  <meta property="og:title" content="Produktové videá – Neudonym Photo">
   <meta property="og:description" content="Produktové videá z barového a promo prostredia – kreativita, detail a emócia v každom zábere.">
   <meta property="og:image" content="https://neudopsym.github.io/img/video/preview.jpg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://neudopsym.github.io/video/produktove-videa.html">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Produktové videá – Neudopsym Photo">
+  <meta name="twitter:title" content="Produktové videá – Neudonym Photo">
   <meta name="twitter:description" content="Produktové videá z barového a promo prostredia – kreativita, detail a emócia v každom zábere.">
   <meta name="twitter:image" content="https://neudopsym.github.io/img/video/preview.jpg">
   <link rel="stylesheet" href="https://neudopsym.github.io/style.css">
@@ -126,17 +126,17 @@
     <h1>Produktové videá</h1>
     <div class="video-gallery">
       <div class="video-card" data-video-id="fX16iYyY6bY" data-video-title="Kino Aero: Leto v kine Aero">
-        <img src="https://img.youtube.com/vi/fX16iYyY6bY/mqdefault.jpg" alt="Miniatúra videa: Leto v kine Aero">
+        <img src="http://googleusercontent.com/youtube.com/9" alt="Miniatúra videa: Leto v kine Aero">
         <h2>Kino Aero: Leto v kine Aero</h2>
       </div>
 
-      <div class="video-card" data-video-id="J0w0w0w0w0w" data-video-title="Kino Aero: Chambord Spritz">
-        <img src="https://img.youtube.com/vi/J0w0w0w0w0w/mqdefault.jpg" alt="Miniatúra videa: Chambord Spritz">
+      <div class="video-card" data-video-id="dQw4w9WgXcQ" data-video-title="Kino Aero: Chambord Spritz">
+        <img src="https://www.youtube.com/embed/LKdZrynWouo0" alt="Miniatúra videa: Chambord Spritz">
         <h2>Kino Aero: Chambord Spritz</h2>
       </div>
 
-      <div class="video-card" data-video-id="K1k1k1k1k1k" data-video-title="Kino Aero: Apple Jack Sour">
-        <img src="https://img.youtube.com/vi/K1k1k1k1k1k/mqdefault.jpg" alt="Miniatúra videa: Apple Jack Sour">
+      <div class="video-card" data-video-id="y6120QOlsfU" data-video-title="Kino Aero: Apple Jack Sour">
+        <img src="https://www.youtube.com/embed/LKdZrynWouo1" alt="Miniatúra videa: Apple Jack Sour">
         <h2>Kino Aero: Apple Jack Sour</h2>
       </div>
     </div>
@@ -148,7 +148,7 @@
 
   <div id="videoModal" class="modal">
     <div class="modal-content">
-      <span class="close-button">&times;</span>
+      <span class="close-button">×</span>
       <h2 id="modalVideoTitle"></h2>
       <div class="modal-video-wrapper">
         </div>
@@ -169,8 +169,9 @@
           const videoTitle = this.dataset.videoTitle;
 
           // Vytvorí iframe pre YouTube video
+          // TOTO JE RIADOK, KTORÝ KOREKTNE GENERUJE YOUTUBE ODKAZ
           const iframe = document.createElement('iframe');
-          iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`);
+          iframe.setAttribute('src', `https://www.youtube.com/embed/LKdZrynWouo2${videoId}?autoplay=1&rel=0`);
           iframe.setAttribute('frameborder', '0');
           iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
           iframe.setAttribute('allowfullscreen', '');
