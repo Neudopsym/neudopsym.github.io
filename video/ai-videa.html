@@ -19,25 +19,88 @@
   <meta name="twitter:image" content="https://neudopsym.github.io/img/video/preview.jpg">
   <link rel="stylesheet" href="https://neudopsym.github.io/style.css">
   <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding-top: 60px;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #000;
+      border-bottom: 1px solid #333;
+      z-index: 999;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      margin: 0;
+      list-style: none;
+    }
+    nav li { margin: 0 20px; }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    nav a:hover { color: #ccc; }
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #fff;
+    }
     .video-gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 30px;
-      padding: 20px;
+      padding: 20px 0;
     }
     .video-card {
-      background: #f9f9f9;
+      background: #111;
       border-radius: 12px;
-      padding: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+      border: 1px solid #333;
     }
-    .video-card video {
+    .video-wrapper {
+      position: relative;
       width: 100%;
+      height: 0;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      margin-bottom: 15px;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       border-radius: 10px;
     }
     .video-card h2 {
-      font-size: 1.1rem;
-      margin-top: 10px;
+      font-size: 1.2rem;
+      margin: 0;
+      color: #fff;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #111;
+      border-top: 1px solid #333;
+      margin-top: 60px;
+      color: #ccc;
     }
   </style>
 </head>
@@ -53,26 +116,41 @@
       </ul>
     </nav>
   </header>
-
   <main>
     <h1>AI videá</h1>
     <div class="video-gallery">
       <div class="video-card">
-        <video controls poster="https://neudopsym.github.io/img/video/rezidence_na_karmeli.jpg">
-          <source src="https://neudopsym.github.io/movie/ai-videa/rezidence_na_karmeli.mp4" type="video/mp4">
-        </video>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/3iJldCxdgNY" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+          </iframe>
+        </div>
         <h2>Rezidence Na Karmeli, Mladá Boleslav</h2>
       </div>
-
       <div class="video-card">
-        <video controls poster="https://neudopsym.github.io/img/video/green_mlada_boleslav.jpg">
-          <source src="https://neudopsym.github.io/movie/ai-videa/green_mlada_boleslav.mp4" type="video/mp4">
-        </video>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/btPGsgiskbY" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+          </iframe>
+        </div>
         <h2>Green Mladá Boleslav</h2>
+      </div>
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/mwVM7vBka1U" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+          </iframe>
+        </div>
+        <h2>AI - budoucnost marketingu</h2>
       </div>
     </div>
   </main>
-
   <footer>
     <p>&copy; 2025 Neudopsym Photo</p>
   </footer>
