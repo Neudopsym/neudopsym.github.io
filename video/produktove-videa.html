@@ -19,6 +19,7 @@
   <meta name="twitter:image" content="https://neudopsym.github.io/img/video/preview.jpg">
   <link rel="stylesheet" href="https://neudopsym.github.io/style.css">
   <style>
+    /* Existujúce štýly */
     .video-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -30,14 +31,81 @@
       border-radius: 12px;
       padding: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer; /* Naznačuje, že je to klikateľné */
     }
-    .video-card video {
+    .video-card img { /* Miniatúra videa */
       width: 100%;
+      height: auto;
       border-radius: 10px;
+      display: block;
     }
     .video-card h2 {
       font-size: 1.1rem;
       margin-top: 10px;
+    }
+
+    /* Nové štýly pre modal */
+    .modal {
+      display: none; /* Skryté predvolene */
+      position: fixed; /* Zostane na mieste aj pri posúvaní */
+      z-index: 1000; /* Leží nad ostatnými prvkami */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto; /* Povoliť posúvanie, ak je obsah príliš veľký */
+      background-color: rgba(0, 0, 0, 0.9); /* Tmavošedé pozadie s priesvitnosťou */
+      justify-content: center; /* Centrovanie obsahu horizontálne */
+      align-items: center; /* Centrovanie obsahu vertikálne */
+    }
+
+    .modal-content {
+      position: relative;
+      background-color: #fefefe; /* Biela farba pozadia modalu */
+      margin: auto; /* Automatické okraje pre centrovanie */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 90%; /* Šírka modalu */
+      max-width: 900px; /* Maximálna šírka modalu */
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .modal-video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio (výška / šírka) */
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .modal-video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .close-button {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -56,45 +124,89 @@
 
   <main>
     <h1>Produktové videá</h1>
-<div class="video-gallery">
-  <div class="video-card">
-    <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/3nTE5ngicOY" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-      </iframe>
+    <div class="video-gallery">
+      <div class="video-card" data-video-id="fX16iYyY6bY" data-video-title="Kino Aero: Leto v kine Aero">
+        <img src="https://img.youtube.com/vi/fX16iYyY6bY/mqdefault.jpg" alt="Miniatúra videa: Leto v kine Aero">
+        <h2>Kino Aero: Leto v kine Aero</h2>
+      </div>
+
+      <div class="video-card" data-video-id="J0w0w0w0w0w" data-video-title="Kino Aero: Chambord Spritz">
+        <img src="https://img.youtube.com/vi/J0w0w0w0w0w/mqdefault.jpg" alt="Miniatúra videa: Chambord Spritz">
+        <h2>Kino Aero: Chambord Spritz</h2>
+      </div>
+
+      <div class="video-card" data-video-id="K1k1k1k1k1k" data-video-title="Kino Aero: Apple Jack Sour">
+        <img src="https://img.youtube.com/vi/K1k1k1k1k1k/mqdefault.jpg" alt="Miniatúra videa: Apple Jack Sour">
+        <h2>Kino Aero: Apple Jack Sour</h2>
+      </div>
     </div>
-    <h2>Kino Aero: Leto v kine Aero</h2>
-  </div>
-  
-  <!-- Add your other videos the same way -->
-  <div class="video-card">
-    <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/LKdZrynWouo" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-      </iframe>
-    </div>
-    <h2>Kino Aero: Chambord Spritz</h2>
-  </div>
-  
-  <div class="video-card">
-    <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/LKdZrynWouo" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-      </iframe>
-    </div>
-    <h2>Kino Aero: Apple Jack Sour</h2>
-  </div>
-</div>
   </main>
 
   <footer>
-    <p>&copy; 2025 Neudopsym Photo</p>
+    <p>© 2025 Neudopsym Photo</p>
   </footer>
+
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2 id="modalVideoTitle"></h2>
+      <div class="modal-video-wrapper">
+        </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const videoCards = document.querySelectorAll('.video-card');
+      const videoModal = document.getElementById('videoModal');
+      const closeButton = document.querySelector('.close-button');
+      const modalVideoWrapper = videoModal.querySelector('.modal-video-wrapper');
+      const modalVideoTitle = document.getElementById('modalVideoTitle');
+
+      videoCards.forEach(card => {
+        card.addEventListener('click', function() {
+          const videoId = this.dataset.videoId;
+          const videoTitle = this.dataset.videoTitle;
+
+          // Vytvorí iframe pre YouTube video
+          const iframe = document.createElement('iframe');
+          iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`);
+          iframe.setAttribute('frameborder', '0');
+          iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+          iframe.setAttribute('allowfullscreen', '');
+
+          // Vyčistí predchádzajúci obsah a vloží nový iframe
+          modalVideoWrapper.innerHTML = '';
+          modalVideoWrapper.appendChild(iframe);
+          modalVideoTitle.textContent = videoTitle;
+
+          // Zobrazí modal
+          videoModal.style.display = 'flex'; // Používame flex na centrovanie
+        });
+      });
+
+      // Zatvorenie modalu kliknutím na X
+      closeButton.addEventListener('click', function() {
+        videoModal.style.display = 'none';
+        modalVideoWrapper.innerHTML = ''; // Zastaví video vymazaním iframe
+      });
+
+      // Zatvorenie modalu kliknutím mimo obsahu
+      window.addEventListener('click', function(event) {
+        if (event.target === videoModal) {
+          videoModal.style.display = 'none';
+          modalVideoWrapper.innerHTML = ''; // Zastaví video vymazaním iframe
+        }
+      });
+
+      // Zastavenie videa pri zatvorení modalu klávesou Escape
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && videoModal.style.display === 'flex') {
+          videoModal.style.display = 'none';
+          modalVideoWrapper.innerHTML = '';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
