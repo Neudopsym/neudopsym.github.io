@@ -548,3 +548,52 @@ footer {
     padding: 15px;
   }
 }
+
+/* Banner Section - ADD THIS */
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px 0 20px; /* Top padding, no bottom padding */
+  background-color: #000000;
+}
+
+.banner img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Updated Hero Section - REPLACE EXISTING .hero */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 200px); /* Adjust for banner space */
+  text-align: center;
+  background-color: #000000;
+  padding-top: 0; /* Remove top padding */
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  margin-top: 0; /* Remove top margin to close gap */
+}
+
+/* Responsive banner */
+@media (max-width: 768px) {
+  .banner {
+    padding: 20px 10px 0 10px;
+  }
+  
+  .banner img {
+    width: 70% !important; /* Slightly larger on mobile */
+  }
+  
+  .hero h1 {
+    font-size: 32px;
+  }
+}
