@@ -418,3 +418,163 @@ footer {
     font-size: 20px;
   }
 }
+
+/* Reset & základné štýly - UPDATED */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000000; /* Changed to black */
+  color: #ffffff; /* Changed to white */
+  line-height: 1.6;
+  font-size: 16px;
+  padding-top: 60px;
+}
+
+/* Header - UPDATED */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #000000; /* Changed to black */
+  border-bottom: 1px solid #333; /* Changed to dark grey */
+  z-index: 999;
+}
+
+nav a {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: color 0.2s ease;
+  color: #ffffff; /* White text */
+}
+
+nav a:hover {
+  color: #cccccc; /* Light grey on hover */
+}
+
+nav a.active {
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+/* Homepage Hero Section - UPDATED */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  background-color: #000000;
+  position: relative;
+}
+
+/* Add banner to hero section */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px;
+  height: 120px;
+  background-image: url('https://neudopsym.github.io/img/banner.jpg'); /* Update this path to your banner */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  margin-top: 180px; /* Add space for banner */
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: #cccccc;
+}
+
+/* Square Grid for Homepage - UPDATED */
+.hero .photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.hero .photo-grid a {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(255,255,255,0.1); /* White shadow for dark theme */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  aspect-ratio: 1 / 1;
+  border: 1px solid #333; /* Dark border */
+}
+
+.hero .photo-grid a:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(255,255,255,0.2);
+}
+
+.hero .photo-grid h2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  color: white;
+  margin: 0;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Footer - UPDATED */
+footer {
+  text-align: center;
+  padding: 30px 10px;
+  background-color: #111111; /* Dark grey */
+  font-size: 14px;
+  margin-top: 60px;
+  border-top: 1px solid #333;
+  color: #cccccc;
+}
+
+/* Responsive design for homepage - UPDATED */
+@media (max-width: 768px) {
+  .hero::before {
+    height: 80px;
+    top: 20px;
+  }
+  
+  .hero h1 {
+    margin-top: 120px;
+    font-size: 32px;
+  }
+  
+  .hero .photo-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 300px;
+  }
+  
+  .hero .photo-grid h2 {
+    font-size: 20px;
+    padding: 15px;
+  }
+}
