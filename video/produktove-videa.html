@@ -19,85 +19,244 @@
   <meta name="twitter:image" content="https://neudopsym.github.io/img/video/preview.jpg">
   <link rel="stylesheet" href="https://neudopsym.github.io/style.css">
   <style>
+    /* Video Gallery Styling - Updated for dark theme */
     .video-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
       padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
+    
     .video-card {
-      background: #f9f9f9;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 12px;
       padding: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
       cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
     }
+    
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+    }
+    
     .video-card img {
       width: 100%;
       height: auto;
       border-radius: 10px;
       display: block;
+      transition: transform 0.3s ease;
     }
+    
+    .video-card:hover img {
+      transform: scale(1.02);
+    }
+    
     .video-card h2 {
       font-size: 1.1rem;
-      margin-top: 10px;
+      margin-top: 15px;
+      color: #ffffff;
+      text-align: center;
+      font-weight: 600;
     }
+    
+    /* Play Button Overlay */
+    .video-card::before {
+      content: '▶';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      color: white;
+      background: rgba(0, 0, 0, 0.7);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+    
+    .video-card {
+      position: relative;
+    }
+    
+    .video-card:hover::before {
+      opacity: 1;
+    }
+    
+    /* High-Quality Modal Styling */
     .modal {
       display: none;
       position: fixed;
-      z-index: 1000;
+      z-index: 10000;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
       overflow: auto;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(0, 0, 0, 0.95);
       justify-content: center;
       align-items: center;
+      backdrop-filter: blur(5px);
     }
+    
     .modal-content {
       position: relative;
-      background-color: #fefefe;
+      background: linear-gradient(135deg, rgba(42, 42, 42, 0.95), rgba(26, 26, 26, 0.95));
+      backdrop-filter: blur(20px);
       margin: auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 90%;
-      max-width: 900px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 95%;
+      max-width: 1200px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
       display: flex;
       flex-direction: column;
       align-items: center;
     }
+    
     .modal-video-wrapper {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
       height: 0;
       overflow: hidden;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     }
+    
     .modal-video-wrapper iframe {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      border-radius: 15px;
     }
+    
     .close-button {
-      color: #aaa;
+      color: #ffffff;
       position: absolute;
-      top: 10px;
+      top: 15px;
       right: 25px;
-      font-size: 35px;
+      font-size: 40px;
       font-weight: bold;
       cursor: pointer;
+      z-index: 10001;
+      transition: color 0.3s ease, transform 0.3s ease;
+      background: rgba(0, 0, 0, 0.5);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+    
     .close-button:hover,
     .close-button:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
+      color: #ff4444;
+      transform: scale(1.1);
+      background: rgba(0, 0, 0, 0.8);
+    }
+    
+    #modalVideoTitle {
+      color: #ffffff;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+    
+    /* Loading indicator */
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 1.2rem;
+      z-index: 5;
+    }
+    
+    .loading::after {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #ffffff;
+      animation: spin 1s ease-in-out infinite;
+      margin-left: 10px;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .video-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 15px;
+      }
+      
+      .modal-content {
+        width: 98%;
+        padding: 20px;
+        margin: 10px;
+      }
+      
+      .close-button {
+        top: 10px;
+        right: 15px;
+        font-size: 30px;
+        width: 40px;
+        height: 40px;
+      }
+      
+      #modalVideoTitle {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+      }
+      
+      .video-card::before {
+        font-size: 2rem;
+        width: 60px;
+        height: 60px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .video-gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+      }
+      
+      .modal-content {
+        padding: 15px;
+      }
+      
+      .modal-video-wrapper {
+        margin-bottom: 15px;
+      }
     }
   </style>
 </head>
@@ -107,39 +266,46 @@
       <ul>
         <li><a href="https://neudopsym.github.io/index.html">Úvod</a></li>
         <li><a href="https://neudopsym.github.io/foto.html">Foto</a></li>
-        <li><a href="https://neudopsym.github.io/video.html">Video</a></li>
+        <li><a href="https://neudopsym.github.io/video.html" class="active">Video</a></li>
         <li><a href="https://neudopsym.github.io/o-mne.html">O mne</a></li>
         <li><a href="https://neudopsym.github.io/kontakt.html">Kontakt</a></li>
       </ul>
     </nav>
   </header>
+  
   <main>
     <h1>Produktové videá</h1>
     <div class="video-gallery">
       <div class="video-card" data-video-id="3nTE5ngicOY" data-video-title="Kino Aero: Leto v kine Aero">
-        <img src="https://img.youtube.com/vi/3nTE5ngicOY/maxresdefault.jpg" alt="Miniatúra videa: Leto v kine Aero">
+        <img src="https://img.youtube.com/vi/3nTE5ngicOY/maxresdefault.jpg" alt="Miniatúra videa: Leto v kine Aero" loading="lazy">
         <h2>Kino Aero: Leto v kine Aero</h2>
       </div>
       <div class="video-card" data-video-id="LKdZrynWouo" data-video-title="Kino Aero: Chambord Spritz">
-        <img src="https://img.youtube.com/vi/LKdZrynWouo/maxresdefault.jpg" alt="Miniatúra videa: Chambord Spritz">
+        <img src="https://img.youtube.com/vi/LKdZrynWouo/maxresdefault.jpg" alt="Miniatúra videa: Chambord Spritz" loading="lazy">
         <h2>Kino Aero: Chambord Spritz</h2>
       </div>
       <div class="video-card" data-video-id="btPGsgiskbY" data-video-title="Kino Aero: Apple Jack Sour">
-        <img src="https://img.youtube.com/vi/btPGsgiskbY/maxresdefault.jpg" alt="Miniatúra videa: Apple Jack Sour">
+        <img src="https://img.youtube.com/vi/btPGsgiskbY/maxresdefault.jpg" alt="Miniatúra videa: Apple Jack Sour" loading="lazy">
         <h2>Kino Aero: Apple Jack Sour</h2>
       </div>
     </div>
   </main>
+  
   <footer>
     <p>© 2025 Neudopsym Photo</p>
   </footer>
+  
+  <!-- High-Quality Video Modal -->
   <div id="videoModal" class="modal">
     <div class="modal-content">
-      <span class="close-button">×</span>
+      <span class="close-button" aria-label="Zavrieť video">&times;</span>
       <h2 id="modalVideoTitle"></h2>
-      <div class="modal-video-wrapper"></div>
+      <div class="modal-video-wrapper">
+        <div class="loading">Načítava sa video...</div>
+      </div>
     </div>
   </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const videoCards = document.querySelectorAll('.video-card');
@@ -148,39 +314,93 @@
       const modalVideoWrapper = videoModal.querySelector('.modal-video-wrapper');
       const modalVideoTitle = document.getElementById('modalVideoTitle');
 
+      // Function to create high-quality YouTube embed
+      function createHighQualityEmbed(videoId) {
+        const iframe = document.createElement('iframe');
+        
+        // High-quality YouTube embed parameters
+        const params = new URLSearchParams({
+          autoplay: '1',
+          rel: '0',                    // Don't show related videos
+          modestbranding: '1',         // Minimal YouTube branding
+          iv_load_policy: '3',         // Hide annotations
+          cc_load_policy: '0',         // No captions by default
+          disablekb: '0',              // Enable keyboard controls
+          fs: '1',                     // Allow fullscreen
+          hd: '1',                     // Prefer HD
+          vq: 'hd1080',               // Force 1080p when available
+          quality: 'hd1080',          // Set quality preference
+          start: '0',                  // Start from beginning
+          enablejsapi: '1',           // Enable JavaScript API
+          origin: window.location.origin
+        });
+        
+        iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?${params.toString()}`);
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('width', '100%');
+        iframe.setAttribute('height', '100%');
+        iframe.style.borderRadius = '15px';
+        
+        return iframe;
+      }
+
+      // Open video modal
       videoCards.forEach(card => {
         card.addEventListener('click', function() {
           const videoId = this.dataset.videoId;
           const videoTitle = this.dataset.videoTitle;
-          const iframe = document.createElement('iframe');
-          iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&vq=hd1080`);
-          iframe.setAttribute('frameborder', '0');
-          iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-          iframe.setAttribute('allowfullscreen', '');
-          modalVideoWrapper.innerHTML = '';
-          modalVideoWrapper.appendChild(iframe);
+          
+          // Clear previous content and show loading
+          modalVideoWrapper.innerHTML = '<div class="loading">Načítava sa video...</div>';
           modalVideoTitle.textContent = videoTitle;
           videoModal.style.display = 'flex';
+          
+          // Prevent body scroll when modal is open
+          document.body.style.overflow = 'hidden';
+          
+          // Create and load high-quality embed
+          setTimeout(() => {
+            const iframe = createHighQualityEmbed(videoId);
+            modalVideoWrapper.innerHTML = '';
+            modalVideoWrapper.appendChild(iframe);
+          }, 100);
         });
       });
 
-      closeButton.addEventListener('click', function() {
+      // Close modal function
+      function closeModal() {
         videoModal.style.display = 'none';
-        modalVideoWrapper.innerHTML = '';
-      });
+        modalVideoWrapper.innerHTML = '<div class="loading">Načítava sa video...</div>';
+        document.body.style.overflow = 'auto'; // Restore body scroll
+      }
 
+      // Close button event
+      closeButton.addEventListener('click', closeModal);
+
+      // Click outside modal to close
       window.addEventListener('click', function(event) {
         if (event.target === videoModal) {
-          videoModal.style.display = 'none';
-          modalVideoWrapper.innerHTML = '';
+          closeModal();
         }
       });
 
+      // Escape key to close
       document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape' && videoModal.style.display === 'flex') {
-          videoModal.style.display = 'none';
-          modalVideoWrapper.innerHTML = '';
+          closeModal();
         }
+      });
+
+      // Improve thumbnail loading
+      const thumbnails = document.querySelectorAll('.video-card img');
+      thumbnails.forEach(img => {
+        img.addEventListener('error', function() {
+          // Fallback to standard quality thumbnail if maxres fails
+          const videoId = this.src.match(/vi\/([^\/]+)/)[1];
+          this.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+        });
       });
     });
   </script>
