@@ -478,7 +478,7 @@ nav a.active {
 .hero::before {
   content: '';
   position: absolute;
-  top: 50px;
+  top: 40px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -495,7 +495,7 @@ nav a.active {
   font-size: 42px;
   margin-bottom: 20px;
   color: #ffffff;
-  margin-top: 50px; /* Add space for banner */
+  margin-top: 20px; /* Add space for banner */
 }
 
 .hero p {
