@@ -5,16 +5,97 @@
   box-sizing: border-box;
 }
 
-/* Updated Body with Gradient Background - Light from RIGHT upper corner */
+/* Updated Body with Photo Grid Background */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(225deg, #2a2a2a 0%, #1a1a1a 25%, #0f0f0f 50%, #080808 75%, #030303 100%);
-  background-attachment: fixed; /* Keeps gradient fixed during scroll */
+  background: #1a1a1a; /* Fallback color */
   color: #ffffff;
   line-height: 1.6;
   font-size: 16px;
   padding-top: 60px;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Photo Grid Background - Replace image names with your actual filenames */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: 
+    /* Row 1 - 6 images randomly arranged */
+    url('img/turnaje/turnaj1.jpg') 0% 0% / 16.666% auto no-repeat,
+    url('img/promo/promo3.jpg') 16.666% 0% / 16.666% auto no-repeat,
+    url('img/portrety/portret5.jpg') 33.333% 0% / 16.666% auto no-repeat,
+    url('img/parove-fotografie/parova2.jpg') 50% 0% / 16.666% auto no-repeat,
+    url('img/turnaje/turnaj4.jpg') 66.666% 0% / 16.666% auto no-repeat,
+    url('img/promo/promo1.jpg') 83.333% 0% / 16.666% auto no-repeat,
+    
+    /* Row 2 */
+    url('img/portrety/portret2.jpg') 0% 16.666% / 16.666% auto no-repeat,
+    url('img/parove-fotografie/parova5.jpg') 16.666% 16.666% / 16.666% auto no-repeat,
+    url('img/turnaje/turnaj3.jpg') 33.333% 16.666% / 16.666% auto no-repeat,
+    url('img/promo/promo4.jpg') 50% 16.666% / 16.666% auto no-repeat,
+    url('img/portrety/portret7.jpg') 66.666% 16.666% / 16.666% auto no-repeat,
+    url('img/parove-fotografie/parova1.jpg') 83.333% 16.666% / 16.666% auto no-repeat,
+    
+    /* Row 3 */
+    url('img/promo/promo2.jpg') 0% 33.333% / 16.666% auto no-repeat,
+    url('img/turnaje/turnaj2.jpg') 16.666% 33.333% / 16.666% auto no-repeat,
+    url('img/parove-fotografie/parova4.jpg') 33.333% 33.333% / 16.666% auto no-repeat,
+    url('img/portrety/portret1.jpg') 50% 33.333% / 16.666% auto no-repeat,
+    url('img/promo/promo5.jpg') 66.666% 33.333% / 16.666% auto no-repeat,
+    url('img/turnaje/turnaj5.jpg') 83.333% 33.333% / 16.666% auto no-repeat,
+    
+    /* Row 4 */
+    url('img/portrety/portret6.jpg') 0% 50% / 16.666% auto no-repeat,
+    url('img/parove-fotografie/parova3.jpg') 16.666% 50% / 16.666% auto no-repeat,
+    url('img/promo/promo6.jpg') 33.333% 50% / 16.666% auto no-repeat,
+    url('img/turnaje/turnaj6.jpg') 50% 50% / 16.666% auto no-repeat,
+    url('img/portrety/portret3.jpg') 66.666% 50% / 16.666% auto no-repeat,
+    url('img/parove-fotografie/parova6.jpg') 83.333% 50% / 16.666% auto no-repeat,
+    
+    /* Row 5 */
+    url('img/turnaje/turnaj7.jpg') 0% 66.666% / 16.666% auto no-repeat,
+    url('img/promo/promo7.jpg') 16.666% 66.666% / 16.666% auto no-repeat,
+    url('img/portrety/portret4.jpg') 33.333% 66.666% / 16.666% auto no-repeat,
+    url('img/parove-fotografie/parova7.jpg') 50% 66.666% / 16.666% auto no-repeat,
+    url('img/turnaje/turnaj8.jpg') 66.666% 66.666% / 16.666% auto no-repeat,
+    url('img/promo/promo8.jpg') 83.333% 66.666% / 16.666% auto no-repeat,
+    
+    /* Row 6 */
+    url('img/parove-fotografie/parova8.jpg') 0% 83.333% / 16.666% auto no-repeat,
+    url('img/portrety/portret8.jpg') 16.666% 83.333% / 16.666% auto no-repeat,
+    url('img/turnaje/turnaj9.jpg') 33.333% 83.333% / 16.666% auto no-repeat,
+    url('img/promo/promo9.jpg') 50% 83.333% / 16.666% auto no-repeat,
+    url('img/parove-fotografie/parova9.jpg') 66.666% 83.333% / 16.666% auto no-repeat,
+    url('img/portrety/portret9.jpg') 83.333% 83.333% / 16.666% auto no-repeat;
+  
+  /* Reduce contrast and add shadow effect */
+  filter: contrast(0.6) brightness(0.7) blur(0.5px);
+  opacity: 0.3;
+}
+
+/* Dark overlay for better readability */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(26, 26, 26, 0.6) 50%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
 }
 
 a {
@@ -26,15 +107,16 @@ ul {
   list-style: none;
 }
 
-/* Header - Updated to blend with gradient */
+/* Header - Updated to work with photo background */
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(42, 42, 42, 0.95); /* Semi-transparent to blend with gradient */
-  backdrop-filter: blur(10px); /* Modern blur effect */
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 999;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 nav ul {
@@ -52,26 +134,33 @@ nav a {
   text-transform: uppercase;
   font-size: 16px;
   letter-spacing: 1px;
-  transition: color 0.2s ease;
-  color: #ffffff; /* White text */
-  padding: 8px 12px;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 nav a:hover {
-  color: #cccccc; /* Light grey on hover */
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 nav a.active {
   color: #ffffff;
-  border-bottom: 2px solid #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* Main content - Updated to blend with gradient */
+/* Main content */
 main {
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
-  background: transparent; /* Let gradient show through */
+  background: transparent;
 }
 
 h1 {
@@ -85,26 +174,7 @@ h2 {
   margin: 20px 0 10px;
 }
 
-/* Logo Background - Made 2 times bigger with no background version */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 800px; /* Increased from 400px to 800px (2x) */
-  height: 800px; /* Increased from 400px to 800px (2x) */
-  background-image: url('img/systemove/LOGO_NP_2_nobg.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.15;
-  filter: grayscale(100%) brightness(0.7);
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* Homepage Hero Section - Updated with camera background */
+/* Homepage Hero Section - Logo background removed */
 .hero {
   display: flex;
   flex-direction: column;
@@ -112,25 +182,31 @@ h2 {
   justify-content: center;
   min-height: calc(100vh - 200px);
   text-align: center;
-  background: transparent; /* Let gradient show through */
+  background: transparent;
   padding-top: 0;
-  position: relative; /* Added for camera background positioning */
+  position: relative;
 }
+
+/* Removed .hero::before (logo background) */
 
 .hero h1 {
   font-size: 42px;
   margin-bottom: 20px;
   color: #ffffff;
   margin-top: 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  font-weight: 300;
+  letter-spacing: 2px;
 }
 
 .hero p {
   font-size: 18px;
   margin-bottom: 40px;
-  color: #666;
+  color: #cccccc;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* Square Grid for Homepage - Enhanced for gradient */
+/* Square Grid for Homepage - Enhanced with glassmorphism */
 .hero .photo-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -143,17 +219,20 @@ h2 {
   position: relative;
   display: block;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.6); /* Stronger shadow for gradient background */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  transition: all 0.3s ease;
   aspect-ratio: 1 / 1;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
 }
 
 .hero .photo-grid a:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .hero .photo-grid img {
@@ -161,6 +240,12 @@ h2 {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: all 0.3s ease;
+}
+
+.hero .photo-grid a:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.1);
 }
 
 .hero .photo-grid h2 {
@@ -171,22 +256,23 @@ h2 {
   color: white;
   margin: 0;
   font-size: 24px;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  font-weight: 300;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
   text-transform: uppercase;
-  background: none; /* Remove the gradient background */
-  padding: 0; /* Remove padding */
+  background: none;
+  padding: 0;
+  letter-spacing: 1px;
 }
 
-/* Add dark overlay for better text readability on photo grid */
+/* Enhanced dark overlay for better text readability on photo grid */
 .hero .photo-grid a::before {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 80px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  height: 100px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   pointer-events: none;
 }
 
@@ -201,12 +287,14 @@ h2 {
   width: 100%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  transition: transform 0.2s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .gallery img:hover {
   transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
 }
 
 /* Video sekcia */
@@ -224,33 +312,38 @@ h2 {
   width: 100%;
   max-height: 500px;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Photo Albums Grid Layout - Enhanced for gradient */
+/* Photo Albums Grid Layout - Enhanced with glassmorphism */
 .photo-grid.albums {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 0;
-  clear: both; /* Ensure it starts on a new line */
-  width: 100%; /* Full width */
+  clear: both;
+  width: 100%;
 }
 
 .category-card {
   position: relative;
   display: block;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  transition: all 0.3s ease;
   aspect-ratio: 1 / 1;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
 }
 
 .category-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .category-card img {
@@ -258,6 +351,12 @@ h2 {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: all 0.3s ease;
+}
+
+.category-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 .category-card button {
@@ -268,14 +367,15 @@ h2 {
   color: white;
   border: none;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 300;
   cursor: pointer;
   pointer-events: none;
   text-transform: uppercase;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-  background: none; /* Remove gradient background */
-  padding: 0; /* Remove padding */
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+  background: none;
+  padding: 0;
   margin: 0;
+  letter-spacing: 1px;
 }
 
 /* Video Categories Grid Layout - Same as Photo Albums */
@@ -290,16 +390,20 @@ h2 {
   position: relative;
   display: block;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  transition: all 0.3s ease;
   aspect-ratio: 1 / 1;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
 }
 
 .video-category-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .video-category-card img {
@@ -307,6 +411,12 @@ h2 {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: all 0.3s ease;
+}
+
+.video-category-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 .video-category-card button {
@@ -317,25 +427,26 @@ h2 {
   color: white;
   border: none;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 300;
   cursor: pointer;
   pointer-events: none;
   text-transform: uppercase;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
   background: none;
   padding: 0;
   margin: 0;
+  letter-spacing: 1px;
 }
 
-/* Add dark overlay for better text readability on video grid */
+/* Enhanced dark overlay for better text readability on video grid */
 .video-category-card::before {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 80px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  height: 100px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   pointer-events: none;
 }
 
@@ -347,12 +458,14 @@ h2 {
 .categories h1 {
   font-size: 36px;
   margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .categories p {
   font-size: 18px;
-  color: #666;
+  color: #cccccc;
   margin-bottom: 40px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 .category-grid {
@@ -367,16 +480,20 @@ h2 {
   position: relative;
   display: block;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  aspect-ratio: 1 / 1; /* Same square aspect ratio as photo section */
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  transition: all 0.3s ease;
+  aspect-ratio: 1 / 1;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
 }
 
 .category-grid .category-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .category-grid .category-card img {
@@ -384,6 +501,12 @@ h2 {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: all 0.3s ease;
+}
+
+.category-grid .category-card:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.1);
 }
 
 .category-grid .category-card h2 {
@@ -394,9 +517,10 @@ h2 {
   color: white;
   margin: 0;
   font-size: 24px;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  font-weight: 300;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .category-grid .category-card p {
@@ -406,18 +530,18 @@ h2 {
   color: white;
   margin: 0;
   font-size: 14px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
 }
 
-/* Add dark overlay for better text readability */
+/* Enhanced dark overlay for better text readability */
 .category-grid .category-card::before {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 80px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  height: 100px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   pointer-events: none;
 }
 
@@ -434,6 +558,7 @@ h2 {
 .landing h1 {
   font-size: 42px;
   margin-bottom: 40px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .landing .buttons {
@@ -444,16 +569,20 @@ h2 {
 .landing .buttons a {
   display: inline-block;
   padding: 15px 40px;
-  background-color: black;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   color: white;
   font-size: 18px;
   border-radius: 30px;
   text-transform: uppercase;
-  transition: background 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .landing .buttons a:hover {
-  background-color: #444;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px);
 }
 
 /* Sekcia "O mne" */
@@ -467,6 +596,8 @@ h2 {
   border-radius: 100%;
   margin: 0 auto 30px;
   display: block;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Kontakt */
@@ -476,43 +607,25 @@ h2 {
 }
 
 .contact a {
-  color: #0077cc;
+  color: #4da6ff;
   word-break: break-all;
 }
 
-/* Footer - Updated to blend with gradient */
+.contact a:hover {
+  color: #66b3ff;
+}
+
+/* Footer - Updated to work with photo background */
 footer {
   text-align: center;
   padding: 30px 10px;
-  background: rgba(17, 17, 17, 0.8); /* Semi-transparent */
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
   font-size: 14px;
   margin-top: 60px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   color: #cccccc;
 }
-
-/* Animation keyframes for optional animated gradient */
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Alternative animated gradient (uncomment if you want subtle movement) */
-/*
-body {
-  background: linear-gradient(225deg, #2a2a2a, #1a1a1a, #0f0f0f, #080808, #030303);
-  background-size: 400% 400%;
-  animation: gradientShift 20s ease infinite;
-  background-attachment: fixed;
-}
-*/
 
 /* Responsive design for albums */
 @media (max-width: 768px) {
@@ -527,7 +640,7 @@ body {
   }
   
   .banner {
-    display: none; /* Hide banner on mobile since it's removed */
+    display: none;
   }
   
   .hero h1 {
@@ -556,10 +669,16 @@ body {
     bottom: 20px;
   }
   
-  /* Logo Background - Responsive scaling for mobile */
-  .hero::before {
-    width: 600px; /* Scaled down for tablets but still bigger than original */
-    height: 600px;
+  /* Adjust background grid for mobile - 3 columns */
+  body::before {
+    background-size: 33.333% auto;
+    background-position: 
+      0% 0%, 33.333% 0%, 66.666% 0%,
+      0% 16.666%, 33.333% 16.666%, 66.666% 16.666%,
+      0% 33.333%, 33.333% 33.333%, 66.666% 33.333%,
+      0% 50%, 33.333% 50%, 66.666% 50%,
+      0% 66.666%, 33.333% 66.666%, 66.666% 66.666%,
+      0% 83.333%, 33.333% 83.333%, 66.666% 83.333%;
   }
 }
 
@@ -574,9 +693,15 @@ body {
     gap: 10px;
   }
   
-  /* Logo Background - Further scaled for mobile */
-  .hero::before {
-    width: 500px; /* Scaled for mobile but still bigger than original */
-    height: 500px;
+  /* Adjust background grid for small mobile - 2 columns */
+  body::before {
+    background-size: 50% auto;
+    background-position: 
+      0% 0%, 50% 0%,
+      0% 16.666%, 50% 16.666%,
+      0% 33.333%, 50% 33.333%,
+      0% 50%, 50% 50%,
+      0% 66.666%, 50% 66.666%,
+      0% 83.333%, 50% 83.333%;
   }
 }
