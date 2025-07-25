@@ -114,14 +114,22 @@ main {
 }
 
 h1 {
-  text-align: center;
   font-size: 36px;
-  margin-bottom: 40px;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  font-weight: 300;
 }
 
 h2 {
   font-size: 24px;
-  margin: 20px 0 10px;
+  color: #ffffff;
+  font-weight: 300;
+}
+
+p {
+  font-size: 18px;
+  color: #cccccc;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 /* Homepage Hero Section */
@@ -139,19 +147,7 @@ h2 {
 
 .hero h1 {
   font-size: 42px;
-  margin-bottom: 20px;
-  color: #ffffff;
-  margin-top: 0;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-  font-weight: 300;
   letter-spacing: 2px;
-}
-
-.hero p {
-  font-size: 18px;
-  margin-bottom: 40px;
-  color: #cccccc;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 /* Index Page - 2 Square Buttons (1 row, 2 columns) */
@@ -204,8 +200,6 @@ h2 {
   color: white;
   margin: 0;
   font-size: 24px;
-  font-weight: 300;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
   text-transform: uppercase;
   background: none;
   padding: 0;
@@ -328,8 +322,6 @@ h2 {
   color: white;
   margin: 0;
   font-size: 20px;
-  font-weight: 300;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -341,7 +333,6 @@ h2 {
   color: white;
   margin: 0;
   font-size: 14px;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
 }
 
 .category-card button {
@@ -352,11 +343,9 @@ h2 {
   color: white;
   border: none;
   font-size: 16px;
-  font-weight: 300;
   cursor: pointer;
   pointer-events: none;
   text-transform: uppercase;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
   background: none;
   padding: 0;
   margin: 0;
@@ -480,11 +469,9 @@ h2 {
   color: white;
   border: none;
   font-size: 16px;
-  font-weight: 300;
   cursor: pointer;
   pointer-events: none;
   text-transform: uppercase;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
   background: none;
   padding: 0;
   margin: 0;
@@ -553,8 +540,6 @@ h2 {
   color: white;
   margin: 0;
   font-size: 24px;
-  font-weight: 300;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -566,7 +551,6 @@ h2 {
   color: white;
   margin: 0;
   font-size: 14px;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
 }
 
 /* Enhanced dark overlay for better text readability */
@@ -593,8 +577,6 @@ h2 {
 
 .landing h1 {
   font-size: 42px;
-  margin-bottom: 40px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .landing .buttons {
