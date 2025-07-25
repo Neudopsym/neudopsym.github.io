@@ -175,7 +175,7 @@ p {
 
 .photo-gallery-section p {
   font-size: 18px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 /* Photo Albums Grid - 3 columns */
@@ -202,7 +202,7 @@ p {
 
 .video-gallery-section p {
   font-size: 18px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 /* Video Albums Grid - 3 columns */
@@ -565,7 +565,7 @@ p {
 .landing .buttons {
   display: flex;
   gap: 40px;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .landing .buttons a {
