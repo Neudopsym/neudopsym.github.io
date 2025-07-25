@@ -264,13 +264,13 @@ h2 {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Photo Albums Grid Layout - 2 rows, 3 columns */
+/* Photo Albums Grid Layout - 2 rows, 3 columns for 6 albums */
 .photo-grid.albums {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 30px;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0;
   clear: both;
@@ -405,21 +405,21 @@ h2 {
 }
 
 /* Photo Albums Section - Centered titles with grid below */
-.categories {
+.gallery {
   text-align: center;
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
-.categories h1 {
+.gallery h1 {
   font-size: 36px;
   margin-bottom: 20px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
   color: #ffffff;
 }
 
-.categories p {
+.gallery p {
   font-size: 18px;
   color: #cccccc;
   margin-bottom: 40px;
