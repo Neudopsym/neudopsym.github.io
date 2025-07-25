@@ -233,6 +233,8 @@ h2 {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 0;
+  clear: both; /* Ensure it starts on a new line */
+  width: 100%; /* Full width */
 }
 
 .category-card {
