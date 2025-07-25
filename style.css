@@ -5,18 +5,18 @@
   box-sizing: border-box;
 }
 
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap');
+
 /* Updated Body with Smooth Dark Gradient Background */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Work Sans', sans-serif;
   background: linear-gradient(225deg, 
-    rgba(85, 85, 85, 0.8) 0%,       /* Darker upper right */
-    rgba(70, 70, 70, 0.8) 15%,      /* Darker light medium */
-    rgba(55, 55, 55, 0.8) 30%,      /* Darker medium */
-    rgba(40, 40, 40, 0.8) 45%,      /* Medium dark */
-    rgba(30, 30, 30, 0.85) 60%,     /* Darker medium */
-    rgba(22, 22, 22, 0.9) 75%,      /* Darker */
-    rgba(18, 18, 18, 0.95) 85%,     /* Very dark */
-    rgba(12, 12, 12, 0.98) 100%     /* Darkest bottom left */
+    rgba(70, 70, 70, 1) 0%,
+    rgba(60, 60, 60, 1) 25%,
+    rgba(40, 40, 40, 1) 50%,
+    rgba(25, 25, 25, 1) 75%,
+    rgba(12, 12, 12, 1) 100%
   );
   color: #ffffff;
   line-height: 1.6;
@@ -27,12 +27,10 @@ body {
   overflow-x: hidden;
 }
 
-/* Remove all photo background pseudo-elements */
 body::before {
   display: none;
 }
 
-/* Updated dark overlay for gradient background */
 body::after {
   content: '';
   position: fixed;
@@ -50,707 +48,61 @@ body::after {
   );
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ul {
-  list-style: none;
-}
-
-/* Header */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(26, 26, 26, 0.95);
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 999;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-}
-
-nav ul {
-  display: flex;
-  justify-content: center;
-  padding: 15px 0;
-}
-
-nav li {
-  margin: 0 8px;
-}
-
-nav a {
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 16px;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  color: #ffffff;
-  padding: 8px 16px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-nav a:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-}
-
-nav a.active {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-}
-
-/* Main content */
-main {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
-  background: transparent;
-}
-
-/* Enhanced H1 typography */
-h1 {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 42px;
-  color: #ffffff;
-  font-weight: 700;
-  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9), 
-               1px 1px 6px rgba(0, 0, 0, 0.7),
-               0 0 20px rgba(255, 255, 255, 0.1);
-  letter-spacing: 1px;
-}
-
-h2 {
-  font-size: 24px;
-  color: #ffffff;
-  font-weight: 300;
-}
-
-/* Enhanced P typography */
-p {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 18px;
-  color: #cccccc;
-  font-weight: 400;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9),
-               1px 1px 4px rgba(0, 0, 0, 0.7);
-  letter-spacing: 0.5px;
-}
-
-/* Homepage Hero Section */
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 200px);
-  text-align: center;
-  background: transparent;
-  padding-top: 0;
-  position: relative;
-}
-
-.hero h1 {
-  font-size: 48px;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
-
-/* Index Page - 2 Square Buttons (1 row, 2 columns) - Updated to match other sections */
+/* Fix veľkosti tlačidiel na hlavnej stránke */
 .hero .photo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   max-width: 1200px;
   width: 100%;
-}
-
-.hero .photo-grid a {
-  position: relative;
-  display: block;
-  text-decoration: none;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-  transition: all 0.3s ease;
-  aspect-ratio: 1 / 1;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-}
-
-.hero .photo-grid a:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.hero .photo-grid img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-.hero .photo-grid a:hover img {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
-/* Enhanced button typography to match other sections */
-.hero .photo-grid h2 {
-  position: absolute;
-  bottom: 30px;
-  left: 20px;
-  right: 20px;
-  color: white;
-  margin: 0;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 22px;
-  font-weight: 700;
-  text-transform: uppercase;
-  background: none;
-  padding: 0;
-  letter-spacing: 1.5px;
-  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9),
-               2px 2px 6px rgba(0, 0, 0, 0.8),
-               1px 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-/* Enhanced dark overlay for better text readability */
-.hero .photo-grid a::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  pointer-events: none;
-}
-
-/* Photo Gallery Section - Title and subtitle separate from grid */
-.photo-gallery-section {
-  text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
-
-.photo-gallery-section h1 {
-  font-size: 42px;
-  margin-bottom: 20px;
-}
-
-.photo-gallery-section p {
-  font-size: 18px;
-  margin-bottom: 40px;
-}
-
-/* Photo Albums Grid - 3 columns */
-.photo-albums-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Video Gallery Section - Title and subtitle separate from grid */
-.video-gallery-section {
-  text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
-
-.video-gallery-section h1 {
-  font-size: 42px;
-  margin-bottom: 20px;
-}
-
-.video-gallery-section p {
-  font-size: 18px;
-  margin-bottom: 40px;
-}
-
-/* Video Albums Grid - 3 columns */
-.video-albums-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Category Card Styles (for both photo and video) */
-.category-card {
-  position: relative;
-  display: block;
-  text-decoration: none;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-  transition: all 0.3s ease;
-  aspect-ratio: 1 / 1;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-}
-
-.category-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.category-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-.category-card:hover img {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
-/* Enhanced category card button typography */
-.category-card h2 {
-  position: absolute;
-  bottom: 30px;
-  left: 20px;
-  right: 20px;
-  color: white;
-  margin: 0;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 22px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9),
-               2px 2px 6px rgba(0, 0, 0, 0.8),
-               1px 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-.category-card p {
-  position: absolute;
-  bottom: 10px;
-  left: 20px;
-  color: white;
-  margin: 0;
-  font-size: 14px;
-}
-
-.category-card button {
-  position: absolute;
-  bottom: 30px;
-  left: 20px;
-  right: 20px;
-  color: white;
-  border: none;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 22px;
-  font-weight: 700;
-  cursor: pointer;
-  pointer-events: none;
-  text-transform: uppercase;
-  background: none;
-  padding: 0;
-  margin: 0;
-  letter-spacing: 1.5px;
-  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9),
-               2px 2px 6px rgba(0, 0, 0, 0.8),
-               1px 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-/* Enhanced dark overlay for better text readability */
-.category-card::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  pointer-events: none;
-}
-
-/* Individual Photo Gallery (for specific album pages) */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
   padding: 0 20px;
 }
 
-.gallery img {
-  width: 100%;
+.hero .photo-grid a {
+  aspect-ratio: 1 / 1;
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.gallery img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-}
-
-/* Video sekcia */
-.video-gallery {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-}
-
-.video-item h2 {
-  margin-bottom: 10px;
-}
-
-.video-item video {
-  width: 100%;
-  max-height: 500px;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* LEGACY SUPPORT - keeping old classes for backward compatibility */
-.photo-grid.albums {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
-  clear: both;
-  width: 100%;
-}
-
-.video-grid.albums {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
-}
-
-.video-category-card {
-  position: relative;
-  display: block;
-  text-decoration: none;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-  transition: all 0.3s ease;
-  aspect-ratio: 1 / 1;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-}
-
-.video-category-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.video-category-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-.video-category-card:hover img {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
-.video-category-card button {
-  position: absolute;
-  bottom: 30px;
-  left: 20px;
-  right: 20px;
-  color: white;
-  border: none;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 22px;
+  max-height: 320px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 20px;
   font-weight: 700;
-  cursor: pointer;
-  pointer-events: none;
-  text-transform: uppercase;
-  background: none;
-  padding: 0;
-  margin: 0;
-  letter-spacing: 1.5px;
-  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9),
-               2px 2px 6px rgba(0, 0, 0, 0.8),
-               1px 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-/* Enhanced dark overlay for better text readability on video grid */
-.video-category-card::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  pointer-events: none;
-}
-
-/* Category grid for 2-column layout (if needed) */
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.category-grid .category-card {
-  position: relative;
-  display: block;
-  text-decoration: none;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-  transition: all 0.3s ease;
-  aspect-ratio: 1 / 1;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-}
-
-.category-grid .category-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.category-grid .category-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-.category-grid .category-card:hover img {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
-.category-grid .category-card h2 {
-  position: absolute;
-  bottom: 30px;
-  left: 20px;
-  right: 20px;
-  color: white;
-  margin: 0;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 22px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9),
-               2px 2px 6px rgba(0, 0, 0, 0.8),
-               1px 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-.category-grid .category-card p {
-  position: absolute;
-  bottom: 10px;
-  left: 20px;
-  color: white;
-  margin: 0;
-  font-size: 14px;
-}
-
-/* Enhanced dark overlay for better text readability */
-.category-grid .category-card::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  pointer-events: none;
-}
-
-/* Domovská stránka - rozcestník */
-.landing {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh;
+  letter-spacing: 1px;
   text-align: center;
 }
 
-.landing h1 {
-  font-size: 48px;
+.hero .photo-grid h2 {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 1.5px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  bottom: 20px;
 }
 
-.landing .buttons {
-  display: flex;
-  gap: 40px;
+h1, h2, p, nav a, .landing h1, .landing .buttons a {
+  font-family: 'Work Sans', sans-serif;
 }
 
-.landing .buttons a {
-  display: inline-block;
-  padding: 15px 40px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  color: white;
+h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+p {
   font-size: 18px;
-  border-radius: 30px;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-}
-
-.landing .buttons a:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-3px);
-}
-
-/* Sekcia "O mne" */
-.about {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.about img {
-  max-width: 200px;
-  border-radius: 100%;
-  margin: 0 auto 30px;
-  display: block;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Kontakt */
-.contact {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.contact a {
-  color: #4da6ff;
-  word-break: break-all;
-}
-
-.contact a:hover {
-  color: #66b3ff;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 30px 10px;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
-  font-size: 14px;
-  margin-top: 60px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
   color: #cccccc;
 }
 
-/* Responsive design */
-@media (max-width: 900px) {
-  .photo-albums-grid,
-  .photo-grid.albums,
-  .hero .photo-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 600px;
-  }
-  
-  .video-albums-grid,
-  .video-grid.albums {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 600px;
-  }
-  
-  .banner {
-    display: none;
-  }
-  
-  .hero h1, .landing h1 {
-    font-size: 36px;
-  }
-  
-  h1 {
-    font-size: 32px;
-  }
-  
-  .hero .photo-grid h2,
-  .category-card h2,
-  .category-card button,
-  .video-category-card button,
-  .category-grid .category-card h2 {
-    font-size: 18px;
-    bottom: 20px;
-  }
-  
-  .category-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    max-width: 300px;
-  }
+/* Gradient overlay (smooth fix) */
+.hero .photo-grid a::before,
+.category-card::before,
+.video-category-card::before,
+.category-grid .category-card::before {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
 }
 
-@media (max-width: 600px) {
-  .photo-albums-grid,
-  .photo-grid.albums,
-  .hero .photo-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    max-width: 300px;
-  }
-  
-  .video-albums-grid,
-  .video-grid.albums {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    max-width: 300px;
-  }
-  
-  .hero h1, .landing h1 {
-    font-size: 28px;
-  }
-  
-  h1 {
-    font-size: 28px;
-  }
-  
-  .hero .photo-grid h2,
-  .category-card h2,
-  .category-card button,
-  .video-category-card button,
-  .category-grid .category-card h2 {
-    font-size: 16px;
-  }
+/* Optional: make all other font-family fallbacks consistent */
+a, button, input, textarea {
+  font-family: 'Work Sans', sans-serif;
 }
