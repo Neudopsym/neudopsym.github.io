@@ -85,16 +85,16 @@ h2 {
   margin: 20px 0 10px;
 }
 
-/* Logo Background - Made 3 times bigger */
+/* Logo Background - Made 2 times bigger with no background version */
 .hero::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 1200px; /* Increased from 400px to 1200px (3x) */
-  height: 1200px; /* Increased from 400px to 1200px (3x) */
-  background-image: url('img/systemove/LOGO_NP_2.png');
+  width: 800px; /* Increased from 400px to 800px (2x) */
+  height: 800px; /* Increased from 400px to 800px (2x) */
+  background-image: url('img/systemove/LOGO_NP_2_nobg.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -556,8 +556,8 @@ body {
   
   /* Logo Background - Responsive scaling for mobile */
   .hero::before {
-    width: 800px; /* Smaller on tablets but still bigger than original */
-    height: 800px;
+    width: 600px; /* Scaled down for tablets but still bigger than original */
+    height: 600px;
   }
 }
 
@@ -574,7 +574,7 @@ body {
   
   /* Logo Background - Further scaled for mobile */
   .hero::before {
-    width: 600px; /* Still bigger than original 400px */
-    height: 600px;
+    width: 500px; /* Scaled for mobile but still bigger than original */
+    height: 500px;
   }
 }
