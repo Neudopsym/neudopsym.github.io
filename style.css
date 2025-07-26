@@ -44,6 +44,15 @@ ul {
   list-style: none;
 }
 
+/* Mobile menu elements - HIDDEN BY DEFAULT */
+.mobile-menu-button {
+  display: none;
+}
+
+.mobile-menu {
+  display: none;
+}
+
 /* Header */
 header {
   position: fixed;
@@ -484,8 +493,9 @@ footer {
     padding-top: 0;
   }
   
-  /* Mobile menu button */
+  /* Mobile menu button - SHOW ON MOBILE */
   .mobile-menu-button {
+    display: block;
     position: fixed;
     top: 20px;
     right: 20px;
