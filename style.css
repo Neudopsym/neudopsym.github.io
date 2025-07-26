@@ -339,7 +339,7 @@ p {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
   max-width: 1200px;
-  margin: 600px auto 0 auto;
+  margin: 3000px auto 3000 auto;
   padding: 0 20px;
 }
 
