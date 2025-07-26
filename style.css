@@ -214,6 +214,21 @@ p {
   margin-bottom: 8px;
 }
 
+/* Force "Portfólio videí" to display in 2 lines */
+.video-gallery-section h1:contains("Portfólio videí") {
+  white-space: pre-line;
+}
+
+/* Alternative method using specific content */
+.video-gallery-section h1[data-title="portfolio-videi"] {
+  white-space: pre-line;
+}
+
+/* Recommended: using a specific class */
+.video-gallery-section h1.two-lines {
+  white-space: pre-line;
+}
+
 .video-gallery-section p {
   font-size: 18px;
   margin-bottom: 20px;
@@ -658,7 +673,7 @@ footer {
   }
   
   main {
-    margin-top: 80px;
+    margin-top: 0;
   }
   
   /* Special case for about page - no margin-top */
@@ -794,7 +809,6 @@ footer {
   .photo-gallery-section p,
   .video-gallery-section p,
   p:not(.about p):not(.contact p) {
-    margin-top: 80px;
     text-align: center !important;
     padding-left: 20px;
     padding-right: 20px;
@@ -817,15 +831,6 @@ footer {
   
   .contact p:last-child {
     margin-bottom: 0;
-  }
-  
-  /* Special case for hero and landing - keep h1 left aligned */
-  .hero h1,
-  .landing h1 {
-    text-align: left !important;
-    padding-left: 20px;
-    margin-top: 20px;
-    margin-bottom: 10px;
   }
   
   /* Gallery Square - 3 columns on mobile */
