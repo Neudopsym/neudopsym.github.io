@@ -26,16 +26,38 @@
     }
     
     @media (max-width: 768px) {
-      .photo-gallery-section h1:not(.mobile-h1) {
-        display: none;
+      /* Remove all padding/margin from parent container */
+      .photo-gallery-section {
+        padding: 0 !important;
+        margin: 0 !important;
       }
       
+      /* Hide desktop H1 */
+      .photo-gallery-section h1:not(.mobile-h1) {
+        display: none !important;
+      }
+      
+      /* Show mobile H1 with absolutely no spacing */
       .photo-gallery-section h1.mobile-h1 {
-        display: block;
-        padding: 0;
-        margin-top: 0;
-        margin-left: 0;
-        text-align: left;
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 0 !important;
+        text-align: left !important;
+        position: relative;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+      }
+      
+      /* Restore some spacing for the paragraph */
+      .photo-gallery-section p {
+        padding: 0 20px !important;
+        margin-top: 10px !important;
       }
     }
   </style>
