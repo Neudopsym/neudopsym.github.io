@@ -343,6 +343,10 @@ p {
   padding: 0 20px;
 }
 
+.gallery h1 {
+  margin-bottom: 40px;
+}
+
 .gallery img {
   width: 100%;
   height: auto;
