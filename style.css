@@ -333,13 +333,13 @@ p {
   pointer-events: none;
 }
 
-/* Individual Photo Gallery (for specific album pages) - UPDATED WITH MORE SPACE */
+/* Individual Photo Gallery (for specific album pages) */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
   max-width: 1200px;
-  margin: 3000px auto 3000px auto;
+  margin: auto auto auto auto;
   padding: 0 20px;
 }
 
