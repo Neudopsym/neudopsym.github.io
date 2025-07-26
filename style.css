@@ -803,24 +803,6 @@ footer {
     transform: scale(1.05);
   }
   
-  /* Mobile H1 title - align ALL h1 titles to the left and make them bigger */
-  .hero h1,
-  .landing h1,
-  .photo-gallery-section h1,
-  .video-gallery-section h1,
-  .about h1,
-  .contact h1,
-  h1 {
-    font-size: 48px !important;
-    line-height: 1.2;
-    text-align: left !important;
-    position: relative;
-    z-index: 999;
-    padding-left: 20px;
-    white-space: pre-line; /* Moved here - only applies on mobile */
-    margin-bottom: 8px;
-  }
-  
   /* Portrait videos on mobile */
   .modal-video-wrapper.portrait {
     max-width: 90%;
@@ -935,56 +917,4 @@ footer {
   }
   
   .mobile-menu a {
-    font-size: 28px;
-    padding: 12px 25px;
-    min-width: 220px;
-  }
-  
-  .mobile-menu li {
-    margin: 12px 0;
-  }
-  
-  /* Mobile close button for smaller screens */
-  .mobile-menu-close {
-    font-size: 42px;
-    padding: 12px 16px;
-  }
-  
-  .photo-albums-grid,
-  .video-albums-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    max-width: 300px;
-  }
-  
-  /* Video Gallery Small Mobile */
-  .video-gallery {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 10px;
-    justify-content: center;
-    justify-items: center;
-  }
-  
-  .modal-content {
-    padding: 15px;
-  }
-  
-  .modal-video-wrapper {
-    margin-bottom: 15px;
-  }
-  
-  .hero h1, .landing h1 {
-    font-size: 44px !important;
-  }
-  
-  h1 {
-    font-size: 44px !important;
-  }
-  
-  .category-card h2,
-  .category-card button {
-    font-size: 18px;
-    padding: 10px;
-  }
-}
+    font-size:
