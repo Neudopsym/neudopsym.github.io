@@ -9,19 +9,42 @@
   <meta name="author" content="Filip Kubus">
   <link rel="canonical" href="https://www.neudopsymphoto.sk/kontakt.html">
   <link rel="stylesheet" href="style.css">
-
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Kontakt – Neudopsym Photo">
   <meta property="og:description" content="Kontaktujte ma pre fotografovanie, videá alebo spoluprácu. Neudopsym Photo – Filip Kubus.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.neudopsymphoto.sk/kontakt.html">
   <meta property="og:image" content="https://www.neudopsymphoto.sk/img/preview.jpg">
-
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Kontakt – Neudopsym Photo">
   <meta name="twitter:description" content="Kontaktujte ma pre fotografovanie, videá alebo spoluprácu. Neudopsym Photo – Filip Kubus.">
   <meta name="twitter:image" content="https://www.neudopsymphoto.sk/img/preview.jpg">
+  
+  <style>
+    /* Ensure body takes full height and uses flexbox */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    /* Contact section with more spacing */
+    .contact {
+      max-width: 600px;
+      margin: 50px auto 0; /* Increased top margin for more space from menu */
+      flex: 1; /* This will push the footer to the bottom */
+    }
+    
+    .contact h1 {
+      margin-bottom: 40px; /* More space between h1 and p */
+    }
+    
+    /* Footer stays at bottom */
+    footer {
+      margin-top: auto;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -35,7 +58,6 @@
       </ul>
     </nav>
   </header>
-
   <main class="contact">
     <h1>Kontakt</h1>
     <p>Máte záujem o fotenie, video, spoluprácu alebo len chcete niečo napísať?</p>
@@ -43,7 +65,6 @@
     <p>Sledujte moju tvorbu aj na Instagrame: <a href="https://www.instagram.com/neudopsym.photo/" target="_blank">@neudopsym.photo</a></p>
     <p>Prípadne sa spojme cez <a href="https://www.linkedin.com/in/filip-kubus/" target="_blank">LinkedIn</a></p>
   </main>
-
   <footer>
     <p>&copy; 2025 Neudopsym Photo</p>
   </footer>
