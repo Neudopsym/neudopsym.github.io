@@ -682,7 +682,7 @@ footer {
     padding-top: 0;
   }
   
-  /* Mobile menu button - SHOW ON MOBILE */
+  /* Mobile menu button - SHOW ON MOBILE - MADE MUCH BIGGER */
   .mobile-menu-button {
     display: block;
     position: fixed;
@@ -692,15 +692,23 @@ footer {
     background: rgba(26, 26, 26, 0.95);
     border: none;
     color: white;
-    font-size: 24px;
-    padding: 10px 15px;
-    border-radius: 5px;
+    font-size: 36px;
+    padding: 20px 25px;
+    border-radius: 10px;
     cursor: pointer;
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
   }
   
-  /* Mobile menu overlay */
+  .mobile-menu-button:hover {
+    background: rgba(26, 26, 26, 1);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+  }
+  
+  /* Mobile menu overlay - FORCE COLUMN LAYOUT EVERYWHERE */
   .mobile-menu {
     position: fixed;
     top: 0;
@@ -717,48 +725,71 @@ footer {
   }
   
   .mobile-menu.active {
-    display: flex;
+    display: flex !important;
+    flex-direction: column !important;
   }
   
   .mobile-menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
   }
   
   .mobile-menu li {
-    margin: 20px 0;
+    margin: 25px 0;
     text-align: center;
+    display: block;
   }
   
   .mobile-menu a {
     font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 32px;
     letter-spacing: 1px;
     color: #ffffff;
     text-decoration: none;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
     transition: all 0.3s ease;
+    padding: 15px 30px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: block;
+    min-width: 250px;
+    text-align: center;
   }
   
   .mobile-menu a:hover {
     transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
     text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9),
                  0 0 12px rgba(255, 255, 255, 0.15);
   }
   
-  /* Mobile close button */
+  /* Mobile close button - MADE BIGGER */
   .mobile-menu-close {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: none;
-    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     color: white;
-    font-size: 36px;
+    font-size: 48px;
     cursor: pointer;
+    padding: 15px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-close:hover {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
   }
   
   /* Mobile H1 title - two lines */
@@ -850,16 +881,28 @@ footer {
 }
 
 @media (max-width: 600px) {
-  /* Mobile menu button adjustment for smaller screens */
+  /* Mobile menu button adjustment for smaller screens - EVEN BIGGER */
   .mobile-menu-button {
     top: 15px;
     right: 15px;
-    font-size: 20px;
-    padding: 8px 12px;
+    font-size: 32px;
+    padding: 18px 22px;
   }
   
   .mobile-menu a {
-    font-size: 22px;
+    font-size: 28px;
+    padding: 12px 25px;
+    min-width: 220px;
+  }
+  
+  .mobile-menu li {
+    margin: 20px 0;
+  }
+  
+  /* Mobile close button for smaller screens */
+  .mobile-menu-close {
+    font-size: 42px;
+    padding: 12px 16px;
   }
   
   /* Even bigger banner on small mobile */
