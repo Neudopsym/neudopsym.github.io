@@ -18,6 +18,44 @@
   <meta name="twitter:description" content="Promo videá – kreativita, detail a emócia v každom zábere.">
   <meta name="twitter:image" content="https://neudopsym.github.io/img/video/preview.jpg">
   <link rel="stylesheet" href="../style.css">
+  <style>
+    /* Mobile H1 styling */
+    .mobile-h1 {
+      display: none;
+    }
+    
+    @media (max-width: 900px) {
+      /* Hide desktop H1 on mobile */
+      main > h1 {
+        display: none;
+      }
+      
+      /* Show mobile H1 */
+      .mobile-h1 {
+        display: block;
+        font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+        font-size: 48px;
+        color: #ffffff;
+        font-weight: 700;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6), 
+                     1px 1px 12px rgba(0, 0, 0, 0.4),
+                     0 0 16px rgba(0, 0, 0, 0.3);
+        letter-spacing: 1.5px;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+        white-space: pre-line;
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .mobile-h1 {
+        font-size: 44px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Mobile menu button -->
@@ -48,8 +86,14 @@
   </header>
   
   <main>
+    <!-- Desktop H1 -->
     <h1>Promo
 videá</h1>
+    
+    <!-- Mobile H1 -->
+    <h1 class="mobile-h1">Promo
+videá</h1>
+    
     <div class="video-gallery">
       <div class="video-card" data-video-id="1104261030" data-video-title="Kino Aero: Leto v kine Aero" data-video-platform="vimeo">
         <img src="../img/systemove/Aero_Leto_v_Aeru_nahled.jpg" alt="Miniatúra videa: Leto v kine Aero" loading="lazy">
