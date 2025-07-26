@@ -48,10 +48,12 @@
     
     .video-card img {
       width: 100%;
-      height: auto;
+      aspect-ratio: 1 / 1; /* Square aspect ratio */
       border-radius: 10px;
       display: block;
       transition: transform 0.3s ease;
+      object-fit: cover;
+      object-position: center;
     }
     
     .video-card:hover img {
@@ -278,13 +280,13 @@
     <div class="video-gallery">
       <!-- Rezidence Na Karmeli Video -->
       <div class="video-card" data-video-id="1104261250" data-video-title="Rezidence Na Karmeli" data-video-platform="vimeo">
-        <img src="img/systemove/NKR_nahlad.png" alt="Miniatúra videa: Rezidence Na Karmeli" loading="lazy">
+        <img src="https://neudopsym.github.io/img/systemove/NKR_nahlad.png" alt="Miniatúra videa: Rezidence Na Karmeli" loading="lazy">
         <h2>Rezidence Na Karmeli</h2>
       </div>
       
       <!-- Green Mladá Boleslav Video -->
       <div class="video-card" data-video-id="1104261085" data-video-title="Green Mladá Boleslav" data-video-platform="vimeo">
-        <img src="img/systemove/Green_MB_nahlad.png" alt="Miniatúra videa: Green Mladá Boleslav" loading="lazy">
+        <img src="https://neudopsym.github.io/img/systemove/Green_MB_nahlad.png" alt="Miniatúra videa: Green Mladá Boleslav" loading="lazy">
         <h2>Green Mladá Boleslav</h2>
       </div>
     </div>
@@ -430,12 +432,9 @@
       const thumbnails = document.querySelectorAll('.video-card img');
       thumbnails.forEach(img => {
         img.addEventListener('error', function() {
-          // If Vimeo thumbnail fails, try alternative
-          const videoId = this.src.match(/(\d+)/)[1];
-          if (this.src.includes('vumbnail.com')) {
-            // Fallback to Vimeo's official thumbnail API
-            this.src = `https://i.vimeocdn.com/video/${videoId}_640x360.jpg`;
-          }
+          // If image fails to load, show a placeholder or try alternative path
+          console.log('Failed to load image:', this.src);
+          // You could add a fallback image here if needed
         });
       });
     });
