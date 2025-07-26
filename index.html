@@ -1,108 +1,1097 @@
-<!DOCTYPE html>
-<html lang="sk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neudopsym Photo – Fotografie a videá</title>
-  <meta name="description" content="Portfólio fotografa Neudopsym Photo: dokumentárne, portrétne, eventové a promo fotografie a videá. Zachytené momenty, ktoré hovoria príbeh.">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="Filip Kubus">
-  <link rel="canonical" href="https://neudopsym.github.io/index.html">
-  <link rel="stylesheet" href="https://neudopsym.github.io/style.css">
-  <link rel="icon" href="https://neudopsym.github.io/favicon.ico" type="image/x-icon">
-  <meta property="og:title" content="Neudopsym Photo – Fotografie a videá">
-  <meta property="og:description" content="Zachytené momenty, ktoré hovoria príbeh. Prezrite si portfólio fotografa Neudopsym Photo.">
-  <meta property="og:image" content="https://neudopsym.github.io/img/preview.jpg">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://neudopsym.github.io/">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Neudopsym Photo – Fotografie a videá">
-  <meta name="twitter:description" content="Zachytené momenty, ktoré hovoria príbeh. Prezrite si portfólio fotografa Neudopsym Photo.">
-  <meta name="twitter:image" content="https://neudopsym.github.io/img/preview.jpg">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Neudopsym Photo",
-    "url": "https://neudopsym.github.io/",
-    "author": {
-      "@type": "Person",
-      "name": "Filip Kubus"
-    },
-    "description": "Portfólio fotografa Neudopsym Photo: dokumentárne, portrétne, eventové a promo fotografie a videá."
+/* Reset & základné štýly */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, rgba(30, 30, 32, 1) 0%, rgba(15, 15, 18, 1) 50%, rgba(8, 8, 12, 1) 100%);
+  background-attachment: fixed;
+  color: #ffffff;
+  line-height: 1.6;
+  font-size: 16px;
+  padding-top: 60px;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(
+    225deg,
+    rgba(255, 255, 255, 0.015) 0%,
+    rgba(255, 255, 255, 0.003) 20%,
+    rgba(0, 0, 0, 0.18) 50%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Mobile menu elements - HIDDEN BY DEFAULT */
+.mobile-menu-button {
+  display: none;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 999;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+nav li {
+  margin: 0 6px;
+}
+
+nav a {
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 1px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  color: #ffffff;
+  padding: 6px 12px;
+  background: transparent;
+  border: none;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  display: inline-block;
+}
+
+nav a:hover {
+  color: #ffffff;
+  background: transparent;
+  transform: scale(1.15) translateY(-2px);
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9),
+               0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+nav a.active {
+  color: #ffffff;
+  background: transparent;
+  transform: scale(1.08);
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.3),
+               0 0 12px rgba(255, 255, 255, 0.2),
+               0 0 18px rgba(255, 255, 255, 0.1),
+               2px 2px 4px rgba(0, 0, 0, 0.8);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+}
+
+nav a:not(:hover):not(.active) {
+  transform: scale(1);
+}
+
+/* Main content */
+main {
+  max-width: 1200px;
+  margin: 10px auto;
+  padding: 0 20px;
+  background: transparent;
+  flex: 1;
+}
+
+/* Typography */
+h1 {
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+  font-size: 42px;
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6), 
+               1px 1px 12px rgba(0, 0, 0, 0.4),
+               0 0 16px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1.5px;
+}
+
+h2 {
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 400;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+}
+
+p {
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+  font-size: 18px;
+  color: #cccccc;
+  font-weight: 400;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+               1px 1px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+/* Homepage Hero Section */
+.hero {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+/* Photo Gallery Section */
+.photo-gallery-section {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.photo-gallery-section h1 {
+  font-size: 42px;
+  margin-bottom: 8px;
+}
+
+.photo-gallery-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Photo Albums Grid - 3 columns */
+.photo-albums-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Video Gallery Section */
+.video-gallery-section {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.video-gallery-section h1 {
+  font-size: 42px;
+  margin-bottom: 8px;
+}
+
+.video-gallery-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Video Albums Grid - 3 columns */
+.video-albums-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Video Gallery Styling - Updated for dark theme */
+.video-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 10cm);
+  gap: 30px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+  justify-items: center;
+}
+
+.video-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  width: 10cm;
+  height: 11.2cm;
+  position: relative;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+.video-card img {
+  width: 9cm;
+  height: 9cm;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.3s ease;
+  object-fit: cover;
+  object-position: center;
+  margin: 0 auto;
+}
+
+.video-card:hover img {
+  transform: scale(1.02);
+}
+
+.video-card h2 {
+  font-size: 1.4rem;
+  margin-top: 15px;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Play Button Overlay */
+.video-card::before {
+  content: '▶';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.video-card:hover::before {
+  opacity: 1;
+}
+
+/* High-Quality Modal Styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.95);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  position: relative;
+  background: linear-gradient(135deg, rgba(42, 42, 42, 0.95), rgba(26, 26, 26, 0.95));
+  backdrop-filter: blur(20px);
+  margin: auto;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 95%;
+  max-width: 1200px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.modal-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.close-button {
+  color: #ffffff;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10001;
+  transition: color 0.3s ease, transform 0.3s ease;
+  background: rgba(0, 0, 0, 0.5);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #ff4444;
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+#modalVideoTitle {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Loading indicator */
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.2rem;
+  z-index: 5;
+}
+
+.loading::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 1s ease-in-out infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Category Card Styles */
+.category-card {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  aspect-ratio: 1 / 1;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.category-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.category-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.category-card h2,
+.category-card button {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  pointer-events: none;
+  text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9),
+               3px 3px 8px rgba(0, 0, 0, 0.8),
+               2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.category-card p {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  color: white;
+  margin: 0;
+  font-size: 14px;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  pointer-events: none;
+}
+
+/* Individual Photo Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 80px auto 0 auto;
+  padding: 0 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: high-quality;
+  -ms-interpolation-mode: bicubic;
+  image-orientation: from-image;
+}
+
+.gallery img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+}
+
+/* Gallery Square - for specific album pages using inline styles */
+.gallery-square {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
+  margin: 30px auto 0 auto !important;
+}
+
+.gallery-square img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: high-quality;
+  -ms-interpolation-mode: bicubic;
+  image-orientation: from-image;
+}
+
+.gallery-square img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.video-item h2 {
+  margin-bottom: 10px;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+}
+
+.video-item video {
+  width: 100%;
+  max-height: 500px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Landing Page */
+.landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.landing h1 {
+  font-size: 42px;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+}
+
+.landing p {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.landing .buttons {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 6px;
+}
+
+.landing .buttons a {
+  display: inline-block;
+  padding: 15px 40px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 18px;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+  border-radius: 30px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.landing .buttons a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px);
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9);
+}
+
+/* About Section */
+.about {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about h1 {
+  margin-top: 10px;
+}
+
+.about img {
+  max-width: 200px;
+  border-radius: 100%;
+  margin: 0 auto 30px;
+  display: block;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Contact Section */
+.contact {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact a {
+  color: #4da6ff;
+  word-break: break-all;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+}
+
+.contact a:hover {
+  color: #66b3ff;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px 10px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  font-size: 14px;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+  margin-top: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cccccc;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  /* Hide header in mobile */
+  header {
+    display: none;
   }
-  </script>
-</head>
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="https://neudopsym.github.io/index.html" class="active">Úvod</a></li>
-        <li><a href="https://neudopsym.github.io/foto.html">Foto</a></li>
-        <li><a href="https://neudopsym.github.io/video.html">Video</a></li>
-        <li><a href="https://neudopsym.github.io/o-mne.html">O mne</a></li>
-        <li><a href="https://neudopsym.github.io/kontakt.html">Kontakt</a></li>
-      </ul>
-    </nav>
-  </header>
+  
+  /* Remove padding-top from body since header is hidden and add margin-top to content */
+  body {
+    padding-top: 0;
+    background-attachment: fixed;
+  }
+  
+  main {
+    margin-top: 80px;
+  }
+  
+  /* Special case for about page - no margin-top */
+  .about main,
+  body.about-page main {
+    margin-top: 0 !important;
+  }
+  
+  /* Mobile menu button - SHOW ON MOBILE - MADE MUCH BIGGER */
+  .mobile-menu-button {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: rgba(26, 26, 26, 0.95);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 36px;
+    padding: 20px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-button:hover {
+    background: rgba(26, 26, 26, 1);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+  }
+  
+  /* Mobile menu overlay - FORCE COLUMN LAYOUT EVERYWHERE */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mobile-menu.active {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+  }
+  
+  .mobile-menu li {
+    margin: 8px 0;
+    text-align: center;
+    display: block;
+  }
+  
+  .mobile-menu a {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 32px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-decoration: none;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+    padding: 15px 30px;
+    display: block;
+    min-width: 250px;
+    text-align: center;
+  }
+  
+  .mobile-menu a:hover {
+    transform: scale(1.1);
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9),
+                 0 0 12px rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Mobile close button - MADE BIGGER */
+  .mobile-menu-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 48px;
+    cursor: pointer;
+    padding: 15px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-close:hover {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+  }
+  
+  /* Mobile H1 title - align ALL h1 titles to the left and make them bigger */
+  .hero h1,
+  .landing h1,
+  .photo-gallery-section h1,
+  .video-gallery-section h1,
+  .about h1,
+  .contact h1,
+  h1 {
+    font-size: 48px !important;
+    line-height: 1.2;
+    text-align: left !important;
+    position: relative;
+    z-index: 999;
+    margin-bottom: 10px;
+    padding-left: 20px;
+  }
+  
+  /* Special styling for photo gallery h1 to split into two rows */
+  .photo-gallery-section h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 0;
+  }
+  
+  .photo-gallery-section h1::before {
+    content: "Portfólio";
+    display: block;
+    line-height: 1.1;
+    font-size: 48px;
+  }
+  
+  .photo-gallery-section h1::after {
+    content: "fotografa";
+    display: block;
+    line-height: 1.1;
+    margin-top: -5px;
+    font-size: 48px;
+  }
+  
+  /* Mobile p subtitles and paragraphs - start below menu button line and centered (except for "O mne" and "Kontakt" sections) */
+  .hero p,
+  .landing p,
+  .photo-gallery-section p,
+  .video-gallery-section p,
+  p:not(.about p):not(.contact p) {
+    margin-top: 80px;
+    text-align: center !important;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  /* Exception for about and contact sections - paragraphs aligned left */
+  .about p,
+  .contact p {
+    margin-top: 0;
+    text-align: left !important;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 10px;
+  }
+  
+  /* Remove unnecessary spaces between paragraphs in contact section */
+  .contact p {
+    margin-bottom: 5px;
+  }
+  
+  .contact p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Special case for hero and landing - keep h1 left aligned but move to top */
+  .hero h1,
+  .landing h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left !important;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    left: 0;
+    z-index: 998;
+  }
+  
+  /* Index page specific - keep buttons and whole site fitting the screen */
+  .photo-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 15px !important;
+    margin: 120px 20px 20px 20px !important;
+    max-width: none !important;
+  }
+  
+  .photo-grid .category-card {
+    width: 100% !important;
+    height: 40vw !important;
+    max-height: 200px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 15px !important;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .photo-grid .category-card h2 {
+    font-size: 18px !important;
+  }
+  
+  /* Make buttons thinner and fit into screen in TWO COLUMNS - NO HORIZONTAL SCROLL */
+  .landing .buttons {
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-direction: row !important; /* Changed to row for two columns */
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    justify-content: center;
+  }
+  
+  .landing .buttons a {
+    padding: 15px 10px; /* Made thinner */
+    font-size: 16px;
+    border-radius: 15px;
+    width: calc(50% - 10px); /* Each button takes half width minus gap */
+    max-width: calc(50vw - 25px);
+    height: 50px; /* Made shorter */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    flex: 1;
+    text-align: center;
+  }
+  
+  /* Gallery Square - 3 columns on mobile */
+  .gallery-square {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  .photo-albums-grid,
+  .video-albums-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 600px;
+  }
+  
+  /* Video Gallery Mobile Responsive */
+  .video-gallery {
+    grid-template-columns: repeat(auto-fit, 8cm);
+    gap: 20px;
+    padding: 15px;
+    justify-content: center;
+    justify-items: center;
+  }
+  
+  .video-card {
+    width: 8cm;
+    height: 8.96cm;
+  }
+  
+  .video-card img {
+    width: 7.2cm;
+    height: 7.2cm;
+  }
+  
+  .modal-content {
+    width: 98%;
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .close-button {
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  #modalVideoTitle {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+  
+  .video-card::before {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .category-card h2,
+  .category-card button {
+    font-size: 20px;
+    padding: 15px;
+  }
+  
+  /* Make banner bigger on mobile */
+  .banner img {
+    width: 90% !important;
+  }
+}
 
-  <!-- Mobile Menu -->
-  <button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
-  <div class="mobile-menu" id="mobile-menu">
-    <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
-    <nav>
-      <ul>
-        <li><a href="https://neudopsym.github.io/index.html">Úvod</a></li>
-        <li><a href="https://neudopsym.github.io/foto.html">Foto</a></li>
-        <li><a href="https://neudopsym.github.io/video.html">Video</a></li>
-        <li><a href="https://neudopsym.github.io/o-mne.html">O mne</a></li>
-        <li><a href="https://neudopsym.github.io/kontakt.html">Kontakt</a></li>
-      </ul>
-    </nav>
-  </div>
+@media (max-width: 600px) {
+  /* Mobile menu button adjustment for smaller screens */
+  .mobile-menu-button {
+    top: 15px;
+    right: 15px;
+    font-size: 32px;
+    padding: 18px 22px;
+  }
   
-  <div class="hero">
-    <h1>NEUDOPSYM PHOTO</h1>
-    <p>Portrétna a eventová fotografia, kreatívny obsah, promo videá a AI videoklipy</p>
-  </div>
+  .mobile-menu a {
+    font-size: 28px;
+    padding: 12px 25px;
+    min-width: 220px;
+  }
   
-  <div class="photo-grid" style="display: flex !important; justify-content: center !important; align-items: center !important; gap: 20px !important; margin: 30px auto !important; max-width: none !important;">
-    <a href="https://neudopsym.github.io/foto.html" class="category-card" style="width: 8cm !important; height: 8cm !important; display: block !important; position: relative !important; overflow: hidden !important; border-radius: 8px !important; text-decoration: none !important; box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important; transition: transform 0.3s ease !important;">
-      <img src="https://neudopsym.github.io/img/portrety/portret8.jpg" alt="Foto" style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;">
-      <h2 style="position: absolute !important; bottom: 0 !important; left: 0 !important; right: 0 !important; background: linear-gradient(transparent, rgba(0,0,0,0.7)) !important; color: white !important; margin: 0 !important; padding: 20px 15px 15px !important; font-size: 1.2em !important; text-align: center !important;">Foto</h2>
-    </a>
-    <a href="https://neudopsym.github.io/video.html" class="category-card" style="width: 8cm !important; height: 8cm !important; display: block !important; position: relative !important; overflow: hidden !important; border-radius: 8px !important; text-decoration: none !important; box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important; transition: transform 0.3s ease !important;">
-      <img src="https://neudopsym.github.io/img/systemove/nahlad_video_ai.jpg" alt="Video" style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;">
-      <h2 style="position: absolute !important; bottom: 0 !important; left: 0 !important; right: 0 !important; background: linear-gradient(transparent, rgba(0,0,0,0.7)) !important; color: white !important; margin: 0 !important; padding: 20px 15px 15px !important; font-size: 1.2em !important; text-align: center !important;">Video</h2>
-    </a>
-  </div>
+  .mobile-menu li {
+    margin: 12px 0;
+  }
   
-  <div class="banner" style="text-align: center; margin-top: 26px;">
-    <img src="https://neudopsym.github.io/img/systemove/banner_white.png" alt="Banner Neudopsym Photo" style="width: 60%; height: auto;" />
-  </div>
+  /* Mobile close button for smaller screens */
+  .mobile-menu-close {
+    font-size: 42px;
+    padding: 12px 16px;
+  }
   
-  <footer>
-    <p>&copy; 2025 Neudopsym Photo</p>
-  </footer>
-
-  <style>
-    .category-card:hover {
-      transform: translateY(-5px) !important;
-    }
-    
-    /* Make banner bigger on mobile */
-    @media (max-width: 900px) {
-      .banner img {
-        width: 90% !important;
-      }
-    }
-  </style>
-
-  <script>
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('active');
-    }
-  </script>
-</body>
-</html>
+  /* Mobile buttons that fit screen - KEEP TWO COLUMNS */
+  .landing .buttons {
+    flex-direction: row !important; /* Keep row layout for two columns */
+    gap: 10px;
+    margin-bottom: 50px;
+    width: 100%;
+    padding: 0 15px;
+    overflow: hidden;
+    justify-content: center;
+  }
+  
+  .landing .buttons a {
+    padding: 15px 8px; /* Made thinner */
+    font-size: 14px;
+    width: calc(50% - 8px); /* Each button takes half width minus gap */
+    max-width: calc(50vw - 20px);
+    height: 45px; /* Made shorter */
+    border-radius: 12px;
+    box-sizing: border-box;
+    flex: 1;
+    text-align: center;
+  }
+  
+  .photo-albums-grid,
+  .video-albums-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 300px;
+  }
+  
+  /* Video Gallery Small Mobile */
+  .video-gallery {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 10px;
+    justify-content: center;
+    justify-items: center;
+  }
+  
+  .modal-content {
+    padding: 15px;
+  }
+  
+  .modal-video-wrapper {
+    margin-bottom: 15px;
+  }
+  
+  .hero h1, .landing h1 {
+    font-size: 44px !important;
+  }
+  
+  h1 {
+    font-size: 44px !important;
+  }
+  
+  .photo-gallery-section h1::before,
+  .photo-gallery-section h1::after {
+    font-size: 44px;
+  }
+  
+  .category-card h2,
+  .category-card button {
+    font-size: 18px;
+    padding: 10px;
+  }
+}
