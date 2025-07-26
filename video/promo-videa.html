@@ -22,11 +22,12 @@
     /* Video Gallery Styling - Updated for dark theme */
     .video-gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, 10cm);
       gap: 30px;
       padding: 20px;
       max-width: 1200px;
       margin: 0 auto;
+      justify-content: center;
     }
     
     .video-card {
@@ -39,6 +40,8 @@
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       overflow: hidden;
+      width: 10cm;
+      height: 11.2cm;
     }
     
     .video-card:hover {
@@ -47,11 +50,14 @@
     }
     
     .video-card img {
-      width: 100%;
-      height: auto;
+      width: 9cm;
+      height: 9cm;
       border-radius: 10px;
       display: block;
       transition: transform 0.3s ease;
+      object-fit: cover;
+      object-position: center;
+      margin: 0 auto;
     }
     
     .video-card:hover img {
@@ -59,7 +65,7 @@
     }
     
     .video-card h2 {
-      font-size: 1.1rem;
+      font-size: 1.4rem;
       margin-top: 15px;
       color: #ffffff;
       text-align: center;
@@ -212,9 +218,20 @@
     /* Responsive Design */
     @media (max-width: 768px) {
       .video-gallery {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, 8cm);
         gap: 20px;
         padding: 15px;
+        justify-content: center;
+      }
+      
+      .video-card {
+        width: 8cm;
+        height: 8.96cm;
+      }
+      
+      .video-card img {
+        width: 7.2cm;
+        height: 7.2cm;
       }
       
       .modal-content {
