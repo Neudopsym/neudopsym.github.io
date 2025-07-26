@@ -341,6 +341,7 @@ p {
   max-width: 1200px;
   margin: 80px auto 0 auto;
   padding: 0 20px;
+}
 
 .gallery img {
   width: 100%;
@@ -349,6 +350,15 @@ p {
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   transition: transform 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Higher quality image rendering */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: high-quality;
+  /* Smooth scaling */
+  -ms-interpolation-mode: bicubic;
+  /* Prevent compression artifacts */
+  image-orientation: from-image;
 }
 
 .gallery img:hover {
