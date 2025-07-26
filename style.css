@@ -595,34 +595,6 @@ p {
   margin-bottom: 5px;
 }
 
-.landing .buttons {
-  display: flex;
-  gap: 40px;
-  margin-bottom: 6px;
-}
-
-.landing .buttons a {
-  display: inline-block;
-  padding: 15px 40px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  font-size: 18px;
-  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
-  border-radius: 30px;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-}
-
-.landing .buttons a:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-3px);
-  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9);
-}
-
 /* About Section */
 .about {
   max-width: 800px;
@@ -816,29 +788,6 @@ footer {
     padding-left: 20px;
   }
   
-  /* Special styling for photo gallery h1 to split into two rows */
-  .photo-gallery-section h1 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 0;
-  }
-  
-  .photo-gallery-section h1::before {
-    content: "Portfólio";
-    display: block;
-    line-height: 1.1;
-    font-size: 48px;
-  }
-  
-  .photo-gallery-section h1::after {
-    content: "fotografa";
-    display: block;
-    line-height: 1.1;
-    margin-top: -5px;
-    font-size: 48px;
-  }
-  
   /* Mobile p subtitles and paragraphs - start below menu button line and centered (except for "O mne" and "Kontakt" sections) */
   .hero p,
   .landing p,
@@ -906,33 +855,6 @@ footer {
   
   .photo-grid .category-card h2 {
     font-size: 18px !important;
-  }
-  
-  /* Make buttons thinner and fit into screen in TWO COLUMNS - NO HORIZONTAL SCROLL */
-  .landing .buttons {
-    gap: 15px;
-    margin-bottom: 40px;
-    flex-direction: row !important; /* Changed to row for two columns */
-    width: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
-    overflow: hidden;
-    justify-content: center;
-  }
-  
-  .landing .buttons a {
-    padding: 15px 10px; /* Made thinner */
-    font-size: 16px;
-    border-radius: 15px;
-    width: calc(50% - 10px); /* Each button takes half width minus gap */
-    max-width: calc(50vw - 25px);
-    height: 50px; /* Made shorter */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    flex: 1;
-    text-align: center;
   }
   
   /* Gallery Square - 3 columns on mobile */
@@ -1029,29 +951,6 @@ footer {
     padding: 12px 16px;
   }
   
-  /* Mobile buttons that fit screen - KEEP TWO COLUMNS */
-  .landing .buttons {
-    flex-direction: row !important; /* Keep row layout for two columns */
-    gap: 10px;
-    margin-bottom: 50px;
-    width: 100%;
-    padding: 0 15px;
-    overflow: hidden;
-    justify-content: center;
-  }
-  
-  .landing .buttons a {
-    padding: 15px 8px; /* Made thinner */
-    font-size: 14px;
-    width: calc(50% - 8px); /* Each button takes half width minus gap */
-    max-width: calc(50vw - 20px);
-    height: 45px; /* Made shorter */
-    border-radius: 12px;
-    box-sizing: border-box;
-    flex: 1;
-    text-align: center;
-  }
-  
   .photo-albums-grid,
   .video-albums-grid {
     grid-template-columns: 1fr;
@@ -1082,11 +981,6 @@ footer {
   
   h1 {
     font-size: 44px !important;
-  }
-  
-  .photo-gallery-section h1::before,
-  .photo-gallery-section h1::after {
-    font-size: 44px;
   }
   
   .category-card h2,
