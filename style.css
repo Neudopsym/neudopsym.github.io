@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-/* Updated Body with darker, smoother gradient */
+/* Body */
 body {
   font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
   background: linear-gradient(135deg, rgba(30, 30, 32, 1) 0%, rgba(15, 15, 18, 1) 50%, rgba(8, 8, 12, 1) 100%);
@@ -18,12 +18,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Remove all photo background pseudo-elements */
-body::before {
-  display: none;
-}
-
-/* Updated dark overlay for gradient background with smoother transitions */
 body::after {
   content: '';
   position: fixed;
@@ -85,10 +79,8 @@ nav a {
   border: none;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
   display: inline-block;
-  position: relative;
 }
 
-/* Hover effect - scale up without background */
 nav a:hover {
   color: #ffffff;
   background: transparent;
@@ -97,7 +89,6 @@ nav a:hover {
                0 0 12px rgba(255, 255, 255, 0.15);
 }
 
-/* Active state - moderate scale with glow effect */
 nav a.active {
   color: #ffffff;
   background: transparent;
@@ -109,7 +100,6 @@ nav a.active {
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
 }
 
-/* Ensure smooth transitions for all states */
 nav a:not(:hover):not(.active) {
   transform: scale(1);
 }
@@ -122,7 +112,7 @@ main {
   background: transparent;
 }
 
-/* Enhanced H1 typography - Sans-Serif with stronger shadows - STANDARDIZED SIZE */
+/* Typography */
 h1 {
   font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
   font-size: 42px;
@@ -142,7 +132,6 @@ h2 {
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
 }
 
-/* Enhanced P typography - Sans-Serif with stronger shadows - STANDARDIZED SIZE */
 p {
   font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
   font-size: 18px;
@@ -153,7 +142,7 @@ p {
   letter-spacing: 0.5px;
 }
 
-/* Homepage Hero Section - REDUCED SPACING */
+/* Homepage Hero Section */
 .hero {
   text-align: center;
   max-width: 1200px;
@@ -165,9 +154,6 @@ p {
   font-size: 42px;
   letter-spacing: 2px;
   margin-bottom: 8px;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6), 
-               1px 1px 12px rgba(0, 0, 0, 0.4),
-               0 0 16px rgba(0, 0, 0, 0.3);
 }
 
 .hero p {
@@ -175,7 +161,7 @@ p {
   margin-bottom: 5px;
 }
 
-/* Photo Gallery Section - REDUCED SPACING TO MATCH INDEX */
+/* Photo Gallery Section */
 .photo-gallery-section {
   text-align: center;
   max-width: 1200px;
@@ -202,7 +188,7 @@ p {
   margin: 0 auto;
 }
 
-/* Video Gallery Section - REDUCED SPACING TO MATCH INDEX */
+/* Video Gallery Section */
 .video-gallery-section {
   text-align: center;
   max-width: 1200px;
@@ -229,7 +215,7 @@ p {
   margin: 0 auto;
 }
 
-/* Category Card Styles (for both photo and video) */
+/* Category Card Styles */
 .category-card {
   position: relative;
   display: block;
@@ -261,7 +247,6 @@ p {
   filter: brightness(1.1);
 }
 
-/* Enhanced category card button typography - Sans-Serif with bottom center text */
 .category-card h2 {
   position: absolute;
   bottom: 30px;
@@ -295,33 +280,6 @@ p {
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
 
-.category-card button {
-  position: absolute;
-  bottom: 30px;
-  left: 20px;
-  right: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  border: none;
-  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
-  font-size: 26px;
-  font-weight: 700;
-  cursor: pointer;
-  pointer-events: none;
-  text-transform: uppercase;
-  background: none;
-  padding: 0;
-  margin: 0;
-  letter-spacing: 1.5px;
-  text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9),
-               3px 3px 8px rgba(0, 0, 0, 0.8),
-               2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-/* Enhanced dark overlay for better text readability */
 .category-card::before {
   content: '';
   position: absolute;
@@ -333,13 +291,13 @@ p {
   pointer-events: none;
 }
 
-/* Individual Photo Gallery (for specific album pages) */
+/* Individual Photo Gallery */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
   max-width: 1200px;
-  margin: 80px auto 0 auto !important;
+  margin: 80px auto 0 auto;
   padding: 0 20px;
 }
 
@@ -350,14 +308,11 @@ p {
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   transition: transform 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  /* Higher quality image rendering */
   image-rendering: -webkit-optimize-contrast;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
   image-rendering: high-quality;
-  /* Smooth scaling */
   -ms-interpolation-mode: bicubic;
-  /* Prevent compression artifacts */
   image-orientation: from-image;
 }
 
@@ -366,7 +321,12 @@ p {
   box-shadow: 0 12px 30px rgba(0,0,0,0.6);
 }
 
-/* Video sekcia */
+/* Gallery Square - for specific album pages using inline styles */
+.gallery-square {
+  margin: 80px auto 0 auto !important;
+}
+
+/* Video Gallery */
 .video-gallery {
   display: grid;
   grid-template-columns: 1fr;
@@ -386,187 +346,7 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* LEGACY SUPPORT - keeping old classes for backward compatibility */
-.photo-grid.albums {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
-  clear: both;
-  width: 100%;
-}
-
-.video-grid.albums {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
-}
-
-.video-category-card {
-  position: relative;
-  display: block;
-  text-decoration: none;
-  border-radius: 15px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  aspect-ratio: 1 / 1;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-}
-
-.video-category-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.video-category-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-.video-category-card:hover img {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
-.video-category-card button {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  border: none;
-  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  cursor: pointer;
-  pointer-events: none;
-  text-transform: uppercase;
-  background: none;
-  padding: 20px;
-  margin: 0;
-  letter-spacing: 1.5px;
-  text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9),
-               3px 3px 8px rgba(0, 0, 0, 0.8),
-               2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-/* Enhanced dark overlay for better text readability on video grid */
-.video-category-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  pointer-events: none;
-}
-
-/* Category grid for 2-column layout (if needed) */
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.category-grid .category-card {
-  position: relative;
-  display: block;
-  text-decoration: none;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-  transition: all 0.3s ease;
-  aspect-ratio: 1 / 1;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-}
-
-.category-grid .category-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.category-grid .category-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-.category-grid .category-card:hover img {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
-.category-grid .category-card h2 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  margin: 0;
-  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  padding: 20px;
-  text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9),
-               3px 3px 8px rgba(0, 0, 0, 0.8),
-               2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-.category-grid .category-card p {
-  position: absolute;
-  bottom: 10px;
-  left: 20px;
-  color: white;
-  margin: 0;
-  font-size: 14px;
-  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-}
-
-/* Enhanced dark overlay for better text readability */
-.category-grid .category-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  pointer-events: none;
-}
-
-/* Domovská stránka - rozcestník - REDUCED SPACING */
+/* Landing Page */
 .landing {
   display: flex;
   flex-direction: column;
@@ -614,7 +394,7 @@ p {
   text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9);
 }
 
-/* Sekcia "O mne" */
+/* About Section */
 .about {
   max-width: 800px;
   margin: 0 auto;
@@ -633,7 +413,7 @@ p {
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Kontakt */
+/* Contact Section */
 .contact {
   max-width: 600px;
   margin: 0 auto;
@@ -663,24 +443,13 @@ footer {
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* Responsive design */
+/* Responsive Design */
 @media (max-width: 900px) {
   .photo-albums-grid,
-  .photo-grid.albums {
+  .video-albums-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     max-width: 600px;
-  }
-  
-  .video-albums-grid,
-  .video-grid.albums {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 600px;
-  }
-  
-  .banner {
-    display: none;
   }
   
   .hero h1, .landing h1 {
@@ -691,31 +460,15 @@ footer {
     font-size: 32px;
   }
   
-  .category-card h2,
-  .category-card button,
-  .video-category-card button,
-  .category-grid .category-card h2 {
+  .category-card h2 {
     font-size: 18px;
     padding: 15px;
-  }
-  
-  .category-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    max-width: 300px;
   }
 }
 
 @media (max-width: 600px) {
   .photo-albums-grid,
-  .photo-grid.albums {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    max-width: 300px;
-  }
-  
-  .video-albums-grid,
-  .video-grid.albums {
+  .video-albums-grid {
     grid-template-columns: 1fr;
     gap: 15px;
     max-width: 300px;
@@ -729,10 +482,7 @@ footer {
     font-size: 28px;
   }
   
-  .category-card h2,
-  .category-card button,
-  .video-category-card button,
-  .category-grid .category-card h2 {
+  .category-card h2 {
     font-size: 16px;
     padding: 10px;
   }
