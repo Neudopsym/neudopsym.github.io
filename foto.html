@@ -18,6 +18,27 @@
   <meta name="twitter:title" content="Fotogalerie – Neudopsym Photo">
   <meta name="twitter:description" content="Pozrite si kompletné fotografické portfólio – dokumenty, turnaje, portréty aj promo zábery.">
   <meta name="twitter:image" content="https://neudopsym.github.io/img/foto-preview.jpg">
+  
+  <style>
+    /* Mobile-specific h1 rules */
+    .photo-gallery-section h1.mobile-h1 {
+      display: none;
+    }
+    
+    @media (max-width: 768px) {
+      .photo-gallery-section h1:not(.mobile-h1) {
+        display: none;
+      }
+      
+      .photo-gallery-section h1.mobile-h1 {
+        display: block;
+        padding: 0;
+        margin-top: 0;
+        margin-left: 0;
+        text-align: left;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -50,6 +71,7 @@
   <div class="photo-gallery-section">
     <h1>Portfólio
 fotografií</h1>
+    <h1 class="mobile-h1">Portfólio<br>fotografií</h1>
     <p>Nahliadnite do môjho portfólia</p>
   </div>
   
