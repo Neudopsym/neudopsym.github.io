@@ -58,6 +58,22 @@
       </ul>
     </nav>
   </header>
+
+  <!-- Mobile Menu -->
+  <button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
+    <nav>
+      <ul>
+        <li><a href="index.html">Úvod</a></li>
+        <li><a href="foto.html">Foto</a></li>
+        <li><a href="video.html">Video</a></li>
+        <li><a href="o-mne.html">O mne</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+
   <main class="contact">
     <h1>Kontakt</h1>
     <p>Máte záujem o fotenie, video, tvorbu a správu PPC kampaní alebo komplexnejšiu marketingovú spoluprácu?</p>
@@ -67,8 +83,16 @@
     <p style="margin-bottom: 15px;"></p>    
     <p>Sledujte moju tvorbu aj na Instagrame: <a href="https://www.instagram.com/neudopsym.photo/" target="_blank">@neudopsym.photo</a></p>
   </main>
+  
   <footer>
     <p>&copy; 2025 Neudopsym Photo</p>
   </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
