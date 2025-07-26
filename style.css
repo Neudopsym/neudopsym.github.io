@@ -833,30 +833,6 @@ footer {
     z-index: 998;
   }
   
-  /* Index page specific - keep buttons and whole site fitting the screen */
-  .photo-grid {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 15px !important;
-    margin: 120px 20px 20px 20px !important;
-    max-width: none !important;
-  }
-  
-  .photo-grid .category-card {
-    width: 100% !important;
-    height: 40vw !important;
-    max-height: 200px !important;
-    background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(10px) !important;
-    border: 2px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 15px !important;
-    aspect-ratio: 1 / 1;
-  }
-  
-  .photo-grid .category-card h2 {
-    font-size: 18px !important;
-  }
-  
   /* Gallery Square - 3 columns on mobile */
   .gallery-square {
     grid-template-columns: repeat(3, 1fr);
