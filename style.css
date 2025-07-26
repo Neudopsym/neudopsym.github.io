@@ -819,18 +819,13 @@ footer {
     margin-bottom: 0;
   }
   
-  /* Special case for hero and landing - keep h1 left aligned but move to top */
+  /* Special case for hero and landing - keep h1 left aligned */
   .hero h1,
   .landing h1 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     text-align: left !important;
-    position: absolute;
-    top: 20px;
-    right: 0;
-    left: 0;
-    z-index: 998;
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
   
   /* Gallery Square - 3 columns on mobile */
