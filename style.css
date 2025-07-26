@@ -339,13 +339,8 @@ p {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
   max-width: 1200px;
-  margin: 40px auto 0 auto;
+  margin: 80px auto 0 auto;
   padding: 0 20px;
-}
-
-.gallery h1 {
-  margin-bottom: 40px;
-}
 
 .gallery img {
   width: 100%;
