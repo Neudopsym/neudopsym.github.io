@@ -19,19 +19,6 @@
   <meta name="twitter:image" content="https://neudopsym.github.io/img/eventy/preview.jpg">
   <link rel="stylesheet" href="https://neudopsym.github.io/style.css">
   <style>
-    .gallery-square {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 15px;
-    }
-    .gallery-square img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      cursor: pointer;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
     .lightbox {
       display: none;
       position: fixed;
@@ -71,9 +58,57 @@
       font-size: 36px;
       cursor: pointer;
     }
+    
+    /* Mobile optimizations for lightbox */
+    @media (max-width: 900px) {
+      .lightbox-controls {
+        padding: 0 15px;
+      }
+      .lightbox-controls span {
+        font-size: 36px;
+        background: rgba(0,0,0,0.5);
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .lightbox-close {
+        top: 15px;
+        right: 15px;
+        font-size: 32px;
+        background: rgba(0,0,0,0.5);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .lightbox img {
+        max-width: 95%;
+        max-height: 85%;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Mobile Menu Button -->
+  <button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
+  
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
+    <ul>
+      <li><a href="https://neudopsym.github.io/index.html" onclick="toggleMobileMenu()">Úvod</a></li>
+      <li><a href="https://neudopsym.github.io/foto.html" onclick="toggleMobileMenu()">Foto</a></li>
+      <li><a href="https://neudopsym.github.io/video.html" onclick="toggleMobileMenu()">Video</a></li>
+      <li><a href="https://neudopsym.github.io/o-mne.html" onclick="toggleMobileMenu()">O mne</a></li>
+      <li><a href="https://neudopsym.github.io/kontakt.html" onclick="toggleMobileMenu()">Kontakt</a></li>
+    </ul>
+  </div>
+
   <header>
     <nav>
       <ul>
@@ -122,6 +157,11 @@
     <p>&copy; 2025 Neudopsym Photo</p>
   </footer>
   <script>
+    function toggleMobileMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenu.classList.toggle('active');
+    }
+
     const images = document.querySelectorAll('.gallery-square img');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
