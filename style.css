@@ -247,7 +247,8 @@ p {
   filter: brightness(1.1);
 }
 
-.category-card h2 {
+.category-card h2,
+.category-card button {
   position: absolute;
   bottom: 30px;
   left: 20px;
@@ -264,6 +265,10 @@ p {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  pointer-events: none;
   text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9),
                3px 3px 8px rgba(0, 0, 0, 0.8),
                2px 2px 4px rgba(0, 0, 0, 0.7);
@@ -323,7 +328,7 @@ p {
 
 /* Gallery Square - for specific album pages using inline styles */
 .gallery-square {
-  margin: 30px auto 0 auto !important;
+  margin: 80px auto 0 auto !important;
 }
 
 /* Video Gallery */
@@ -460,7 +465,8 @@ footer {
     font-size: 32px;
   }
   
-  .category-card h2 {
+  .category-card h2,
+  .category-card button {
     font-size: 18px;
     padding: 15px;
   }
@@ -482,7 +488,8 @@ footer {
     font-size: 28px;
   }
   
-  .category-card h2 {
+  .category-card h2,
+  .category-card button {
     font-size: 16px;
     padding: 10px;
   }
