@@ -100,8 +100,6 @@ nav a.active {
                0 0 16px rgba(255, 255, 255, 0.6),
                0 0 24px rgba(255, 255, 255, 0.4),
                2px 2px 4px rgba(0, 0, 0, 0.8);
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3),
-              inset 0 0 8px rgba(255, 255, 255, 0.1);
 }
 
 /* Main content */
