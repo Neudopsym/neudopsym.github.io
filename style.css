@@ -827,19 +827,6 @@ footer {
     align-items: flex-start;
   }
   
-  .photo-gallery-section h1::before {
-    content: "Portfólio";
-    display: block;
-    line-height: 1.1;
-  }
-  
-  .photo-gallery-section h1::after {
-    content: "fotografa";
-    display: block;
-    line-height: 1.1;
-    margin-top: -5px;
-  }
-  
   /* Hide the original text for the photo gallery h1 */
   .photo-gallery-section h1 {
     font-size: 0;
