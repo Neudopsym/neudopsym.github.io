@@ -41,6 +41,21 @@
   </script>
 </head>
 <body>
+  <!-- Mobile Menu Button -->
+  <button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
+  
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
+    <ul>
+      <li><a href="index.html" onclick="toggleMobileMenu()">Úvod</a></li>
+      <li><a href="foto.html" onclick="toggleMobileMenu()">Foto</a></li>
+      <li><a href="video.html" onclick="toggleMobileMenu()">Video</a></li>
+      <li><a href="o-mne.html" onclick="toggleMobileMenu()">O mne</a></li>
+      <li><a href="kontakt.html" onclick="toggleMobileMenu()">Kontakt</a></li>
+    </ul>
+  </div>
+
   <header>
     <nav>
       <ul>
@@ -76,5 +91,12 @@
   <footer>
     <p>&copy; 2025 Neudopsym Photo</p>
   </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenu.classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
