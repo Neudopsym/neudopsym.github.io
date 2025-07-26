@@ -803,7 +803,7 @@ footer {
     transform: scale(1.05);
   }
   
-  /* Mobile H1 title - align all h1 titles to the right */
+  /* Mobile H1 title - align all h1 titles to the left */
   .hero h1,
   .landing h1,
   .photo-gallery-section h1,
@@ -813,14 +813,14 @@ footer {
   h1 {
     font-size: 36px !important;
     line-height: 1.2;
-    text-align: right !important;
+    text-align: left !important;
     position: relative;
     z-index: 999;
     margin-bottom: 10px;
-    padding-right: 20px;
+    padding-left: 20px;
   }
   
-  /* Mobile p subtitles and paragraphs - start below menu button line (except for "O mne" section) */
+  /* Mobile p subtitles and paragraphs - start below menu button line and centered (except for "O mne" section) */
   .hero p,
   .landing p,
   .photo-gallery-section p,
@@ -828,7 +828,7 @@ footer {
   .contact p,
   p:not(.about p) {
     margin-top: 80px; /* Start below the line of the menu button */
-    text-align: left;
+    text-align: center !important;
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -839,13 +839,13 @@ footer {
     text-align: center;
   }
   
-  /* Special case for hero and landing - keep h1 centered but move to top */
+  /* Special case for hero and landing - keep h1 left aligned but move to top */
   .hero h1,
   .landing h1 {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    text-align: right !important;
+    align-items: flex-start;
+    text-align: left !important;
     position: absolute;
     top: 20px;
     right: 0;
@@ -877,7 +877,7 @@ footer {
     font-size: 18px !important;
   }
   
-  /* Make buttons rectangle in portrait and fit into screen */
+  /* Make buttons rectangle in portrait and fit into screen - NO HORIZONTAL SCROLL */
   .landing .buttons {
     gap: 20px;
     margin-bottom: 40px;
@@ -885,19 +885,21 @@ footer {
     width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
+    overflow: hidden; /* Prevent horizontal scroll */
   }
   
   .landing .buttons a {
-    padding: 25px 30px;
+    padding: 25px 20px;
     font-size: 18px;
     border-radius: 15px; /* More rectangular, less rounded */
-    width: 100%; /* Full width to fit screen */
-    max-width: 100%;
-    aspect-ratio: 3 / 1; /* Rectangle in portrait */
+    width: calc(100% - 10px); /* Full width minus small margin to prevent scroll */
+    max-width: calc(100vw - 50px); /* Ensure it never exceeds viewport width */
+    height: 60px; /* Fixed height for rectangle in portrait */
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    margin: 0 auto; /* Center the buttons */
   }
   
   /* Gallery Square - 3 columns on mobile */
@@ -1005,16 +1007,18 @@ footer {
     margin-bottom: 50px;
     width: 100%;
     padding: 0 15px;
+    overflow: hidden; /* Prevent horizontal scroll */
   }
   
   .landing .buttons a {
-    padding: 20px 25px;
+    padding: 20px 15px;
     font-size: 16px;
-    width: 100%;
-    max-width: 100%;
+    width: calc(100% - 10px); /* Full width minus small margin to prevent scroll */
+    max-width: calc(100vw - 40px); /* Ensure it never exceeds viewport width */
+    height: 55px; /* Fixed height for rectangle in portrait */
     border-radius: 12px; /* More rectangular */
-    aspect-ratio: 3 / 1; /* Rectangle in portrait */
     box-sizing: border-box;
+    margin: 0 auto; /* Center the buttons */
   }
   
   .photo-albums-grid,
