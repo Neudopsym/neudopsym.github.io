@@ -215,11 +215,11 @@ p {
   margin-bottom: 20px;
 }
 
-/* Photo Albums Grid - DESKTOP: 3 columns, MOBILE: 1 column */
+/* Photo Albums Grid - DESKTOP: 5 columns, MOBILE: 1 column */
 .photo-albums-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
-  gap: 30px;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns on desktop */
+  gap: 20px; /* Smaller gap for 5 columns */
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -254,7 +254,7 @@ p {
 .video-albums-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
-  gap: 30px;
+  gap: 25px; /* Adjusted gap for 3 columns */
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -263,9 +263,9 @@ p {
 .video-gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
-  gap: 30px;
+  gap: 25px; /* Consistent with video-albums-grid */
   padding: 20px;
-  max-width: 1200px; /* Increased for 3 columns */
+  max-width: 1200px;
   margin: 0 auto;
   justify-content: center;
   justify-items: center;
@@ -342,7 +342,7 @@ p {
   opacity: 1;
 }
 
-/* High-Quality Modal Styling - Desktop keeps overflow: hidden */
+/* High-Quality Modal Styling - DESKTOP: Fixed, no overflow, no scrolling */
 .modal {
   display: none;
   position: fixed;
@@ -351,14 +351,14 @@ p {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden; /* Desktop: prevent scrolling */
+  overflow: hidden; /* DESKTOP: Completely prevent any scrolling */
   background-color: rgba(0, 0, 0, 0.95);
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(5px);
 }
 
-/* Mobile: Allow scrolling for video player */
+/* MOBILE ONLY: Allow scrolling for video player */
 @media (max-width: 900px) {
   .modal {
     overflow: auto; /* Mobile: allow scrolling */
@@ -379,19 +379,31 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* DESKTOP: Fixed positioning, no adaptation */
+  max-height: 90vh;
+  overflow: hidden; /* DESKTOP: No internal scrolling */
 }
 
-/* Updated Modal Video Wrapper - Dynamic aspect ratio support */
+/* MOBILE ONLY: Allow content adaptation */
+@media (max-width: 900px) {
+  .modal-content {
+    max-height: none; /* Mobile: Remove height restriction */
+    overflow: visible; /* Mobile: Allow content to flow */
+  }
+}
+
+/* Updated Modal Video Wrapper - DESKTOP: Fixed size, no adaptation */
 .modal-video-wrapper {
   position: relative;
   width: 100%;
-  /* Remove the fixed padding-bottom: 56.25%; */
   height: 0;
   overflow: hidden;
   margin-bottom: 20px;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  /* This will be set dynamically by JavaScript */
+  /* DESKTOP: Fixed 16:9 aspect ratio for all videos */
+  padding-bottom: 56.25%; /* Fixed 16:9 ratio */
+  max-width: 1000px; /* Fixed maximum width */
 }
 
 .modal-video-wrapper iframe {
@@ -403,23 +415,35 @@ p {
   border-radius: 15px;
 }
 
-/* Portrait video container (9:16 ratio) */
-.modal-video-wrapper.portrait {
-  padding-bottom: 177.78%; /* 16/9 * 100% for 9:16 ratio */
-  max-width: 400px; /* Limit width for portrait videos */
-  margin: 0 auto 20px auto; /* Center the portrait video */
-}
-
-/* Landscape video container (16:9 ratio) */
-.modal-video-wrapper.landscape {
-  padding-bottom: 56.25%; /* 9/16 * 100% for 16:9 ratio */
-}
-
-/* Square video container (1:1 ratio) */
+/* DESKTOP: Remove all dynamic aspect ratio classes - use fixed 16:9 only */
+.modal-video-wrapper.portrait,
+.modal-video-wrapper.landscape,
 .modal-video-wrapper.square {
-  padding-bottom: 100%; /* 1:1 ratio */
-  max-width: 500px;
+  padding-bottom: 56.25%; /* Force all to 16:9 on desktop */
+  max-width: 1000px; /* Fixed width on desktop */
   margin: 0 auto 20px auto;
+}
+
+/* MOBILE ONLY: Allow different aspect ratios */
+@media (max-width: 900px) {
+  /* Portrait video container (9:16 ratio) */
+  .modal-video-wrapper.portrait {
+    padding-bottom: 177.78%; /* 16/9 * 100% for 9:16 ratio */
+    max-width: 400px; /* Limit width for portrait videos */
+    margin: 0 auto 20px auto; /* Center the portrait video */
+  }
+
+  /* Landscape video container (16:9 ratio) */
+  .modal-video-wrapper.landscape {
+    padding-bottom: 56.25%; /* 9/16 * 100% for 16:9 ratio */
+  }
+
+  /* Square video container (1:1 ratio) */
+  .modal-video-wrapper.square {
+    padding-bottom: 100%; /* 1:1 ratio */
+    max-width: 500px;
+    margin: 0 auto 20px auto;
+  }
 }
 
 .close-button {
@@ -745,116 +769,6 @@ footer {
   }
   
   /* MOBILE MENU BUTTON FIX - Show on mobile */
-  .mobile-menu-button {
-    display: block;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1001;
-    background: rgba(26, 26, 26, 0.95);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    font-size: 36px;
-    padding: 20px 25px;
-    border-radius: 10px;
-    cursor: pointer;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-  }
-  
-  .mobile-menu-button:hover {
-    background: rgba(26, 26, 26, 1);
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: scale(1.05);
-  }
-  
-  /* MOBILE MENU BUTTON FIX - Hide when menu is active */
-  .mobile-menu.active ~ .mobile-menu-button,
-  body.mobile-menu-open .mobile-menu-button,
-  .mobile-menu-button.hide {
-    display: none !important;
-  }
-  
-  /* Mobile menu overlay - FORCE COLUMN LAYOUT EVERYWHERE */
-  .mobile-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh; /* FIXED: Use viewport height instead of 100% */
-    background: rgba(26, 26, 26, 0.95);
-    backdrop-filter: blur(15px);
-    z-index: 1000;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .mobile-menu.active {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .mobile-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center;
-  }
-  
-  .mobile-menu li {
-    margin: 8px 0;
-    text-align: center;
-    display: block;
-  }
-  
-  .mobile-menu a {
-    font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 32px;
-    letter-spacing: 1px;
-    color: #ffffff;
-    text-decoration: none;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-    transition: all 0.3s ease;
-    padding: 15px 30px;
-    display: block;
-    min-width: 250px;
-    text-align: center;
-  }
-  
-  .mobile-menu a:hover {
-    transform: scale(1.1);
-    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9),
-                 0 0 12px rgba(255, 255, 255, 0.15);
-  }
-  
-  /* Mobile close button - SMALLER AND HIDDEN BEHIND MENU BUTTON */
-  .mobile-menu-close {
-    position: fixed; /* Changed from absolute to fixed */
-    top: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.7);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    font-size: 24px; /* Reduced from 48px */
-    cursor: pointer;
-    padding: 8px 10px; /* Reduced from 15px 20px */
-    border-radius: 8px; /* Reduced from 10px */
-    transition: all 0.3s ease;
-    z-index: 999; /* Lower than menu button's 1001 */
-    width: 40px; /* Smaller than menu button */
-    height: 40px; /* Smaller than menu button */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
   .mobile-menu-close:hover {
     background: rgba(0, 0, 0, 0.8);
     border-color: rgba(255, 255, 255, 0.4);
@@ -1001,4 +915,114 @@ footer {
   .mobile-menu a {
     font-size: 28px;
   }
-}
+}button {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: rgba(26, 26, 26, 0.95);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 36px;
+    padding: 20px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-button:hover {
+    background: rgba(26, 26, 26, 1);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+  }
+  
+  /* MOBILE MENU BUTTON FIX - Hide when menu is active */
+  .mobile-menu.active ~ .mobile-menu-button,
+  body.mobile-menu-open .mobile-menu-button,
+  .mobile-menu-button.hide {
+    display: none !important;
+  }
+  
+  /* Mobile menu overlay - FORCE COLUMN LAYOUT EVERYWHERE */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* FIXED: Use viewport height instead of 100% */
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mobile-menu.active {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+  }
+  
+  .mobile-menu li {
+    margin: 8px 0;
+    text-align: center;
+    display: block;
+  }
+  
+  .mobile-menu a {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 32px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-decoration: none;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+    padding: 15px 30px;
+    display: block;
+    min-width: 250px;
+    text-align: center;
+  }
+  
+  .mobile-menu a:hover {
+    transform: scale(1.1);
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9),
+                 0 0 12px rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Mobile close button - SMALLER AND HIDDEN BEHIND MENU BUTTON */
+  .mobile-menu-close {
+    position: fixed; /* Changed from absolute to fixed */
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 24px; /* Reduced from 48px */
+    cursor: pointer;
+    padding: 8px 10px; /* Reduced from 15px 20px */
+    border-radius: 8px; /* Reduced from 10px */
+    transition: all 0.3s ease;
+    z-index: 999; /* Lower than menu button's 1001 */
+    width: 40px; /* Smaller than menu button */
+    height: 40px; /* Smaller than menu button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mobile-menu-
