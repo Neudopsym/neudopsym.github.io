@@ -964,8 +964,8 @@ footer {
     height: 7.2cm; /* Fixed smaller size for mobile */
   }
   
-  /* Mobile-specific modal fixes */
-  .modal {
+  /* Mobile-specific modal fixes - only when modal should be visible */
+  .modal:not([style*="display: none"]):not([style=""]) {
     width: 100vw !important;
     height: 100vh !important;
     min-height: 100vh !important;
@@ -980,10 +980,6 @@ footer {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-  }
-  
-  .modal[style*="display: none"] {
-    display: none !important;
   }
   
   .modal-content {
