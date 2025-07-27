@@ -5,11 +5,16 @@
   box-sizing: border-box;
 }
 
-/* Body */
+/* Add iOS optimization at the top */
+html {
+  color-scheme: dark;
+}
+
+/* Body - iOS OPTIMIZED BACKGROUND */
 body {
   font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
   background: linear-gradient(135deg, rgba(30, 30, 32, 1) 0%, rgba(15, 15, 18, 1) 50%, rgba(8, 8, 12, 1) 100%);
-  background-attachment: fixed;
+  background-attachment: scroll; /* Changed from fixed to scroll for iOS */
   color: #ffffff;
   line-height: 1.6;
   font-size: 16px;
@@ -31,8 +36,8 @@ body::after {
   z-index: -1;
   background: linear-gradient(
     225deg,
-    rgba(255, 255, 255, 0.015) 0%,
-    rgba(255, 255, 255, 0.003) 20%,
+    rgba(255, 255, 255, 0.05) 0%, /* Increased from 0.015 */
+    rgba(255, 255, 255, 0.03) 20%, /* Increased from 0.003 */
     rgba(0, 0, 0, 0.18) 50%,
     rgba(0, 0, 0, 0.35) 100%
   );
@@ -696,6 +701,11 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 900px) {
+  /* Keep iOS-optimized background on mobile too */
+  body {
+    background-attachment: scroll; /* Ensure scroll behavior on mobile iOS */
+  }
+  
   /* Hide header in mobile */
   header {
     display: none;
@@ -704,7 +714,6 @@ footer {
   /* Remove padding-top from body since header is hidden and add margin-top to content */
   body {
     padding-top: 0;
-    background-attachment: fixed;
   }
   
   main {
