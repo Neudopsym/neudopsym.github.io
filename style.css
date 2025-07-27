@@ -979,6 +979,12 @@ footer {
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
+  }
+  
+  /* Only show flex when modal is active */
+  .modal.active,
+  .modal[style*="display: flex"],
+  .modal[style*="display:flex"] {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
