@@ -639,7 +639,7 @@ p {
   margin-bottom: 5px;
 }
 
-/* About Section */
+/* About Section - DESKTOP PARAGRAPH ALIGNMENT FIX */
 .about h1 {
   margin-top: 10px;
 }
@@ -651,6 +651,15 @@ p {
   display: block;
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* DESKTOP FIX: About and Contact paragraphs aligned left */
+.about p,
+.contact p {
+  text-align: left;
+  max-width: 1200px;
+  margin: 0 auto 15px auto;
+  padding: 0 20px;
 }
 
 /* Contact Section */
@@ -701,7 +710,7 @@ footer {
     margin-top: 0 !important;
   }
   
-  /* Mobile menu button - SHOW ON MOBILE - MADE MUCH BIGGER */
+  /* MOBILE MENU BUTTON FIX - Show on mobile */
   .mobile-menu-button {
     display: block;
     position: fixed;
@@ -724,6 +733,11 @@ footer {
     background: rgba(26, 26, 26, 1);
     border-color: rgba(255, 255, 255, 0.4);
     transform: scale(1.05);
+  }
+  
+  /* MOBILE MENU BUTTON FIX - Hide when menu is active */
+  .mobile-menu-button.hidden {
+    display: none !important;
   }
   
   /* Mobile menu overlay - FORCE COLUMN LAYOUT EVERYWHERE */
@@ -803,16 +817,6 @@ footer {
     background: rgba(0, 0, 0, 0.8);
     border-color: rgba(255, 255, 255, 0.4);
     transform: scale(1.05);
-  }
-  
-  /* FIX: Hide mobile menu button when mobile menu is active to prevent double buttons */
-  .mobile-menu.active ~ .mobile-menu-button {
-    display: none !important;
-  }
-  
-  /* Alternative fix: Hide mobile menu button when mobile menu is open */
-  body.mobile-menu-open .mobile-menu-button {
-    display: none !important;
   }
   
   /* Portrait videos on mobile */
@@ -911,10 +915,13 @@ footer {
     height: 60px;
   }
   
+  /* MOBILE CATEGORY BUTTONS FIX - Bigger font, smaller buttons */
   .category-card h2,
   .category-card button {
-    font-size: 20px;
-    padding: 15px;
+    font-size: 24px;        /* BIGGER font - increased from 20px */
+    padding: 8px;           /* SMALLER padding - reduced from 15px */
+    bottom: 15px;           /* SMALLER button area - reduced from 30px */
+    letter-spacing: 1px;    /* Reduce letter spacing - was 1.5px */
   }
   
   /* Make banner bigger on mobile */
