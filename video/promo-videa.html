@@ -86,30 +86,29 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      /* Remove fixed dimensions - let aspect-ratio classes handle sizing */
     }
 
-    /* Landscape videos (16:9) */
+    /* Landscape videos (16:9) - Fixed desktop sizing */
     .modal-video-wrapper.landscape {
       aspect-ratio: 16/9;
-      width: min(90vw, 1200px);
+      width: min(70vw, 800px);
       height: auto;
-      max-height: calc(90vh - 100px); /* Account for title and padding */
+      max-height: 60vh;
     }
 
-    /* Portrait videos (9:16) */
+    /* Portrait videos (9:16) - Fixed desktop sizing */
     .modal-video-wrapper.portrait {
       aspect-ratio: 9/16;
       width: auto;
-      height: min(80vh, calc(90vh - 100px));
-      max-width: 90vw;
+      height: min(60vh, 500px);
+      max-width: 40vw;
     }
 
-    /* Square videos (1:1) */
+    /* Square videos (1:1) - Fixed desktop sizing */
     .modal-video-wrapper.square {
       aspect-ratio: 1/1;
-      width: min(60vh, 60vw, calc(90vh - 100px));
-      height: min(60vh, 60vw, calc(90vh - 100px));
+      width: min(50vh, 50vw, 600px);
+      height: min(50vh, 50vw, 600px);
     }
 
     .modal-video-wrapper iframe {
@@ -159,6 +158,25 @@
     /* Mobile adjustments - Keep original mobile behavior */
     @media (max-width: 768px) {
       /* Mobile styles remain unchanged from original */
+      .modal-video-wrapper.landscape {
+        aspect-ratio: 16/9;
+        width: min(90vw, 1200px);
+        height: auto;
+        max-height: calc(90vh - 100px);
+      }
+
+      .modal-video-wrapper.portrait {
+        aspect-ratio: 9/16;
+        width: auto;
+        height: min(80vh, calc(90vh - 100px));
+        max-width: 90vw;
+      }
+
+      .modal-video-wrapper.square {
+        aspect-ratio: 1/1;
+        width: min(60vh, 60vw, calc(90vh - 100px));
+        height: min(60vh, 60vw, calc(90vh - 100px));
+      }
     }
 
     /* Ensure video cards are clickable */
