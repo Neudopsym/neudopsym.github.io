@@ -400,7 +400,7 @@ p {
   /* Remove the fixed padding-bottom: 56.25%; */
   height: 0;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   /* This will be set dynamically by JavaScript */
@@ -418,7 +418,7 @@ p {
 .modal-video-wrapper.portrait {
   padding-bottom: 177.78%; /* 16/9 * 100% for 9:16 ratio */
   max-width: 400px; /* Limit width for portrait videos */
-  margin: 0 auto 20px auto; /* Center the portrait video */
+  margin: 0 auto; /* Center the portrait video */
 }
 
 /* Landscape video container (16:9 ratio) */
@@ -430,7 +430,7 @@ p {
 .modal-video-wrapper.square {
   padding-bottom: 100%; /* 1:1 ratio */
   max-width: 500px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto;
 }
 
 .close-button {
@@ -874,7 +874,7 @@ footer {
   
   /* Portrait videos on mobile */
   .modal-video-wrapper.portrait {
-    max-width: 90%;
+    max-width: 90vw;
   }
   
   /* Mobile p subtitles and paragraphs - start below menu button line and centered (except for "O mne" and "Kontakt" sections) */
@@ -964,9 +964,9 @@ footer {
   }
   
   .modal-content {
-    width: 98%;
-    padding: 20px;
-    margin: 10px;
+    width: 98vw;
+    padding: 0;
+    margin: 0;
   }
   
   .close-button {
