@@ -205,12 +205,12 @@ p {
   margin-bottom: 20px;
 }
 
-/* Photo Albums Grid - CHANGED TO SINGLE COLUMN */
+/* Photo Albums Grid - DESKTOP: 3 columns, MOBILE: 1 column */
 .photo-albums-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
   gap: 30px;
-  max-width: 500px;
+  max-width: 1200px; /* Increased for 3 columns */
   margin: 0 auto;
 }
 
@@ -240,27 +240,28 @@ p {
   margin-bottom: 20px;
 }
 
-/* Video Albums Grid - CHANGED TO SINGLE COLUMN */
+/* Video Albums Grid - DESKTOP: 3 columns, MOBILE: 1 column */
 .video-albums-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
   gap: 30px;
-  max-width: 500px;
+  max-width: 1200px; /* Increased for 3 columns */
   margin: 0 auto;
 }
 
-/* Video Gallery Styling - CHANGED TO SINGLE COLUMN - Updated for dark theme */
+/* Video Gallery Styling - DESKTOP: 3 columns, MOBILE: 1 column */
 .video-gallery {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
   gap: 30px;
   padding: 20px;
-  max-width: 500px;
+  max-width: 1200px; /* Increased for 3 columns */
   margin: 0 auto;
   justify-content: center;
   justify-items: center;
 }
 
+/* Desktop video card sizing for 3-column layout */
 .video-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -271,8 +272,9 @@ p {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
-  width: 10cm;
-  height: 11.2cm;
+  width: 100%; /* Full width of grid column */
+  max-width: 350px; /* Maximum width for desktop */
+  aspect-ratio: 1 / 1.12; /* Maintain aspect ratio */
   position: relative;
 }
 
@@ -282,8 +284,8 @@ p {
 }
 
 .video-card img {
-  width: 9cm;
-  height: 9cm;
+  width: 100%;
+  height: calc(100% - 60px); /* Leave space for title */
   border-radius: 10px;
   display: block;
   transition: transform 0.3s ease;
@@ -803,6 +805,16 @@ footer {
     transform: scale(1.05);
   }
   
+  /* FIX: Hide mobile menu button when mobile menu is active to prevent double buttons */
+  .mobile-menu.active ~ .mobile-menu-button {
+    display: none !important;
+  }
+  
+  /* Alternative fix: Hide mobile menu button when mobile menu is open */
+  body.mobile-menu-open .mobile-menu-button {
+    display: none !important;
+  }
+  
   /* Portrait videos on mobile */
   .modal-video-wrapper.portrait {
     max-width: 90%;
@@ -844,32 +856,34 @@ footer {
     gap: 10px;
   }
   
-  /* MOBILE GRIDS - KEEP SINGLE COLUMN ON MOBILE TOO */
+  /* MOBILE GRIDS - SINGLE COLUMN AND SMALLER CARDS */
   .photo-albums-grid,
   .video-albums-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important; /* Force single column */
     gap: 20px;
-    max-width: 400px;
+    max-width: 400px; /* Smaller max-width for mobile */
   }
   
   /* Video Gallery Mobile Responsive - SINGLE COLUMN */
   .video-gallery {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important; /* Force single column */
     gap: 20px;
     padding: 15px;
     justify-content: center;
     justify-items: center;
-    max-width: 400px;
+    max-width: 400px; /* Smaller max-width for mobile */
   }
   
+  /* Smaller video cards on mobile */
   .video-card {
-    width: 8cm;
-    height: 8.96cm;
+    width: 8cm; /* Fixed smaller size for mobile */
+    height: 8.96cm; /* Fixed smaller size for mobile */
+    max-width: none; /* Remove desktop max-width constraint */
   }
   
   .video-card img {
-    width: 7.2cm;
-    height: 7.2cm;
+    width: 7.2cm; /* Fixed smaller size for mobile */
+    height: 7.2cm; /* Fixed smaller size for mobile */
   }
   
   .modal-content {
