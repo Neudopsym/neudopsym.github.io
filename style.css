@@ -766,6 +766,11 @@ footer {
     margin: 10px;
   }
   
+  /* MOBILE ONLY: Center the video player */
+  .modal-video-wrapper {
+    margin: 0 auto 20px auto;
+  }
+  
   .close-button {
     top: 10px;
     right: 15px;
