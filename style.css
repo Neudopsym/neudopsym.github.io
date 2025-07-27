@@ -372,8 +372,6 @@ p {
   height: 100vh;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.95);
-  justify-content: center;
-  align-items: center;
   backdrop-filter: blur(5px);
   /* Mobile-specific fixes */
   min-height: 100vh;
@@ -979,15 +977,13 @@ footer {
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-  }
-  
-  /* Only show flex when modal is active */
-  .modal.active,
-  .modal[style*="display: flex"],
-  .modal[style*="display:flex"] {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+  }
+  
+  .modal[style*="display: none"] {
+    display: none !important;
   }
   
   .modal-content {
