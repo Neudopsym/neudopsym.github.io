@@ -740,7 +740,7 @@ footer {
   
   /* Video Gallery Mobile Responsive - SINGLE COLUMN */
   .video-gallery {
-    grid-template-columns: 1fr; /* Force single column */
+    grid-template-columns: 1fr !important; /* Force single column */
     gap: 20px;
     padding: 15px;
     justify-content: center;
@@ -833,7 +833,7 @@ footer {
     transform: scale(1.05);
   }
   
-  /* MOBILE MENU BUTTON FIX - Hide when menu is active */
+  /* MOBILE MENU BUTTON - Hide when menu is active */
   .mobile-menu.active + .mobile-menu-button,
   body.mobile-menu-open .mobile-menu-button {
     display: none !important;
@@ -897,7 +897,7 @@ footer {
                  0 0 12px rgba(255, 255, 255, 0.15);
   }
   
-  /* Mobile close button - MADE SMALLER */
+  /* Mobile close button - MADE BIGGER */
   .mobile-menu-close {
     position: absolute;
     top: 20px;
@@ -905,10 +905,10 @@ footer {
     background: rgba(0, 0, 0, 0.5);
     border: 2px solid rgba(255, 255, 255, 0.2);
     color: white;
-    font-size: 32px; /* Reduced from 48px */
+    font-size: 48px;
     cursor: pointer;
-    padding: 10px 15px; /* Reduced from 15px 20px */
-    border-radius: 8px; /* Reduced from 10px */
+    padding: 15px 20px;
+    border-radius: 10px;
     transition: all 0.3s ease;
   }
   
@@ -962,7 +962,7 @@ footer {
   /* MOBILE GRIDS - SINGLE COLUMN AND SMALLER CARDS */
   .photo-albums-grid,
   .video-albums-grid {
-    grid-template-columns: 1fr; /* Force single column */
+    grid-template-columns: 1fr !important; /* Force single column */
     gap: 15px; /* Reduced gap for smaller buttons */
     max-width: 280px; /* Much smaller max-width for mobile */
   }
