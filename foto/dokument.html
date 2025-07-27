@@ -59,8 +59,30 @@
       cursor: pointer;
     }
     
-    /* Mobile optimizations for lightbox */
+    /* Dual H1 structure */
+    .desktop-h1 {
+      display: block;
+    }
+    
+    .mobile-h1 {
+      display: none;
+    }
+    
+    /* Mobile optimizations */
     @media (max-width: 900px) {
+      .desktop-h1 {
+        display: none;
+      }
+      
+      .mobile-h1 {
+        display: block !important;
+        font-size: 50px !important;
+        font-weight: 800 !important;
+        line-height: 1.2 !important;
+        margin-top: 15px !important;
+        margin-left: 25px !important;
+      }
+      
       .lightbox-controls {
         padding: 0 15px;
       }
@@ -121,7 +143,12 @@
     </nav>
   </header>
   <main>
-    <h1>Dokumentárne fotografie</h1>
+    <!-- Desktop H1 -->
+    <h1 class="desktop-h1">Dokumentárne fotografie</h1>
+    
+    <!-- Mobile H1 -->
+    <h1 class="mobile-h1">Dokumentárne<br>fotografie</h1>
+    
     <div class="gallery-square">
       <img src="https://neudopsym.github.io/img/dokument/dokument1.JPG" alt="Dokument 1">
       <img src="https://neudopsym.github.io/img/dokument/dokument2.JPG" alt="Dokument 2">
