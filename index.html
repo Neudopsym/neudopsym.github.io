@@ -137,10 +137,12 @@ overflow-x: hidden !important;
 
 .category-card {
 width: calc(50% - 5px) !important;
-height: calc((50vw - 5px - 15px) * 16 / 9) !important; /* Fixed: proper 9:16 calculation */
-max-height: none !important; /* Removed max-height constraint */
+height: calc((50vw - 5px - 15px) * 16 / 9) !important; /* Creates 9:16 ratio (portrait) */
+max-height: none !important;
 min-width: 0 !important;
 flex-shrink: 1 !important;
+/* Force override any external CSS that might be making them square */
+aspect-ratio: 9/16 !important;
 }
 
 .category-card h2 {
