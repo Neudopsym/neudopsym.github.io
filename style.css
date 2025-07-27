@@ -380,7 +380,6 @@ p {
   height: 0;
   overflow: hidden;
   margin-bottom: 20px;
-  border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   /* This will be set dynamically by JavaScript */
 }
