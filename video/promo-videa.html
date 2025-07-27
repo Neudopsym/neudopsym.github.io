@@ -49,6 +49,132 @@
         white-space: pre-line;
       }
     }
+
+    /* Video Modal Fixes for Desktop */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .modal-content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-video-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 1200px;
+      max-height: 675px; /* 16:9 aspect ratio for 1200px width */
+      background: #000;
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Landscape videos (16:9) */
+    .modal-video-wrapper.landscape {
+      aspect-ratio: 16/9;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Portrait videos (9:16) */
+    .modal-video-wrapper.portrait {
+      aspect-ratio: 9/16;
+      width: auto;
+      height: 80vh;
+      max-height: 80vh;
+    }
+
+    /* Square videos (1:1) */
+    .modal-video-wrapper.square {
+      aspect-ratio: 1/1;
+      width: 60vh;
+      height: 60vh;
+      max-width: 60vw;
+      max-height: 60vh;
+    }
+
+    .modal-video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 15px;
+    }
+
+    .close-button {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .close-button:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    #modalVideoTitle {
+      color: white;
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      max-width: 100%;
+    }
+
+    .loading {
+      color: white;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    /* Mobile adjustments - Keep original mobile behavior */
+    @media (max-width: 768px) {
+      /* Mobile styles remain unchanged from original */
+    }
+
+    /* Ensure video cards are clickable */
+    .video-card {
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
   </style>
 </head>
 <body>
