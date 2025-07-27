@@ -358,13 +358,6 @@ p {
   backdrop-filter: blur(5px);
 }
 
-/* MOBILE ONLY: Allow scrolling for video player */
-@media (max-width: 900px) {
-  .modal {
-    overflow: auto; /* Mobile: allow scrolling */
-  }
-}
-
 .modal-content {
   position: relative;
   background: linear-gradient(135deg, rgba(42, 42, 42, 0.95), rgba(26, 26, 26, 0.95));
@@ -382,14 +375,6 @@ p {
   /* DESKTOP: Fixed positioning, no adaptation */
   max-height: 90vh;
   overflow: hidden; /* DESKTOP: No internal scrolling */
-}
-
-/* MOBILE ONLY: Allow content adaptation */
-@media (max-width: 900px) {
-  .modal-content {
-    max-height: none; /* Mobile: Remove height restriction */
-    overflow: visible; /* Mobile: Allow content to flow */
-  }
 }
 
 /* Updated Modal Video Wrapper - DESKTOP: Fixed size, no adaptation */
@@ -769,6 +754,30 @@ footer {
   }
   
   /* MOBILE MENU BUTTON FIX - Show on mobile */
+  .mobile-menu-button {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: rgba(26, 26, 26, 0.95);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 36px;
+    padding: 20px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-button:hover {
+    background: rgba(26, 26, 26, 1);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+  }
+  
   .mobile-menu-close:hover {
     background: rgba(0, 0, 0, 0.8);
     border-color: rgba(255, 255, 255, 0.4);
