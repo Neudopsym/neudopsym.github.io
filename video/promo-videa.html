@@ -50,7 +50,7 @@
       }
     }
 
-    /* Video Modal Fixes for Desktop */
+    /* Simple Desktop Video Modal - Fixed Size */
     .modal {
       position: fixed;
       top: 0;
@@ -72,43 +72,16 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      height: 100%;
-      max-width: 90vw;
-      max-height: 90vh;
     }
 
+    /* Desktop: Simple fixed size - no adaptation */
     .modal-video-wrapper {
       position: relative;
       background: #000;
       border-radius: 15px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Landscape videos (16:9) - Fixed desktop sizing */
-    .modal-video-wrapper.landscape {
-      aspect-ratio: 16/9;
-      width: min(70vw, 800px);
-      height: auto;
-      max-height: 60vh;
-    }
-
-    /* Portrait videos (9:16) - Fixed desktop sizing */
-    .modal-video-wrapper.portrait {
-      aspect-ratio: 9/16;
-      width: auto;
-      height: min(60vh, 500px);
-      max-width: 40vw;
-    }
-
-    /* Square videos (1:1) - Fixed desktop sizing */
-    .modal-video-wrapper.square {
-      aspect-ratio: 1/1;
-      width: min(50vh, 50vw, 600px);
-      height: min(50vh, 50vw, 600px);
+      width: 800px;
+      height: 450px; /* Fixed 16:9 ratio */
     }
 
     .modal-video-wrapper iframe {
@@ -146,7 +119,7 @@
       font-size: 24px;
       margin-bottom: 20px;
       text-align: center;
-      max-width: 100%;
+      max-width: 800px;
     }
 
     .loading {
@@ -155,27 +128,12 @@
       text-align: center;
     }
 
-    /* Mobile adjustments - Keep original mobile behavior */
+    /* Mobile: Keep existing behavior unchanged */
     @media (max-width: 768px) {
-      /* Mobile styles remain unchanged from original */
-      .modal-video-wrapper.landscape {
-        aspect-ratio: 16/9;
-        width: min(90vw, 1200px);
-        height: auto;
+      .modal-video-wrapper {
+        width: 90vw;
+        height: calc(90vw * 9 / 16); /* Mobile stays responsive */
         max-height: calc(90vh - 100px);
-      }
-
-      .modal-video-wrapper.portrait {
-        aspect-ratio: 9/16;
-        width: auto;
-        height: min(80vh, calc(90vh - 100px));
-        max-width: 90vw;
-      }
-
-      .modal-video-wrapper.square {
-        aspect-ratio: 1/1;
-        width: min(60vh, 60vw, calc(90vh - 100px));
-        height: min(60vh, 60vw, calc(90vh - 100px));
       }
     }
 
@@ -228,15 +186,15 @@ videá</h1>
     <h1 class="mobile-h1">Promo<br>videá</h1>
     
     <div class="video-gallery">
-      <div class="video-card" data-video-id="1104261030" data-video-title="Kino Aero: Leto v kine Aero" data-video-platform="vimeo">
+      <div class="video-card" data-video-id="1104261030" data-video-title="Kino Aero: Leto v kine Aero">
         <img src="../img/systemove/Aero_Leto_v_Aeru_nahled.jpg" alt="Miniatúra videa: Leto v kine Aero" loading="lazy">
         <h2>Kino Aero: Leto v kine Aero</h2>
       </div>
-      <div class="video-card" data-video-id="1104260907" data-video-title="Kino Aero: Chambord Spritz" data-video-platform="vimeo">
+      <div class="video-card" data-video-id="1104260907" data-video-title="Kino Aero: Chambord Spritz">
         <img src="../img/systemove/aero_chambord_spritz_nahlad_1.jpg" alt="Miniatúra videa: Chambord Spritz" loading="lazy">
         <h2>Kino Aero: Chambord Spritz</h2>
       </div>
-      <div class="video-card" data-video-id="1104260988" data-video-title="Kino Aero: Apple Jack Sour" data-video-platform="vimeo">
+      <div class="video-card" data-video-id="1104260988" data-video-title="Kino Aero: Apple Jack Sour">
         <img src="../img/systemove/Aero_Apple_Jack_Sour_nahled1.jpg" alt="Miniatúra videa: Apple Jack Sour" loading="lazy">
         <h2>Kino Aero: Apple Jack Sour</h2>
       </div>
@@ -247,7 +205,7 @@ videá</h1>
     <p>© 2025 Neudopsym Photo</p>
   </footer>
   
-  <!-- High-Quality Video Modal -->
+  <!-- Simple Video Modal -->
   <div id="videoModal" class="modal">
     <div class="modal-content">
       <span class="close-button" aria-label="Zavrieť video">&times;</span>
@@ -291,128 +249,46 @@ videá</h1>
         }
       });
 
-      // Video modal functionality
+      // Simple video modal functionality
       const videoCards = document.querySelectorAll('.video-card');
       const videoModal = document.getElementById('videoModal');
       const closeButton = document.querySelector('.close-button');
       const modalVideoWrapper = videoModal.querySelector('.modal-video-wrapper');
       const modalVideoTitle = document.getElementById('modalVideoTitle');
 
-      // Function to detect video orientation
-      function detectVideoOrientation(videoId, platform, callback) {
-        if (platform === 'vimeo') {
-          // For Vimeo, use their API to get video dimensions
-          fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`)
-            .then(response => response.json())
-            .then(data => {
-              const aspectRatio = data.width / data.height;
-              if (aspectRatio > 1.2) {
-                callback('landscape');
-              } else if (aspectRatio < 0.8) {
-                callback('portrait');
-              } else {
-                callback('square');
-              }
-            })
-            .catch(() => {
-              callback('landscape'); // Default fallback
-            });
-        } else {
-          callback('landscape'); // Default for YouTube
-        }
-      }
-
-      // Function to create high-quality Vimeo embed
+      // Simple Vimeo embed creation
       function createVimeoEmbed(videoId) {
         const iframe = document.createElement('iframe');
-        
-        // High-quality Vimeo embed parameters
-        const params = new URLSearchParams({
-          autoplay: '1',
-          loop: '0',
-          muted: '0',
-          quality: 'auto',      // Auto-select best quality
-          responsive: '1',      // Responsive player
-          dnt: '1',            // Do not track
-          portrait: '0',       // Hide portrait
-          title: '0',          // Hide title
-          byline: '0',         // Hide byline
-          color: 'ffffff'      // White controls to match theme
-        });
-        
-        iframe.setAttribute('src', `https://player.vimeo.com/video/${videoId}?${params.toString()}`);
+        iframe.setAttribute('src', `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`);
         iframe.setAttribute('frameborder', '0');
         iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
         iframe.setAttribute('allowfullscreen', '');
         iframe.setAttribute('width', '100%');
         iframe.setAttribute('height', '100%');
         iframe.style.borderRadius = '15px';
-        
         return iframe;
       }
 
-      // Function to create YouTube embed (fallback)
-      function createYouTubeEmbed(videoId) {
-        const iframe = document.createElement('iframe');
-        
-        const params = new URLSearchParams({
-          autoplay: '1',
-          rel: '0',
-          modestbranding: '1',
-          iv_load_policy: '3',
-          cc_load_policy: '0',
-          disablekb: '0',
-          fs: '1',
-          hd: '1',
-          vq: 'hd1080',
-          quality: 'hd1080',
-          enablejsapi: '1',
-          origin: window.location.origin
-        });
-        
-        iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?${params.toString()}`);
-        iframe.setAttribute('frameborder', '0');
-        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-        iframe.setAttribute('allowfullscreen', '');
-        iframe.setAttribute('width', '100%');
-        iframe.setAttribute('height', '100%');
-        iframe.style.borderRadius = '15px';
-        
-        return iframe;
-      }
-
-      // Open video modal - FIXED VERSION
+      // Open video modal - Simplified
       videoCards.forEach(card => {
         card.addEventListener('click', function() {
           const videoId = this.dataset.videoId;
           const videoTitle = this.dataset.videoTitle;
-          const platform = this.dataset.videoPlatform || 'youtube';
           
           // Clear previous content and show loading
           modalVideoWrapper.innerHTML = '<div class="loading">Načítava sa video...</div>';
-          modalVideoWrapper.className = 'modal-video-wrapper'; // Reset classes
           modalVideoTitle.textContent = videoTitle;
           videoModal.style.display = 'flex';
           
           // Prevent body scroll when modal is open
           document.body.style.overflow = 'hidden';
           
-          // Detect orientation and create embed
-          detectVideoOrientation(videoId, platform, (orientation) => {
-            modalVideoWrapper.classList.add(orientation);
-            
-            setTimeout(() => {
-              let iframe;
-              if (platform === 'vimeo') {
-                iframe = createVimeoEmbed(videoId);
-              } else {
-                iframe = createYouTubeEmbed(videoId);
-              }
-              
-              modalVideoWrapper.innerHTML = '';
-              modalVideoWrapper.appendChild(iframe);
-            }, 100);
-          });
+          // Create and insert Vimeo embed after short delay
+          setTimeout(() => {
+            const iframe = createVimeoEmbed(videoId);
+            modalVideoWrapper.innerHTML = '';
+            modalVideoWrapper.appendChild(iframe);
+          }, 100);
         });
       });
 
@@ -420,8 +296,7 @@ videá</h1>
       function closeVideoModal() {
         videoModal.style.display = 'none';
         modalVideoWrapper.innerHTML = '<div class="loading">Načítava sa video...</div>';
-        modalVideoWrapper.className = 'modal-video-wrapper'; // Reset classes
-        document.body.style.overflow = 'auto'; // Restore body scroll
+        document.body.style.overflow = 'auto';
       }
 
       // Close button event
@@ -444,20 +319,6 @@ videá</h1>
             closeMobileMenu();
           }
         }
-      });
-
-      // Improve thumbnail loading with fallback
-      const thumbnails = document.querySelectorAll('.video-card img');
-      thumbnails.forEach(img => {
-        img.addEventListener('error', function() {
-          // If custom thumbnail fails, try Vimeo thumbnail as fallback
-          const videoCard = this.closest('.video-card');
-          const videoId = videoCard.dataset.videoId;
-          if (videoId && !this.src.includes('vimeocdn.com')) {
-            // Fallback to Vimeo's official thumbnail API
-            this.src = `https://i.vimeocdn.com/video/${videoId}_640x360.jpg`;
-          }
-        });
       });
     });
   </script>
