@@ -897,7 +897,7 @@ footer {
                  0 0 12px rgba(255, 255, 255, 0.15);
   }
   
-  /* MOBILE ONLY: Make mobile menu close button smaller */
+  /* Mobile close button - MADE SMALLER */
   .mobile-menu-close {
     position: absolute;
     top: 20px;
