@@ -205,12 +205,12 @@ p {
   margin-bottom: 20px;
 }
 
-/* Photo Albums Grid - 3 columns */
+/* Photo Albums Grid - CHANGED TO SINGLE COLUMN */
 .photo-albums-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 30px;
-  max-width: 1200px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
@@ -240,22 +240,22 @@ p {
   margin-bottom: 20px;
 }
 
-/* Video Albums Grid - 3 columns */
+/* Video Albums Grid - CHANGED TO SINGLE COLUMN */
 .video-albums-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 30px;
-  max-width: 1200px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
-/* Video Gallery Styling - Updated for dark theme */
+/* Video Gallery Styling - CHANGED TO SINGLE COLUMN - Updated for dark theme */
 .video-gallery {
   display: grid;
-  grid-template-columns: repeat(3, 10cm);
+  grid-template-columns: 1fr;
   gap: 30px;
   padding: 20px;
-  max-width: 1200px;
+  max-width: 500px;
   margin: 0 auto;
   justify-content: center;
   justify-items: center;
@@ -844,20 +844,22 @@ footer {
     gap: 10px;
   }
   
+  /* MOBILE GRIDS - KEEP SINGLE COLUMN ON MOBILE TOO */
   .photo-albums-grid,
   .video-albums-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 20px;
-    max-width: 600px;
+    max-width: 400px;
   }
   
-  /* Video Gallery Mobile Responsive */
+  /* Video Gallery Mobile Responsive - SINGLE COLUMN */
   .video-gallery {
-    grid-template-columns: repeat(auto-fit, 8cm);
+    grid-template-columns: 1fr;
     gap: 20px;
     padding: 15px;
     justify-content: center;
     justify-items: center;
+    max-width: 400px;
   }
   
   .video-card {
@@ -917,4 +919,6 @@ footer {
   }
   
   .mobile-menu a {
-    font-size:
+    font-size: 28px;
+  }
+}
