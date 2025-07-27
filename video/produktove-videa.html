@@ -127,13 +127,24 @@
       text-align: center;
     }
 
-    /* Mobile adjustments - Keep original mobile behavior */
+    /* Mobile adjustments - CENTERED VIDEO PLAYER */
     @media (max-width: 768px) {
+      .modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
       .modal-content {
         width: 100%;
-        height: 100%;
+        height: auto;
         max-width: 90vw;
         max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
 
       .modal-video-wrapper {
@@ -142,6 +153,7 @@
         justify-content: center;
         width: auto;
         height: auto;
+        margin: 0 auto;
       }
 
       /* Landscape videos (16:9) */
@@ -254,11 +266,13 @@
       
       function openMobileMenu() {
         mobileMenu.classList.add('active');
+        mobileMenuButton.classList.add('hidden');
         document.body.style.overflow = 'hidden';
       }
       
       function closeMobileMenu() {
         mobileMenu.classList.remove('active');
+        mobileMenuButton.classList.remove('hidden');
         document.body.style.overflow = 'auto';
       }
       
