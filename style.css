@@ -215,11 +215,11 @@ p {
   margin-bottom: 20px;
 }
 
-/* Photo Albums Grid - DESKTOP: 5 columns, MOBILE: 1 column */
+/* Photo Albums Grid - DESKTOP: 3 columns, MOBILE: 1 column */
 .photo-albums-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns on desktop */
-  gap: 20px; /* Smaller gap for 5 columns */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+  gap: 25px; 
   max-width: 1200px;
   margin: 0 auto;
 }
