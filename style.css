@@ -10,6 +10,8 @@ body {
   font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
   background: linear-gradient(135deg, rgba(30, 30, 32, 1) 0%, rgba(15, 15, 18, 1) 50%, rgba(8, 8, 12, 1) 100%);
   background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
   color: #ffffff;
   line-height: 1.6;
   font-size: 16px;
@@ -19,12 +21,9 @@ body {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  /* iOS-specific optimizations */
-  -webkit-background-size: 100% 100%;
-  background-size: 100% 100%;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  will-change: transform;
+  /* iOS-specific optimizations - simplified */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 body::after {
@@ -739,7 +738,7 @@ footer {
     margin-top: 0 !important;
   }
   
-  /* MOBILE MENU BUTTON FIX - Show on mobile */
+  /* MOBILE MENU BUTTON FIX - Show on mobile with iOS protection */
   .mobile-menu-button {
     display: block;
     position: fixed;
@@ -756,6 +755,12 @@ footer {
     backdrop-filter: blur(15px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
+    /* iOS-specific fixes to prevent disappearing */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   
   .mobile-menu-button:hover {
@@ -770,13 +775,13 @@ footer {
     display: none !important;
   }
   
-  /* Mobile menu overlay - FORCE COLUMN LAYOUT EVERYWHERE */
+  /* Mobile menu overlay - FORCE COLUMN LAYOUT EVERYWHERE with iOS fixes */
   .mobile-menu {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(15px);
     z-index: 1000;
@@ -784,6 +789,12 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* iOS-specific fixes */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   
   .mobile-menu.active {
@@ -820,6 +831,12 @@ footer {
     display: block;
     min-width: 250px;
     text-align: center;
+    /* iOS-specific fixes for menu items */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   
   .mobile-menu a:hover {
@@ -828,7 +845,7 @@ footer {
                  0 0 12px rgba(255, 255, 255, 0.15);
   }
   
-  /* MOBILE ONLY: Make close button smaller */
+  /* MOBILE ONLY: Make close button smaller with iOS fixes */
   .mobile-menu-close {
     position: absolute;
     top: 20px;
@@ -841,6 +858,12 @@ footer {
     padding: 10px 12px;
     border-radius: 8px;
     transition: all 0.3s ease;
+    /* iOS-specific fixes */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   
   .mobile-menu-close:hover {
