@@ -27,8 +27,130 @@
         line-height: 1.2 !important;
         margin-top: 15px !important;
         margin-left: 0 !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 10px !important;
       }
+    }
+
+    /* Video Modal Fixes for Desktop */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .modal-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .modal-video-wrapper {
+      position: relative;
+      background: #000;
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* Remove fixed dimensions - let aspect-ratio classes handle sizing */
+    }
+
+    /* Landscape videos (16:9) */
+    .modal-video-wrapper.landscape {
+      aspect-ratio: 16/9;
+      width: min(90vw, 1200px);
+      height: auto;
+      max-height: calc(90vh - 100px); /* Account for title and padding */
+    }
+
+    /* Portrait videos (9:16) */
+    .modal-video-wrapper.portrait {
+      aspect-ratio: 9/16;
+      width: auto;
+      height: min(80vh, calc(90vh - 100px));
+      max-width: 90vw;
+    }
+
+    /* Square videos (1:1) */
+    .modal-video-wrapper.square {
+      aspect-ratio: 1/1;
+      width: min(60vh, 60vw, calc(90vh - 100px));
+      height: min(60vh, 60vw, calc(90vh - 100px));
+    }
+
+    .modal-video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 15px;
+    }
+
+    .close-button {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .close-button:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    #modalVideoTitle {
+      color: white;
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      max-width: 100%;
+    }
+
+    .loading {
+      color: white;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    /* Mobile adjustments - Keep original mobile behavior */
+    @media (max-width: 768px) {
+      /* Mobile styles remain unchanged from original */
+    }
+
+    /* Ensure video cards are clickable */
+    .video-card {
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
   </style>
 </head>
@@ -133,6 +255,30 @@
       const modalVideoWrapper = videoModal.querySelector('.modal-video-wrapper');
       const modalVideoTitle = document.getElementById('modalVideoTitle');
 
+      // Function to detect video orientation
+      function detectVideoOrientation(videoId, platform, callback) {
+        if (platform === 'vimeo') {
+          // For Vimeo, use their API to get video dimensions
+          fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`)
+            .then(response => response.json())
+            .then(data => {
+              const aspectRatio = data.width / data.height;
+              if (aspectRatio > 1.2) {
+                callback('landscape');
+              } else if (aspectRatio < 0.8) {
+                callback('portrait');
+              } else {
+                callback('square');
+              }
+            })
+            .catch(() => {
+              callback('landscape'); // Default fallback
+            });
+        } else {
+          callback('landscape'); // Default for YouTube
+        }
+      }
+
       // Function to create high-quality Vimeo embed
       function createVimeoEmbed(videoId) {
         const iframe = document.createElement('iframe');
@@ -192,7 +338,7 @@
         return iframe;
       }
 
-      // Open video modal
+      // Open video modal - FIXED VERSION
       videoCards.forEach(card => {
         card.addEventListener('click', function() {
           const videoId = this.dataset.videoId;
@@ -201,24 +347,29 @@
           
           // Clear previous content and show loading
           modalVideoWrapper.innerHTML = '<div class="loading">Načítava sa video...</div>';
+          modalVideoWrapper.className = 'modal-video-wrapper'; // Reset classes
           modalVideoTitle.textContent = videoTitle;
           videoModal.style.display = 'flex';
           
           // Prevent body scroll when modal is open
           document.body.style.overflow = 'hidden';
           
-          // Create and load appropriate embed
-          setTimeout(() => {
-            let iframe;
-            if (platform === 'vimeo') {
-              iframe = createVimeoEmbed(videoId);
-            } else {
-              iframe = createYouTubeEmbed(videoId);
-            }
+          // Detect orientation and create embed
+          detectVideoOrientation(videoId, platform, (orientation) => {
+            modalVideoWrapper.classList.add(orientation);
             
-            modalVideoWrapper.innerHTML = '';
-            modalVideoWrapper.appendChild(iframe);
-          }, 100);
+            setTimeout(() => {
+              let iframe;
+              if (platform === 'vimeo') {
+                iframe = createVimeoEmbed(videoId);
+              } else {
+                iframe = createYouTubeEmbed(videoId);
+              }
+              
+              modalVideoWrapper.innerHTML = '';
+              modalVideoWrapper.appendChild(iframe);
+            }, 100);
+          });
         });
       });
 
@@ -226,6 +377,7 @@
       function closeVideoModal() {
         videoModal.style.display = 'none';
         modalVideoWrapper.innerHTML = '<div class="loading">Načítava sa video...</div>';
+        modalVideoWrapper.className = 'modal-video-wrapper'; // Reset classes
         document.body.style.overflow = 'auto'; // Restore body scroll
       }
 
@@ -255,9 +407,13 @@
       const thumbnails = document.querySelectorAll('.video-card img');
       thumbnails.forEach(img => {
         img.addEventListener('error', function() {
-          // If image fails to load, show a placeholder or try alternative path
-          console.log('Failed to load image:', this.src);
-          // You could add a fallback image here if needed
+          // If custom thumbnail fails, try Vimeo thumbnail as fallback
+          const videoCard = this.closest('.video-card');
+          const videoId = videoCard.dataset.videoId;
+          if (videoId && !this.src.includes('vimeocdn.com')) {
+            // Fallback to Vimeo's official thumbnail API
+            this.src = `https://i.vimeocdn.com/video/${videoId}_640x360.jpg`;
+          }
         });
       });
     });
