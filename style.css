@@ -859,3 +859,163 @@ footer {
     border-radius: 8px;
     transition: all 0.3s ease;
     /* iOS-specific fixes */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .mobile-menu-close:hover {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+  }
+  
+  /* Portrait videos on mobile */
+  .modal-video-wrapper.portrait {
+    max-width: 90%;
+  }
+  
+  /* MOBILE VIDEO PLAYER - REMOVE MARGIN AND PADDING */
+  .modal-content {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .modal-video-wrapper {
+    margin-bottom: 0;
+  }
+  
+  .modal-video-wrapper.portrait {
+    margin: 0 auto 0 auto;
+  }
+  
+  .modal-video-wrapper.square {
+    margin: 0 auto 0 auto;
+  }
+  
+  /* Mobile p subtitles and paragraphs - start below menu button line and centered (except for "O mne" and "Kontakt" sections) */
+  .hero p,
+  .landing p,
+  .photo-gallery-section p,
+  .video-gallery-section p,
+  p:not(.about p):not(.contact p) {
+    text-align: center !important;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  /* Exception for about and contact sections - paragraphs aligned left */
+  .about p,
+  .contact p {
+    margin-top: 0;
+    text-align: left !important;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 10px;
+  }
+  
+  /* Remove unnecessary spaces between paragraphs in contact section */
+  .contact p {
+    margin-bottom: 5px;
+  }
+  
+  .contact p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Gallery Square - 3 columns on mobile */
+  .gallery-square {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  /* MOBILE GRIDS - SINGLE COLUMN AND SMALLER CARDS */
+  .photo-albums-grid,
+  .video-albums-grid {
+    grid-template-columns: 1fr !important; /* Force single column */
+    gap: 15px; /* Reduced gap for smaller buttons */
+    max-width: 280px; /* Much smaller max-width for mobile */
+  }
+  
+  /* MOBILE CATEGORY CARDS - MUCH SMALLER BUTTONS */
+  .category-card {
+    aspect-ratio: 1 / 1; /* Keep square aspect ratio */
+    width: 100%;
+    max-width: 280px; /* Much smaller maximum width */
+    height: auto;
+  }
+  
+  /* Keep h2 titles the same size, but adjust positioning for smaller buttons */
+  .category-card h2,
+  .category-card button {
+    font-size: 26px;        /* Keep same font size as desktop */
+    font-weight: 700;       /* Keep same weight */
+    letter-spacing: 1.5px;  /* Keep same letter spacing */
+    bottom: 20px;           /* Adjust position for smaller button */
+    left: 15px;
+    right: 15px;
+    padding: 0;
+  }
+  
+  /* Video Gallery Mobile Responsive - SINGLE COLUMN */
+  .video-gallery {
+    grid-template-columns: 1fr !important; /* Force single column */
+    gap: 20px;
+    padding: 15px;
+    justify-content: center;
+    justify-items: center;
+    max-width: 400px; /* Smaller max-width for mobile */
+  }
+  
+  /* Smaller video cards on mobile */
+  .video-card {
+    width: 8cm; /* Fixed smaller size for mobile */
+    height: 8.96cm; /* Fixed smaller size for mobile */
+    max-width: none; /* Remove desktop max-width constraint */
+  }
+  
+  .video-card img {
+    width: 7.2cm; /* Fixed smaller size for mobile */
+    height: 7.2cm; /* Fixed smaller size for mobile */
+  }
+  
+  .close-button {
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  #modalVideoTitle {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+  
+  .video-card::before {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+  }
+  
+  /* Make banner bigger on mobile */
+  .banner img {
+    width: 90% !important;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Mobile menu button adjustment for smaller screens */
+  .mobile-menu-button {
+    top: 15px;
+    right: 15px;
+    font-size: 32px;
+    padding: 18px 22px;
+  }
+  
+  .mobile-menu a {
+    font-size: 28px;
+  }
+}
