@@ -108,52 +108,82 @@
       text-align: center;
     }
 
-    /* Mobile adjustments - Keep original mobile behavior with centering */
+    /* Mobile adjustments - Fixed viewport centering */
     @media (max-width: 768px) {
-      .modal-content {
-        width: 100%;
-        height: 100%;
-        max-width: 90vw;
-        max-height: 90vh;
+      .modal {
+        /* Ensure modal uses viewport dimensions, not full page */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        padding: 10px;
+        /* Force centering within viewport */
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
       }
 
-      .modal-video-wrapper {
+      .modal-content {
+        /* Remove height constraint that might push content off-screen */
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        /* Center content within available space */
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: auto;
-        height: auto;
-        margin: 0 auto;
+        /* Ensure content doesn't overflow viewport */
+        overflow: hidden;
       }
+
+      #modalVideoTitle {
+        font-size: 18px;
+        margin-bottom: 15px;
+        padding: 0 10px;
+        /* Ensure title doesn't push video off-screen */
+        flex-shrink: 0;
+      }
+
+      .close-button {
+        top: -40px;
+        font-size: 24px;
+        width: 35px;
+        height: 35px;
+      }
+
+      .modal-video-wrapper {
+        /* Remove any positioning that might interfere */
+        position: relative;
+        display: block;
+        margin: 0;
+        /* Ensure wrapper doesn't exceed viewport */
+        max-width: 100%;
+        max-height: calc(100vh - 100px); /* Account for title and close button space */
+      }
+
       /* Landscape videos (16:9) */
       .modal-video-wrapper.landscape {
         aspect-ratio: 16/9;
-        width: min(90vw, 1200px);
+        width: min(90vw, calc(100vh - 100px) * 16/9);
         height: auto;
-        max-height: calc(90vh - 100px);
       }
 
       /* Portrait videos (9:16) */
       .modal-video-wrapper.portrait {
         aspect-ratio: 9/16;
         width: auto;
-        height: min(80vh, calc(90vh - 100px));
-        max-width: 90vw;
+        height: min(80vh, calc(90vw * 16/9));
+        max-width: calc((80vh) * 9/16);
       }
 
       /* Square videos (1:1) */
       .modal-video-wrapper.square {
         aspect-ratio: 1/1;
-        width: min(60vh, 60vw, calc(90vh - 100px));
-        height: min(60vh, 60vw, calc(90vh - 100px));
-      }  
+        width: min(80vw, 80vh, calc(100vh - 100px));
+        height: min(80vw, 80vh, calc(100vh - 100px));
+      }
     }
 
     /* Ensure video cards are clickable */
@@ -369,6 +399,13 @@
           // Prevent body scroll when modal is open
           document.body.style.overflow = 'hidden';
           
+          // On mobile, also prevent scrolling of the page behind modal
+          if (window.innerWidth <= 768) {
+            document.documentElement.style.overflow = 'hidden';
+            // Scroll to top to ensure modal is visible
+            window.scrollTo(0, 0);
+          }
+          
           // Detect orientation and create embed
           detectVideoOrientation(videoId, platform, (orientation) => {
             // Only add orientation class on mobile
@@ -397,6 +434,11 @@
         modalVideoWrapper.innerHTML = '<div class="loading">Načítava sa video...</div>';
         modalVideoWrapper.className = 'modal-video-wrapper'; // Reset classes
         document.body.style.overflow = 'auto'; // Restore body scroll
+        
+        // Restore page scrolling on mobile
+        if (window.innerWidth <= 768) {
+          document.documentElement.style.overflow = 'auto';
+        }
       }
 
       // Close button event
