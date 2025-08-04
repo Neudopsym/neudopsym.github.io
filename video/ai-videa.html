@@ -382,28 +382,37 @@
               let finalWidth, finalHeight;
               
               if (window.innerWidth > 768) {
-                // Desktop: Size based on desktop screen dimensions - MADE SMALLER
-                const desktopWidth = window.innerWidth * 0.70;  // 70% of screen width (reduced from 85%)
-                const desktopHeight = window.innerHeight * 0.65; // 65% of screen height (reduced from 80%)
+                // Desktop: Use actual video dimensions with reasonable scaling
+                const maxWidth = window.innerWidth * 0.70;  // 70% of screen width max
+                const maxHeight = window.innerHeight * 0.75; // 75% of screen height max
                 
-                // Calculate optimal size maintaining aspect ratio
-                if (aspectRatio > desktopWidth / desktopHeight) {
-                  // Video is wider - fit to width
-                  finalWidth = desktopWidth;
-                  finalHeight = finalWidth / aspectRatio;
-                } else {
-                  // Video is taller - fit to height
-                  finalHeight = desktopHeight;
-                  finalWidth = finalHeight * aspectRatio;
+                // Start with actual video dimensions
+                finalWidth = videoWidth;
+                finalHeight = videoHeight;
+                
+                // Scale down if video is larger than max bounds, maintaining exact aspect ratio
+                if (finalWidth > maxWidth || finalHeight > maxHeight) {
+                  const scaleX = maxWidth / finalWidth;
+                  const scaleY = maxHeight / finalHeight;
+                  const scale = Math.min(scaleX, scaleY); // Use smaller scale to fit both dimensions
+                  
+                  finalWidth = finalWidth * scale;
+                  finalHeight = finalHeight * scale;
                 }
                 
-                // Ensure minimum reasonable size - UPDATED FOR SMALLER SIZE
-                finalWidth = Math.max(finalWidth, 700);
-                finalHeight = Math.max(finalHeight, 400);
-                
-                // Ensure maximum reasonable size for very large screens - UPDATED FOR SMALLER SIZE
-                finalWidth = Math.min(finalWidth, 1400);
-                finalHeight = Math.min(finalHeight, 800);
+                // Ensure minimum reasonable size (but keep aspect ratio)
+                const minSize = 400;
+                if (finalWidth < minSize && finalHeight < minSize) {
+                  if (aspectRatio > 1) {
+                    // Landscape: scale by width
+                    finalWidth = minSize * aspectRatio;
+                    finalHeight = minSize;
+                  } else {
+                    // Portrait: scale by height
+                    finalWidth = minSize;
+                    finalHeight = minSize / aspectRatio;
+                  }
+                }
               } else {
                 // Mobile: responsive sizing (unchanged)
                 const maxWidth = window.innerWidth * 0.9;
