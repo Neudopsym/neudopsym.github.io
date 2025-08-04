@@ -31,7 +31,7 @@
       }
     }
 
-    /* Video Modal - Desktop Fixed Size */
+    /* Video Modal - Desktop and Mobile */
     .modal {
       position: fixed;
       top: 0;
@@ -39,12 +39,16 @@
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.9);
-      display: none !important;
+      display: none;
       justify-content: center;
       align-items: center;
       z-index: 1000;
       padding: 20px;
       box-sizing: border-box;
+    }
+
+    .modal.show {
+      display: flex !important;
     }
 
     .modal-content {
@@ -55,6 +59,7 @@
       justify-content: center;
     }
 
+    /* Desktop Modal Video Wrapper */
     .modal-video-wrapper {
       position: relative;
       background: #000;
@@ -340,10 +345,18 @@
       const modalVideoWrapper = videoModal.querySelector('.modal-video-wrapper');
       const modalVideoTitle = document.getElementById('modalVideoTitle');
 
-      // Function to detect video dimensions and set wrapper size
+      // Function to detect video dimensions and set wrapper size - ONLY FOR MOBILE
       function setVideoWrapperDimensions(videoId, platform, wrapper, callback) {
+        // Skip dimension detection on desktop - use fixed size
+        if (window.innerWidth > 768) {
+          wrapper.style.width = '800px';
+          wrapper.style.height = '450px';
+          callback();
+          return;
+        }
+
+        // Mobile dimension detection (unchanged)
         if (platform === 'vimeo') {
-          // For Vimeo, use their API to get exact video dimensions
           fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`)
             .then(response => response.json())
             .then(data => {
@@ -351,41 +364,19 @@
               const videoHeight = data.height;
               const aspectRatio = videoWidth / videoHeight;
               
-              // Calculate optimal size for current viewport
-              const maxWidth = window.innerWidth <= 768 ? window.innerWidth * 0.9 : 800;
-              const maxHeight = window.innerWidth <= 768 ? window.innerHeight * 0.8 : 450;
+              const maxWidth = window.innerWidth * 0.9;
+              const maxHeight = window.innerHeight * 0.8;
               
               let finalWidth, finalHeight;
               
-              if (window.innerWidth <= 768) {
-                // Mobile: fit within viewport while maintaining aspect ratio
-                if (aspectRatio > 1) {
-                  // Landscape
-                  finalWidth = Math.min(maxWidth, maxHeight * aspectRatio);
-                  finalHeight = finalWidth / aspectRatio;
-                } else {
-                  // Portrait or square
-                  finalHeight = Math.min(maxHeight, maxWidth / aspectRatio);
-                  finalWidth = finalHeight * aspectRatio;
-                }
+              if (aspectRatio > 1) {
+                finalWidth = Math.min(maxWidth, maxHeight * aspectRatio);
+                finalHeight = finalWidth / aspectRatio;
               } else {
-                // Desktop: maintain reasonable size but respect aspect ratio
-                if (aspectRatio > 16/9) {
-                  // Very wide video
-                  finalWidth = maxWidth;
-                  finalHeight = finalWidth / aspectRatio;
-                } else if (aspectRatio < 9/16) {
-                  // Very tall video
-                  finalHeight = maxHeight;
-                  finalWidth = finalHeight * aspectRatio;
-                } else {
-                  // Standard aspect ratios
-                  finalWidth = Math.min(maxWidth, maxHeight * aspectRatio);
-                  finalHeight = finalWidth / aspectRatio;
-                }
+                finalHeight = Math.min(maxHeight, maxWidth / aspectRatio);
+                finalWidth = finalHeight * aspectRatio;
               }
               
-              // Apply dimensions to wrapper
               wrapper.style.width = `${Math.round(finalWidth)}px`;
               wrapper.style.height = `${Math.round(finalHeight)}px`;
               wrapper.classList.add('has-dimensions');
@@ -393,30 +384,18 @@
               callback();
             })
             .catch(() => {
-              // Fallback to default size
-              if (window.innerWidth <= 768) {
-                wrapper.style.width = '90vw';
-                wrapper.style.height = 'auto';
-              } else {
-                wrapper.style.width = '800px';
-                wrapper.style.height = '450px';
-              }
+              wrapper.style.width = '90vw';
+              wrapper.style.height = 'auto';
               callback();
             });
         } else {
-          // For YouTube, we can't easily get dimensions, so use responsive defaults
-          if (window.innerWidth <= 768) {
-            wrapper.style.width = '90vw';
-            wrapper.style.height = 'calc(90vw * 9/16)'; // Assume 16:9
-          } else {
-            wrapper.style.width = '800px';
-            wrapper.style.height = '450px';
-          }
+          wrapper.style.width = '90vw';
+          wrapper.style.height = 'calc(90vw * 9/16)';
           callback();
         }
       }
 
-      // Function to create Vimeo embed
+      // Function to create Vimeo embed - Enhanced for desktop
       function createVimeoEmbed(videoId) {
         const iframe = document.createElement('iframe');
         
@@ -430,7 +409,8 @@
           portrait: '0',
           title: '0',
           byline: '0',
-          color: 'ffffff'
+          color: 'ffffff',
+          background: '1'
         });
         
         iframe.setAttribute('src', `https://player.vimeo.com/video/${videoId}?${params.toString()}`);
@@ -438,6 +418,8 @@
         iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
         iframe.setAttribute('allowfullscreen', '');
         iframe.style.borderRadius = '15px';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
         
         return iframe;
       }
@@ -466,11 +448,13 @@
         iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
         iframe.setAttribute('allowfullscreen', '');
         iframe.style.borderRadius = '15px';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
         
         return iframe;
       }
 
-      // Open video modal - Mobile responsive, Desktop fixed
+      // Open video modal - Fixed for desktop
       videoCards.forEach(card => {
         card.addEventListener('click', function() {
           const videoId = this.dataset.videoId;
@@ -484,11 +468,8 @@
           modalVideoWrapper.className = 'modal-video-wrapper';
           modalVideoTitle.textContent = videoTitle;
           
-          // Show modal - only when user actually clicks a video
-          videoModal.style.display = 'flex';
+          // Show modal immediately
           videoModal.classList.add('show');
-          
-          console.log('Modal display style:', videoModal.style.display);
           
           // Prevent body scroll when modal is open
           document.body.style.overflow = 'hidden';
@@ -499,33 +480,39 @@
             window.scrollTo(0, 0);
           }
           
-          // Set wrapper dimensions based on actual video size
+          // Set wrapper dimensions (desktop gets fixed size, mobile gets responsive)
           setVideoWrapperDimensions(videoId, platform, modalVideoWrapper, () => {
-            setTimeout(() => {
-              let iframe;
-              if (platform === 'vimeo') {
-                iframe = createVimeoEmbed(videoId);
-              } else {
-                iframe = createYouTubeEmbed(videoId);
-              }
-              
-              // Create mobile-specific close button
+            // Create iframe immediately
+            let iframe;
+            if (platform === 'vimeo') {
+              iframe = createVimeoEmbed(videoId);
+            } else {
+              iframe = createYouTubeEmbed(videoId);
+            }
+            
+            // Clear loading and add iframe
+            modalVideoWrapper.innerHTML = '';
+            modalVideoWrapper.appendChild(iframe);
+            
+            // Add desktop close button back
+            if (window.innerWidth > 768) {
+              const desktopCloseButton = document.createElement('span');
+              desktopCloseButton.className = 'video-close-button';
+              desktopCloseButton.innerHTML = '&times;';
+              desktopCloseButton.setAttribute('aria-label', 'Zavrieť video');
+              desktopCloseButton.addEventListener('click', closeVideoModal);
+              modalVideoWrapper.appendChild(desktopCloseButton);
+            } else {
+              // Add mobile close button only on mobile
               const mobileCloseButton = document.createElement('span');
               mobileCloseButton.className = 'mobile-video-close';
               mobileCloseButton.innerHTML = '&times;';
               mobileCloseButton.setAttribute('aria-label', 'Zavrieť video');
               mobileCloseButton.addEventListener('click', closeVideoModal);
-              
-              modalVideoWrapper.innerHTML = '';
-              modalVideoWrapper.appendChild(iframe);
-              
-              // Add mobile close button only on mobile
-              if (window.innerWidth <= 768) {
-                modalVideoWrapper.appendChild(mobileCloseButton);
-              }
-              
-              console.log('Video iframe created and added');
-            }, 100);
+              modalVideoWrapper.appendChild(mobileCloseButton);
+            }
+            
+            console.log('Video iframe created and added');
           });
         });
       });
@@ -533,7 +520,6 @@
       // Close modal function
       function closeVideoModal() {
         console.log('Closing modal');
-        videoModal.style.display = 'none';
         videoModal.classList.remove('show');
         modalVideoWrapper.innerHTML = '<div class="loading">Načítava sa video...</div>';
         modalVideoWrapper.className = 'modal-video-wrapper';
@@ -560,7 +546,7 @@
       // Escape key to close modal
       document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
-          if (videoModal.style.display === 'flex') {
+          if (videoModal.classList.contains('show')) {
             closeVideoModal();
           }
           if (mobileMenu.classList.contains('active')) {
