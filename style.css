@@ -335,33 +335,30 @@ p {
   font-weight: 600;
 }
 
-/* FIXED: Play Button Overlay - Centered properly on desktop only */
-@media (min-width: 901px) {
-  .video-card::before {
-    content: '▶';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3rem;
-    color: white;
-    background: rgba(0, 0, 0, 0.7);
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 4px; /* Small adjustment to center the play triangle visually */
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    z-index: 2;
-  }
+/* Play Button Overlay */
+.video-card::before {
+  content: '▶';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
 
-  .video-card:hover::before {
-    opacity: 1;
-  }
+.video-card:hover::before {
+  opacity: 1;
 }
 
 /* High-Quality Modal Styling */
@@ -497,6 +494,74 @@ p {
   to { transform: rotate(360deg); }
 }
 
+/* Photo Modal Styling - NEW ADDITION */
+.photo-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.95);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.photo-modal.active {
+  display: flex;
+}
+
+.photo-modal-content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-modal img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Photo Modal Close Button */
+.photo-modal .close-button {
+  color: #ffffff;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10001;
+  transition: color 0.3s ease, transform 0.3s ease;
+  background: rgba(0, 0, 0, 0.7);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-modal .close-button:hover,
+.photo-modal .close-button:focus {
+  color: #ff4444;
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.9);
+}
+
 /* Category Card Styles */
 .category-card {
   position: relative;
@@ -578,7 +643,7 @@ p {
   pointer-events: none;
 }
 
-/* FIXED: Individual Photo Gallery - Photos fit screen and are centered */
+/* Individual Photo Gallery */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -590,8 +655,6 @@ p {
 
 .gallery img {
   width: 100%;
-  max-width: 100vw; /* Never exceed viewport width */
-  max-height: 80vh; /* Never exceed 80% of viewport height */
   height: auto;
   border-radius: 10px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
@@ -603,9 +666,7 @@ p {
   image-rendering: high-quality;
   -ms-interpolation-mode: bicubic;
   image-orientation: from-image;
-  object-fit: contain; /* Maintain aspect ratio while fitting in container */
-  display: block;
-  margin: 0 auto; /* Center images horizontally */
+  cursor: pointer;
 }
 
 .gallery img:hover {
@@ -613,7 +674,7 @@ p {
   box-shadow: 0 12px 30px rgba(0,0,0,0.6);
 }
 
-/* FIXED: Gallery Square - for specific album pages using inline styles */
+/* Gallery Square - for specific album pages using inline styles */
 .gallery-square {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -624,8 +685,6 @@ p {
 .gallery-square img {
   width: 100%;
   aspect-ratio: 1 / 1;
-  max-width: 90vw; /* Never exceed 90% of viewport width */
-  max-height: 80vh; /* Never exceed 80% of viewport height */
   object-fit: cover;
   cursor: pointer;
   border-radius: 10px;
@@ -637,8 +696,6 @@ p {
   image-rendering: high-quality;
   -ms-interpolation-mode: bicubic;
   image-orientation: from-image;
-  display: block;
-  margin: 0 auto; /* Center images horizontally */
 }
 
 .gallery-square img:hover {
@@ -907,6 +964,21 @@ footer {
     margin: 0 auto 0 auto;
   }
   
+  /* Mobile adjustments for photo modal */
+  .photo-modal-content {
+    max-width: 98vw;
+    max-height: 98vh;
+    padding: 10px;
+  }
+  
+  .photo-modal .close-button {
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+  }
+  
   /* Mobile p subtitles and paragraphs - start below menu button line and centered (except for "O mne" and "Kontakt" sections) */
   .hero p,
   .landing p,
@@ -937,21 +1009,10 @@ footer {
     margin-bottom: 0;
   }
   
-  /* MOBILE PHOTOS FIX - Gallery Square - 3 columns on mobile with better sizing */
+  /* Gallery Square - 3 columns on mobile */
   .gallery-square {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-  }
-  
-  .gallery-square img {
-    max-width: 30vw; /* Each image takes 30% of viewport width max */
-    max-height: 30vh; /* Each image takes 30% of viewport height max */
-  }
-  
-  /* MOBILE PHOTOS FIX - Regular gallery images */
-  .gallery img {
-    max-width: 95vw; /* Never exceed 95% of viewport width on mobile */
-    max-height: 60vh; /* Never exceed 60% of viewport height on mobile */
   }
   
   /* MOBILE GRIDS - SINGLE COLUMN AND SMALLER CARDS */
