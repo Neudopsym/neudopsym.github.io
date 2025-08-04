@@ -78,14 +78,14 @@
       justify-content: center;
     }
 
-    /* Desktop Modal Video Wrapper */
+    /* Desktop Modal Video Wrapper - MADE BIGGER */
     .modal-video-wrapper {
       position: relative;
       background: #000;
       border-radius: 15px;
       overflow: hidden;
-      width: 800px;
-      height: 450px;
+      width: 1200px;  /* Increased from 800px */
+      height: 675px;  /* Increased from 450px (maintains 16:9 ratio) */
     }
 
     .modal-video-wrapper iframe {
@@ -132,6 +132,37 @@
       color: white;
       font-size: 18px;
       text-align: center;
+    }
+
+    /* Desktop Play Button Overlay - FIXED CENTERING */
+    @media (min-width: 769px) {
+      .video-card {
+        position: relative;
+      }
+      
+      .video-card::after {
+        content: '▶';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 32px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+      
+      .video-card:hover::after {
+        opacity: 1;
+      }
     }
 
     /* Mobile adjustments - Fixed viewport centering */
@@ -272,7 +303,6 @@
       </div>
       <div class="video-card" data-video-id="1104261085" data-video-title="Green Mladá Boleslav" data-video-platform="vimeo">
         <img src="https://neudopsym.github.io/img/systemove/Green_MB_nahlad.png" alt="Miniatúra videa: Green Mladá Boleslav" loading="lazy">
-        <h2>Green Mladá Boleslav</h2>
       </div>
       <div class="video-card" data-video-id="1104941118" data-video-title="AI – budúcnosť marketingu" data-video-platform="vimeo">
         <img src="https://neudopsym.github.io/img/systemove/nahlad_video_ai.jpg" alt="Miniatúra videa: AI – budúcnosť marketingu" loading="lazy">
@@ -338,7 +368,7 @@
       const modalVideoWrapper = videoModal.querySelector('.modal-video-wrapper');
       const modalVideoTitle = document.getElementById('modalVideoTitle');
 
-      // Function to detect video dimensions and set wrapper size - Desktop gets actual video size, Mobile responsive
+      // Function to detect video dimensions and set wrapper size - Desktop uses screen size, Mobile responsive
       function setVideoWrapperDimensions(videoId, platform, wrapper, callback) {
         if (platform === 'vimeo') {
           // For both desktop and mobile, get actual video dimensions
@@ -352,24 +382,28 @@
               let finalWidth, finalHeight;
               
               if (window.innerWidth > 768) {
-                // Desktop: Use actual video dimensions, but cap at reasonable max size
-                const maxDesktopWidth = Math.min(window.innerWidth * 0.8, 1200);
-                const maxDesktopHeight = Math.min(window.innerHeight * 0.8, 800);
+                // Desktop: Size based on desktop screen dimensions
+                const desktopWidth = window.innerWidth * 0.85;  // 85% of screen width
+                const desktopHeight = window.innerHeight * 0.80; // 80% of screen height
                 
-                if (videoWidth > maxDesktopWidth || videoHeight > maxDesktopHeight) {
-                  // Scale down if video is too large
-                  if (aspectRatio > maxDesktopWidth / maxDesktopHeight) {
-                    finalWidth = maxDesktopWidth;
-                    finalHeight = finalWidth / aspectRatio;
-                  } else {
-                    finalHeight = maxDesktopHeight;
-                    finalWidth = finalHeight * aspectRatio;
-                  }
+                // Calculate optimal size maintaining aspect ratio
+                if (aspectRatio > desktopWidth / desktopHeight) {
+                  // Video is wider - fit to width
+                  finalWidth = desktopWidth;
+                  finalHeight = finalWidth / aspectRatio;
                 } else {
-                  // Use actual video size if it fits
-                  finalWidth = videoWidth;
-                  finalHeight = videoHeight;
+                  // Video is taller - fit to height
+                  finalHeight = desktopHeight;
+                  finalWidth = finalHeight * aspectRatio;
                 }
+                
+                // Ensure minimum reasonable size
+                finalWidth = Math.max(finalWidth, 800);
+                finalHeight = Math.max(finalHeight, 450);
+                
+                // Ensure maximum reasonable size for very large screens
+                finalWidth = Math.min(finalWidth, 1600);
+                finalHeight = Math.min(finalHeight, 900);
               } else {
                 // Mobile: responsive sizing (unchanged)
                 const maxWidth = window.innerWidth * 0.9;
@@ -391,10 +425,12 @@
               callback();
             })
             .catch(() => {
-              // Fallback sizing
+              // Fallback sizing - Based on desktop screen size
               if (window.innerWidth > 768) {
-                wrapper.style.width = '800px';
-                wrapper.style.height = '450px';
+                const fallbackWidth = Math.min(window.innerWidth * 0.85, 1600);
+                const fallbackHeight = Math.min(window.innerHeight * 0.80, 900);
+                wrapper.style.width = `${Math.round(fallbackWidth)}px`;
+                wrapper.style.height = `${Math.round(fallbackHeight)}px`;
               } else {
                 wrapper.style.width = '90vw';
                 wrapper.style.height = 'auto';
@@ -402,11 +438,28 @@
               callback();
             });
         } else {
-          // For YouTube, use 16:9 aspect ratio
+          // For YouTube, use 16:9 aspect ratio - Based on desktop screen size
           if (window.innerWidth > 768) {
-            // Desktop: reasonable default size
-            wrapper.style.width = '800px';
-            wrapper.style.height = '450px';
+            // Desktop: size based on screen dimensions
+            const desktopWidth = window.innerWidth * 0.85;
+            const desktopHeight = window.innerHeight * 0.80;
+            const aspectRatio = 16 / 9;
+            
+            let finalWidth, finalHeight;
+            if (aspectRatio > desktopWidth / desktopHeight) {
+              finalWidth = desktopWidth;
+              finalHeight = finalWidth / aspectRatio;
+            } else {
+              finalHeight = desktopHeight;
+              finalWidth = finalHeight * aspectRatio;
+            }
+            
+            // Ensure reasonable bounds
+            finalWidth = Math.max(Math.min(finalWidth, 1600), 800);
+            finalHeight = Math.max(Math.min(finalHeight, 900), 450);
+            
+            wrapper.style.width = `${Math.round(finalWidth)}px`;
+            wrapper.style.height = `${Math.round(finalHeight)}px`;
           } else {
             // Mobile: responsive
             wrapper.style.width = '90vw';
@@ -501,7 +554,7 @@
             window.scrollTo(0, 0);
           }
           
-          // Set wrapper dimensions (desktop gets fixed size, mobile gets responsive)
+          // Set wrapper dimensions (desktop gets bigger size, mobile gets responsive)
           setVideoWrapperDimensions(videoId, platform, modalVideoWrapper, () => {
             // Create iframe immediately
             let iframe;
