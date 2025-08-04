@@ -409,7 +409,7 @@ finalWidth = maxWidth;
 finalHeight = finalWidth / aspectRatio;
 } else if (aspectRatio < 9/16) {
 // Very tall video - make portrait videos bigger on desktop too
-finalHeight = Math.min(600, maxWidth / aspectRatio); // Increased from 450 to 600
+finalHeight = Math.min(550, maxWidth / aspectRatio); // Increased from 450 to 600
 finalWidth = finalHeight * aspectRatio;
 } else if (aspectRatio < 1) {
 // Portrait videos - give them more space
@@ -619,3 +619,4 @@ this.src = `https://i.vimeocdn.com/video/${videoId}_640x360.jpg`;
 </script>
 </body>
 </html>
+
