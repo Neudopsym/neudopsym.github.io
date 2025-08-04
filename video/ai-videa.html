@@ -39,7 +39,7 @@
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.9);
-      display: none !important; /* Force hide by default */
+      display: none; /* FIXED: Removed !important that was preventing modal from showing */
       justify-content: center;
       align-items: center;
       z-index: 1000;
@@ -150,6 +150,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+      }
+
+      .modal.show {
+        display: flex !important;
       }
 
       .modal-content {
@@ -458,6 +462,8 @@
           const videoTitle = this.dataset.videoTitle;
           const platform = this.dataset.videoPlatform || 'youtube';
           
+          console.log('Opening video:', videoId, videoTitle, platform); // Debug log
+          
           // Clear previous content and show loading
           modalVideoWrapper.innerHTML = '<div class="loading">Načítava sa video...</div>';
           modalVideoWrapper.className = 'modal-video-wrapper'; // Reset classes
@@ -465,6 +471,9 @@
           
           // Show modal with flex display
           videoModal.style.display = 'flex';
+          videoModal.classList.add('show'); // Additional class for mobile
+          
+          console.log('Modal display style:', videoModal.style.display); // Debug log
           
           // Prevent body scroll when modal is open
           document.body.style.overflow = 'hidden';
@@ -488,6 +497,8 @@
               
               modalVideoWrapper.innerHTML = '';
               modalVideoWrapper.appendChild(iframe);
+              
+              console.log('Video iframe created and added'); // Debug log
             }, 100);
           });
         });
@@ -495,7 +506,9 @@
 
       // Close modal function
       function closeVideoModal() {
+        console.log('Closing modal'); // Debug log
         videoModal.style.display = 'none';
+        videoModal.classList.remove('show');
         modalVideoWrapper.innerHTML = '<div class="loading">Načítava sa video...</div>';
         modalVideoWrapper.className = 'modal-video-wrapper'; // Reset classes
         // Reset wrapper size
