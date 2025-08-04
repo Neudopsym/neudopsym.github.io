@@ -434,12 +434,13 @@
               callback();
             })
             .catch(() => {
-              // Fallback sizing - Based on desktop screen size - MADE SMALLER
+              // Fallback sizing - Use reasonable defaults maintaining 16:9 for unknown videos
               if (window.innerWidth > 768) {
-                const fallbackWidth = Math.min(window.innerWidth * 0.70, 1400);
-                const fallbackHeight = Math.min(window.innerHeight * 0.65, 800);
-                wrapper.style.width = `${Math.round(fallbackWidth)}px`;
-                wrapper.style.height = `${Math.round(fallbackHeight)}px`;
+                // Default to 800x450 (16:9) if we can't get video dimensions
+                wrapper.style.width = '800px';
+                wrapper.style.height = '450px';
+                wrapper.style.width = '800px';
+                wrapper.style.height = '450px';
               } else {
                 wrapper.style.width = '90vw';
                 wrapper.style.height = 'auto';
@@ -447,28 +448,36 @@
               callback();
             });
         } else {
-          // For YouTube, use 16:9 aspect ratio - Based on desktop screen size
+          // For YouTube or other platforms, try to get actual dimensions or use 16:9 default
           if (window.innerWidth > 768) {
-            // Desktop: size based on screen dimensions - MADE SMALLER
-            const desktopWidth = window.innerWidth * 0.70;
-            const desktopHeight = window.innerHeight * 0.65;
-            const aspectRatio = 16 / 9;
+            // Default to reasonable size maintaining 16:9 aspect ratio
+            const baseWidth = 800;
+            const baseHeight = 450;
             
-            let finalWidth, finalHeight;
-            if (aspectRatio > desktopWidth / desktopHeight) {
-              finalWidth = desktopWidth;
-              finalHeight = finalWidth / aspectRatio;
+            // Check if we can fit larger while maintaining ratio
+            const maxWidth = window.innerWidth * 0.70;
+            const maxHeight = window.innerHeight * 0.75;
+            
+            if (baseWidth <= maxWidth && baseHeight <= maxHeight) {
+              // Can use base size
+              wrapper.style.width = `${baseWidth}px`;
+              wrapper.style.height = `${baseHeight}px`;
             } else {
-              finalHeight = desktopHeight;
-              finalWidth = finalHeight * aspectRatio;
+              // Need to scale down
+              const aspectRatio = baseWidth / baseHeight;
+              let finalWidth, finalHeight;
+              
+              if (aspectRatio > maxWidth / maxHeight) {
+                finalWidth = maxWidth;
+                finalHeight = finalWidth / aspectRatio;
+              } else {
+                finalHeight = maxHeight;
+                finalWidth = finalHeight * aspectRatio;
+              }
+              
+              wrapper.style.width = `${Math.round(finalWidth)}px`;
+              wrapper.style.height = `${Math.round(finalHeight)}px`;
             }
-            
-            // Ensure reasonable bounds - UPDATED FOR SMALLER SIZE
-            finalWidth = Math.max(Math.min(finalWidth, 1400), 700);
-            finalHeight = Math.max(Math.min(finalHeight, 800), 400);
-            
-            wrapper.style.width = `${Math.round(finalWidth)}px`;
-            wrapper.style.height = `${Math.round(finalHeight)}px`;
           } else {
             // Mobile: responsive
             wrapper.style.width = '90vw';
