@@ -78,14 +78,13 @@
       justify-content: center;
     }
 
-    /* Desktop Modal Video Wrapper - MADE BIGGER */
+    /* Desktop Modal Video Wrapper - DYNAMIC SIZE BASED ON SCREEN */
     .modal-video-wrapper {
       position: relative;
       background: #000;
       border-radius: 15px;
       overflow: hidden;
-      width: 1200px;  /* Increased from 800px */
-      height: 675px;  /* Increased from 450px (maintains 16:9 ratio) */
+      /* Size will be set dynamically by JavaScript based on desktop screen size */
     }
 
     .modal-video-wrapper iframe {
@@ -303,6 +302,7 @@
       </div>
       <div class="video-card" data-video-id="1104261085" data-video-title="Green Mladá Boleslav" data-video-platform="vimeo">
         <img src="https://neudopsym.github.io/img/systemove/Green_MB_nahlad.png" alt="Miniatúra videa: Green Mladá Boleslav" loading="lazy">
+        <h2>Green Mladá Boleslav</h2>
       </div>
       <div class="video-card" data-video-id="1104941118" data-video-title="AI – budúcnosť marketingu" data-video-platform="vimeo">
         <img src="https://neudopsym.github.io/img/systemove/nahlad_video_ai.jpg" alt="Miniatúra videa: AI – budúcnosť marketingu" loading="lazy">
@@ -382,9 +382,9 @@
               let finalWidth, finalHeight;
               
               if (window.innerWidth > 768) {
-                // Desktop: Size based on desktop screen dimensions
-                const desktopWidth = window.innerWidth * 0.85;  // 85% of screen width
-                const desktopHeight = window.innerHeight * 0.80; // 80% of screen height
+                // Desktop: Size based on desktop screen dimensions - MADE SMALLER
+                const desktopWidth = window.innerWidth * 0.70;  // 70% of screen width (reduced from 85%)
+                const desktopHeight = window.innerHeight * 0.65; // 65% of screen height (reduced from 80%)
                 
                 // Calculate optimal size maintaining aspect ratio
                 if (aspectRatio > desktopWidth / desktopHeight) {
@@ -397,13 +397,13 @@
                   finalWidth = finalHeight * aspectRatio;
                 }
                 
-                // Ensure minimum reasonable size
-                finalWidth = Math.max(finalWidth, 800);
-                finalHeight = Math.max(finalHeight, 450);
+                // Ensure minimum reasonable size - UPDATED FOR SMALLER SIZE
+                finalWidth = Math.max(finalWidth, 700);
+                finalHeight = Math.max(finalHeight, 400);
                 
-                // Ensure maximum reasonable size for very large screens
-                finalWidth = Math.min(finalWidth, 1600);
-                finalHeight = Math.min(finalHeight, 900);
+                // Ensure maximum reasonable size for very large screens - UPDATED FOR SMALLER SIZE
+                finalWidth = Math.min(finalWidth, 1400);
+                finalHeight = Math.min(finalHeight, 800);
               } else {
                 // Mobile: responsive sizing (unchanged)
                 const maxWidth = window.innerWidth * 0.9;
@@ -425,10 +425,10 @@
               callback();
             })
             .catch(() => {
-              // Fallback sizing - Based on desktop screen size
+              // Fallback sizing - Based on desktop screen size - MADE SMALLER
               if (window.innerWidth > 768) {
-                const fallbackWidth = Math.min(window.innerWidth * 0.85, 1600);
-                const fallbackHeight = Math.min(window.innerHeight * 0.80, 900);
+                const fallbackWidth = Math.min(window.innerWidth * 0.70, 1400);
+                const fallbackHeight = Math.min(window.innerHeight * 0.65, 800);
                 wrapper.style.width = `${Math.round(fallbackWidth)}px`;
                 wrapper.style.height = `${Math.round(fallbackHeight)}px`;
               } else {
@@ -440,9 +440,9 @@
         } else {
           // For YouTube, use 16:9 aspect ratio - Based on desktop screen size
           if (window.innerWidth > 768) {
-            // Desktop: size based on screen dimensions
-            const desktopWidth = window.innerWidth * 0.85;
-            const desktopHeight = window.innerHeight * 0.80;
+            // Desktop: size based on screen dimensions - MADE SMALLER
+            const desktopWidth = window.innerWidth * 0.70;
+            const desktopHeight = window.innerHeight * 0.65;
             const aspectRatio = 16 / 9;
             
             let finalWidth, finalHeight;
@@ -454,9 +454,9 @@
               finalWidth = finalHeight * aspectRatio;
             }
             
-            // Ensure reasonable bounds
-            finalWidth = Math.max(Math.min(finalWidth, 1600), 800);
-            finalHeight = Math.max(Math.min(finalHeight, 900), 450);
+            // Ensure reasonable bounds - UPDATED FOR SMALLER SIZE
+            finalWidth = Math.max(Math.min(finalWidth, 1400), 700);
+            finalHeight = Math.max(Math.min(finalHeight, 800), 400);
             
             wrapper.style.width = `${Math.round(finalWidth)}px`;
             wrapper.style.height = `${Math.round(finalHeight)}px`;
