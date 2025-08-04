@@ -404,11 +404,7 @@ finalWidth = maxWidth;
 finalHeight = finalWidth / aspectRatio;
 } else if (aspectRatio < 9/16) {
 // Very tall video
-finalHeight = Math.min(600, maxWidth / aspectRatio); // Increased from 450 to 600
-finalWidth = finalHeight * aspectRatio;
-} else if (aspectRatio < 1) {
-// Portrait videos - give them more space on desktop
-finalHeight = Math.min(550, maxWidth / aspectRatio); // Increased height for portrait
+finalHeight = maxHeight;
 finalWidth = finalHeight * aspectRatio;
 } else {
 // Standard aspect ratios
