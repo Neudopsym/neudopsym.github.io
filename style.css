@@ -494,74 +494,6 @@ p {
   to { transform: rotate(360deg); }
 }
 
-/* Photo Modal Styling - NEW ADDITION */
-.photo-modal {
-  display: none;
-  position: fixed;
-  z-index: 10000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.95);
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(5px);
-}
-
-.photo-modal.active {
-  display: flex;
-}
-
-.photo-modal-content {
-  position: relative;
-  max-width: 95vw;
-  max-height: 95vh;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.photo-modal img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 10px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Photo Modal Close Button */
-.photo-modal .close-button {
-  color: #ffffff;
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 10001;
-  transition: color 0.3s ease, transform 0.3s ease;
-  background: rgba(0, 0, 0, 0.7);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.photo-modal .close-button:hover,
-.photo-modal .close-button:focus {
-  color: #ff4444;
-  transform: scale(1.1);
-  background: rgba(0, 0, 0, 0.9);
-}
-
 /* Category Card Styles */
 .category-card {
   position: relative;
@@ -666,7 +598,6 @@ p {
   image-rendering: high-quality;
   -ms-interpolation-mode: bicubic;
   image-orientation: from-image;
-  cursor: pointer;
 }
 
 .gallery img:hover {
@@ -962,21 +893,6 @@ footer {
   
   .modal-video-wrapper.square {
     margin: 0 auto 0 auto;
-  }
-  
-  /* Mobile adjustments for photo modal */
-  .photo-modal-content {
-    max-width: 98vw;
-    max-height: 98vh;
-    padding: 10px;
-  }
-  
-  .photo-modal .close-button {
-    top: 10px;
-    right: 15px;
-    font-size: 30px;
-    width: 40px;
-    height: 40px;
   }
   
   /* Mobile p subtitles and paragraphs - start below menu button line and centered (except for "O mne" and "Kontakt" sections) */
