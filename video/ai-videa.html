@@ -261,6 +261,17 @@ transform: translateY(-5px);
 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
+/* Hide any existing play button overlays from external CSS */
+.video-card::before {
+display: none !important;
+}
+
+.video-card .play-button,
+.video-card .play-overlay,
+.video-card .video-overlay {
+display: none !important;
+}
+
 /* Play button overlay for desktop only */
 .video-card::after {
 content: '▶';
@@ -270,7 +281,7 @@ left: 50%;
 transform: translate(-50%, -50%);
 width: 80px;
 height: 80px;
-background: rgba(0, 0, 0, 0.7);
+background: rgba(0, 0, 0, 0.8);
 border-radius: 50%;
 display: flex;
 align-items: center;
@@ -279,9 +290,10 @@ color: white;
 font-size: 24px;
 opacity: 0;
 transition: opacity 0.3s ease;
-z-index: 10;
+z-index: 100;
 backdrop-filter: blur(2px);
 border: 2px solid rgba(255, 255, 255, 0.3);
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .video-card:hover::after {
@@ -291,6 +303,10 @@ opacity: 1;
 /* Mobile - hide play button overlay */
 @media (max-width: 768px) {
 .video-card::after {
+display: none !important;
+}
+
+.video-card::before {
 display: none !important;
 }
 }
