@@ -381,7 +381,7 @@ const aspectRatio = videoWidth / videoHeight;
 
 // Calculate optimal size for current viewport
 const maxWidth = window.innerWidth <= 768 ? window.innerWidth * 0.9 : 800;
-const maxHeight = window.innerWidth <= 768 ? window.innerHeight * 0.8 : 450;
+const maxHeight = window.innerWidth <= 768 ? window.innerHeight * 0.85 : 450;
 
 let finalWidth, finalHeight;
 
@@ -392,9 +392,14 @@ if (aspectRatio > 1) {
 finalWidth = Math.min(maxWidth, maxHeight * aspectRatio);
 finalHeight = finalWidth / aspectRatio;
 } else {
-// Portrait or square
+// Portrait or square - make portrait videos bigger on mobile
 finalHeight = Math.min(maxHeight, maxWidth / aspectRatio);
 finalWidth = finalHeight * aspectRatio;
+// Give portrait videos extra height on mobile (up to 90% of viewport height)
+if (aspectRatio < 1) {
+finalHeight = Math.min(window.innerHeight * 0.9, maxWidth / aspectRatio);
+finalWidth = finalHeight * aspectRatio;
+}
 }
 } else {
 // Desktop: maintain reasonable size but respect aspect ratio
@@ -403,8 +408,12 @@ if (aspectRatio > 16/9) {
 finalWidth = maxWidth;
 finalHeight = finalWidth / aspectRatio;
 } else if (aspectRatio < 9/16) {
-// Very tall video
-finalHeight = maxHeight;
+// Very tall video - make portrait videos bigger on desktop too
+finalHeight = Math.min(600, maxWidth / aspectRatio); // Increased from 450 to 600
+finalWidth = finalHeight * aspectRatio;
+} else if (aspectRatio < 1) {
+// Portrait videos - give them more space
+finalHeight = Math.min(550, maxWidth / aspectRatio); // Increased height for portrait
 finalWidth = finalHeight * aspectRatio;
 } else {
 // Standard aspect ratios
