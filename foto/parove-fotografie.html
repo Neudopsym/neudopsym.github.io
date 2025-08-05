@@ -62,6 +62,25 @@
       cursor: pointer;
     }
     
+    /* Prevent background scrolling when lightbox is open */
+    body.lightbox-active {
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+    }
+    
+    /* iOS Safari specific fixes */
+    .content-wrapper {
+      width: 100%;
+      min-height: 100vh;
+    }
+    
+    body.lightbox-active.ios-device .content-wrapper {
+      position: fixed;
+      width: 100%;
+      overflow: hidden;
+    }
+    
     /* Dual H1 structure */
     .desktop-h1 {
       display: block;
@@ -120,49 +139,55 @@
   </style>
 </head>
 <body>
-  <!-- Mobile Menu Button -->
-  <button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
-  
-  <!-- Mobile Menu Overlay -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
-    <ul>
-      <li><a href="https://neudopsym.github.io/index.html" onclick="toggleMobileMenu()">Úvod</a></li>
-      <li><a href="https://neudopsym.github.io/foto.html" onclick="toggleMobileMenu()">Foto</a></li>
-      <li><a href="https://neudopsym.github.io/video.html" onclick="toggleMobileMenu()">Video</a></li>
-      <li><a href="https://neudopsym.github.io/o-mne.html" onclick="toggleMobileMenu()">O mne</a></li>
-      <li><a href="https://neudopsym.github.io/kontakt.html" onclick="toggleMobileMenu()">Kontakt</a></li>
-    </ul>
-  </div>
-
-  <header>
-    <nav>
+  <div class="content-wrapper">
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
       <ul>
-        <li><a href="https://neudopsym.github.io/index.html">Úvod</a></li>
-        <li><a href="https://neudopsym.github.io/foto.html">Foto</a></li>
-        <li><a href="https://neudopsym.github.io/video.html">Video</a></li>
-        <li><a href="https://neudopsym.github.io/o-mne.html">O mne</a></li>
-        <li><a href="https://neudopsym.github.io/kontakt.html">Kontakt</a></li>
+        <li><a href="https://neudopsym.github.io/index.html" onclick="toggleMobileMenu()">Úvod</a></li>
+        <li><a href="https://neudopsym.github.io/foto.html" onclick="toggleMobileMenu()">Foto</a></li>
+        <li><a href="https://neudopsym.github.io/video.html" onclick="toggleMobileMenu()">Video</a></li>
+        <li><a href="https://neudopsym.github.io/o-mne.html" onclick="toggleMobileMenu()">O mne</a></li>
+        <li><a href="https://neudopsym.github.io/kontakt.html" onclick="toggleMobileMenu()">Kontakt</a></li>
       </ul>
-    </nav>
-  </header>
-
-  <main>
-    <!-- Desktop H1 -->
-    <h1 class="desktop-h1">Párové fotografie</h1>
-    
-    <!-- Mobile H1 -->
-    <h1 class="mobile-h1">Párové<br>fotografie</h1>
-    
-    <div class="gallery-square">
-      <img src="https://neudopsym.github.io/img/parove-fotografie/par1.jpg" alt="Párové fotografie 1">
-      <img src="https://neudopsym.github.io/img/parove-fotografie/par2.jpg" alt="Párové fotografie 2">
-      <img src="https://neudopsym.github.io/img/parove-fotografie/par3.jpg" alt="Párové fotografie 3">
-      <img src="https://neudopsym.github.io/img/parove-fotografie/par4.JPG" alt="Párové fotografie 4">
-      <img src="https://neudopsym.github.io/img/parove-fotografie/par5.JPG" alt="Párové fotografie 5">
-      <img src="https://neudopsym.github.io/img/parove-fotografie/par6.JPG" alt="Párové fotografie 6">
     </div>
-  </main>
+
+    <header>
+      <nav>
+        <ul>
+          <li><a href="https://neudopsym.github.io/index.html">Úvod</a></li>
+          <li><a href="https://neudopsym.github.io/foto.html">Foto</a></li>
+          <li><a href="https://neudopsym.github.io/video.html">Video</a></li>
+          <li><a href="https://neudopsym.github.io/o-mne.html">O mne</a></li>
+          <li><a href="https://neudopsym.github.io/kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Desktop H1 -->
+      <h1 class="desktop-h1">Párové fotografie</h1>
+      
+      <!-- Mobile H1 -->
+      <h1 class="mobile-h1">Párové<br>fotografie</h1>
+      
+      <div class="gallery-square">
+        <img src="https://neudopsym.github.io/img/parove-fotografie/par1.jpg" alt="Párové fotografie 1">
+        <img src="https://neudopsym.github.io/img/parove-fotografie/par2.jpg" alt="Párové fotografie 2">
+        <img src="https://neudopsym.github.io/img/parove-fotografie/par3.jpg" alt="Párové fotografie 3">
+        <img src="https://neudopsym.github.io/img/parove-fotografie/par4.JPG" alt="Párové fotografie 4">
+        <img src="https://neudopsym.github.io/img/parove-fotografie/par5.JPG" alt="Párové fotografie 5">
+        <img src="https://neudopsym.github.io/img/parove-fotografie/par6.JPG" alt="Párové fotografie 6">
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Neudopsym Photo</p>
+    </footer>
+  </div>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
@@ -174,11 +199,25 @@
     <img id="lightbox-img" src="" alt="Zväčšená fotografia">
   </div>
 
-  <footer>
-    <p>&copy; 2025 Neudopsym Photo</p>
-  </footer>
-
   <script>
+    let scrollPosition = 0;
+    let isIOS = false;
+    const contentWrapper = document.querySelector('.content-wrapper');
+
+    // Detect iOS devices
+    function detectIOS() {
+      return /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+             (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    }
+
+    // Initialize iOS detection
+    document.addEventListener('DOMContentLoaded', function() {
+      isIOS = detectIOS();
+      if (isIOS) {
+        document.body.classList.add('ios-device');
+      }
+    });
+
     function toggleMobileMenu() {
       const mobileMenu = document.getElementById('mobileMenu');
       mobileMenu.classList.toggle('active');
@@ -197,28 +236,83 @@
     });
 
     function showImage() {
+      // Store current scroll position
+      scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Show lightbox
       lightbox.style.display = 'flex';
       lightboxImg.src = images[current].src;
+      
+      // Prevent background scrolling
+      if (isIOS) {
+        // iOS specific handling
+        document.body.classList.add('lightbox-active');
+        contentWrapper.style.top = `-${scrollPosition}px`;
+        
+        // Prevent touch events on background
+        document.addEventListener('touchmove', preventTouch, { passive: false });
+        document.addEventListener('pointermove', preventTouch, { passive: false });
+      } else {
+        // Standard browsers
+        document.body.style.top = `-${scrollPosition}px`;
+        document.body.classList.add('lightbox-active');
+      }
     }
 
     function closeLightbox() {
       lightbox.style.display = 'none';
+      
+      // Restore scrolling
+      if (isIOS) {
+        // iOS specific cleanup
+        document.body.classList.remove('lightbox-active');
+        contentWrapper.style.top = '';
+        window.scrollTo(0, scrollPosition);
+        
+        // Re-enable touch events
+        document.removeEventListener('touchmove', preventTouch);
+        document.removeEventListener('pointermove', preventTouch);
+      } else {
+        // Standard browsers cleanup
+        document.body.classList.remove('lightbox-active');
+        document.body.style.top = '';
+        window.scrollTo(0, scrollPosition);
+      }
+    }
+
+    function preventTouch(e) {
+      // Allow interaction with lightbox controls
+      const lightboxElement = document.getElementById('lightbox');
+      if (!lightboxElement.contains(e.target)) {
+        e.preventDefault();
+        return false;
+      }
     }
 
     function prevImage() {
       current = (current - 1 + images.length) % images.length;
-      showImage();
+      lightboxImg.src = images[current].src;
     }
 
     function nextImage() {
       current = (current + 1) % images.length;
-      showImage();
+      lightboxImg.src = images[current].src;
     }
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') prevImage();
-      if (e.key === 'ArrowRight') nextImage();
+      // Only handle keyboard events when lightbox is open
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+      }
+    });
+
+    // Close lightbox when clicking outside the image
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
     });
   </script>
 </body>
