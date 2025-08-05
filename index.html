@@ -70,7 +70,7 @@ SK <span class="arrow">▼</span>
 <li><a href="https://neudopsym.github.io/kontakt.html">Kontakt</a></li>
 <li class="language-switcher">
 <div class="language-dropdown">
-<button class="language-button" onclick="toggleLanguageDropdown()">
+<button class="language-button" onclick="toggleMobileLanguageDropdown()">
 SK <span class="arrow">▼</span>
 </button>
 <div class="language-options" id="mobile-language-options">
@@ -206,6 +206,11 @@ transform: scale(1.05);
 @media (max-width: 900px) {
 .mobile-menu .language-switcher {
 margin-top: 20px;
+position: relative;
+}
+
+.mobile-menu .language-dropdown {
+position: relative;
 }
 
 .mobile-menu .language-button {
@@ -217,23 +222,35 @@ justify-content: center;
 }
 
 .mobile-menu .language-options {
-position: static;
-background: rgba(0, 0, 0, 0.3);
-border: 1px solid rgba(255, 255, 255, 0.2);
-margin-top: 10px;
+position: absolute;
+top: 0;
+left: 100%;
+margin-left: 10px;
+background: rgba(26, 26, 26, 0.95);
+backdrop-filter: blur(15px);
+border: 1px solid rgba(255, 255, 255, 0.1);
 border-radius: 8px;
+min-width: 120px;
+z-index: 1002;
+display: none;
+}
+
+.mobile-menu .language-options.active {
+display: block;
 }
 
 .mobile-menu .language-option {
 font-size: 28px;
-padding: 15px 30px;
+padding: 15px 20px;
 text-align: center;
+white-space: nowrap;
 }
 
 .mobile-menu .language-option:hover {
 transform: scale(1.1);
 text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9),
              0 0 12px rgba(255, 255, 255, 0.15);
+background: rgba(255, 255, 255, 0.1);
 }
 }
 
@@ -310,24 +327,45 @@ html.classList.add('no-scroll');
 
 function toggleLanguageDropdown() {
 const dropdown = document.querySelector('.language-dropdown');
+const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
 const options = document.getElementById('language-options');
 const mobileOptions = document.getElementById('mobile-language-options');
 
-dropdown.classList.toggle('active');
-options.classList.toggle('active');
+// Check if we're in mobile menu or desktop
+if (event.target.closest('.mobile-menu')) {
+// Mobile menu logic
+if (mobileDropdown) {
+mobileDropdown.classList.toggle('active');
+}
 if (mobileOptions) {
 mobileOptions.classList.toggle('active');
+}
+} else {
+// Desktop menu logic
+if (dropdown) {
+dropdown.classList.toggle('active');
+}
+if (options) {
+options.classList.toggle('active');
+}
 }
 }
 
 // Close language dropdown when clicking outside
 document.addEventListener('click', function(event) {
 const dropdown = document.querySelector('.language-dropdown');
+const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
 const button = document.querySelector('.language-button');
 
+// Desktop dropdown
 if (!dropdown.contains(event.target)) {
 dropdown.classList.remove('active');
 document.getElementById('language-options').classList.remove('active');
+}
+
+// Mobile dropdown
+if (mobileDropdown && !mobileDropdown.contains(event.target)) {
+mobileDropdown.classList.remove('active');
 const mobileOptions = document.getElementById('mobile-language-options');
 if (mobileOptions) {
 mobileOptions.classList.remove('active');
