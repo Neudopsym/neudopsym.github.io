@@ -26,6 +26,34 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
+/* iOS-specific background fix */
+@supports (-webkit-touch-callout: none) {
+  body {
+    background-attachment: scroll !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+    background: linear-gradient(135deg, #1e1e20 0%, #0f0f12 50%, #08080c 100%) !important;
+    min-height: 100vh !important;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: linear-gradient(135deg, #1e1e20 0%, #0f0f12 50%, #08080c 100%);
+    background-size: 100% 100%;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
 body::after {
   content: '';
   position: fixed;
@@ -49,6 +77,22 @@ body::after {
   will-change: transform;
 }
 
+/* iOS-specific overlay fix */
+@supports (-webkit-touch-callout: none) {
+  body::after {
+    background: linear-gradient(
+      225deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.03) 20%,
+      rgba(0, 0, 0, 0.18) 50%,
+      rgba(0, 0, 0, 0.35) 100%
+    ) !important;
+    background-attachment: scroll !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+  }
+}
+
 /* iOS-specific HTML optimization */
 html {
   color-scheme: dark;
@@ -57,6 +101,13 @@ html {
   transform: translateZ(0);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Additional iOS background fix */
+@supports (-webkit-touch-callout: none) {
+  html {
+    background: #1e1e20 !important;
+  }
 }
 
 a {
@@ -726,6 +777,16 @@ footer {
   body {
     padding-top: 0;
     background-attachment: fixed;
+  }
+  
+  /* iOS-specific mobile background fix */
+  @supports (-webkit-touch-callout: none) {
+    body {
+      background-attachment: scroll !important;
+      background-size: 100% 100% !important;
+      background-repeat: no-repeat !important;
+      background: linear-gradient(135deg, #1e1e20 0%, #0f0f12 50%, #08080c 100%) !important;
+    }
   }
   
   main {
