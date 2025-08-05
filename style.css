@@ -1251,7 +1251,7 @@ footer {
     gap: 10px;
   }
   
-  /* MOBILE GRIDS - SINGLE COLUMN AND SMALLER CARDS */
+  /* MOBILE GRIDS - SINGLE COLUMN AND KEEP SQUARE ASPECT RATIO */
   .photo-albums-grid,
   .video-albums-grid {
     grid-template-columns: 1fr !important; /* Force single column */
@@ -1259,9 +1259,9 @@ footer {
     max-width: 280px; /* Much smaller max-width for mobile */
   }
   
-  /* MOBILE CATEGORY CARDS - MUCH SMALLER BUTTONS */
+  /* MOBILE CATEGORY CARDS - SQUARE ASPECT RATIO FIXED */
   .category-card {
-    aspect-ratio: 1 / 1; /* Keep square aspect ratio */
+    aspect-ratio: 1 / 1 !important; /* Force square aspect ratio */
     width: 100%;
     max-width: 280px; /* Much smaller maximum width */
     height: auto;
@@ -1341,30 +1341,6 @@ footer {
     margin-top: 15px !important;
     margin-left: 0 !important;
     margin-bottom: 20px !important;
-  }
-  
-  /* Mobile portrait layout for category cards - 9:16 ratio */
-  .photo-grid {
-    flex-direction: row !important;
-    gap: 5px !important;
-    padding: 0 5px !important;
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-  }
-
-  .category-card {
-    width: calc(50% - 5px) !important;
-    height: calc((50vw - 5px - 15px) * 16 / 9) !important; /* Creates 9:16 ratio (portrait) */
-    max-height: none !important;
-    min-width: 0 !important;
-    flex-shrink: 1 !important;
-    /* Force override any external CSS that might be making them square */
-    aspect-ratio: 9/16 !important;
-  }
-
-  .category-card h2 {
-    font-size: 1em !important;
-    padding: 15px 10px 10px !important;
   }
 }
 
