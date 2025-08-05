@@ -26,13 +26,18 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
-/* FIX: Prevent body scroll when mobile menu or modal is active */
+/* FIX: Enhanced iOS scroll prevention when mobile menu is active */
 body.no-scroll {
   overflow: hidden !important;
   position: fixed !important;
   width: 100% !important;
   height: 100% !important;
   -webkit-overflow-scrolling: none !important;
+  /* iOS-specific additions */
+  touch-action: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
 }
 
 /* iOS-specific background fix */
@@ -112,10 +117,15 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* FIX: Prevent HTML scroll when menu/modal is active */
+/* FIX: Enhanced HTML scroll prevention for iOS */
 html.no-scroll {
   overflow: hidden !important;
   -webkit-overflow-scrolling: none !important;
+  /* iOS-specific additions */
+  touch-action: none !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 /* Additional iOS background fix */
@@ -888,13 +898,22 @@ footer {
     backface-visibility: hidden;
   }
   
-  .mobile-menu.active {
-    display: flex !important;
-    flex-direction: column !important;
-    overflow: hidden !important;
-    -webkit-overflow-scrolling: none !important;
-    overscroll-behavior: none !important;
-  }
+/* FIX: Enhanced mobile menu for iOS scroll prevention */
+.mobile-menu.active {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  -webkit-overflow-scrolling: none !important;
+  overscroll-behavior: none !important;
+  /* iOS-specific scroll prevention */
+  touch-action: none !important;
+  -webkit-touch-callout: none !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}
   
   .mobile-menu ul {
     list-style: none;
@@ -1113,3 +1132,4 @@ footer {
     font-size: 28px;
   }
 }
+
