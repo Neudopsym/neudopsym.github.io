@@ -252,11 +252,61 @@ max-height: calc(100vh - 100px);
 .video-card {
 cursor: pointer;
 transition: transform 0.3s ease, box-shadow 0.3s ease;
+position: relative;
+overflow: hidden;
 }
 
 .video-card:hover {
 transform: translateY(-5px);
 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Hide any existing play button overlays from external CSS */
+.video-card::before,
+.video-card .play-button,
+.video-card .play-overlay,
+.video-card .video-overlay {
+display: none !important;
+}
+
+/* Desktop play button overlay - perfectly centered */
+.video-card::after {
+content: '▶';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 100px;
+height: 100px;
+background: rgba(0, 0, 0, 0.8);
+color: white;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 42px;
+font-weight: bold;
+opacity: 0;
+transition: opacity 0.3s ease;
+z-index: 100;
+backdrop-filter: blur(2px);
+border: 2px solid rgba(255, 255, 255, 0.3);
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+line-height: 1;
+text-align: center;
+padding-left: 3px; /* Visual centering adjustment for triangular shape */
+}
+
+.video-card:hover::after {
+opacity: 1;
+}
+
+/* Hide play button overlay on mobile */
+@media (max-width: 768px) {
+.video-card::after,
+.video-card::before {
+display: none !important;
+}
 }
 </style>
 </head>
@@ -619,5 +669,3 @@ this.src = `https://i.vimeocdn.com/video/${videoId}_640x360.jpg`;
 </script>
 </body>
 </html>
-
-
