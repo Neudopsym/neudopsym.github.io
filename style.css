@@ -26,6 +26,15 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
+/* FIX: Prevent body scroll when mobile menu or modal is active */
+body.no-scroll {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+  -webkit-overflow-scrolling: none !important;
+}
+
 /* iOS-specific background fix */
 @supports (-webkit-touch-callout: none) {
   body {
@@ -101,6 +110,12 @@ html {
   transform: translateZ(0);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* FIX: Prevent HTML scroll when menu/modal is active */
+html.no-scroll {
+  overflow: hidden !important;
+  -webkit-overflow-scrolling: none !important;
 }
 
 /* Additional iOS background fix */
@@ -412,7 +427,7 @@ p {
   opacity: 1;
 }
 
-/* High-Quality Modal Styling */
+/* High-Quality Modal Styling - FIX: Enhanced for iOS scroll prevention */
 .modal {
   display: none;
   position: fixed;
@@ -426,6 +441,17 @@ p {
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(5px);
+  /* FIX: iOS scroll prevention */
+  -webkit-overflow-scrolling: none;
+  overscroll-behavior: none;
+}
+
+/* FIX: When modal is active, ensure it covers everything */
+.modal.active {
+  display: flex !important;
+  overflow: hidden !important;
+  -webkit-overflow-scrolling: none !important;
+  overscroll-behavior: none !important;
 }
 
 .modal-content {
@@ -836,7 +862,7 @@ footer {
     display: none !important;
   }
   
-  /* Mobile menu overlay - FORCE COLUMN LAYOUT EVERYWHERE with iOS fixes */
+  /* Mobile menu overlay - FIX: Enhanced for iOS scroll prevention */
   .mobile-menu {
     position: fixed;
     top: 0;
@@ -850,6 +876,10 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* FIX: iOS scroll prevention */
+    overflow: hidden;
+    -webkit-overflow-scrolling: none;
+    overscroll-behavior: none;
     /* iOS-specific fixes */
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
@@ -861,6 +891,9 @@ footer {
   .mobile-menu.active {
     display: flex !important;
     flex-direction: column !important;
+    overflow: hidden !important;
+    -webkit-overflow-scrolling: none !important;
+    overscroll-behavior: none !important;
   }
   
   .mobile-menu ul {
