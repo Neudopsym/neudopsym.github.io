@@ -42,6 +42,16 @@
 <li><a href="https://neudopsym.github.io/video.html">Video</a></li>
 <li><a href="https://neudopsym.github.io/o-mne.html">O mne</a></li>
 <li><a href="https://neudopsym.github.io/kontakt.html">Kontakt</a></li>
+<li class="language-switcher">
+<div class="language-dropdown">
+<button class="language-button" onclick="toggleLanguageDropdown()">
+SK <span class="arrow">▼</span>
+</button>
+<div class="language-options" id="language-options">
+<a href="https://neudopsym.github.io/cz/index.html" class="language-option">CZ</a>
+</div>
+</div>
+</li>
 </ul>
 </nav>
 </header>
@@ -57,6 +67,16 @@
 <li><a href="https://neudopsym.github.io/video.html">Video</a></li>
 <li><a href="https://neudopsym.github.io/o-mne.html">O mne</a></li>
 <li><a href="https://neudopsym.github.io/kontakt.html">Kontakt</a></li>
+<li class="language-switcher">
+<div class="language-dropdown">
+<button class="language-button" onclick="toggleLanguageDropdown()">
+SK <span class="arrow">▼</span>
+</button>
+<div class="language-options" id="mobile-language-options">
+<a href="https://neudopsym.github.io/cz/index.html" class="language-option">CZ</a>
+</div>
+</div>
+</li>
 </ul>
 </nav>
 </div>
@@ -98,6 +118,121 @@ display: none;
 
 .desktop-h1 {
 display: block;
+}
+
+/* Language Switcher Styles */
+.language-switcher {
+position: relative;
+}
+
+.language-dropdown {
+position: relative;
+}
+
+.language-button {
+font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+font-weight: 600;
+text-transform: uppercase;
+font-size: 15px;
+letter-spacing: 1px;
+transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+color: #ffffff;
+padding: 6px 12px;
+background: transparent;
+border: none;
+text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 5px;
+}
+
+.language-button:hover {
+color: #ffffff;
+background: transparent;
+transform: scale(1.15) translateY(-2px);
+text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9),
+             0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.arrow {
+font-size: 12px;
+transition: transform 0.3s ease;
+}
+
+.language-dropdown.active .arrow {
+transform: rotate(180deg);
+}
+
+.language-options {
+position: absolute;
+top: 100%;
+left: 0;
+background: rgba(26, 26, 26, 0.95);
+backdrop-filter: blur(15px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+border-radius: 5px;
+min-width: 60px;
+z-index: 1001;
+display: none;
+}
+
+.language-options.active {
+display: block;
+}
+
+.language-option {
+display: block;
+padding: 8px 12px;
+color: #ffffff;
+text-decoration: none;
+font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+font-weight: 600;
+text-transform: uppercase;
+font-size: 15px;
+letter-spacing: 1px;
+text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+transition: all 0.3s ease;
+}
+
+.language-option:hover {
+background: rgba(255, 255, 255, 0.1);
+transform: scale(1.05);
+}
+
+/* Mobile Language Switcher */
+@media (max-width: 900px) {
+.mobile-menu .language-switcher {
+margin-top: 20px;
+}
+
+.mobile-menu .language-button {
+font-size: 32px;
+padding: 15px 30px;
+min-width: 250px;
+text-align: center;
+justify-content: center;
+}
+
+.mobile-menu .language-options {
+position: static;
+background: rgba(0, 0, 0, 0.3);
+border: 1px solid rgba(255, 255, 255, 0.2);
+margin-top: 10px;
+border-radius: 8px;
+}
+
+.mobile-menu .language-option {
+font-size: 28px;
+padding: 15px 30px;
+text-align: center;
+}
+
+.mobile-menu .language-option:hover {
+transform: scale(1.1);
+text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9),
+             0 0 12px rgba(255, 255, 255, 0.15);
+}
 }
 
 /* Make banner bigger on mobile */
@@ -155,8 +290,48 @@ padding: 15px 10px 10px !important;
 <script>
 function toggleMobileMenu() {
 const menu = document.getElementById('mobile-menu');
-menu.classList.toggle('active');
+const body = document.body;
+const html = document.documentElement;
+
+if (menu.classList.contains('active')) {
+// Close menu
+menu.classList.remove('active');
+body.classList.remove('no-scroll');
+html.classList.remove('no-scroll');
+} else {
+// Open menu
+menu.classList.add('active');
+body.classList.add('no-scroll');
+html.classList.add('no-scroll');
 }
+}
+
+function toggleLanguageDropdown() {
+const dropdown = document.querySelector('.language-dropdown');
+const options = document.getElementById('language-options');
+const mobileOptions = document.getElementById('mobile-language-options');
+
+dropdown.classList.toggle('active');
+options.classList.toggle('active');
+if (mobileOptions) {
+mobileOptions.classList.toggle('active');
+}
+}
+
+// Close language dropdown when clicking outside
+document.addEventListener('click', function(event) {
+const dropdown = document.querySelector('.language-dropdown');
+const button = document.querySelector('.language-button');
+
+if (!dropdown.contains(event.target)) {
+dropdown.classList.remove('active');
+document.getElementById('language-options').classList.remove('active');
+const mobileOptions = document.getElementById('mobile-language-options');
+if (mobileOptions) {
+mobileOptions.classList.remove('active');
+}
+}
+});
 </script>
 </body>
 </html>
