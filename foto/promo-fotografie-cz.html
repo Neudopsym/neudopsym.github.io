@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo fotografie – Neudopsym Photo</title>
+    <meta name="description" content="Promo a umělecké záběry pro produktové, reklamní a kreativní využití – studio i lokace.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Filip Kubus">
+    <link rel="canonical" href="https://neudopsym.github.io/foto/promo-fotografie.html">
+    <meta property="og:title" content="Promo fotografie – Neudopsym Photo">
+    <meta property="og:description" content="Promo a umělecké záběry pro produktové, reklamní a kreativní využití – studio i lokace.">
+    <meta property="og:image" content="https://neudopsymphoto.sk/img/promo/preview.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neudopsym.github.io/foto/promo-fotografie.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Promo fotografie – Neudopsym Photo">
+    <meta name="twitter:description" content="Promo a umělecké záběry pro produktové, reklamní a kreativní využití – studio i lokace.">
+    <meta name="twitter:image" content="https://neudopsymphoto.sk/img/promo/preview.jpg">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .lightbox img {
+            max-width: calc(100vw - 60px);
+            max-height: calc(100vh - 60px);
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            display: block;
+        }
+        .lightbox-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 30px;
+            pointer-events: none;
+        }
+        .lightbox-controls span {
+            color: white;
+            font-size: 48px;
+            cursor: pointer;
+            user-select: none;
+            pointer-events: all;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 36px;
+            cursor: pointer;
+        }
+        
+        /* Zamezit posouvání pozadí při otevřeném lightboxu */
+        body.lightbox-active {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+        
+        /* Specifické opravy pro iOS Safari */
+        .content-wrapper {
+            width: 100%;
+            min-height: 100vh;
+        }
+        
+        body.lightbox-active.ios-device .content-wrapper {
+            position: fixed;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        /* Duální struktura H1 */
+        .desktop-h1 {
+            display: block;
+        }
+        
+        .mobile-h1 {
+            display: none;
+        }
+
+        /* Language Switcher Styles */
+        .language-switcher {
+            position: relative;
+        }
+
+        .language-dropdown {
+            position: relative;
+        }
+
+        .language-button {
+            font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 15px;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            color: #ffffff;
+            padding: 6px 12px;
+            background: transparent;
+            border: none;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .language-button:hover {
+            color: #ffffff;
+            background: transparent;
+            transform: scale(1.15) translateY(-2px);
+            text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9),
+                         0 0 12px rgba(255, 255, 255, 0.15);
+        }
+
+        .arrow {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .language-dropdown.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .language-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            min-width: 80px;
+            z-index: 1001;
+            display: none;
+        }
+
+        .language-options.active {
+            display: block;
+        }
+
+        .language-option {
+            display: block;
+            padding: 8px 12px;
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .language-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+        
+        /* Mobilní optimalizace */
+        @media (max-width: 900px) {
+            .desktop-h1 {
+                display: none;
+            }
+            
+            .mobile-h1 {
+                display: block !important;
+                font-size: 50px !important;
+                font-weight: 800 !important;
+                line-height: 1.2 !important;
+                margin-top: 15px !important;
+                margin-left: 0 !important;
+            }
+            
+            .lightbox img {
+                max-width: calc(100vw - 30px);
+                max-height: calc(100vh - 120px);
+            }
+            
+            .lightbox-controls {
+                padding: 0 15px;
+            }
+            .lightbox-controls span {
+                font-size: 36px;
+                background: rgba(0,0,0,0.5);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .lightbox-close {
+                top: 15px;
+                right: 15px;
+                font-size: 32px;
+                background: rgba(0,0,0,0.5);
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Mobile Language Switcher */
+            .mobile-menu .language-options.active {
+                display: block !important;
+            }
+
+            .mobile-menu .language-option {
+                font-size: 18px;
+                padding: 8px 5px;
+                text-align: center;
+                white-space: nowrap;
+                display: block;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .mobile-menu .language-option:last-child {
+                border-bottom: none;
+            }
+
+            .mobile-menu .language-option:hover {
+                transform: scale(1.05);
+                text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
+        
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
+            <ul>
+                <li><a href="https://neudopsym.github.io/index-cz.html" onclick="toggleMobileMenu()">Úvod</a></li>
+                <li><a href="https://neudopsym.github.io/foto-cz.html" onclick="toggleMobileMenu()">Foto</a></li>
+                <li><a href="https://neudopsym.github.io/video-cz.html" onclick="toggleMobileMenu()">Video</a></li>
+                <li><a href="https://neudopsym.github.io/o-mne-cz.html" onclick="toggleMobileMenu()">O mně</a></li>
+                <li><a href="https://neudopsym.github.io/kontakt-cz.html" onclick="toggleMobileMenu()">Kontakt</a></li>
+                <li class="language-switcher">
+                    <div class="language-dropdown">
+                        <button class="language-button" onclick="toggleMobileLanguageDropdown()">
+                            CZ <span class="arrow">▼</span>
+                        </button>
+                        <div class="language-options" id="mobile-language-options">
+                            <a href="promo-fotografie.html" class="language-option">SK</a>
+                            <a href="promo-fotografie-en.html" class="language-option">EN</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="https://neudopsym.github.io/index-cz.html">Úvod</a></li>
+                    <li><a href="https://neudopsym.github.io/foto-cz.html">Foto</a></li>
+                    <li><a href="https://neudopsym.github.io/video-cz.html">Video</a></li>
+                    <li><a href="https://neudopsym.github.io/o-mne-cz.html">O mně</a></li>
+                    <li><a href="https://neudopsym.github.io/kontakt-cz.html">Kontakt</a></li>
+                    <li class="language-switcher">
+                        <div class="language-dropdown">
+                            <button class="language-button" onclick="toggleLanguageDropdown()">
+                                CZ <span class="arrow">▼</span>
+                            </button>
+                            <div class="language-options" id="language-options">
+                                <a href="promo-fotografie.html" class="language-option">SK</a>
+                                <a href="promo-fotografie-en.html" class="language-option">EN</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <h1 class="desktop-h1">Promo fotografie</h1>
+            
+            <h1 class="mobile-h1">Promo<br>fotografie</h1>
+            
+            <div class="gallery-square">
+                <img src="https://neudopsym.github.io/img/promo/promo1.jpg" alt="Promo fotografie 1">
+                <img src="https://neudopsym.github.io/img/promo/promo2.jpg" alt="Promo fotografie 2">
+                <img src="https://neudopsym.github.io/img/promo/promo3.jpg" alt="Promo fotografie 3">
+                <img src="https://neudopsym.github.io/img/promo/promo4.jpg" alt="Promo fotografie 4">
+                <img src="https://neudopsym.github.io/img/promo/promo5.jpg" alt="Promo fotografie 5">
+                <img src="https://neudopsym.github.io/img/promo/promo6.jpg" alt="Promo fotografie 6">
+                <img src="https://neudopsym.github.io/img/promo/promo7.jpg" alt="Promo fotografie 7">
+                <img src="https://neudopsym.github.io/img/promo/promo8.jpg" alt="Promo fotografie 8">
+                <img src="https://neudopsym.github.io/img/promo/promo9.jpg" alt="Promo fotografie 9">
+                <img src="https://neudopsym.github.io/img/promo/promo10.jpg" alt="Promo fotografie 10">
+                <img src="https://neudopsym.github.io/img/promo/promo11.jpg" alt="Promo fotografie 11">
+                <img src="https://neudopsym.github.io/img/promo/promo12.jpg" alt="Promo fotografie 12">
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Neudopsym Photo</p>
+        </footer>
+    </div>
+    
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-controls">
+            <span onclick="prevImage()">&#10094;</span>
+            <span onclick="nextImage()">&#10095;</span>
+        </div>
+        <img id="lightbox-img" src="" alt="Zvětšená fotografie">
+    </div>
+    
+    <script>
+        let scrollPosition = 0;
+        let isIOS = false;
+        const contentWrapper = document.querySelector('.content-wrapper');
+
+        // Detekce iOS zařízení
+        function detectIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                   (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        }
+
+        // Inicializace detekce iOS
+        document.addEventListener('DOMContentLoaded', function() {
+            isIOS = detectIOS();
+            if (isIOS) {
+                document.body.classList.add('ios-device');
+            }
+        });
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function toggleLanguageDropdown() {
+            const dropdown = document.querySelector('header .language-dropdown');
+            const options = document.getElementById('language-options');
+
+            if (dropdown && options) {
+                dropdown.classList.toggle('active');
+                options.classList.toggle('active');
+            }
+        }
+
+        function toggleMobileLanguageDropdown() {
+            const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
+            const mobileOptions = document.getElementById('mobile-language-options');
+
+            if (mobileDropdown && mobileOptions) {
+                mobileDropdown.classList.toggle('active');
+                mobileOptions.classList.toggle('active');
+            }
+        }
+
+        // Close language dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const desktopDropdown = document.querySelector('header .language-dropdown');
+            const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
+
+            // Desktop dropdown
+            if (desktopDropdown && !desktopDropdown.contains(event.target)) {
+                desktopDropdown.classList.remove('active');
+                document.getElementById('language-options').classList.remove('active');
+            }
+
+            // Mobile dropdown
+            if (mobileDropdown && !mobileDropdown.contains(event.target)) {
+                mobileDropdown.classList.remove('active');
+                const mobileOptions = document.getElementById('mobile-language-options');
+                if (mobileOptions) {
+                    mobileOptions.classList.remove('active');
+                }
+            }
+        });
+
+        const images = document.querySelectorAll('.gallery-square img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        let current = 0;
+
+        images.forEach((img, i) => {
+            img.addEventListener('click', () => {
+                current = i;
+                showImage();
+            });
+        });
+
+        function showImage() {
+            // Uložit aktuální pozici posunu
+            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Zobrazit lightbox
+            lightbox.style.display = 'flex';
+            lightboxImg.src = images[current].src;
+            
+            // Zamezit posouvání pozadí
+            if (isIOS) {
+                // Specifické řešení pro iOS
+                document.body.classList.add('lightbox-active');
+                contentWrapper.style.top = `-${scrollPosition}px`;
+                
+                // Zamezit dotykovým událostem na pozadí
+                document.addEventListener('touchmove', preventTouch, { passive: false });
+                document.addEventListener('pointermove', preventTouch, { passive: false });
+            } else {
+                // Standardní prohlížeče
+                document.body.style.top = `-${scrollPosition}px`;
+                document.body.classList.add('lightbox-active');
+            }
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            
+            // Obnovit posouvání
+            if (isIOS) {
+                // Vyčištění specifické pro iOS
+                document.body.classList.remove('lightbox-active');
+                contentWrapper.style.top = '';
+                window.scrollTo(0, scrollPosition);
+                
+                // Povolit dotykové události
+                document.removeEventListener('touchmove', preventTouch);
+                document.removeEventListener('pointermove', preventTouch);
+            } else {
+                // Vyčištění pro standardní prohlížeče
+                document.body.classList.remove('lightbox-active');
+                document.body.style.top = '';
+                window.scrollTo(0, scrollPosition);
+            }
+        }
+
+        function preventTouch(e) {
+            // Povolit interakci s ovládacími prvky lightboxu
+            const lightboxElement = document.getElementById('lightbox');
+            if (!lightboxElement.contains(e.target)) {
+                e.preventDefault();
+                return false;
+            }
+        }
+
+        function prevImage() {
+            current = (current - 1 + images.length) % images.length;
+            lightboxImg.src = images[current].src;
+        }
+
+        function nextImage() {
+            current = (current + 1) % images.length;
+            lightboxImg.src = images[current].src;
+        }
+
+        document.addEventListener('keydown', (e) => {
+            // Reagovat na klávesové události pouze když je lightbox otevřený
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') prevImage();
+                if (e.key === 'ArrowRight') nextImage();
+            }
+        });
+
+        // Zavřít lightbox při kliknutí mimo obrázek
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html> .language-switcher {
+                margin-top: 20px;
+                position: relative;
+            }
+
+            .mobile-menu .language-dropdown {
+                position: relative;
+            }
+
+            .mobile-menu .language-button {
+                font-size: 32px;
+                padding: 15px 30px;
+                min-width: 250px;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .mobile-menu .arrow {
+                font-size: 24px;
+                transition: transform 0.3s ease;
+            }
+
+            .mobile-menu .language-dropdown.active .arrow {
+                transform: rotate(180deg);
+            }
+
+            .mobile-menu .language-options {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: calc(80%);
+                background: rgba(26, 26, 26, 0.95);
+                backdrop-filter: blur(15px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 4px;
+                width: 50px;
+                z-index: 1002;
+                display: none;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            .mobile-menu
