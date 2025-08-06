@@ -20,26 +20,22 @@
   <link rel="stylesheet" href="https://neudopsym.github.io/style.css">
 
   <style>
-    /* Ensure proper footer positioning */
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+/* Footer positioning - same as contact page */
+body {
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+}
 
-    .content-wrapper {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+/* Main content grows to push footer down */
+main {
+flex: 1;
+}
 
-    main {
-      flex: 1;
-    }
-
-    footer {
-      margin-top: auto;
-    }
+/* Footer stays at bottom */
+footer {
+margin-top: auto;
+}
 
     .lightbox {
       display: none;
@@ -551,5 +547,6 @@
   </script>
 </body>
 </html>
+
 
 
