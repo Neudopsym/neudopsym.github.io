@@ -50,6 +50,153 @@ white-space: pre-line;
 }
 }
 
+/* Language Switcher Styles */
+.language-switcher {
+position: relative;
+}
+
+.language-dropdown {
+position: relative;
+}
+
+.language-button {
+font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+font-weight: 600;
+text-transform: uppercase;
+font-size: 15px;
+letter-spacing: 1px;
+transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+color: #ffffff;
+padding: 6px 12px;
+background: transparent;
+border: none;
+text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 5px;
+}
+
+.language-button:hover {
+color: #ffffff;
+background: transparent;
+transform: scale(1.15) translateY(-2px);
+text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9),
+0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.arrow {
+font-size: 12px;
+transition: transform 0.3s ease;
+}
+
+.language-dropdown.active .arrow {
+transform: rotate(180deg);
+}
+
+.language-options {
+position: absolute;
+top: 100%;
+left: 0;
+background: rgba(26, 26, 26, 0.95);
+backdrop-filter: blur(15px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+border-radius: 5px;
+min-width: 80px;
+z-index: 1001;
+display: none;
+}
+
+.language-options.active {
+display: block;
+}
+
+.language-option {
+display: block;
+padding: 8px 12px;
+color: #ffffff;
+text-decoration: none;
+font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+font-weight: 600;
+text-transform: uppercase;
+font-size: 15px;
+letter-spacing: 1px;
+text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+transition: all 0.3s ease;
+}
+
+.language-option:hover {
+background: rgba(255, 255, 255, 0.1);
+transform: scale(1.05);
+}
+
+/* Mobile Language Switcher */
+@media (max-width: 900px) {
+.mobile-menu .language-switcher {
+margin-top: 20px;
+position: relative;
+}
+
+.mobile-menu .language-dropdown {
+position: relative;
+}
+
+.mobile-menu .language-button {
+font-size: 32px;
+padding: 15px 30px;
+min-width: 250px;
+text-align: center;
+justify-content: center;
+}
+
+.mobile-menu .arrow {
+font-size: 24px;
+transition: transform 0.3s ease;
+}
+
+.mobile-menu .language-dropdown.active .arrow {
+transform: rotate(180deg);
+}
+
+.mobile-menu .language-options {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+left: calc(80%);
+background: rgba(26, 26, 26, 0.95);
+backdrop-filter: blur(15px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+border-radius: 4px;
+width: 50px;
+z-index: 1002;
+display: none;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu .language-options.active {
+display: block !important;
+}
+
+.mobile-menu .language-option {
+font-size: 18px;
+padding: 8px 5px;
+text-align: center;
+white-space: nowrap;
+display: block;
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu .language-option:last-child {
+border-bottom: none;
+}
+
+.mobile-menu .language-option:hover {
+transform: scale(1.05);
+text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+background: rgba(255, 255, 255, 0.1);
+}
+}
+
 /* Video Modal - Desktop and Mobile */
 .modal {
 position: fixed;
@@ -330,6 +477,17 @@ display: none !important;
 <li><a href="../video.html" class="active">Video</a></li>
 <li><a href="../o-mne.html">O mne</a></li>
 <li><a href="../kontakt.html">Kontakt</a></li>
+<li class="language-switcher">
+<div class="language-dropdown">
+<button class="language-button" onclick="toggleMobileLanguageDropdown()">
+SK <span class="arrow">▼</span>
+</button>
+<div class="language-options" id="mobile-language-options">
+<a href="ai-videa-en.html" class="language-option">EN</a>
+<a href="ai-videa-cz.html" class="language-option">CZ</a>
+</div>
+</div>
+</li>
 </ul>
 </div>
 
@@ -341,6 +499,17 @@ display: none !important;
 <li><a href="../video.html" class="active">Video</a></li>
 <li><a href="../o-mne.html">O mne</a></li>
 <li><a href="../kontakt.html">Kontakt</a></li>
+<li class="language-switcher">
+<div class="language-dropdown">
+<button class="language-button" onclick="toggleLanguageDropdown()">
+SK <span class="arrow">▼</span>
+</button>
+<div class="language-options" id="language-options">
+<a href="ai-videa-en.html" class="language-option">EN</a>
+<a href="ai-videa-cz.html" class="language-option">CZ</a>
+</div>
+</div>
+</li>
 </ul>
 </nav>
 </header>
@@ -414,6 +583,48 @@ link.addEventListener('click', closeMobileMenu);
 mobileMenu.addEventListener('click', function(event) {
 if (event.target === mobileMenu) {
 closeMobileMenu();
+}
+});
+
+// Language dropdown functionality
+function toggleLanguageDropdown() {
+const dropdown = document.querySelector('header .language-dropdown');
+const options = document.getElementById('language-options');
+
+if (dropdown && options) {
+dropdown.classList.toggle('active');
+options.classList.toggle('active');
+}
+}
+
+function toggleMobileLanguageDropdown() {
+const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
+const mobileOptions = document.getElementById('mobile-language-options');
+
+if (mobileDropdown && mobileOptions) {
+mobileDropdown.classList.toggle('active');
+mobileOptions.classList.toggle('active');
+}
+}
+
+// Close language dropdown when clicking outside
+document.addEventListener('click', function(event) {
+const desktopDropdown = document.querySelector('header .language-dropdown');
+const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
+
+// Desktop dropdown
+if (desktopDropdown && !desktopDropdown.contains(event.target)) {
+desktopDropdown.classList.remove('active');
+document.getElementById('language-options').classList.remove('active');
+}
+
+// Mobile dropdown
+if (mobileDropdown && !mobileDropdown.contains(event.target)) {
+mobileDropdown.classList.remove('active');
+const mobileOptions = document.getElementById('mobile-language-options');
+if (mobileOptions) {
+mobileOptions.classList.remove('active');
+}
 }
 });
 
@@ -663,8 +874,11 @@ this.src = `https://i.vimeocdn.com/video/${videoId}_640x360.jpg`;
 }
 });
 });
+
+// Expose functions globally for onclick handlers
+window.toggleLanguageDropdown = toggleLanguageDropdown;
+window.toggleMobileLanguageDropdown = toggleMobileLanguageDropdown;
 });
 </script>
 </body>
 </html>
-
