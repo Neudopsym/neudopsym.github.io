@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About me– Neudopsym Photo</title>
+  <meta name="description" content="Information about the photographer behind the Neudopsym Photo brand - portraits, couples, documentary and promo shots.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Filip Kubus">
+  <link rel="canonical" href="https://neudopsym.github.io/o-mne-en.html">
+  <link rel="stylesheet" href="https://neudopsym.github.io/style.css">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="About me – Neudopsym Photo">
+  <meta property="og:description" content="Information about the photographer behind the Neudopsym Photo brand - portraits, couples, documentary and promo shots.">
+  <meta property="og:image" content="https://neudopsym.github.io/img/systemove/portrait.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://neudopsym.github.io/o-mne-en.html">
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About me – Neudopsym Photo">
+  <meta name="twitter:description" content="Information about the photographer behind the Neudopsym Photo brand - portraits, couples, documentary and promo shots.">
+  <meta name="twitter:image" content="https://neudopsym.github.io/img/systemove/portrait.jpg">
+
+  <style>
+    /* H1 visibility control */
+    .mobile-h1 {
+      display: none;
+    }
+
+    .desktop-h1 {
+      display: block;
+    }
+
+    /* Mobile H1 styling */
+    @media (max-width: 900px) {
+      /* Hide desktop H1 and show mobile H1 */
+      .desktop-h1 {
+        display: none !important;
+      }
+
+      .mobile-h1 {
+        display: block !important;
+        text-align: left !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1.2 !important;
+        font-size: 50px !important;
+        font-weight: 800 !important;
+        margin-top: 15px !important;
+        margin-left: 0 !important;
+        margin-bottom: 10px !important;
+      }
+    }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: relative;
+    }
+
+    .language-dropdown {
+      position: relative;
+    }
+
+    .language-button {
+      font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 15px;
+      letter-spacing: 1px;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      color: #ffffff;
+      padding: 6px 12px;
+      background: transparent;
+      border: none;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .language-button:hover {
+      color: #ffffff;
+      background: transparent;
+      transform: scale(1.15) translateY(-2px);
+      text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9),
+                   0 0 12px rgba(255, 255, 255, 0.15);
+    }
+
+    .arrow {
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .language-dropdown.active .arrow {
+      transform: rotate(180deg);
+    }
+
+    .language-options {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      min-width: 80px;
+      z-index: 1001;
+      display: none;
+    }
+
+    .language-options.active {
+      display: block;
+    }
+
+    .language-option {
+      display: block;
+      padding: 8px 12px;
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+      transition: all 0.3s ease;
+    }
+
+    .language-option:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: scale(1.05);
+    }
+
+    /* Mobile Language Switcher */
+    @media (max-width: 900px) {
+      .mobile-menu .language-switcher {
+        margin-top: 20px;
+        position: relative;
+      }
+
+      .mobile-menu .language-dropdown {
+        position: relative;
+      }
+
+      .mobile-menu .language-button {
+        font-size: 32px;
+        padding: 15px 30px;
+        min-width: 250px;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .mobile-menu .arrow {
+        font-size: 24px;
+        transition: transform 0.3s ease;
+      }
+
+      .mobile-menu .language-dropdown.active .arrow {
+        transform: rotate(180deg);
+      }
+
+      .mobile-menu .language-options {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: calc(80%);
+        background: rgba(26, 26, 26, 0.95);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        width: 50px;
+        z-index: 1002;
+        display: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .mobile-menu .language-options.active {
+        display: block !important;
+      }
+
+      .mobile-menu .language-option {
+        font-size: 18px;
+        padding: 8px 5px;
+        text-align: center;
+        white-space: nowrap;
+        display: block;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .mobile-menu .language-option:last-child {
+        border-bottom: none;
+      }
+
+      .mobile-menu .language-option:hover {
+        transform: scale(1.05);
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="https://neudopsym.github.io/index-en.html">Home</a></li>
+        <li><a href="https://neudopsym.github.io/foto-en.html">Photo</a></li>
+        <li><a href="https://neudopsym.github.io/video-en.html">Video</a></li>
+        <li><a href="https://neudopsym.github.io/o-mne-en.html" class="active">About me</a></li>
+        <li><a href="https://neudopsym.github.io/kontakt-en.html">Contact</a></li>
+        <li class="language-switcher">
+          <div class="language-dropdown">
+            <button class="language-button" onclick="toggleLanguageDropdown()">
+              EN <span class="arrow">▼</span>
+            </button>
+            <div class="language-options" id="language-options">
+              <a href="o-mne.html" class="language-option">SK</a>
+              <a href="o-mne-cz.html" class="language-option">CZ</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
+    <nav>
+      <ul>
+        <li><a href="https://neudopsym.github.io/index-en.html">Home</a></li>
+        <li><a href="https://neudopsym.github.io/foto-en.html">Photo</a></li>
+        <li><a href="https://neudopsym.github.io/video-en.html">Video</a></li>
+        <li><a href="https://neudopsym.github.io/o-mne-en.html">About me</a></li>
+        <li><a href="https://neudopsym.github.io/kontakt-en.html">Contact</a></li>
+        <li class="language-switcher">
+          <div class="language-dropdown">
+            <button class="language-button" onclick="toggleMobileLanguageDropdown()">
+              EN <span class="arrow">▼</span>
+            </button>
+            <div class="language-options" id="mobile-language-options">
+              <a href="o-mne.html" class="language-option">SK</a>
+              <a href="o-mne-cz.html" class="language-option">CZ</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <main class="about">
+    <h1 class="desktop-h1" style="margin-top: 10px;">About me</h1>
+    <h1 class="mobile-h1">About me</h1>
+    <img src="https://neudopsym.github.io/img/systemove/portrait.jpg" alt="Portrait of a photographer" class="profile-photo">
+    
+    <p>
+      My name is Filip Kubus alias Neudopsym. I specialize in portrait, couple, event and promo photography and I also experiment with AI video. I photograph people – their faces, stories and emotions. I photograph in the studio and on the streets, in private spaces or in nature, but always with an emphasis on authenticity and expression. My goal is to fulfill the client's wishes as much as possible.
+    </p>
+    <p style="margin-bottom: 15px;">
+    </p>
+    <p>
+      In addition to photography, I also create videos, graphics and marketing. I am definitely no stranger to creating creative content, advertising and PPC campaigns (Google Ads, Meta Sklik). My goal is to combine an artistic approach with modern technology - whether it is brand promos, event documentation or personal portraits. This website is a cross-section of my work.  
+    </p>
+    <p style="margin-bottom: 15px;">
+    </p>
+    <p>
+      Are you looking for a photographer and creative content creator? Or an experienced digital marketer who will create complete content, ads or banners and set up PPC campaigns? In that case, look no further, you've come to the right place :) My motto is: "Miracles to wait, impossible immediately!"
+    </p>
+    <p style="margin-bottom: 15px;">
+    </p>
+    <p>
+      If I've interested you, don't hesitate to contact me.
+    </p>
+  </main>
+  
+  <footer>
+    <p>&copy; 2025 Neudopsym Photo</p>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const body = document.body;
+      const html = document.documentElement;
+
+      if (menu.classList.contains('active')) {
+        // Close menu
+        menu.classList.remove('active');
+        body.classList.remove('no-scroll');
+        html.classList.remove('no-scroll');
+      } else {
+        // Open menu
+        menu.classList.add('active');
+        body.classList.add('no-scroll');
+        html.classList.add('no-scroll');
+      }
+    }
+
+    function toggleLanguageDropdown() {
+      const dropdown = document.querySelector('header .language-dropdown');
+      const options = document.getElementById('language-options');
+
+      if (dropdown && options) {
+        dropdown.classList.toggle('active');
+        options.classList.toggle('active');
+      }
+    }
+
+    function toggleMobileLanguageDropdown() {
+      const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
+      const mobileOptions = document.getElementById('mobile-language-options');
+
+      if (mobileDropdown && mobileOptions) {
+        mobileDropdown.classList.toggle('active');
+        mobileOptions.classList.toggle('active');
+      }
+    }
+
+    // Close language dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const desktopDropdown = document.querySelector('header .language-dropdown');
+      const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
+
+      // Desktop dropdown
+      if (desktopDropdown && !desktopDropdown.contains(event.target)) {
+        desktopDropdown.classList.remove('active');
+        document.getElementById('language-options').classList.remove('active');
+      }
+
+      // Mobile dropdown
+      if (mobileDropdown && !mobileDropdown.contains(event.target)) {
+        mobileDropdown.classList.remove('active');
+        const mobileOptions = document.getElementById('mobile-language-options');
+        if (mobileOptions) {
+          mobileOptions.classList.remove('active');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
