@@ -563,7 +563,15 @@ mobileMenu.classList.remove('active');
 document.body.style.overflow = 'auto';
 }
 
-mobileMenuButton.addEventListener('click', openMobileMenu);
+// FIXED: Toggle mobile menu on hamburger button click
+mobileMenuButton.addEventListener('click', function() {
+if (mobileMenu.classList.contains('active')) {
+closeMobileMenu();
+} else {
+openMobileMenu();
+}
+});
+
 mobileMenuClose.addEventListener('click', closeMobileMenu);
 
 // Close mobile menu when clicking on menu links
