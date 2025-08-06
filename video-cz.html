@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Videa – Neudopsym Photo</title>
+<meta name="description" content="Přehled všech video projektů v portfoliu Neudopsym Photo. Promo videa, produktová videa i AI promo videa pro realitní projekty a značky." />
+<meta name="robots" content="index, follow">
+<meta name="author" content="Filip Kubus">
+<link rel="canonical" href="https://neudopsym.github.io/video-cz.html">
+<link rel="stylesheet" href="https://neudopsym.github.io/style.css">
+<meta property="og:title" content="Videa – Neudopsym Photo">
+<meta property="og:description" content="Prohlédněte si kompletní video portfolio – promo videa, produktová videa i AI generované spoty pro klienty.">
+<meta property="og:image" content="https://neudopsym.github.io/img/video-preview.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://neudopsym.github.io/video-cz.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Videa – Neudopsym Photo">
+<meta name="twitter:description" content="Prohlédněte si kompletní video portfolio – promo videa, produktová videa i AI generované spoty pro klienty.">
+<meta name="twitter:image" content="https://neudopsym.github.io/img/video-preview.jpg">
+
+<style>
+/* Mobile-specific h1 rules */
+.video-gallery-section h1.mobile-h1 {
+display: none;
+}
+
+@media (max-width: 768px) {
+/* Remove all padding/margin from parent container */
+.video-gallery-section {
+padding: 0 !important;
+margin: 0 !important;
+}
+
+/* Hide desktop H1 */
+.video-gallery-section h1:not(.mobile-h1) {
+display: none !important;
+}
+
+/* Show mobile H1 with specific spacing */
+.video-gallery-section h1.mobile-h1 {
+display: block !important;
+padding: 0 !important;
+margin: 0 !important;
+margin-top: 15px !important;
+margin-left: 25px !important;
+margin-right: 0 !important;
+margin-bottom: 0 !important;
+margin-bottom: 5px !important;
+text-align: left !important;
+position: relative;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+font-size: 50px !important;
+font-weight: 800 !important;
+line-height: 1.2 !important;
+}
+
+/* Restore some spacing for the paragraph */
+.video-gallery-section p {
+padding: 0 20px !important;
+margin-top: 10px !important;
+}
+}
+
+/* Language Switcher Styles */
+.language-switcher {
+  position: relative;
+}
+
+.language-dropdown {
+  position: relative;
+}
+
+.language-button {
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 1px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  color: #ffffff;
+  padding: 6px 12px;
+  background: transparent;
+  border: none;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.language-button:hover {
+  color: #ffffff;
+  background: transparent;
+  transform: scale(1.15) translateY(-2px);
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9),
+               0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.arrow {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.language-dropdown.active .arrow {
+  transform: rotate(180deg);
+}
+
+.language-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  min-width: 80px;
+  z-index: 1001;
+  display: none;
+}
+
+.language-options.active {
+  display: block;
+}
+
+.language-option {
+  display: block;
+  padding: 8px 12px;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease;
+}
+
+.language-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+/* Mobile Language Switcher */
+@media (max-width: 900px) {
+  .mobile-menu .language-switcher {
+    margin-top: 20px;
+    position: relative;
+  }
+
+  .mobile-menu .language-dropdown {
+    position: relative;
+  }
+
+  .mobile-menu .language-button {
+    font-size: 32px;
+    padding: 15px 30px;
+    min-width: 250px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .mobile-menu .arrow {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-menu .language-dropdown.active .arrow {
+    transform: rotate(180deg);
+  }
+
+  .mobile-menu .language-options {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: calc(80%);
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    width: 50px;
+    z-index: 1002;
+    display: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .mobile-menu .language-options.active {
+    display: block !important;
+  }
+
+  .mobile-menu .language-option {
+    font-size: 18px;
+    padding: 8px 5px;
+    text-align: center;
+    white-space: nowrap;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .mobile-menu .language-option:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-menu .language-option:hover {
+    transform: scale(1.05);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a href="https://neudopsym.github.io/index-cz.html">Úvod</a></li>
+<li><a href="https://neudopsym.github.io/foto-cz.html">Foto</a></li>
+<li><a href="https://neudopsym.github.io/video-cz.html" class="active">Video</a></li>
+<li><a href="https://neudopsym.github.io/o-mne-cz.html">O mně</a></li>
+<li><a href="https://neudopsym.github.io/kontakt-cz.html">Kontakt</a></li>
+<li class="language-switcher">
+  <div class="language-dropdown">
+    <button class="language-button" onclick="toggleLanguageDropdown()">
+      CZ <span class="arrow">▼</span>
+    </button>
+    <div class="language-options" id="language-options">
+      <a href="https://neudopsym.github.io/video.html" class="language-option">SK</a>
+      <a href="https://neudopsym.github.io/video-en.html" class="language-option">EN</a>
+    </div>
+  </div>
+</li>
+</ul>
+</nav>
+</header>
+
+<!-- Mobile Menu -->
+<button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
+<div class="mobile-menu" id="mobile-menu">
+<button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
+<nav>
+<ul>
+<li><a href="https://neudopsym.github.io/index-cz.html">Úvod</a></li>
+<li><a href="https://neudopsym.github.io/foto-cz.html">Foto</a></li>
+<li><a href="https://neudopsym.github.io/video-cz.html">Video</a></li>
+<li><a href="https://neudopsym.github.io/o-mne-cz.html">O mně</a></li>
+<li><a href="https://neudopsym.github.io/kontakt-cz.html">Kontakt</a></li>
+<li class="language-switcher">
+  <div class="language-dropdown">
+    <button class="language-button" onclick="toggleMobileLanguageDropdown()">
+      CZ <span class="arrow">▼</span>
+    </button>
+    <div class="language-options" id="mobile-language-options">
+      <a href="https://neudopsym.github.io/video.html" class="language-option">SK</a>
+      <a href="https://neudopsym.github.io/video-en.html" class="language-option">EN</a>
+    </div>
+  </div>
+</li>
+</ul>
+</nav>
+</div>
+
+<div class="video-gallery-section">
+<h1>Portfolio
+videí</h1>
+<h1 class="mobile-h1">Portfolio<br>videí</h1>
+<p>Vyberte si z video sekcí</p>
+</div>
+
+<div class="video-albums-grid">
+<a href="https://neudopsym.github.io/video/promo-videa.html" class="category-card">
+<img src="https://neudopsym.github.io/img/systemove/aero_chambord_spritz_nahlad_1.jpg" alt="Promo videa">
+<h2>Promo videa</h2>
+</a>
+<a href="https://neudopsym.github.io/video/produktove-videa.html" class="category-card">
+<img src="https://neudopsym.github.io/img/systemove/NKR_nahlad.png" alt="Produktová videa">
+<h2>Produktová videa</h2>
+</a>
+<a href="https://neudopsym.github.io/video/ai-videa.html" class="category-card">
+<img src="https://neudopsym.github.io/img/systemove/nahlad_video_ai.jpg" alt="AI videa">
+<h2>AI videa</h2>
+</a>
+</div>
+
+<footer>
+<p>&copy; 2025 Neudopsym Photo</p>
+</footer>
+
+<script>
+function toggleMobileMenu() {
+const menu = document.getElementById('mobile-menu');
+const body = document.body;
+const html = document.documentElement;
+
+if (menu.classList.contains('active')) {
+  // Close menu
+  menu.classList.remove('active');
+  body.classList.remove('no-scroll');
+  html.classList.remove('no-scroll');
+} else {
+  // Open menu
+  menu.classList.add('active');
+  body.classList.add('no-scroll');
+  html.classList.add('no-scroll');
+}
+}
+
+function toggleLanguageDropdown() {
+const dropdown = document.querySelector('header .language-dropdown');
+const options = document.getElementById('language-options');
+
+if (dropdown && options) {
+  dropdown.classList.toggle('active');
+  options.classList.toggle('active');
+}
+}
+
+function toggleMobileLanguageDropdown() {
+const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
+const mobileOptions = document.getElementById('mobile-language-options');
+
+if (mobileDropdown && mobileOptions) {
+  mobileDropdown.classList.toggle('active');
+  mobileOptions.classList.toggle('active');
+}
+}
+
+// Close language dropdown when clicking outside
+document.addEventListener('click', function(event) {
+const desktopDropdown = document.querySelector('header .language-dropdown');
+const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
+
+// Desktop dropdown
+if (desktopDropdown && !desktopDropdown.contains(event.target)) {
+  desktopDropdown.classList.remove('active');
+  document.getElementById('language-options').classList.remove('active');
+}
+
+// Mobile dropdown
+if (mobileDropdown && !mobileDropdown.contains(event.target)) {
+  mobileDropdown.classList.remove('active');
+  const mobileOptions = document.getElementById('mobile-language-options');
+  if (mobileOptions) {
+    mobileOptions.classList.remove('active');
+  }
+}
+});
+</script>
+</body>
+</html>
