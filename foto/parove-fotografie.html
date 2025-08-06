@@ -20,6 +20,28 @@
   <link rel="stylesheet" href="https://neudopsym.github.io/style.css">
 
   <style>
+    /* Ensure proper footer positioning */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .content-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    footer {
+      margin-top: auto;
+    }
+
     .lightbox {
       display: none;
       position: fixed;
@@ -80,11 +102,6 @@
     }
     
     /* iOS Safari specific fixes */
-    .content-wrapper {
-      width: 100%;
-      min-height: 100vh;
-    }
-    
     body.lightbox-active.ios-device .content-wrapper {
       position: fixed;
       width: 100%;
