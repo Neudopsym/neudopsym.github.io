@@ -1,350 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photo galleries – Neudopsym Photo</title>
-  <meta name="description" content="Overview of all photography sections in the Neudopsym Photo portfolio. Documentary, Tournaments, Events, Portraits, Promo photography, Couple photography." />
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="Filip Kubus">
-  <link rel="canonical" href="https://www.neudopsymphoto.sk/en/foto-en.html">
-  <link rel="stylesheet" href="../style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Gallery – Neudopsym Photo</title>
+<meta name="description" content="Overview of all photography sections in the Neudopsym Photo portfolio. Documentary, Tournaments, Events, Portraits, Promo photography, Couple photography." />
+<meta name="robots" content="index, follow">
+<meta name="author" content="Filip Kubus">
+<link rel="canonical" href="https://neudopsym.github.io/en/foto-en.html">
+<link rel="stylesheet" href="https://neudopsym.github.io/style.css">
+<meta property="og:title" content="Photo Gallery – Neudopsym Photo">
+<meta property="og:description" content="See the complete photography portfolio - documentaries, tournaments, portraits and promo shots.">
+<meta property="og:image" content="https://neudopsym.github.io/img/foto-preview.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://neudopsym.github.io/en/foto-en.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Photo Gallery – Neudopsym Photo">
+<meta name="twitter:description" content="See the complete photography portfolio - documentaries, tournaments, portraits and promo shots.">
+<meta name="twitter:image" content="https://neudopsym.github.io/img/foto-preview.jpg">
 
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Photo galleries – Neudopsym Photo">
-  <meta property="og:description" content="See the complete photography portfolio - documentaries, tournaments, portraits and promo shots.">
-  <meta property="og:image" content="https://www.neudopsymphoto.sk/img/foto-preview.jpg">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.neudopsymphoto.sk/en/foto-en.html">
+<style>
+/* Mobile-specific h1 rules */
+.photo-gallery-section h1.mobile-h1 {
+display: none;
+}
 
-  <!-- Twitter Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Photo galleries – Neudopsym Photo">
-  <meta name="twitter:description" content="See the complete photography portfolio - documentaries, tournaments, portraits and promo shots.">
-  <meta name="twitter:image" content="https://www.neudopsymphoto.sk/img/foto-preview.jpg">
+@media (max-width: 768px) {
+/* Remove all padding/margin from parent container */
+.photo-gallery-section {
+padding: 0 !important;
+margin: 0 !important;
+}
 
-  <!-- Schema.org Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Photo galleries – Neudopsym Photo",
-    "description": "Overview of all photography sections in the Neudopsym Photo portfolio.",
-    "url": "https://www.neudopsymphoto.sk/en/foto-en.html",
-    "author": {
-      "@type": "Person",
-      "name": "Filip Kubus"
-    },
-    "hasPart": [
-      { "@type": "WebPage", "name": "Documentary", "url": "https://www.neudopsymphoto.sk/dokument.html" },
-      { "@type": "WebPage", "name": "Tournaments", "url": "https://www.neudopsymphoto.sk/turnaje.html" },
-      { "@type": "WebPage", "name": "Events", "url": "https://www.neudopsymphoto.sk/eventy.html" },
-      { "@type": "WebPage", "name": "Portraits", "url": "https://www.neudopsymphoto.sk/portrety.html" },
-      { "@type": "WebPage", "name": "Promo photography", "url": "https://www.neudopsymphoto.sk/promo-fotografie.html" },
-      { "@type": "WebPage", "name": "Couple photography", "url": "https://www.neudopsymphoto.sk/parove-fotografie.html" }
-    ]
-  }
-  </script>
-</head>
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index-en.html">Home</a></li>
-        <li><a href="foto-en.html" class="active">Photo</a></li>
-        <li><a href="video-en.html">Video</a></li>
-        <li><a href="o-mne-en.html">About me</a></li>
-        <li><a href="kontakt-en.html">Contact</a></li>
-        <li class="language-switcher">
-          <div class="language-dropdown">
-            <button class="language-button" onclick="toggleLanguageDropdown()">
-              EN <span class="arrow">▼</span>
-            </button>
-            <div class="language-options" id="language-options">
-              <a href="../foto.html" class="language-option">SK</a>
-              <a href="../foto-cz.html" class="language-option">CZ</a>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </header>
+/* Hide desktop H1 */
+.photo-gallery-section h1:not(.mobile-h1) {
+display: none !important;
+}
 
-  <!-- Mobile Menu -->
-  <button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
-  <div class="mobile-menu" id="mobile-menu">
-    <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
-    <nav>
-      <ul>
-        <li><a href="index-en.html">Home</a></li>
-        <li><a href="foto-en.html">Photo</a></li>
-        <li><a href="video-en.html">Video</a></li>
-        <li><a href="o-mne-en.html">About me</a></li>
-        <li><a href="kontakt-en.html">Contact</a></li>
-        <li class="language-switcher">
-          <div class="language-dropdown">
-            <button class="language-button" onclick="toggleMobileLanguageDropdown()">
-              EN <span class="arrow">▼</span>
-            </button>
-            <div class="language-options" id="mobile-language-options">
-              <a href="../foto.html" class="language-option">SK</a>
-              <a href="../foto-cz.html" class="language-option">CZ</a>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </div>
+/* Show mobile H1 with specific spacing */
+.photo-gallery-section h1.mobile-h1 {
+display: block !important;
+padding: 0 !important;
+margin: 0 !important;
+margin-top: 15px !important;
+margin-left: 25px !important;
+margin-right: 0 !important;
+        margin-bottom: 0 !important;
+        margin-bottom: 5px !important;
+text-align: left !important;
+position: relative;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+font-size: 50px !important;
+font-weight: 800 !important;
+line-height: 1.2 !important;
+}
 
-  <main class="categories">
-    <h1>Photo galleries</h1>
-    <p>Choose from thematic portfolio sections:</p>
-    <div class="category-grid">
-      <a href="dokument-en.html" class="category-card">
-        <img src="../img/dokument/preview.jpg" alt="Documentary photography">
-        <h2>Documentary</h2>
-        <p>13 photos</p>
-      </a>
-      <a href="turnaje-en.html" class="category-card">
-        <img src="../img/turnaje/preview.jpg" alt="Tournament photography">
-        <h2>Tournaments</h2>
-        <p>23 photos</p>
-      </a>
-      <a href="eventy-en.html" class="category-card">
-        <img src="../img/eventy/preview.jpg" alt="Event photography">
-        <h2>Events</h2>
-        <p>20 photos</p>
-      </a>
-      <a href="portrety-en.html" class="category-card">
-        <img src="../img/portrety/preview.jpg" alt="Portraits">
-        <h2>Portraits</h2>
-        <p>29 photos</p>
-      </a>
-      <a href="promo-fotografie-en.html" class="category-card">
-        <img src="../img/promo-fotografie/preview.jpg" alt="Promo photography">
-        <h2>Promo photography</h2>
-        <p>12 photos</p>
-      </a>
-      <a href="parove-fotografie-en.html" class="category-card">
-        <img src="../img/parove-fotografie/preview.jpg" alt="Couples in the studio">
-        <h2>Couple photos</h2>
-        <p>6 photos</p>
-      </a>
-    </div>
-  </main>
+/* Restore some spacing for the paragraph */
+.photo-gallery-section p {
+padding: 0 20px !important;
+margin-top: 10px !important;
+}
+}
 
-  <footer>
-    <p>&copy; 2025 Neudopsym Photo</p>
-  </footer>
+/* Language Switcher Styles */
+.language-switcher {
+  position: relative;
+}
 
-  <style>
-  /* Language Switcher Styles */
-  .language-switcher {
+.language-dropdown {
+  position: relative;
+}
+
+.language-button {
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 1px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  color: #ffffff;
+  padding: 6px 12px;
+  background: transparent;
+  border: none;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.language-button:hover {
+  color: #ffffff;
+  background: transparent;
+  transform: scale(1.15) translateY(-2px);
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9),
+               0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.arrow {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.language-dropdown.active .arrow {
+  transform: rotate(180deg);
+}
+
+.language-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  min-width: 80px;
+  z-index: 1001;
+  display: none;
+}
+
+.language-options.active {
+  display: block;
+}
+
+.language-option {
+  display: block;
+  padding: 8px 12px;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease;
+}
+
+.language-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+/* Mobile Language Switcher */
+@media (max-width: 900px) {
+  .mobile-menu .language-switcher {
+    margin-top: 20px;
     position: relative;
   }
 
-  .language-dropdown {
+  .mobile-menu .language-dropdown {
     position: relative;
   }
 
-  .language-button {
-    font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 15px;
-    letter-spacing: 1px;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    color: #ffffff;
-    padding: 6px 12px;
-    background: transparent;
-    border: none;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  .mobile-menu .language-button {
+    font-size: 32px;
+    padding: 15px 30px;
+    min-width: 250px;
+    text-align: center;
+    justify-content: center;
   }
 
-  .language-button:hover {
-    color: #ffffff;
-    background: transparent;
-    transform: scale(1.15) translateY(-2px);
-    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9),
-                 0 0 12px rgba(255, 255, 255, 0.15);
-  }
-
-  .arrow {
-    font-size: 12px;
+  .mobile-menu .arrow {
+    font-size: 24px;
     transition: transform 0.3s ease;
   }
 
-  .language-dropdown.active .arrow {
+  .mobile-menu .language-dropdown.active .arrow {
     transform: rotate(180deg);
   }
 
-  .language-options {
+  .mobile-menu .language-options {
     position: absolute;
-    top: 100%;
-    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    left: calc(80%);
     background: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    min-width: 80px;
-    z-index: 1001;
+    border-radius: 4px;
+    width: 50px;
+    z-index: 1002;
     display: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
-  .language-options.active {
+  .mobile-menu .language-options.active {
+    display: block !important;
+  }
+
+  .mobile-menu .language-option {
+    font-size: 18px;
+    padding: 8px 5px;
+    text-align: center;
+    white-space: nowrap;
     display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .language-option {
-    display: block;
-    padding: 8px 12px;
-    color: #ffffff;
-    text-decoration: none;
-    font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 15px;
-    letter-spacing: 1px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-    transition: all 0.3s ease;
+  .mobile-menu .language-option:last-child {
+    border-bottom: none;
   }
 
-  .language-option:hover {
-    background: rgba(255, 255, 255, 0.1);
+  .mobile-menu .language-option:hover {
     transform: scale(1.05);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+    background: rgba(255, 255, 255, 0.1);
   }
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a href="https://neudopsym.github.io/en/index-en.html">Home</a></li>
+<li><a href="https://neudopsym.github.io/en/foto-en.html" class="active">Photo</a></li>
+<li><a href="https://neudopsym.github.io/en/video-en.html">Video</a></li>
+<li><a href="https://neudopsym.github.io/en/o-mne-en.html">About me</a></li>
+<li><a href="https://neudopsym.github.io/en/kontakt-en.html">Contact</a></li>
+<li class="language-switcher">
+  <div class="language-dropdown">
+    <button class="language-button" onclick="toggleLanguageDropdown()">
+      EN <span class="arrow">▼</span>
+    </button>
+    <div class="language-options" id="language-options">
+      <a href="https://neudopsym.github.io/foto.html" class="language-option">SK</a>
+      <a href="https://neudopsym.github.io/foto-cz.html" class="language-option">CZ</a>
+    </div>
+  </div>
+</li>
+</ul>
+</nav>
+</header>
 
-  /* Mobile Language Switcher */
-  @media (max-width: 900px) {
-    .mobile-menu .language-switcher {
-      margin-top: 20px;
-      position: relative;
-    }
+<!-- Mobile Menu -->
+<button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
+<div class="mobile-menu" id="mobile-menu">
+<button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
+<nav>
+<ul>
+<li><a href="https://neudopsym.github.io/en/index-en.html">Home</a></li>
+<li><a href="https://neudopsym.github.io/en/foto-en.html">Photo</a></li>
+<li><a href="https://neudopsym.github.io/en/video-en.html">Video</a></li>
+<li><a href="https://neudopsym.github.io/en/o-mne-en.html">About me</a></li>
+<li><a href="https://neudopsym.github.io/en/kontakt-en.html">Contact</a></li>
+<li class="language-switcher">
+  <div class="language-dropdown">
+    <button class="language-button" onclick="toggleMobileLanguageDropdown()">
+      EN <span class="arrow">▼</span>
+    </button>
+    <div class="language-options" id="mobile-language-options">
+      <a href="https://neudopsym.github.io/foto.html" class="language-option">SK</a>
+      <a href="https://neudopsym.github.io/foto-cz.html" class="language-option">CZ</a>
+    </div>
+  </div>
+</li>
+</ul>
+</nav>
+</div>
 
-    .mobile-menu .language-dropdown {
-      position: relative;
-    }
+<div class="photo-gallery-section">
+<h1>Photography
+Portfolio</h1>
+<h1 class="mobile-h1">Photography<br>Portfolio</h1>
+<p>Take a look at my portfolio</p>
+</div>
 
-    .mobile-menu .language-button {
-      font-size: 32px;
-      padding: 15px 30px;
-      min-width: 250px;
-      text-align: center;
-      justify-content: center;
-    }
+<div class="photo-albums-grid">
+<a href="https://neudopsym.github.io/foto/portrety.html" class="category-card">
+<img src="https://neudopsym.github.io/img/portrety/portret1.jpg" alt="Portraits">
+<button>Portraits</button>
+</a>
+<a href="https://neudopsym.github.io/foto/promo-fotografie.html" class="category-card">
+<img src="https://neudopsym.github.io/img/promo/promo1.jpg" alt="Promo shots">
+<button>Promo photography</button>
+</a>
+<a href="https://neudopsym.github.io/foto/parove-fotografie.html" class="category-card">
+<img src="https://neudopsym.github.io/img/parove-fotografie/par1.jpg" alt="Couples in studio">
+<button>Couple photos</button>
+</a>      
+<a href="https://neudopsym.github.io/foto/turnaje.html" class="category-card">
+<img src="https://neudopsym.github.io/img/turnaje/turnaj1.jpg" alt="Tournament photography">
+<button>Tournaments</button>
+</a>
+<a href="https://neudopsym.github.io/foto/eventy.html" class="category-card">
+<img src="https://neudopsym.github.io/img/eventy/event1.jpg" alt="Event photography">
+<button>Events</button>
+</a>
+<a href="https://neudopsym.github.io/foto/dokument.html" class="category-card">
+<img src="https://neudopsym.github.io/img/dokument/dokument1.JPG" alt="Documentary photography">
+<button>Documentary</button>
+</a>      
+</div>
 
-    .mobile-menu .arrow {
-      font-size: 24px;
-      transition: transform 0.3s ease;
-    }
+<footer>
+<p>&copy; 2025 Neudopsym Photo</p>
+</footer>
 
-    .mobile-menu .language-dropdown.active .arrow {
-      transform: rotate(180deg);
-    }
+<script>
+function toggleMobileMenu() {
+const menu = document.getElementById('mobile-menu');
+const body = document.body;
+const html = document.documentElement;
 
-    .mobile-menu .language-options {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: calc(80%);
-      background: rgba(26, 26, 26, 0.95);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
-      width: 50px;
-      z-index: 1002;
-      display: none;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    }
+if (menu.classList.contains('active')) {
+  // Close menu
+  menu.classList.remove('active');
+  body.classList.remove('no-scroll');
+  html.classList.remove('no-scroll');
+} else {
+  // Open menu
+  menu.classList.add('active');
+  body.classList.add('no-scroll');
+  html.classList.add('no-scroll');
+}
+}
 
-    .mobile-menu .language-options.active {
-      display: block !important;
-    }
+function toggleLanguageDropdown() {
+const dropdown = document.querySelector('header .language-dropdown');
+const options = document.getElementById('language-options');
 
-    .mobile-menu .language-option {
-      font-size: 18px;
-      padding: 8px 5px;
-      text-align: center;
-      white-space: nowrap;
-      display: block;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
+if (dropdown && options) {
+  dropdown.classList.toggle('active');
+  options.classList.toggle('active');
+}
+}
 
-    .mobile-menu .language-option:last-child {
-      border-bottom: none;
-    }
+function toggleMobileLanguageDropdown() {
+const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
+const mobileOptions = document.getElementById('mobile-language-options');
 
-    .mobile-menu .language-option:hover {
-      transform: scale(1.05);
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
-      background: rgba(255, 255, 255, 0.1);
-    }
+if (mobileDropdown && mobileOptions) {
+  mobileDropdown.classList.toggle('active');
+  mobileOptions.classList.toggle('active');
+}
+}
+
+// Close language dropdown when clicking outside
+document.addEventListener('click', function(event) {
+const desktopDropdown = document.querySelector('header .language-dropdown');
+const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
+
+// Desktop dropdown
+if (desktopDropdown && !desktopDropdown.contains(event.target)) {
+  desktopDropdown.classList.remove('active');
+  document.getElementById('language-options').classList.remove('active');
+}
+
+// Mobile dropdown
+if (mobileDropdown && !mobileDropdown.contains(event.target)) {
+  mobileDropdown.classList.remove('active');
+  const mobileOptions = document.getElementById('mobile-language-options');
+  if (mobileOptions) {
+    mobileOptions.classList.remove('active');
   }
-  </style>
-
-  <script>
-  function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
-    const body = document.body;
-    const html = document.documentElement;
-
-    if (menu.classList.contains('active')) {
-      // Close menu
-      menu.classList.remove('active');
-      body.classList.remove('no-scroll');
-      html.classList.remove('no-scroll');
-    } else {
-      // Open menu
-      menu.classList.add('active');
-      body.classList.add('no-scroll');
-      html.classList.add('no-scroll');
-    }
-  }
-
-  function toggleLanguageDropdown() {
-    const dropdown = document.querySelector('header .language-dropdown');
-    const options = document.getElementById('language-options');
-
-    if (dropdown && options) {
-      dropdown.classList.toggle('active');
-      options.classList.toggle('active');
-    }
-  }
-
-  function toggleMobileLanguageDropdown() {
-    const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
-    const mobileOptions = document.getElementById('mobile-language-options');
-
-    if (mobileDropdown && mobileOptions) {
-      mobileDropdown.classList.toggle('active');
-      mobileOptions.classList.toggle('active');
-    }
-  }
-
-  // Close language dropdown when clicking outside
-  document.addEventListener('click', function(event) {
-    const desktopDropdown = document.querySelector('header .language-dropdown');
-    const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
-
-    // Desktop dropdown
-    if (desktopDropdown && !desktopDropdown.contains(event.target)) {
-      desktopDropdown.classList.remove('active');
-      document.getElementById('language-options').classList.remove('active');
-    }
-
-    // Mobile dropdown
-    if (mobileDropdown && !mobileDropdown.contains(event.target)) {
-      mobileDropdown.classList.remove('active');
-      const mobileOptions = document.getElementById('mobile-language-options');
-      if (mobileOptions) {
-        mobileOptions.classList.remove('active');
-      }
-    }
-  });
-  </script>
+}
+});
+</script>
 </body>
 </html>
