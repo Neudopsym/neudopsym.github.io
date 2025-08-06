@@ -291,63 +291,62 @@ Portfolio</h1>
 
 <script>
 function toggleMobileMenu() {
-const menu = document.getElementById('mobile-menu');
-const body = document.body;
-const html = document.documentElement;
+  const menu = document.getElementById('mobile-menu');
+  const body = document.body;
+  const html = document.documentElement;
 
-if (menu.classList.contains('active')) {
-  // Close menu
-  menu.classList.remove('active');
-  body.classList.remove('no-scroll');
-  html.classList.remove('no-scroll');
-} else {
-  // Open menu
-  menu.classList.add('active');
-  body.classList.add('no-scroll');
-  html.classList.add('no-scroll');
-}
+  if (menu.classList.contains('active')) {
+    // Close menu
+    menu.classList.remove('active');
+    body.classList.remove('no-scroll');
+    html.classList.remove('no-scroll');
+  } else {
+    // Open menu
+    menu.classList.add('active');
+    body.classList.add('no-scroll');
+    html.classList.add('no-scroll');
+  }
 }
 
 function toggleLanguageDropdown() {
-const dropdown = document.querySelector('header .language-dropdown');
-const options = document.getElementById('language-options');
+  const dropdown = document.querySelector('header .language-dropdown');
+  const options = document.getElementById('language-options');
 
-if (dropdown && options) {
-  dropdown.classList.toggle('active');
-  options.classList.toggle('active');
-}
+  if (dropdown && options) {
+    dropdown.classList.toggle('active');
+    options.classList.toggle('active');
+  }
 }
 
 function toggleMobileLanguageDropdown() {
-const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
-const mobileOptions = document.getElementById('mobile-language-options');
+  const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
+  const mobileOptions = document.getElementById('mobile-language-options');
 
-if (mobileDropdown && mobileOptions) {
-  mobileDropdown.classList.toggle('active');
-  mobileOptions.classList.toggle('active');
-}
+  if (mobileDropdown && mobileOptions) {
+    mobileDropdown.classList.toggle('active');
+    mobileOptions.classList.toggle('active');
+  }
 }
 
 // Close language dropdown when clicking outside
 document.addEventListener('click', function(event) {
-const desktopDropdown = document.querySelector('header .language-dropdown');
-const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
+  const desktopDropdown = document.querySelector('header .language-dropdown');
+  const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
 
-// Desktop dropdown
-if (desktopDropdown && !desktopDropdown.contains(event.target)) {
-  desktopDropdown.classList.remove('active');
-  document.getElementById('language-options').classList.remove('active');
-}
-
-// Mobile dropdown
-if (mobileDropdown && !mobileDropdown.contains(event.target)) {
-  mobileDropdown.classList.remove('active');
-  const mobileOptions = document.getElementById('mobile-language-options');
-  if (mobileOptions) {
-    mobileOptions.classList.remove('active');
+  // Desktop dropdown
+  if (desktopDropdown && !desktopDropdown.contains(event.target)) {
+    desktopDropdown.classList.remove('active');
+    document.getElementById('language-options').classList.remove('active');
   }
-}
-}
+
+  // Mobile dropdown
+  if (mobileDropdown && !mobileDropdown.contains(event.target)) {
+    mobileDropdown.classList.remove('active');
+    const mobileOptions = document.getElementById('mobile-language-options');
+    if (mobileOptions) {
+      mobileOptions.classList.remove('active');
+    }
+  }
 });
 </script>
 </body>
