@@ -20,7 +20,25 @@
   <link rel="stylesheet" href="https://neudopsym.github.io/style.css">
 
   <style>
+/* Add these CSS rules to make footer stick to bottom */
 
+/* Make the content wrapper a flex container with full height */
+.content-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make main content grow to fill available space */
+main {
+  flex: 1;
+}
+
+/* Footer will naturally be pushed to bottom */
+footer {
+  margin-top: auto; /* This ensures footer stays at bottom even with little content */
+}
+    
     .lightbox {
       display: none;
       position: fixed;
@@ -531,4 +549,5 @@
   </script>
 </body>
 </html>
+
 
