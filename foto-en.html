@@ -18,103 +18,51 @@
 <meta name="twitter:title" content="Photo Gallery – Neudopsym Photo">
 <meta name="twitter:description" content="See the complete photography portfolio - documentaries, tournaments, portraits and promo shots.">
 <meta name="twitter:image" content="https://neudopsym.github.io/img/foto-preview.jpg">
-</head>
-<body>
-<header>
-<nav>
-<ul>
-<li><a href="https://neudopsym.github.io/index-en.html">Home</a></li>
-<li><a href="https://neudopsym.github.io/foto-en.html" class="active">Photo</a></li>
-<li><a href="https://neudopsym.github.io/video-en.html">Video</a></li>
-<li><a href="https://neudopsym.github.io/o-mne-en.html">About me</a></li>
-<li><a href="https://neudopsym.github.io/kontakt-en.html">Contact</a></li>
-<li class="language-switcher">
-  <div class="language-dropdown">
-    <button class="language-button" onclick="toggleLanguageDropdown()">
-      EN <span class="arrow">▼</span>
-    </button>
-    <div class="language-options" id="language-options">
-      <a href="https://neudopsym.github.io/foto.html" class="language-option">SK</a>
-      <a href="https://neudopsym.github.io/foto-cz.html" class="language-option">CZ</a>
-    </div>
-  </div>
-</li>
-</ul>
-</nav>
-</header>
-
-<!-- Mobile Menu -->
-<button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
-<div class="mobile-menu" id="mobile-menu">
-<button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
-<nav>
-<ul>
-<li><a href="https://neudopsym.github.io/index-en.html">Home</a></li>
-<li><a href="https://neudopsym.github.io/foto-en.html">Photo</a></li>
-<li><a href="https://neudopsym.github.io/video-en.html">Video</a></li>
-<li><a href="https://neudopsym.github.io/o-mne-en.html">About me</a></li>
-<li><a href="https://neudopsym.github.io/kontakt-en.html">Contact</a></li>
-<li class="language-switcher">
-  <div class="language-dropdown">
-    <button class="language-button" onclick="toggleMobileLanguageDropdown()">
-      EN <span class="arrow">▼</span>
-    </button>
-    <div class="language-options" id="mobile-language-options">
-      <a href="https://neudopsym.github.io/foto.html" class="language-option">SK</a>
-      <a href="https://neudopsym.github.io/foto-cz.html" class="language-option">CZ</a>
-    </div>
-  </div>
-</li>
-</ul>
-</nav>
-</div>
-
-<main class="categories">
-<h1>Photo Gallery</h1>
-<h1 class="mobile-h1">Photo<br>Gallery</h1>
-<p>Choose from the thematic sections of the portfolio:</p>
-<div class="category-grid">
-  <a href="https://neudopsym.github.io/foto/portrety.html" class="category-card">
-    <img src="https://neudopsym.github.io/img/portrety/portret1.jpg" alt="Portraits">
-    <h2>Portraits</h2>
-    <p>29 photos</p>
-  </a>
-  <a href="https://neudopsym.github.io/foto/promo-fotografie.html" class="category-card">
-    <img src="https://neudopsym.github.io/img/promo/promo1.jpg" alt="Promo shots">
-    <h2>Promo photography</h2>
-    <p>12 photos</p>
-  </a>
-  <a href="https://neudopsym.github.io/foto/parove-fotografie.html" class="category-card">
-    <img src="https://neudopsym.github.io/img/parove-fotografie/par1.jpg" alt="Couples in studio">
-    <h2>Couple photos</h2>
-    <p>6 photos</p>
-  </a>      
-  <a href="https://neudopsym.github.io/foto/turnaje.html" class="category-card">
-    <img src="https://neudopsym.github.io/img/turnaje/turnaj1.jpg" alt="Tournament photography">
-    <h2>Tournaments</h2>
-    <p>23 photos</p>
-  </a>
-  <a href="https://neudopsym.github.io/foto/eventy.html" class="category-card">
-    <img src="https://neudopsym.github.io/img/eventy/event1.jpg" alt="Event photography">
-    <h2>Events</h2>
-    <p>20 photos</p>
-  </a>
-  <a href="https://neudopsym.github.io/foto/dokument.html" class="category-card">
-    <img src="https://neudopsym.github.io/img/dokument/dokument1.JPG" alt="Documentary photography">
-    <h2>Documentary</h2>
-    <p>13 photos</p>
-  </a>      
-</div>
-</main>
-
-<footer>
-<p>&copy; 2025 Neudopsym Photo</p>
-</footer>
 
 <style>
-/* H1 visibility control */
-.mobile-h1 {
+/* Mobile-specific h1 rules */
+.photo-gallery-section h1.mobile-h1 {
 display: none;
+}
+
+@media (max-width: 768px) {
+/* Remove all padding/margin from parent container */
+.photo-gallery-section {
+padding: 0 !important;
+margin: 0 !important;
+}
+
+/* Hide desktop H1 */
+.photo-gallery-section h1:not(.mobile-h1) {
+display: none !important;
+}
+
+/* Show mobile H1 with specific spacing */
+.photo-gallery-section h1.mobile-h1 {
+display: block !important;
+padding: 0 !important;
+margin: 0 !important;
+margin-top: 15px !important;
+margin-left: 25px !important;
+margin-right: 0 !important;
+margin-bottom: 0 !important;
+margin-bottom: 5px !important;
+text-align: left !important;
+position: relative;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+font-size: 50px !important;
+font-weight: 800 !important;
+line-height: 1.2 !important;
+}
+
+/* Restore some spacing for the paragraph */
+.photo-gallery-section p {
+padding: 0 20px !important;
+margin-top: 10px !important;
+}
 }
 
 /* Language Switcher Styles */
@@ -263,47 +211,94 @@ display: none;
     background: rgba(255, 255, 255, 0.1);
   }
 }
-
-/* Mobile-specific h1 rules */
-@media (max-width: 768px) {
-/* Remove all padding/margin from parent container */
-.categories {
-padding: 0 !important;
-margin: 0 !important;
-}
-
-/* Hide desktop H1 */
-.categories h1:not(.mobile-h1) {
-display: none !important;
-}
-
-/* Show mobile H1 with specific spacing */
-.categories h1.mobile-h1 {
-display: block !important;
-padding: 0 !important;
-margin: 0 !important;
-margin-top: 15px !important;
-margin-left: 25px !important;
-margin-right: 0 !important;
-margin-bottom: 5px !important;
-text-align: left !important;
-position: relative;
-left: 0;
-right: 0;
-top: 0;
-bottom: 0;
-font-size: 50px !important;
-font-weight: 800 !important;
-line-height: 1.2 !important;
-}
-
-/* Restore some spacing for the paragraph */
-.categories p {
-padding: 0 20px !important;
-margin-top: 10px !important;
-}
-}
 </style>
+</head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a href="https://neudopsym.github.io/index-en.html">Home</a></li>
+<li><a href="https://neudopsym.github.io/foto-en.html" class="active">Photo</a></li>
+<li><a href="https://neudopsym.github.io/video-en.html">Video</a></li>
+<li><a href="https://neudopsym.github.io/o-mne-en.html">About me</a></li>
+<li><a href="https://neudopsym.github.io/kontakt-en.html">Contact</a></li>
+<li class="language-switcher">
+  <div class="language-dropdown">
+    <button class="language-button" onclick="toggleLanguageDropdown()">
+      EN <span class="arrow">▼</span>
+    </button>
+    <div class="language-options" id="language-options">
+      <a href="https://neudopsym.github.io/foto.html" class="language-option">SK</a>
+      <a href="https://neudopsym.github.io/foto-cz.html" class="language-option">CZ</a>
+    </div>
+  </div>
+</li>
+</ul>
+</nav>
+</header>
+
+<!-- Mobile Menu -->
+<button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
+<div class="mobile-menu" id="mobile-menu">
+<button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
+<nav>
+<ul>
+<li><a href="https://neudopsym.github.io/index-en.html">Home</a></li>
+<li><a href="https://neudopsym.github.io/foto-en.html">Photo</a></li>
+<li><a href="https://neudopsym.github.io/video-en.html">Video</a></li>
+<li><a href="https://neudopsym.github.io/o-mne-en.html">About me</a></li>
+<li><a href="https://neudopsym.github.io/kontakt-en.html">Contact</a></li>
+<li class="language-switcher">
+  <div class="language-dropdown">
+    <button class="language-button" onclick="toggleMobileLanguageDropdown()">
+      EN <span class="arrow">▼</span>
+    </button>
+    <div class="language-options" id="mobile-language-options">
+      <a href="https://neudopsym.github.io/foto.html" class="language-option">SK</a>
+      <a href="https://neudopsym.github.io/foto-cz.html" class="language-option">CZ</a>
+    </div>
+  </div>
+</li>
+</ul>
+</nav>
+</div>
+
+<div class="photo-gallery-section">
+<h1>Photo Gallery</h1>
+<h1 class="mobile-h1">Photo<br>Gallery</h1>
+<p>Choose from the thematic sections of the portfolio:</p>
+</div>
+
+<div class="photo-albums-grid">
+<a href="https://neudopsym.github.io/foto/portrety.html" class="category-card">
+<img src="https://neudopsym.github.io/img/portrety/portret1.jpg" alt="Portraits">
+<button>Portraits</button>
+</a>
+<a href="https://neudopsym.github.io/foto/promo-fotografie.html" class="category-card">
+<img src="https://neudopsym.github.io/img/promo/promo1.jpg" alt="Promo shots">
+<button>Promo photography</button>
+</a>
+<a href="https://neudopsym.github.io/foto/parove-fotografie.html" class="category-card">
+<img src="https://neudopsym.github.io/img/parove-fotografie/par1.jpg" alt="Couples in studio">
+<button>Couple photos</button>
+</a>      
+<a href="https://neudopsym.github.io/foto/turnaje.html" class="category-card">
+<img src="https://neudopsym.github.io/img/turnaje/turnaj1.jpg" alt="Tournament photography">
+<button>Tournaments</button>
+</a>
+<a href="https://neudopsym.github.io/foto/eventy.html" class="category-card">
+<img src="https://neudopsym.github.io/img/eventy/event1.jpg" alt="Event photography">
+<button>Events</button>
+</a>
+<a href="https://neudopsym.github.io/foto/dokument.html" class="category-card">
+<img src="https://neudopsym.github.io/img/dokument/dokument1.JPG" alt="Documentary photography">
+<button>Documentary</button>
+</a>      
+</div>
+
+<footer>
+<p>&copy; 2025 Neudopsym Photo</p>
+</footer>
 
 <script>
 function toggleMobileMenu() {
@@ -335,4 +330,35 @@ if (dropdown && options) {
 }
 
 function toggleMobileLanguageDropdown() {
-const mobileDropdown = document.querySelector
+const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
+const mobileOptions = document.getElementById('mobile-language-options');
+
+if (mobileDropdown && mobileOptions) {
+  mobileDropdown.classList.toggle('active');
+  mobileOptions.classList.toggle('active');
+}
+}
+
+// Close language dropdown when clicking outside
+document.addEventListener('click', function(event) {
+const desktopDropdown = document.querySelector('header .language-dropdown');
+const mobileDropdown = document.querySelector('.mobile-menu .language-dropdown');
+
+// Desktop dropdown
+if (desktopDropdown && !desktopDropdown.contains(event.target)) {
+  desktopDropdown.classList.remove('active');
+  document.getElementById('language-options').classList.remove('active');
+}
+
+// Mobile dropdown
+if (mobileDropdown && !mobileDropdown.contains(event.target)) {
+  mobileDropdown.classList.remove('active');
+  const mobileOptions = document.getElementById('mobile-language-options');
+  if (mobileOptions) {
+    mobileOptions.classList.remove('active');
+  }
+}
+});
+</script>
+</body>
+</html>
