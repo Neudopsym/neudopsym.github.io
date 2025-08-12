@@ -41,12 +41,12 @@ footer {
     
     .lightbox {
       display: none;
-      position: fixed;
-      z-index: 1000;
+      position: absolute;
       top: 0;
       left: 0;
+      z-index: 1000;
       width: 100%;
-      height: 100%;
+      height: 100vh;
       background: rgba(0,0,0,0.85);
       justify-content: center;
       align-items: center;
@@ -440,16 +440,15 @@ footer {
     });
 
     function showImage() {
-      // Show lightbox using the same approach as eventy.html
+      // Get current scroll position
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Position lightbox at current scroll position
+      lightbox.style.top = scrollY + 'px';
       lightbox.classList.add('show');
       
       // Prevent body scroll when lightbox is open
       document.body.style.overflow = 'hidden';
-      
-      // On mobile, also prevent scrolling of the page behind lightbox
-      if (window.innerWidth <= 768) {
-        document.documentElement.style.overflow = 'hidden';
-      }
       
       lightboxImg.src = images[current].src;
     }
@@ -459,10 +458,6 @@ footer {
       
       // Restore scrolling
       document.body.style.overflow = 'auto';
-      
-      if (window.innerWidth <= 768) {
-        document.documentElement.style.overflow = 'auto';
-      }
     }
 
     function prevImage() {
