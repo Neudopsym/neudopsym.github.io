@@ -75,16 +75,6 @@
             height: 100%;
         }
         
-        /* iOS Safari specific fix */
-        .content-wrapper.is-fixed {
-            position: fixed;
-            height: 100%;
-            width: 100%;
-            overflow: auto;
-            top: 0;
-            left: 0;
-        }
-        
         /* Dual H1 structure */
         .desktop-h1 {
             display: block;
@@ -285,6 +275,163 @@
                 background: rgba(255, 255, 255, 0.1);
             }
         }
+
+        /* Additional styles for better gallery display */
+        .gallery-square {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .gallery-square img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-square img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Basic page styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        header {
+            background: rgba(0,0,0,0.8);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            transform: scale(1.15);
+        }
+
+        main {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 40px;
+            font-weight: 800;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            padding: 80px 20px 20px;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            color: white;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .mobile-menu li {
+            margin: 30px 0;
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 32px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        footer {
+            background: rgba(0,0,0,0.9);
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            header nav {
+                display: none;
+            }
+            
+            .gallery-square {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -360,14 +507,6 @@
             <p>&copy; 2025 Neudopsym Photo</p>
         </footer>
     </div>
-    <div class="lightbox" id="lightbox">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <div class="lightbox-controls">
-            <span onclick="prevImage()" aria-label="Předchozí fotografie">&#10094;</span>
-            <span onclick="nextImage()" aria-label="Další fotografie">&#10095;</span>
-        </div>
-        <img id="lightbox-img" src="" alt="Zvětšená fotografie">
-    </div>
     
     <div class="lightbox" id="lightbox">
         <span class="lightbox-close" onclick="closeLightbox()" aria-label="Zavřít">×</span>
@@ -425,15 +564,12 @@
             }
         });
     
+        // FIXED LIGHTBOX FUNCTIONALITY
         const images = document.querySelectorAll('.gallery-square img');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
-        const contentWrapper = document.getElementById('contentWrapper');
         let current = 0;
-        let scrollY = 0;
-        
-        // Detect iOS Safari
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        let scrollPosition = 0;
         
         images.forEach((img, i) => {
             img.addEventListener('click', () => {
@@ -443,56 +579,38 @@
         });
         
         function showImage() {
-            // Store current scroll position
-            scrollY = window.scrollY;
+            // Store current scroll position before opening lightbox
+            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
             
-            if (isIOS) {
-                // iOS Safari specific solution
-                contentWrapper.classList.add('is-fixed');
-                contentWrapper.scrollTo(0, scrollY);
-                document.body.style.overflow = 'hidden';
-            } else {
-                // Standard solution for other browsers
-                document.body.style.top = `-${scrollY}px`;
-                document.body.classList.add('lightbox-active');
-            }
+            // Prevent body scrolling and fix position
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollPosition}px`;
+            document.body.style.width = '100%';
+            document.body.style.overflow = 'hidden';
             
+            // Show lightbox
             lightbox.style.display = 'flex';
             lightboxImg.src = images[current].src;
             
-            // Add touch event listeners for iOS to prevent scrolling
-            if (isIOS) {
-                document.addEventListener('touchmove', preventTouch, { passive: false });
-                document.addEventListener('pointermove', preventTouch, { passive: false });
-            }
+            // Ensure lightbox is positioned correctly
+            lightbox.style.position = 'fixed';
+            lightbox.style.top = '0';
+            lightbox.style.left = '0';
+            lightbox.style.zIndex = '9999';
         }
         
         function closeLightbox() {
+            // Hide lightbox first
             lightbox.style.display = 'none';
             
-            if (isIOS) {
-                // iOS Safari specific cleanup
-                contentWrapper.classList.remove('is-fixed');
-                document.body.style.overflow = '';
-                window.scrollTo(0, scrollY);
-                
-                // Remove touch event listeners
-                document.removeEventListener('touchmove', preventTouch);
-                document.removeEventListener('pointermove', preventTouch);
-            } else {
-                // Standard cleanup for other browsers
-                document.body.classList.remove('lightbox-active');
-                document.body.style.top = '';
-                window.scrollTo(0, scrollY);
-            }
-        }
-        
-        function preventTouch(e) {
-            // Allow touches on lightbox controls and image
-            if (e.target.closest('.lightbox')) {
-                return;
-            }
-            e.preventDefault();
+            // Restore body scrolling
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
+            
+            // Restore scroll position
+            window.scrollTo(0, scrollPosition);
         }
         
         function prevImage() {
@@ -505,11 +623,42 @@
             lightboxImg.src = images[current].src;
         }
         
+        // Keyboard controls
         document.addEventListener('keydown', (e) => {
             if (lightbox.style.display === 'flex') {
                 if (e.key === 'Escape') closeLightbox();
                 if (e.key === 'ArrowLeft') prevImage();
                 if (e.key === 'ArrowRight') nextImage();
+            }
+        });
+
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Prevent scrolling on touch devices when lightbox is open
+        document.addEventListener('touchmove', function(e) {
+            if (lightbox.style.display === 'flex') {
+                // Allow touch events only on lightbox controls
+                if (!e.target.closest('.lightbox-controls') && 
+                    !e.target.closest('.lightbox-close') && 
+                    !e.target.closest('#lightbox-img')) {
+                    e.preventDefault();
+                }
+            }
+        }, { passive: false });
+
+        // Handle orientation change on mobile devices
+        window.addEventListener('orientationchange', function() {
+            if (lightbox.style.display === 'flex') {
+                setTimeout(() => {
+                    // Recenter lightbox after orientation change
+                    lightbox.style.height = '100vh';
+                    lightbox.style.width = '100vw';
+                }, 100);
             }
         });
     </script>
