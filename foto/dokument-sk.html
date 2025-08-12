@@ -21,17 +21,22 @@
   <style>
     .lightbox {
       display: none;
-      position: fixed;
-      z-index: 1000;
+      position: absolute;
       top: 0;
       left: 0;
-      width: 100vw;
+      z-index: 1000;
+      width: 100%;
       height: 100vh;
       background: rgba(0,0,0,0.85);
       justify-content: center;
       align-items: center;
       overflow: hidden;
     }
+    
+    .lightbox.show {
+      display: flex !important;
+    }
+    
     .lightbox img {
       max-width: calc(100vw - 60px);
       max-height: calc(100vh - 60px);
@@ -65,24 +70,6 @@
       color: white;
       font-size: 36px;
       cursor: pointer;
-    }
-    
-    /* Prevent body scrolling when lightbox is active */
-    body.lightbox-active {
-      overflow: hidden;
-      position: fixed;
-      width: 100%;
-      height: 100%;
-    }
-    
-    /* iOS Safari specific fix */
-    .content-wrapper.is-fixed {
-      position: fixed;
-      height: 100%;
-      width: 100%;
-      overflow: auto;
-      top: 0;
-      left: 0;
     }
     
     /* Dual H1 structure */
@@ -364,16 +351,7 @@
       <p>&copy; 2025 Neudopsym Photo</p>
     </footer>
   </div>
-  <div class="lightbox" id="lightbox">
-    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-    <div class="lightbox-controls">
-      <span onclick="prevImage()">&#10094;</span>
-      <span onclick="nextImage()">&#10095;</span>
-    </div>
-    <img id="lightbox-img" src="" alt="Zväčšená fotografia">
-  </div>
   
-  <!-- Lightbox outside the wrapper -->
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
     <div class="lightbox-controls">
@@ -433,12 +411,7 @@
     const images = document.querySelectorAll('.gallery-square img');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-    const contentWrapper = document.getElementById('contentWrapper');
     let current = 0;
-    let scrollY = 0;
-    
-    // Detect iOS Safari
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     
     images.forEach((img, i) => {
       img.addEventListener('click', () => {
@@ -448,56 +421,24 @@
     });
     
     function showImage() {
-      // Store current scroll position
-      scrollY = window.scrollY;
+      // Get current scroll position
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
       
-      if (isIOS) {
-        // iOS Safari specific solution
-        contentWrapper.classList.add('is-fixed');
-        contentWrapper.scrollTo(0, scrollY);
-        document.body.style.overflow = 'hidden';
-      } else {
-        // Standard solution for other browsers
-        document.body.style.top = `-${scrollY}px`;
-        document.body.classList.add('lightbox-active');
-      }
+      // Position lightbox at current scroll position
+      lightbox.style.top = scrollY + 'px';
+      lightbox.classList.add('show');
       
-      lightbox.style.display = 'flex';
+      // Prevent body scroll when lightbox is open
+      document.body.style.overflow = 'hidden';
+      
       lightboxImg.src = images[current].src;
-      
-      // Add touch event listeners for iOS to prevent scrolling
-      if (isIOS) {
-        document.addEventListener('touchmove', preventTouch, { passive: false });
-        document.addEventListener('pointermove', preventTouch, { passive: false });
-      }
     }
     
     function closeLightbox() {
-      lightbox.style.display = 'none';
+      lightbox.classList.remove('show');
       
-      if (isIOS) {
-        // iOS Safari specific cleanup
-        contentWrapper.classList.remove('is-fixed');
-        document.body.style.overflow = '';
-        window.scrollTo(0, scrollY);
-        
-        // Remove touch event listeners
-        document.removeEventListener('touchmove', preventTouch);
-        document.removeEventListener('pointermove', preventTouch);
-      } else {
-        // Standard cleanup for other browsers
-        document.body.classList.remove('lightbox-active');
-        document.body.style.top = '';
-        window.scrollTo(0, scrollY);
-      }
-    }
-    
-    function preventTouch(e) {
-      // Allow touches on lightbox controls and image
-      if (e.target.closest('.lightbox')) {
-        return;
-      }
-      e.preventDefault();
+      // Restore scrolling
+      document.body.style.overflow = 'auto';
     }
     
     function prevImage() {
@@ -511,14 +452,19 @@
     }
     
     document.addEventListener('keydown', (e) => {
-      if (lightbox.style.display === 'flex') {
+      if (lightbox.classList.contains('show')) {
         if (e.key === 'Escape') closeLightbox();
         if (e.key === 'ArrowLeft') prevImage();
         if (e.key === 'ArrowRight') nextImage();
       }
     });
+
+    // Click outside lightbox to close
+    window.addEventListener('click', function(event) {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
   </script>
 </body>
 </html>
-
-
