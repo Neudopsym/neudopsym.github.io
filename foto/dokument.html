@@ -26,9 +26,8 @@
     <style>
         .lightbox {
             display: none;
-            position: fixed;
+            position: absolute;
             z-index: 1000;
-            top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
@@ -423,6 +422,12 @@
         });
 
         function showImage() {
+            // Get current scroll position
+            const scrollY = window.scrollY;
+            
+            // Position lightbox at current scroll position
+            lightbox.style.top = scrollY + 'px';
+            
             // Simply prevent scrolling without changing position
             document.body.style.overflow = 'hidden';
             
