@@ -414,7 +414,6 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         let current = 0;
-        let scrollY = 0;
 
         images.forEach((img, i) => {
             img.addEventListener('click', () => {
@@ -424,13 +423,8 @@
         });
 
         function showImage() {
-            // Store current scroll position
-            scrollY = window.scrollY;
-
-            // Prevent body scrolling
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${scrollY}px`;
-            document.body.style.width = '100%';
+            // Simply prevent scrolling without changing position
+            document.body.style.overflow = 'hidden';
             
             // Show lightbox
             lightbox.style.display = 'flex';
@@ -440,13 +434,8 @@
         function closeLightbox() {
             lightbox.style.display = 'none';
             
-            // Restore body scrolling
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
-            
-            // Restore scroll position
-            window.scrollTo(0, scrollY);
+            // Restore scrolling
+            document.body.style.overflow = '';
         }
 
         function prevImage() {
