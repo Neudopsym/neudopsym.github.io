@@ -22,16 +22,21 @@
         .lightbox {
             display: none;
             position: fixed;
-            z-index: 1000;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            z-index: 1000;
+            width: 100%;
+            height: 100%;
             background: rgba(0,0,0,0.85);
             justify-content: center;
             align-items: center;
             overflow: hidden;
         }
+        
+        .lightbox.show {
+            display: flex !important;
+        }
+        
         .lightbox img {
             max-width: calc(100vw - 60px);
             max-height: calc(100vh - 60px);
@@ -65,25 +70,6 @@
             color: white;
             font-size: 36px;
             cursor: pointer;
-        }
-        
-        /* Zamezit posouvání pozadí při otevřeném lightboxu */
-        body.lightbox-active {
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-        }
-        
-        /* Specifické opravy pro iOS Safari */
-        .content-wrapper {
-            width: 100%;
-            min-height: 100vh;
-        }
-        
-        body.lightbox-active.ios-device .content-wrapper {
-            position: fixed;
-            width: 100%;
-            overflow: hidden;
         }
         
         /* Duální struktura H1 */
@@ -390,24 +376,6 @@
     </div>
     
     <script>
-        let scrollPosition = 0;
-        let isIOS = false;
-        const contentWrapper = document.querySelector('.content-wrapper');
-
-        // Detekce iOS zařízení
-        function detectIOS() {
-            return /iPad|iPhone|iPod/.test(navigator.userAgent) || 
-                   (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-        }
-
-        // Inicializace detekce iOS
-        document.addEventListener('DOMContentLoaded', function() {
-            isIOS = detectIOS();
-            if (isIOS) {
-                document.body.classList.add('ios-device');
-            }
-        });
-
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('active');
@@ -467,56 +435,28 @@
         });
 
         function showImage() {
-            // Uložit aktuální pozici posunu
-            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            // Show lightbox using the same approach as video modal
+            lightbox.classList.add('show');
             
-            // Zobrazit lightbox
-            lightbox.style.display = 'flex';
-            lightboxImg.src = images[current].src;
+            // Prevent body scroll when lightbox is open
+            document.body.style.overflow = 'hidden';
             
-            // Zamezit posouvání pozadí
-            if (isIOS) {
-                // Specifické řešení pro iOS
-                document.body.classList.add('lightbox-active');
-                contentWrapper.style.top = `-${scrollPosition}px`;
-                
-                // Zamezit dotykovým událostem na pozadí
-                document.addEventListener('touchmove', preventTouch, { passive: false });
-                document.addEventListener('pointermove', preventTouch, { passive: false });
-            } else {
-                // Standardní prohlížeče
-                document.body.style.top = `-${scrollPosition}px`;
-                document.body.classList.add('lightbox-active');
+            // On mobile, also prevent scrolling of the page behind lightbox
+            if (window.innerWidth <= 768) {
+                document.documentElement.style.overflow = 'hidden';
             }
+            
+            lightboxImg.src = images[current].src;
         }
 
         function closeLightbox() {
-            lightbox.style.display = 'none';
+            lightbox.classList.remove('show');
             
-            // Obnovit posouvání
-            if (isIOS) {
-                // Vyčištění specifické pro iOS
-                document.body.classList.remove('lightbox-active');
-                contentWrapper.style.top = '';
-                window.scrollTo(0, scrollPosition);
-                
-                // Povolit dotykové události
-                document.removeEventListener('touchmove', preventTouch);
-                document.removeEventListener('pointermove', preventTouch);
-            } else {
-                // Vyčištění pro standardní prohlížeče
-                document.body.classList.remove('lightbox-active');
-                document.body.style.top = '';
-                window.scrollTo(0, scrollPosition);
-            }
-        }
-
-        function preventTouch(e) {
-            // Povolit interakci s ovládacími prvky lightboxu
-            const lightboxElement = document.getElementById('lightbox');
-            if (!lightboxElement.contains(e.target)) {
-                e.preventDefault();
-                return false;
+            // Restore scrolling
+            document.body.style.overflow = 'auto';
+            
+            if (window.innerWidth <= 768) {
+                document.documentElement.style.overflow = 'auto';
             }
         }
 
@@ -531,17 +471,16 @@
         }
 
         document.addEventListener('keydown', (e) => {
-            // Reagovat na klávesové události pouze když je lightbox otevřený
-            if (lightbox.style.display === 'flex') {
+            if (lightbox.classList.contains('show')) {
                 if (e.key === 'Escape') closeLightbox();
                 if (e.key === 'ArrowLeft') prevImage();
                 if (e.key === 'ArrowRight') nextImage();
             }
         });
 
-        // Zavřít lightbox při kliknutí mimo obrázek
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
+        // Click outside lightbox to close (same as video modal)
+        window.addEventListener('click', function(event) {
+            if (event.target === lightbox) {
                 closeLightbox();
             }
         });
