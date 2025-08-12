@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventy – Neudopsym Photo</title>
-    <meta name="description" content="Eventové fotografie z kulturních, společenských či soukromných událostí – autentická atmosféra zachycená objektivem.">
+    <meta name="description" content="Eventové fotografie z kulturních, společenských či soukromých událostí – autentická atmosféra zachycená objektivem.">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Filip Kubus">
     <link rel="canonical" href="https://neudopsym.cz/foto/eventy.html">
@@ -22,16 +22,21 @@
         .lightbox {
             display: none;
             position: fixed;
-            z-index: 1000;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            z-index: 1000;
+            width: 100%;
+            height: 100%;
             background: rgba(0,0,0,0.85);
             justify-content: center;
             align-items: center;
             overflow: hidden;
         }
+        
+        .lightbox.show {
+            display: flex !important;
+        }
+        
         .lightbox img {
             max-width: calc(100vw - 60px);
             max-height: calc(100vh - 60px);
@@ -65,24 +70,6 @@
             color: white;
             font-size: 36px;
             cursor: pointer;
-        }
-        
-        /* Prevent body scrolling when lightbox is active */
-        body.lightbox-active {
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-        }
-        
-        /* iOS Safari specific fix */
-        .content-wrapper.is-fixed {
-            position: fixed;
-            height: 100%;
-            width: 100%;
-            overflow: auto;
-            top: 0;
-            left: 0;
         }
         
         /* Dual H1 structure */
@@ -427,12 +414,7 @@
         const images = document.querySelectorAll('.gallery-square img');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
-        const contentWrapper = document.getElementById('contentWrapper');
         let current = 0;
-        let scrollY = 0;
-        
-        // Detect iOS Safari
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         
         images.forEach((img, i) => {
             img.addEventListener('click', () => {
@@ -442,56 +424,29 @@
         });
         
         function showImage() {
-            // Store current scroll position
-            scrollY = window.scrollY;
+            // Show lightbox using the same approach as video modal
+            lightbox.classList.add('show');
             
-            if (isIOS) {
-                // iOS Safari specific solution
-                contentWrapper.classList.add('is-fixed');
-                contentWrapper.scrollTo(0, scrollY);
-                document.body.style.overflow = 'hidden';
-            } else {
-                // Standard solution for other browsers
-                document.body.style.top = `-${scrollY}px`;
-                document.body.classList.add('lightbox-active');
+            // Prevent body scroll when lightbox is open
+            document.body.style.overflow = 'hidden';
+            
+            // On mobile, also prevent scrolling of the page behind lightbox
+            if (window.innerWidth <= 768) {
+                document.documentElement.style.overflow = 'hidden';
             }
             
-            lightbox.style.display = 'flex';
             lightboxImg.src = images[current].src;
-            
-            // Add touch event listeners for iOS to prevent scrolling
-            if (isIOS) {
-                document.addEventListener('touchmove', preventTouch, { passive: false });
-                document.addEventListener('pointermove', preventTouch, { passive: false });
-            }
         }
         
         function closeLightbox() {
-            lightbox.style.display = 'none';
+            lightbox.classList.remove('show');
             
-            if (isIOS) {
-                // iOS Safari specific cleanup
-                contentWrapper.classList.remove('is-fixed');
-                document.body.style.overflow = '';
-                window.scrollTo(0, scrollY);
-                
-                // Remove touch event listeners
-                document.removeEventListener('touchmove', preventTouch);
-                document.removeEventListener('pointermove', preventTouch);
-            } else {
-                // Standard cleanup for other browsers
-                document.body.classList.remove('lightbox-active');
-                document.body.style.top = '';
-                window.scrollTo(0, scrollY);
+            // Restore scrolling
+            document.body.style.overflow = 'auto';
+            
+            if (window.innerWidth <= 768) {
+                document.documentElement.style.overflow = 'auto';
             }
-        }
-        
-        function preventTouch(e) {
-            // Allow touches on lightbox controls and image
-            if (e.target.closest('.lightbox')) {
-                return;
-            }
-            e.preventDefault();
         }
         
         function prevImage() {
@@ -505,10 +460,17 @@
         }
         
         document.addEventListener('keydown', (e) => {
-            if (lightbox.style.display === 'flex') {
+            if (lightbox.classList.contains('show')) {
                 if (e.key === 'Escape') closeLightbox();
                 if (e.key === 'ArrowLeft') prevImage();
                 if (e.key === 'ArrowRight') nextImage();
+            }
+        });
+
+        // Click outside lightbox to close (same as video modal)
+        window.addEventListener('click', function(event) {
+            if (event.target === lightbox) {
+                closeLightbox();
             }
         });
     </script>
