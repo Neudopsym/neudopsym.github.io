@@ -197,20 +197,20 @@
       }
     }
 
-    /* Video Modal - Desktop Fixed to Viewport */
+    /* Desktop Video Modal - Fixed to Current Viewport */
     .modal {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: auto;
+      height: auto;
       background-color: rgba(0, 0, 0, 0.9);
       display: none;
-      justify-content: center;
-      align-items: center;
       z-index: 1000;
       padding: 20px;
       box-sizing: border-box;
+      border-radius: 15px;
     }
 
     .modal-content {
@@ -310,10 +310,12 @@
         left: 0;
         width: 100vw;
         height: 100vh;
+        transform: none;
         padding: 10px;
         display: none !important;
         align-items: center;
         justify-content: center;
+        border-radius: 0;
       }
 
       .modal.show {
@@ -730,7 +732,7 @@
         return iframe;
       }
 
-      // Open video modal - Desktop fixed to viewport center
+      // Open video modal - Desktop centered on current viewport
       videoCards.forEach(card => {
         card.addEventListener('click', function() {
           const videoId = this.dataset.videoId;
@@ -744,8 +746,8 @@
           modalVideoWrapper.className = 'modal-video-wrapper';
           modalVideoTitle.textContent = videoTitle;
           
-          // Show modal - fixed to viewport center
-          videoModal.style.display = 'flex';
+          // Show modal - it will be centered on current viewport
+          videoModal.style.display = 'block';
           videoModal.classList.add('show');
           
           console.log('Modal display style:', videoModal.style.display);
