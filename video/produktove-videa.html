@@ -744,6 +744,14 @@
           modalVideoWrapper.className = 'modal-video-wrapper';
           modalVideoTitle.textContent = videoTitle;
           
+          // Get current scroll position for desktop positioning
+          const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+          
+          // Position modal at current scroll position on desktop
+          if (window.innerWidth > 768) {
+            videoModal.style.top = scrollY + 'px';
+          }
+          
           // Show modal - only when user actually clicks a video
           videoModal.style.display = 'flex';
           videoModal.classList.add('show');
