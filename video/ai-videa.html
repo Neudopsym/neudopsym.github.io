@@ -197,24 +197,19 @@ background: rgba(255, 255, 255, 0.1);
 }
 }
 
-/* Video Modal - Desktop and Mobile */
+/* Video Modal - Desktop viewport-relative positioning */
 .modal {
 position: fixed;
 top: 0;
 left: 0;
-width: 100%;
-height: 100%;
+width: 100vw;
+height: 100vh;
 background-color: rgba(0, 0, 0, 0.9);
 display: none;
-justify-content: center;
-align-items: center;
 z-index: 1000;
-padding: 20px;
 box-sizing: border-box;
-}
-
-.modal.show {
-display: flex !important;
+align-items: center;
+justify-content: center;
 }
 
 .modal-content {
@@ -223,6 +218,8 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+max-width: calc(100vw - 60px);
+max-height: calc(100vh - 60px);
 }
 
 .modal-video-wrapper {
@@ -243,7 +240,7 @@ border-radius: 15px;
 
 .close-button {
 position: absolute;
-top: -50px;
+top: -60px;
 right: 0;
 color: white;
 font-size: 30px;
@@ -298,6 +295,7 @@ font-size: 24px;
 margin-bottom: 20px;
 text-align: center;
 max-width: 100%;
+margin-top: 0;
 }
 
 .loading {
@@ -306,7 +304,7 @@ font-size: 18px;
 text-align: center;
 }
 
-/* Mobile adjustments - Fixed viewport centering */
+/* Mobile adjustments - unchanged */
 @media (max-width: 768px) {
 .modal {
 position: fixed;
@@ -395,11 +393,11 @@ max-height: calc(100vh - 100px);
 }
 }
 
-/* Video cards with perfectly centered play button overlay - Desktop only */
+/* Ensure video cards are clickable */
 .video-card {
-position: relative;
 cursor: pointer;
 transition: transform 0.3s ease, box-shadow 0.3s ease;
+position: relative;
 overflow: hidden;
 }
 
@@ -409,17 +407,14 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Hide any existing play button overlays from external CSS */
-.video-card::before {
-display: none !important;
-}
-
+.video-card::before,
 .video-card .play-button,
 .video-card .play-overlay,
 .video-card .video-overlay {
 display: none !important;
 }
 
-/* Perfect centered play button overlay for desktop only */
+/* Desktop play button overlay - perfectly centered */
 .video-card::after {
 content: '▶';
 position: absolute;
@@ -429,35 +424,31 @@ transform: translate(-50%, -50%);
 width: 100px;
 height: 100px;
 background: rgba(0, 0, 0, 0.8);
+color: white;
 border-radius: 50%;
 display: flex;
 align-items: center;
 justify-content: center;
-color: white;
 font-size: 42px;
+font-weight: bold;
 opacity: 0;
 transition: opacity 0.3s ease;
 z-index: 100;
 backdrop-filter: blur(2px);
 border: 2px solid rgba(255, 255, 255, 0.3);
 box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-/* Additional centering properties for the play icon */
 line-height: 1;
 text-align: center;
-/* Slight adjustment to visually center the triangular play icon */
-padding-left: 3px;
+padding-left: 3px; /* Visual centering adjustment for triangular shape */
 }
 
 .video-card:hover::after {
 opacity: 1;
 }
 
-/* Mobile - hide play button overlay completely */
+/* Hide play button overlay on mobile */
 @media (max-width: 768px) {
-.video-card::after {
-display: none !important;
-}
-
+.video-card::after,
 .video-card::before {
 display: none !important;
 }
@@ -484,7 +475,7 @@ display: none !important;
 CZ <span class="arrow">▼</span>
 </button>
 <div class="language-options" id="mobile-language-options">
-<a href="ai-vide-ska.html" class="language-option">SK</a>
+<a href="ai-videa-sk.html" class="language-option">SK</a>
 <a href="ai-videa-en.html" class="language-option">EN</a>
 </div>
 </div>
@@ -528,10 +519,14 @@ CZ <span class="arrow">▼</span>
 <img src="../img/systemove/NKR_nahlad.png" alt="Miniatura videa: Na Karmeli" loading="lazy">
 <h2>Rezidence Na Karmeli</h2>
 </div>
-<div class="video-card" data-video-id="1104261085" data-video-title="Green Mladá Boleslav" data-video-platform="vimeo">
-<img src="../img/systemove/Green_MB_nahlad.png" alt="Miniatura videa: Green Mladá Boleslav" loading="lazy">
-<h2>Green Mladá Boleslav</h2>
+<div class="video-card" data-video-id="1104261085" data-video-title="Green Mladá Boleslav 1" data-video-platform="vimeo">
+<img src="../img/systemove/Green_MB_nahlad.png" alt="Miniatura videa: Green Mladá Boleslav 1" loading="lazy">
+<h2>Green Mladá Boleslav 1</h2>
 </div>
+<div class="video-card" data-video-id="1114381030" data-video-title="Green Mladá Boleslav 2" data-video-platform="vimeo">
+<img src="https://neudopsym.github.io/img/systemove/GMB_4.png" alt="Miniatúra videa: Green Mladá Boleslav 2" loading="lazy">
+<h2>Green Mladá Boleslav 2</h2>
+</div>      
 <div class="video-card" data-video-id="1104941118" data-video-title="Budoucnost marketingu" data-video-platform="vimeo">
 <img src="../img/systemove/nahlad_video_ai.jpg" alt="Miniatura videa: AI - budoucnost marketingu" loading="lazy">
 <h2>Budoucnost marketingu</h2>
@@ -791,6 +786,7 @@ modalVideoWrapper.className = 'modal-video-wrapper';
 modalVideoTitle.textContent = videoTitle;
 
 // Show modal - only when user actually clicks a video
+videoModal.style.display = 'flex';
 videoModal.classList.add('show');
 
 console.log('Modal display style:', videoModal.style.display);
@@ -798,7 +794,7 @@ console.log('Modal display style:', videoModal.style.display);
 // Reset scroll position to top for desktop
 if (window.innerWidth > 768) {
 window.scrollTo(0, 0);
-}    
+}
 
 // Prevent body scroll when modal is open
 document.body.style.overflow = 'hidden';
@@ -843,6 +839,7 @@ console.log('Video iframe created and added');
 // Close modal function
 function closeVideoModal() {
 console.log('Closing modal');
+videoModal.style.display = 'none';
 videoModal.classList.remove('show');
 modalVideoWrapper.innerHTML = '<div class="loading">Načítá se video...</div>';
 modalVideoWrapper.className = 'modal-video-wrapper';
@@ -869,7 +866,7 @@ closeVideoModal();
 // Escape key to close modal
 document.addEventListener('keydown', function(event) {
 if (event.key === 'Escape') {
-if (videoModal.classList.contains('show')) {
+if (videoModal.style.display === 'flex') {
 closeVideoModal();
 }
 if (mobileMenu.classList.contains('active')) {
