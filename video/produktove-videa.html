@@ -325,8 +325,11 @@
       }
       
       .modal-content {
-        /* Remove absolute positioning - let flexbox handle centering */
-        position: relative;
+        /* FIXED: Position relative to viewport, not document */
+        position: fixed;
+        top: 50vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
         width: auto;
         max-width: none;
         max-height: none;
@@ -335,6 +338,7 @@
         align-items: center;
         justify-content: center;
         overflow: hidden;
+        z-index: 1001;
       }
     }
 
