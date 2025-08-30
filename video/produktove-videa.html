@@ -794,15 +794,12 @@
           modalVideoWrapper.className = 'modal-video-wrapper';
           modalVideoTitle.textContent = videoTitle;
           
-          // FIXED: Store scroll position on desktop only and use proper body locking
+          // FIXED: Store scroll position on desktop without manipulating body top
           if (window.innerWidth > 768) {
             lastScrollYDesktop = window.scrollY;
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${lastScrollYDesktop}px`;
-            document.body.style.left = '0';
-            document.body.style.right = '0';
-            document.body.style.width = '100%';
             document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
           } else {
             // Mobile: prevent scrolling, keep as in your code
             document.body.style.overflow = 'hidden';
@@ -857,12 +854,9 @@
         modalVideoWrapper.style.width = '';
         modalVideoWrapper.style.height = '';
 
-        // FIXED: Restore scroll position on desktop only
+        // FIXED: Restore scroll position on desktop without body manipulation
         if (window.innerWidth > 768) {
           document.body.style.position = '';
-          document.body.style.top = '';
-          document.body.style.left = '';
-          document.body.style.right = '';
           document.body.style.width = '';
           document.body.style.overflow = '';
           window.scrollTo(0, lastScrollYDesktop);
