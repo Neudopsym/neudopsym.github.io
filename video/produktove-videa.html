@@ -315,10 +315,10 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        display: none;
-        justify-content: center;
+        padding: 0;
+        display: none !important;
         align-items: center;
-        overflow: hidden;
+        justify-content: center;
       }
       
       .modal.show {
@@ -326,9 +326,14 @@
       }
       
       .modal-content {
+        width: auto;
         max-width: none;
         max-height: none;
-        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
       }
     }
 
