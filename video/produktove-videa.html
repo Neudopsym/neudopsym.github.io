@@ -197,46 +197,28 @@
       }
     }
 
-    /* Video Modal - FIXED Desktop viewport centering with higher specificity */
-    #videoModal.modal {
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      background-color: rgba(0, 0, 0, 0.9) !important;
-      display: none !important;
-      align-items: center !important;
-      justify-content: center !important;
-      z-index: 9999 !important;
-      box-sizing: border-box !important;
-      overflow: hidden !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      transform: none !important;
+    /* Video Modal - Desktop Fixed Size */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
-    #videoModal.modal.show {
-      display: flex !important;
-    }
-
-    #videoModal .modal-content {
-      position: relative !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
-      max-width: calc(100vw - 60px) !important;
-      max-height: calc(100vh - 60px) !important;
-      width: auto !important;
-      height: auto !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      transform: none !important;
-      top: auto !important;
-      left: auto !important;
-      right: auto !important;
-      bottom: auto !important;
+    .modal-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .modal-video-wrapper {
@@ -620,7 +602,7 @@
       const modalVideoWrapper = videoModal.querySelector('.modal-video-wrapper');
       const modalVideoTitle = document.getElementById('modalVideoTitle');
 
-      // Store scroll position for desktop - FIXED implementation
+      // Store scroll position for desktop
       let savedScrollPosition = 0;
 
       // Function to detect video dimensions and set wrapper size
@@ -753,7 +735,7 @@
         return iframe;
       }
 
-      // Open video modal - FIXED for proper desktop scroll handling
+      // Open video modal - Mobile responsive, Desktop fixed
       videoCards.forEach(card => {
         card.addEventListener('click', function() {
           const videoId = this.dataset.videoId;
@@ -767,24 +749,20 @@
           modalVideoWrapper.className = 'modal-video-wrapper';
           modalVideoTitle.textContent = videoTitle;
           
-          // FIXED: Proper scroll handling for desktop
-          if (window.innerWidth > 768) {
-            // Save current scroll position
-            savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            // Prevent body scrolling but don't move the page
-            document.body.style.overflow = 'hidden';
-          } else {
-            // Mobile: prevent scrolling, keep as in your code
-            document.body.style.overflow = 'hidden';
-            document.documentElement.style.overflow = 'hidden';
-            window.scrollTo(0, 0);
-          }
-          
-          // Show modal
+          // Show modal - only when user actually clicks a video
           videoModal.style.display = 'flex';
           videoModal.classList.add('show');
           
           console.log('Modal display style:', videoModal.style.display);
+          
+          // Prevent body scroll when modal is open
+          document.body.style.overflow = 'hidden';
+          
+          // On mobile, also prevent scrolling of the page behind modal
+          if (window.innerWidth <= 768) {
+            document.documentElement.style.overflow = 'hidden';
+            window.scrollTo(0, 0);
+          }
           
           // Set wrapper dimensions based on actual video size
           setVideoWrapperDimensions(videoId, platform, modalVideoWrapper, () => {
@@ -817,7 +795,7 @@
         });
       });
 
-      // Close modal function - FIXED to properly restore scroll position on desktop
+      // Close modal function
       function closeVideoModal() {
         console.log('Closing modal');
         videoModal.style.display = 'none';
@@ -826,14 +804,9 @@
         modalVideoWrapper.className = 'modal-video-wrapper';
         modalVideoWrapper.style.width = '';
         modalVideoWrapper.style.height = '';
-
-        // FIXED: Restore scroll position properly on desktop
-        if (window.innerWidth > 768) {
-          document.body.style.overflow = '';
-          // Restore the scroll position without any page jumping
-          window.scrollTo(0, savedScrollPosition);
-        } else {
-          document.body.style.overflow = 'auto';
+        document.body.style.overflow = 'auto';
+        
+        if (window.innerWidth <= 768) {
           document.documentElement.style.overflow = 'auto';
         }
       }
