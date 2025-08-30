@@ -327,7 +327,7 @@
       }
       
       .modal-content {
-        position: absolute;
+        position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -790,7 +790,7 @@
           videoModal.classList.add('show');
           
           console.log('Modal display style:', videoModal.style.display);
-          
+
           // Prevent body scroll when modal is open
           document.body.style.overflow = 'hidden';
           
