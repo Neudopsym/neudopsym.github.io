@@ -784,20 +784,27 @@
           modalVideoWrapper.className = 'modal-video-wrapper';
           modalVideoTitle.textContent = videoTitle;
           
+          // FIXED: Store scroll position on desktop only and use proper body locking
+          if (window.innerWidth > 768) {
+            lastScrollYDesktop = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${lastScrollYDesktop}px`;
+            document.body.style.left = '0';
+            document.body.style.right = '0';
+            document.body.style.width = '100%';
+            document.body.style.overflow = 'hidden';
+          } else {
+            // Mobile: prevent scrolling, keep as in your code
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            window.scrollTo(0, 0);
+          }
+          
           // Show modal - only when user actually clicks a video
           videoModal.style.display = 'flex';
           videoModal.classList.add('show');
           
           console.log('Modal display style:', videoModal.style.display);
-
-          // Prevent body scroll when modal is open
-          document.body.style.overflow = 'hidden';
-          
-          // On mobile, also prevent scrolling of the page behind modal
-          if (window.innerWidth <= 768) {
-            document.documentElement.style.overflow = 'hidden';
-            window.scrollTo(0, 0);
-          }
           
           // Set wrapper dimensions based on actual video size
           setVideoWrapperDimensions(videoId, platform, modalVideoWrapper, () => {
@@ -830,7 +837,7 @@
         });
       });
 
-      // Close modal function
+      // Close modal function - FIXED to restore scroll position properly on desktop
       function closeVideoModal() {
         console.log('Closing modal');
         videoModal.style.display = 'none';
@@ -839,9 +846,18 @@
         modalVideoWrapper.className = 'modal-video-wrapper';
         modalVideoWrapper.style.width = '';
         modalVideoWrapper.style.height = '';
-        document.body.style.overflow = 'auto';
-        
-        if (window.innerWidth <= 768) {
+
+        // FIXED: Restore scroll position on desktop only
+        if (window.innerWidth > 768) {
+          document.body.style.position = '';
+          document.body.style.top = '';
+          document.body.style.left = '';
+          document.body.style.right = '';
+          document.body.style.width = '';
+          document.body.style.overflow = '';
+          window.scrollTo(0, lastScrollYDesktop);
+        } else {
+          document.body.style.overflow = 'auto';
           document.documentElement.style.overflow = 'auto';
         }
       }
