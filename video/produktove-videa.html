@@ -306,7 +306,7 @@
       text-align: center;
     }
 
-    /* Desktop specific modal adjustments - FIXED for true viewport centering */
+    /* Desktop specific modal adjustments - FIXED using viewport centering like photo lightbox */
     @media (min-width: 769px) {
       .modal {
         position: fixed;
@@ -325,20 +325,28 @@
       }
       
       .modal-content {
-        /* FIXED: Position relative to viewport, not document */
+        /* FIXED: Use viewport-based positioning like photo lightbox */
         position: fixed;
-        top: 50vh;
-        left: 50vw;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
+        max-width: calc(100vw - 60px);
+        max-height: calc(100vh - 60px);
         width: auto;
-        max-width: none;
-        max-height: none;
+        height: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         overflow: hidden;
         z-index: 1001;
+      }
+      
+      .modal-video-wrapper {
+        max-width: calc(100vw - 100px);
+        max-height: calc(100vh - 140px);
+        width: 800px;
+        height: 450px;
       }
     }
 
