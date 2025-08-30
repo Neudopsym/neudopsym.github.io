@@ -747,6 +747,11 @@ videoModal.classList.add('show');
 
 console.log('Modal display style:', videoModal.style.display);
 
+// Reset scroll position to top for desktop
+if (window.innerWidth > 768) {
+window.scrollTo(0, 0);
+}    
+
 // Prevent body scroll when modal is open
 document.body.style.overflow = 'hidden';
 
