@@ -1,89 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reviews – Neudopsym Photo</title>
-  <meta name="description" content="Reviews and experiences from clients of Neudopsym Photo photographer – portraits, couples, documentary and promo shots.">
+  <title>Produktová videa – Neudopsym Photo</title>
+  <meta name="description" content="Produktová videa pro rezidenční projekty – profesionální prezentace nemovitostí s důrazem na detail a kvalitu.">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Filip Kubus">
-  <link rel="canonical" href="https://neudopsym.cz/recenze-en.html">
-  <link rel="stylesheet" href="/style.css">
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Reviews – Neudopsym Photo">
-  <meta property="og:description" content="Reviews and experiences from clients of Neudopsym Photo photographer – portraits, couples, documentary and promo shots.">
-  <meta property="og:image" content="https://neudopsym.github.io/img/preview.jpg">
+  <link rel="canonical" href="https://neudopsym.github.io/video/produktove-videa-cz.html">
+  <meta property="og:title" content="Produktová videa – Neudopsym Photo">
+  <meta property="og:description" content="Produktová videa pro rezidenční projekty – profesionální prezentace nemovitostí s důrazem na detail a kvalitu.">
+  <meta property="og:image" content="https://neudopsym.github.io/img/video/preview.jpg">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://neudopsym.cz/recenze-en.html">
-  <!-- Twitter Meta Tags -->
+  <meta property="og:url" content="https://neudopsym.github.io/video/produktove-videa-cz.html">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Reviews – Neudopsym Photo">
-  <meta name="twitter:description" content="Reviews and experiences from clients of Neudopsym Photo photographer – portraits, couples, documentary and promo shots.">
-  <meta name="twitter:image" content="https://neudopsym.github.io/img/preview.jpg">
-
+  <meta name="twitter:title" content="Produktová videa – Neudopsym Photo">
+  <meta name="twitter:description" content="Produktová videa – profesionální prezentace nemovitostí s důrazem na detail a kvalitu.">
+  <meta name="twitter:image" content="https://neudopsym.github.io/img/video/preview.jpg">
+  <link rel="stylesheet" href="https://neudopsym.github.io/style.css">
   <style>
-    /* H1 visibility control */
+    /* Mobile H1 styling */
     .mobile-h1 {
       display: none;
     }
-
-    .desktop-h1 {
-      display: block;
-    }
-
-    /* Reviews specific styles */
-    .review {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 25px;
-      margin: 25px 0;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      margin-left: 0;
-      margin-right: auto;
-      text-align: left;
-    }
-
-    .review-text {
-      font-style: italic;
-      font-size: 1.1em;
-      line-height: 1.6;
-      margin-bottom: 15px;
-      color: #f0f0f0;
-      text-align: left;
-    }
-
-    .review-author {
-      text-align: right;
-      font-weight: 600;
-      color: #ffffff;
-      font-size: 1.2em;
-    }
-
-    /* Mobile H1 styling */
-    @media (max-width: 900px) {
-      /* Hide desktop H1 and show mobile H1 */
-      .desktop-h1 {
-        display: none !important;
+    
+    @media (max-width: 768px) {
+      /* Hide desktop H1 on mobile */
+      main > h1 {
+        display: none;
       }
-
+      
+      /* Show mobile H1 with updated specifications */
       .mobile-h1 {
-        display: block !important;
-        text-align: left !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        line-height: 1.2 !important;
-        font-size: 50px !important;
+        display: block;
+        font-size: 46px !important;
         font-weight: 800 !important;
+        line-height: 1.2 !important;
         margin-top: 15px !important;
         margin-left: 0 !important;
-        margin-bottom: 10px !important;
-      }
-
-      .review {
-        padding: 20px;
-        margin: 20px 0;
+        margin-bottom: 20px;
+        color: #ffffff;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6), 
+                     1px 1px 12px rgba(0, 0, 0, 0.4),
+                     0 0 16px rgba(0, 0, 0, 0.3);
+        letter-spacing: 1.5px;
+        text-align: left;
+        padding: 0;
+        white-space: pre-line;
       }
     }
 
@@ -168,7 +131,7 @@
     }
 
     /* Mobile Language Switcher */
-    @media (max-width: 900px) {
+    @media (max-width: 768px) {
       .mobile-menu .language-switcher {
         margin-top: 20px;
         position: relative;
@@ -233,153 +196,701 @@
         background: rgba(255, 255, 255, 0.1);
       }
     }
+
+    /* Video Modal - Desktop Fixed Size - PROPERLY CENTERED */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: none !important;
+      z-index: 1000;
+      box-sizing: border-box;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .modal.show {
+      display: flex !important;
+    }
+
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-video-wrapper {
+      position: relative;
+      background: #000;
+      border-radius: 15px;
+      overflow: hidden;
+      width: 800px;
+      height: 450px;
+    }
+
+    .modal-video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 15px;
+    }
+
+    .close-button {
+      position: absolute;
+      top: -60px;
+      right: 0;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .close-button:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Video close button on upper-left corner of video - Desktop only */
+    .video-close-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1002;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-close-button:hover {
+      background: rgba(0, 0, 0, 0.9);
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: scale(1.1);
+    }
+
+    #modalVideoTitle {
+      color: white;
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      max-width: 100%;
+      margin-top: 0;
+    }
+
+    .loading {
+      color: white;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    /* Desktop specific modal adjustments - FIXED */
+    @media (min-width: 769px) {
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        display: none !important;
+      }
+      
+      .modal.show {
+        display: block !important;
+      }
+      
+      .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: auto;
+        max-width: none;
+        max-height: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+    }
+
+    /* Mobile adjustments - Fixed viewport centering */
+    @media (max-width: 768px) {
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        padding: 10px;
+        display: none !important;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal.show {
+        display: flex !important;
+      }
+
+      .modal-content {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      #modalVideoTitle {
+        font-size: 18px;
+        margin-bottom: 15px;
+        padding: 0 10px;
+        flex-shrink: 0;
+      }
+
+      .close-button {
+        top: -40px;
+        font-size: 24px;
+        width: 35px;
+        height: 35px;
+      }
+
+      /* Hide desktop video close button on mobile */
+      .video-close-button {
+        display: none;
+      }
+
+      /* Mobile-specific video close button */
+      .mobile-video-close {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1002;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .mobile-video-close:hover {
+        background: rgba(0, 0, 0, 0.9);
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: scale(1.1);
+      }
+
+      .modal-video-wrapper {
+        position: relative;
+        display: block;
+        margin: 0;
+        max-width: 100%;
+        max-height: calc(100vh - 100px);
+      }
+
+      .modal-video-wrapper.has-dimensions {
+        /* Size will be set dynamically via JavaScript */
+      }
+    }
+
+    /* Ensure video cards are clickable */
+    .video-card {
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Hide any existing play button overlays from external CSS */
+    .video-card::before,
+    .video-card .play-button,
+    .video-card .play-overlay,
+    .video-card .video-overlay {
+      display: none !important;
+    }
+
+    /* Desktop play button overlay - perfectly centered */
+    .video-card::after {
+      content: '▶';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 100;
+      backdrop-filter: blur(2px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      line-height: 1;
+      text-align: center;
+      padding-left: 3px; /* Visual centering adjustment for triangular shape */
+    }
+
+    .video-card:hover::after {
+      opacity: 1;
+    }
+
+    /* Hide play button overlay on mobile */
+    @media (max-width: 768px) {
+      .video-card::after,
+      .video-card::before {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Mobile menu button -->
+  <button class="mobile-menu-button" aria-label="Otevřít menu">☰</button>
+  
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu">
+    <button class="mobile-menu-close" aria-label="Zavřít menu">&times;</button>
+    <ul>
+      <li><a href="https://neudopsym.github.io/index.html">Úvod</a></li>
+      <li><a href="https://neudopsym.github.io/foto.html">Foto</a></li>
+      <li><a href="https://neudopsym.github.io/video.html" class="active">Video</a></li>
+      <li><a href="https://neudopsym.github.io/o-mne.html">O mně</a></li>
+      <li><a href="https://neudopsym.github.io/recenze.html">Recenze</a></li>
+      <li><a href="https://neudopsym.github.io/kontakt.html">Kontakt</a></li>
+      <li class="language-switcher">
+        <div class="language-dropdown">
+          <button class="language-button" onclick="toggleMobileLanguageDropdown()">
+            CZ <span class="arrow">▼</span>
+          </button>
+          <div class="language-options" id="mobile-language-options">
+            <a href="produktove-videa-sk.html" class="language-option">SK</a>
+            <a href="produktove-videa-en.html" class="language-option">EN</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
   <header>
     <nav>
       <ul>
-        <li><a href="index-en.html">Home</a></li>
-        <li><a href="foto-en.html">Photo</a></li>
-        <li><a href="video-en.html">Video</a></li>
-        <li><a href="o-mne-en.html">About</a></li>
-        <li><a href="recenze-en.html" class="active">Reviews</a></li>
-        <li><a href="kontakt-en.html">Contact</a></li>
+        <li><a href="https://neudopsym.github.io/index.html">Úvod</a></li>
+        <li><a href="https://neudopsym.github.io/foto.html">Foto</a></li>
+        <li><a href="https://neudopsym.github.io/video.html" class="active">Video</a></li>
+        <li><a href="https://neudopsym.github.io/o-mne.html">O mně</a></li>
+        <li><a href="https://neudopsym.github.io/recenze.html">Recenze</a></li>        
+        <li><a href="https://neudopsym.github.io/kontakt.html">Kontakt</a></li>
         <li class="language-switcher">
           <div class="language-dropdown">
             <button class="language-button" onclick="toggleLanguageDropdown()">
-              EN <span class="arrow">▼</span>
+              CZ <span class="arrow">▼</span>
             </button>
             <div class="language-options" id="language-options">
-              <a href="recenze.html" class="language-option">CZ</a>
-              <a href="recenze-sk.html" class="language-option">SK</a>
+              <a href="produktove-videa-sk.html" class="language-option">SK</a>
+              <a href="produktove-videa-en.html" class="language-option">EN</a>
             </div>
           </div>
         </li>
       </ul>
     </nav>
   </header>
-
-  <!-- Mobile Menu -->
-  <button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
-  <div class="mobile-menu" id="mobile-menu">
-    <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
-    <nav>
-      <ul>
-        <li><a href="index-en.html">Home</a></li>
-        <li><a href="foto-en.html">Photo</a></li>
-        <li><a href="video-en.html">Video</a></li>
-        <li><a href="o-mne-en.html">About</a></li>
-        <li><a href="recenze-en.html">Reviews</a></li>
-        <li><a href="kontakt-en.html">Contact</a></li>
-        <li class="language-switcher">
-          <div class="language-dropdown">
-            <button class="language-button" onclick="toggleMobileLanguageDropdown()">
-              EN <span class="arrow">▼</span>
-            </button>
-            <div class="language-options" id="mobile-language-options">
-              <a href="recenze.html" class="language-option">CZ</a>
-              <a href="recenze-sk.html" class="language-option">SK</a>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </div>
-
-  <main class="about">
-    <h1 class="desktop-h1" style="margin-top: 10px;">Reviews</h1>
-    <h1 class="mobile-h1">Reviews</h1>
+  
+  <main>
+    <!-- Desktop H1 (single line) -->
+    <h1>Produktová videa</h1>
     
-    <div class="review">
-      <div class="review-text">
-        Filip is very friendly, passionate about his work, and is accommodating throughout the process. A great experience with him!
+    <!-- Mobile H1 (two lines) -->
+    <h1 class="mobile-h1">Produktová<br>videa</h1>
+    
+    <div class="video-gallery">
+      <div class="video-card" data-video-id="1104261250" data-video-title="Rezidence Na Karmeli" data-video-platform="vimeo">
+        <img src="https://neudopsym.github.io/img/systemove/NKR_nahlad.png" alt="Miniatura videa: Rezidence Na Karmeli" loading="lazy">
+        <h2>Rezidence Na Karmeli</h2>
       </div>
-      <div class="review-author">
-        – Rebecca, Ola Poker Tour
+      <div class="video-card" data-video-id="1104261085" data-video-title="Green Mladá Boleslav 1" data-video-platform="vimeo">
+        <img src="https://neudopsym.github.io/img/systemove/Green_MB_nahlad.png" alt="Miniatura videa: Green Mladá Boleslav 1" loading="lazy">
+        <h2>Green Mladá Boleslav 1</h2>
       </div>
-    </div>
-    <div class="review">
-      <div class="review-text">
-        I recommend the photo shoot to everyone who is looking for a professional in their field. Filip is able to capture nature and emotions, and you feel very good and relaxed throughout the photo shoot. It was definitely not the last photo shoot together.
+      <div class="video-card" data-video-id="1114381775" data-video-title="Green Mladá Boleslav 2" data-video-platform="vimeo">
+        <img src="https://neudopsym.github.io/img/systemove/GMB_5.png" alt="Miniatura videa: Green Mladá Boleslav 2" loading="lazy">
+        <h2>Green Mladá Boleslav 2</h2>
       </div>
-      <div class="review-author">
-        – Kateřina Žižlavská, HM hair&beauty
+      <div class="video-card" data-video-id="1114381030" data-video-title="Green Mladá Boleslav 3" data-video-platform="vimeo">
+        <img src="https://neudopsym.github.io/img/systemove/GMB_4.png" alt="Miniatura videa: Green Mladá Boleslav 3" loading="lazy">
+        <h2>Green Mladá Boleslav 3</h2>
       </div>
-    </div>
-    <div class="review">
-      <div class="review-text">
-        Taking photos with Filip was a really great experience. From the very beginning, the atmosphere was relaxed, natural, no stress or forced posing. And that's something to say when you don't feel completely photogenic. 😅
-        Filip has a talent for posing you in a way that makes you look really good in the photos - without you even realizing it. He can guide, he can advise, and at the same time it all happens so naturally that you even laugh. 🫶
-        The result was worth it! Beautiful, authentic photos in which we both felt like ourselves. If you're looking for a photographer for couple photos who won't stress you out, but will show you that you can really look good in front of the lens - Filip is the right choice.
-      </div>
-      <div class="review-author">
-        – Veronika Styková, SMM & UGC creator
-      </div>
-    </div>
-    <div class="review">
-      <div class="review-text">
-       I really enjoyed the photo shoot. Everything took place in a pleasant and friendly atmosphere, which made me feel at ease. Filip has a great eye for detail and I’m thrilled with the resulting portraits. Thank you so much, and I’m looking forward to future collaboration.      
-      </div>
-      <div class="review-author">
-        – Veronika
-      </div>
-    </div>
-    <div class="review">
-      <div class="review-text">
-        I have been needing to take portrait photos with a professional for quite some time. Filip is definitely that and agreeing to cooperate with him was definitely a step in the right direction. What I appreciate about Filip is that he is able to choose the environment in a top-notch way, offer a clear vision in accordance with the client's wishes and implement the entire concept professionally.
-      </div>
-      <div class="review-author">
-        – Václav Šelepa
-      </div>
-    </div>
-    <div class="review">
-      <div class="review-text">
-        Working with Filip was great, I really enjoyed the photoshoot. His approach was professional but at the same time friendly and human, it is clear that the camera in his hand is at home. I look forward to further cooperation!
-        <div class="review-author">
-        – Martin Knutelský
-      </div>
-    </div>
-    <div class="review">
-      <div class="review-text">
-       I am thrilled with the photoshoot. Filip is experienced, friendly and helpful. Thanks to that, the results were great. I can only recommend him.
-      </div>
-      <div class="review-author">
-        – Emil
-      </div>
-    </div>
-    <div class="review">
-      <div class="review-text">
-        Working with Filip was great. He is kind, helpful, has an eye for detail and knows how to conduct a photo shoot so that a person looks their best. The results are beautiful. I highly recommend it!
-      </div>
-      <div class="review-author">
-        – Karolína alias Karolee Nakhrali
+      <div class="video-card" data-video-id="1114379771" data-video-title="Vily Crystal Gardens" data-video-platform="vimeo">
+        <img src="https://neudopsym.github.io/img/systemove/VCG_2.png" alt="Miniatura videa: Vily Crystal Gardens" loading="lazy">
+        <h2>Vily Crystal Gardens</h2>
       </div>
     </div>
   </main>
   
   <footer>
-    <p>&copy; 2025 Neudopsym Photo</p>
+    <p>© 2025 Neudopsym Photo</p>
   </footer>
+  
+  <!-- High-Quality Video Modal -->
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" aria-label="Zavřít video">&times;</span>
+      <h2 id="modalVideoTitle"></h2>
+      <div class="modal-video-wrapper">
+        <span class="video-close-button" aria-label="Zavřít video">&times;</span>
+        <div class="loading">Načítá se video...</div>
+      </div>
+    </div>
+  </div>
 
   <script>
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
-      const body = document.body;
-      const html = document.documentElement;
-
-      if (menu.classList.contains('active')) {
-        // Close menu
-        menu.classList.remove('active');
-        body.classList.remove('no-scroll');
-        html.classList.remove('no-scroll');
-      } else {
-        // Open menu
-        menu.classList.add('active');
-        body.classList.add('no-scroll');
-        html.classList.add('no-scroll');
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu functionality
+      const mobileMenuButton = document.querySelector('.mobile-menu-button');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      const mobileMenuClose = document.querySelector('.mobile-menu-close');
+      
+      function openMobileMenu() {
+        mobileMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
       }
-    }
+      
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+      
+      // FIXED: Toggle mobile menu on hamburger button click
+      mobileMenuButton.addEventListener('click', function() {
+        if (mobileMenu.classList.contains('active')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+
+      mobileMenuClose.addEventListener('click', closeMobileMenu);
+      
+      // Close mobile menu when clicking on menu links
+      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+      mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+      
+      // Close mobile menu when clicking outside
+      mobileMenu.addEventListener('click', function(event) {
+        if (event.target === mobileMenu) {
+          closeMobileMenu();
+        }
+      });
+
+      // Video modal functionality
+      const videoCards = document.querySelectorAll('.video-card');
+      const videoModal = document.getElementById('videoModal');
+      const closeButton = document.querySelector('.close-button');
+      const videoCloseButton = document.querySelector('.video-close-button');
+      const modalVideoWrapper = videoModal.querySelector('.modal-video-wrapper');
+      const modalVideoTitle = document.getElementById('modalVideoTitle');
+
+      // Function to detect video dimensions and set wrapper size
+      function setVideoWrapperDimensions(videoId, platform, wrapper, callback) {
+        if (platform === 'vimeo') {
+          // For Vimeo, use their API to get exact video dimensions
+          fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`)
+            .then(response => response.json())
+            .then(data => {
+              const videoWidth = data.width;
+              const videoHeight = data.height;
+              const aspectRatio = videoWidth / videoHeight;
+              
+              // Calculate optimal size for current viewport
+              const maxWidth = window.innerWidth <= 768 ? window.innerWidth * 0.9 : 800;
+              const maxHeight = window.innerWidth <= 768 ? window.innerHeight * 0.8 : 450;
+              
+              let finalWidth, finalHeight;
+              
+              if (window.innerWidth <= 768) {
+                // Mobile: fit within viewport while maintaining aspect ratio
+                if (aspectRatio > 1) {
+                  // Landscape
+                  finalWidth = Math.min(maxWidth, maxHeight * aspectRatio);
+                  finalHeight = finalWidth / aspectRatio;
+                } else {
+                  // Portrait or square
+                  finalHeight = Math.min(maxHeight, maxWidth / aspectRatio);
+                  finalWidth = finalHeight * aspectRatio;
+                }
+              } else {
+                // Desktop: maintain reasonable size but respect aspect ratio
+                if (aspectRatio > 16/9) {
+                  // Very wide video
+                  finalWidth = maxWidth;
+                  finalHeight = finalWidth / aspectRatio;
+                } else if (aspectRatio < 9/16) {
+                  // Very tall video
+                  finalHeight = maxHeight;
+                  finalWidth = finalHeight * aspectRatio;
+                } else {
+                  // Standard aspect ratios
+                  finalWidth = Math.min(maxWidth, maxHeight * aspectRatio);
+                  finalHeight = finalWidth / aspectRatio;
+                }
+              }
+              
+              // Apply dimensions to wrapper
+              wrapper.style.width = `${Math.round(finalWidth)}px`;
+              wrapper.style.height = `${Math.round(finalHeight)}px`;
+              wrapper.classList.add('has-dimensions');
+              
+              callback();
+            })
+            .catch(() => {
+              // Fallback to default size
+              if (window.innerWidth <= 768) {
+                wrapper.style.width = '90vw';
+                wrapper.style.height = 'auto';
+              } else {
+                wrapper.style.width = '800px';
+                wrapper.style.height = '450px';
+              }
+              callback();
+            });
+        } else {
+          // For YouTube, we can't easily get dimensions, so use responsive defaults
+          if (window.innerWidth <= 768) {
+            wrapper.style.width = '90vw';
+            wrapper.style.height = 'calc(90vw * 9/16)'; // Assume 16:9
+          } else {
+            wrapper.style.width = '800px';
+            wrapper.style.height = '450px';
+          }
+          callback();
+        }
+      }
+
+      // Function to create Vimeo embed
+      function createVimeoEmbed(videoId) {
+        const iframe = document.createElement('iframe');
+        
+        const params = new URLSearchParams({
+          autoplay: '1',
+          loop: '0',
+          muted: '0',
+          quality: 'auto',
+          responsive: '1',
+          dnt: '1',
+          portrait: '0',
+          title: '0',
+          byline: '0',
+          color: 'ffffff'
+        });
+        
+        iframe.setAttribute('src', `https://player.vimeo.com/video/${videoId}?${params.toString()}`);
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.style.borderRadius = '15px';
+        
+        return iframe;
+      }
+
+      // Function to create YouTube embed (fallback)
+      function createYouTubeEmbed(videoId) {
+        const iframe = document.createElement('iframe');
+        
+        const params = new URLSearchParams({
+          autoplay: '1',
+          rel: '0',
+          modestbranding: '1',
+          iv_load_policy: '3',
+          cc_load_policy: '0',
+          disablekb: '0',
+          fs: '1',
+          hd: '1',
+          vq: 'hd1080',
+          quality: 'hd1080',
+          enablejsapi: '1',
+          origin: window.location.origin
+        });
+        
+        iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?${params.toString()}`);
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.style.borderRadius = '15px';
+        
+        return iframe;
+      }
+
+      // Open video modal - Mobile responsive, Desktop fixed
+      videoCards.forEach(card => {
+        card.addEventListener('click', function() {
+          const videoId = this.dataset.videoId;
+          const videoTitle = this.dataset.videoTitle;
+          const platform = this.dataset.videoPlatform || 'youtube';
+          
+          console.log('Opening video:', videoId, videoTitle, platform);
+          
+          // Clear previous content and show loading
+          modalVideoWrapper.innerHTML = '<div class="loading">Načítá se video...</div>';
+          modalVideoWrapper.className = 'modal-video-wrapper';
+          modalVideoTitle.textContent = videoTitle;
+          
+          // Show modal - only when user actually clicks a video
+          videoModal.style.display = 'flex';
+          videoModal.classList.add('show');
+          
+          console.log('Modal display style:', videoModal.style.display);
+          
+          // Prevent body scroll when modal is open
+          document.body.style.overflow = 'hidden';
+          
+          // On desktop, ensure modal appears in viewport
+          if (window.innerWidth > 768) {
+            window.scrollTo(0, 0);
+            document.documentElement.style.overflow = 'hidden';
+          }
+          
+          // On mobile, also prevent scrolling of the page behind modal
+          if (window.innerWidth <= 768) {
+            document.documentElement.style.overflow = 'hidden';
+            window.scrollTo(0, 0);
+          }
+          
+          // Set wrapper dimensions based on actual video size
+          setVideoWrapperDimensions(videoId, platform, modalVideoWrapper, () => {
+            setTimeout(() => {
+              let iframe;
+              if (platform === 'vimeo') {
+                iframe = createVimeoEmbed(videoId);
+              } else {
+                iframe = createYouTubeEmbed(videoId);
+              }
+              
+              // Create mobile-specific close button
+              const mobileCloseButton = document.createElement('span');
+              mobileCloseButton.className = 'mobile-video-close';
+              mobileCloseButton.innerHTML = '&times;';
+              mobileCloseButton.setAttribute('aria-label', 'Zavřít video');
+              mobileCloseButton.addEventListener('click', closeVideoModal);
+              
+              modalVideoWrapper.innerHTML = '';
+              modalVideoWrapper.appendChild(iframe);
+              
+              // Add mobile close button only on mobile
+              if (window.innerWidth <= 768) {
+                modalVideoWrapper.appendChild(mobileCloseButton);
+              }
+              
+              console.log('Video iframe created and added');
+            }, 100);
+          });
+        });
+      });
+
+      // Close modal function
+      function closeVideoModal() {
+        console.log('Closing modal');
+        videoModal.style.display = 'none';
+        videoModal.classList.remove('show');
+        modalVideoWrapper.innerHTML = '<div class="loading">Načítá se video...</div>';
+        modalVideoWrapper.className = 'modal-video-wrapper';
+        modalVideoWrapper.style.width = '';
+        modalVideoWrapper.style.height = '';
+        document.body.style.overflow = 'auto';
+        
+        // Reset scroll behavior for both mobile and desktop
+        document.documentElement.style.overflow = 'auto';
+      }
+
+      // Close button events
+      closeButton.addEventListener('click', closeVideoModal);
+      videoCloseButton.addEventListener('click', closeVideoModal);
+
+      // Click outside modal to close
+      window.addEventListener('click', function(event) {
+        if (event.target === videoModal) {
+          closeVideoModal();
+        }
+      });
+
+      // Escape key to close modal
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          if (videoModal.style.display === 'flex') {
+            closeVideoModal();
+          }
+          if (mobileMenu.classList.contains('active')) {
+            closeMobileMenu();
+          }
+        }
+      });
+
+      // Improve thumbnail loading with fallback
+      const thumbnails = document.querySelectorAll('.video-card img');
+      thumbnails.forEach(img => {
+        img.addEventListener('error', function() {
+          const videoCard = this.closest('.video-card');
+          const videoId = videoCard.dataset.videoId;
+          if (videoId && !this.src.includes('vimeocdn.com')) {
+            this.src = `https://i.vimeocdn.com/video/${videoId}_640x360.jpg`;
+          }
+        });
+      });
+
+      // Expose functions globally for onclick handlers
+      window.toggleLanguageDropdown = toggleLanguageDropdown;
+      window.toggleMobileLanguageDropdown = toggleMobileLanguageDropdown;
+    });
 
     function toggleLanguageDropdown() {
       const dropdown = document.querySelector('header .language-dropdown');
