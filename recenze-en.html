@@ -794,12 +794,6 @@
           // Prevent body scroll when modal is open
           document.body.style.overflow = 'hidden';
           
-          // On desktop, ensure modal appears in viewport
-          if (window.innerWidth > 768) {
-            window.scrollTo(0, 0);
-            document.documentElement.style.overflow = 'hidden';
-          }
-          
           // On mobile, also prevent scrolling of the page behind modal
           if (window.innerWidth <= 768) {
             document.documentElement.style.overflow = 'hidden';
@@ -848,8 +842,9 @@
         modalVideoWrapper.style.height = '';
         document.body.style.overflow = 'auto';
         
-        // Reset scroll behavior for both mobile and desktop
-        document.documentElement.style.overflow = 'auto';
+        if (window.innerWidth <= 768) {
+          document.documentElement.style.overflow = 'auto';
+        }
       }
 
       // Close button events
