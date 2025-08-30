@@ -767,6 +767,7 @@
           // On mobile, also prevent scrolling of the page behind modal
           if (window.innerWidth <= 768) {
             document.documentElement.style.overflow = 'hidden';
+            window.scrollTo(0, 0);
           }
           
           // Set wrapper dimensions based on actual video size
