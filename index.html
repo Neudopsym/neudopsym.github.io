@@ -78,7 +78,7 @@ main{max-width:1400px;margin:0 auto;padding:0 20px}
 .banner img{width:50%;height:auto}
 
 /* SECTION TITLES */
-.section-title{font-family:Georgia,serif;font-size:28px;font-weight:400;font-style:italic;letter-spacing:0.5px;margin:40px 0 8px 0;padding-left:16px;text-shadow:2px 2px 6px rgba(0,0,0,0.6);border-left:4px solid rgba(255,255,255,0.4);color:#fff}
+.section-title{font-family:Georgia,serif;font-size:28px;font-weight:400;font-style:italic;letter-spacing:0.5px;margin:40px 0 8px 0;padding-left:12px;text-shadow:2px 2px 6px rgba(0,0,0,0.6);border-left:3px solid rgba(255,255,255,0.4);color:#fff;line-height:1.2;display:inline-block}
 .album-title{font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin:28px 0 10px 0;color:#ddd;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:color 0.2s}
 .album-title:hover{color:#fff}
 .album-title .title-arrow{font-size:14px;opacity:0.6}
@@ -107,7 +107,7 @@ main{max-width:1400px;margin:0 auto;padding:0 20px}
 
 /* ABOUT / CONTACT / REVIEWS */
 .about-section,.contact-section,.reviews-section{max-width:100%;margin:0;padding:20px 0 40px}
-.about-section h2,.contact-section h2,.reviews-section h2{font-family:Georgia,serif;font-size:28px;font-weight:400;font-style:italic;letter-spacing:0.5px;margin-bottom:24px;border-left:4px solid rgba(255,255,255,0.4);padding-left:16px;text-shadow:2px 2px 6px rgba(0,0,0,0.6);color:#fff}
+.about-section h2,.contact-section h2,.reviews-section h2{font-family:Georgia,serif;font-size:28px;font-weight:400;font-style:italic;letter-spacing:0.5px;margin-bottom:24px;border-left:3px solid rgba(255,255,255,0.4);padding-left:12px;text-shadow:2px 2px 6px rgba(0,0,0,0.6);color:#fff;line-height:1.2;display:inline-block}
 .about-section img.profile-photo{max-width:180px;border-radius:50%;margin:0 auto 28px;display:block;box-shadow:0 8px 20px rgba(0,0,0,0.4);border:2px solid rgba(255,255,255,0.1)}
 .about-section p,.contact-section p{font-size:17px;color:#ccc;margin-bottom:14px;line-height:1.7}
 .contact-section a{color:#4da6ff}
@@ -143,12 +143,11 @@ footer{text-align:center;padding:30px 10px;background:rgba(0,0,0,0.8);backdrop-f
 .lightbox-close{position:absolute;top:20px;right:20px;color:#fff;font-size:36px;cursor:pointer;background:rgba(0,0,0,0.6);border-radius:50%;width:50px;height:50px;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
 .lightbox-close:hover{background:rgba(0,0,0,0.9)}
 
-/* VIDEO MODAL */
-.video-modal{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.95);z-index:3000;align-items:center;justify-content:center;backdrop-filter:blur(5px)}
+.video-modal{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.97);z-index:3000;align-items:center;justify-content:center;backdrop-filter:blur(5px)}
 .video-modal.show{display:flex!important}
 .video-modal-content{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;padding:20px;position:relative}
-.video-modal-title{color:#fff;font-size:16px;margin-bottom:10px;text-align:center;opacity:0.8;position:absolute;bottom:20px;left:0;right:0}
-.video-modal-wrapper{position:relative;background:#000;border-radius:8px;overflow:hidden;max-width:calc(100vw - 40px);max-height:calc(100vh - 80px)}
+.video-modal-title{color:#fff;font-size:20px;font-family:Georgia,serif;font-style:italic;margin-top:16px;text-align:center;opacity:0.9;letter-spacing:0.5px}
+.video-modal-wrapper{position:relative;background:transparent;overflow:hidden}
 .video-modal-wrapper iframe{width:100%;height:100%;border:none;display:block}
 .video-modal-close{position:fixed;top:16px;right:16px;color:#fff;font-size:28px;cursor:pointer;background:rgba(0,0,0,0.7);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;border:1px solid rgba(255,255,255,0.2);z-index:3001}
 .video-modal-close:hover{background:rgba(0,0,0,0.95)}
@@ -597,7 +596,7 @@ function openVideo(videoId,title){
   document.body.style.overflow='hidden';
 
   const maxW=window.innerWidth-40;
-  const maxH=window.innerHeight-60;
+  const maxH=window.innerHeight-100; // space for title below
 
   fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`)
     .then(r=>r.json())
