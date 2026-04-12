@@ -32,21 +32,23 @@ a{color:inherit;text-decoration:none}ul{list-style:none}
 /* HEADER */
 header{position:fixed;top:0;width:100%;background:rgba(26,26,26,0.95);backdrop-filter:blur(15px);border-bottom:1px solid rgba(255,255,255,0.1);z-index:999;box-shadow:0 2px 20px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem}
 .header-logo{height:48px;width:auto;display:block}
+nav{flex:1;display:flex;justify-content:center}
 nav ul{display:flex;justify-content:center;align-items:center;padding:0;flex-wrap:wrap}
 nav li{margin:0 6px}
-nav a{font-weight:600;text-transform:uppercase;font-size:15px;letter-spacing:1px;color:#fff;padding:6px 12px;display:inline-block;transition:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);text-shadow:2px 2px 8px rgba(0,0,0,0.8)}
-nav a:hover{transform:scale(1.15) translateY(-2px);text-shadow:0 0 12px rgba(255,255,255,0.15),3px 3px 12px rgba(0,0,0,0.9)}
-nav a.active{transform:scale(1.08);text-shadow:0 0 12px rgba(255,255,255,0.3),2px 2px 4px rgba(0,0,0,0.8)}
+nav a{font-weight:400;text-transform:uppercase;font-size:0.72rem;letter-spacing:0.18em;color:rgba(255,255,255,0.7);padding:6px 12px;display:inline-block;transition:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Segoe UI','Roboto','Arial',sans-serif}
+nav a:hover{color:#fff;transform:scale(1.05) translateY(-1px)}
+nav a.active{color:#fff}
 .language-switcher{position:relative}
 .language-dropdown{position:relative}
-.language-button{font-weight:600;text-transform:uppercase;font-size:15px;letter-spacing:1px;color:#fff;padding:6px 12px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;text-shadow:2px 2px 8px rgba(0,0,0,0.8);transition:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94)}
-.language-button:hover{transform:scale(1.15) translateY(-2px)}
-.arrow{font-size:12px;transition:transform 0.3s ease}
+.language-button{font-weight:400;text-transform:uppercase;font-size:0.72rem;letter-spacing:0.18em;color:rgba(255,255,255,0.7);padding:6px 12px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Segoe UI','Roboto','Arial',sans-serif;transition:color 0.3s}
+.language-button:hover{color:#fff}
+.arrow{font-size:10px;transition:transform 0.3s ease;opacity:0.6}
 .language-dropdown.active .arrow{transform:rotate(180deg)}
-.language-options{position:absolute;top:100%;left:0;background:rgba(26,26,26,0.95);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,0.1);border-radius:5px;min-width:80px;z-index:1001;display:none}
+.language-options{position:absolute;top:calc(100% + 8px);right:0;left:auto;background:rgba(20,20,22,0.98);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,0.1);border-radius:4px;min-width:70px;z-index:1001;display:none;box-shadow:0 8px 24px rgba(0,0,0,0.5)}
 .language-options.active{display:block}
-.language-option{display:block;padding:8px 12px;color:#fff;font-weight:600;text-transform:uppercase;font-size:15px;letter-spacing:1px;text-shadow:2px 2px 8px rgba(0,0,0,0.8);transition:all 0.3s ease}
-.language-option:hover{background:rgba(255,255,255,0.1);transform:scale(1.05)}
+.language-option{display:block;padding:8px 14px;color:rgba(255,255,255,0.65);font-weight:400;text-transform:uppercase;font-size:0.72rem;letter-spacing:0.18em;font-family:'Segoe UI','Roboto','Arial',sans-serif;transition:all 0.2s ease;border-bottom:1px solid rgba(255,255,255,0.06)}
+.language-option:last-child{border-bottom:none}
+.language-option:hover{color:#fff;background:rgba(255,255,255,0.05)}
 
 /* MOBILE MENU */
 .mobile-menu-button{display:none;position:fixed;top:20px;right:20px;z-index:1001;background:rgba(26,26,26,0.95);border:2px solid rgba(255,255,255,0.2);color:#fff;font-size:36px;padding:20px 25px;border-radius:10px;cursor:pointer;backdrop-filter:blur(15px);box-shadow:0 4px 15px rgba(0,0,0,0.5);transition:all 0.3s ease}
@@ -187,13 +189,15 @@ footer{text-align:center;padding:30px 10px;background:rgba(0,0,0,0.8);backdrop-f
     <li><a href="#o-mne">O mně</a></li>
     <li><a href="#recenze">Recenze</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
-    <li class="language-switcher"><div class="language-dropdown">
-      <button class="language-button" onclick="toggleLanguageDropdown()">CZ <span class="arrow">▼</span></button>
-      <div class="language-options" id="language-options">
-        <a href="https://neudopsym.github.io/index-sk.html" class="language-option">SK</a>
-        <a href="https://neudopsym.github.io/index-en.html" class="language-option">EN</a>
+    <li class="language-switcher">
+      <div class="language-dropdown">
+        <button class="language-button" onclick="toggleLanguageDropdown()">CZ <span class="arrow">▼</span></button>
+        <div class="language-options" id="language-options">
+          <a href="https://neudopsym.github.io/index-sk.html" class="language-option">SK</a>
+          <a href="https://neudopsym.github.io/index-en.html" class="language-option">EN</a>
+        </div>
       </div>
-    </div></li>
+    </li>
   </ul></nav>
 </header>
 
