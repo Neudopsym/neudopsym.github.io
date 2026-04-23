@@ -23,7 +23,7 @@
 </script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{color-scheme:dark;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+html{color-scheme:dark;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:'Segoe UI','Roboto','Arial',sans-serif;background:linear-gradient(135deg,#1e1e20 0%,#0f0f12 50%,#08080c 100%);background-attachment:fixed;color:#fff;line-height:1.6;font-size:16px;padding-top:80px;min-height:100vh;overflow-x:hidden}
 @supports (-webkit-touch-callout:none){body{background-attachment:scroll!important;background:linear-gradient(135deg,#1e1e20 0%,#0f0f12 50%,#08080c 100%)!important}html{background:#1e1e20!important}}
 body.no-scroll{overflow:hidden!important;position:fixed!important;width:100%!important}
@@ -51,7 +51,8 @@ nav a.active{color:#fff}
 .language-option:hover{color:#fff;background:rgba(255,255,255,0.05)}
 
 /* MOBILE MENU */
-.mobile-menu-button{display:none;position:fixed;top:20px;right:20px;z-index:1001;background:rgba(26,26,26,0.95);border:2px solid rgba(255,255,255,0.2);color:#fff;font-size:36px;padding:20px 25px;border-radius:10px;cursor:pointer;backdrop-filter:blur(15px);box-shadow:0 4px 15px rgba(0,0,0,0.5);transition:all 0.3s ease}
+.mobile-menu-button{display:none;position:fixed;top:20px;right:20px;z-index:1001;background:rgba(26,26,26,0.95);border:1px solid rgba(255,255,255,0.2);padding:6px;border-radius:6px;cursor:pointer;backdrop-filter:blur(15px);box-shadow:0 4px 15px rgba(0,0,0,0.5);transition:all 0.3s ease;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.mobile-menu-button span{display:block;width:22px;height:2px;background:#fff;border-radius:1px}
 @media(min-width:901px){.mobile-menu-button{display:none!important}}
 .mobile-menu{display:none;position:fixed;top:80px;right:20px;z-index:1000;background:rgba(14,14,18,0.98);border:1px solid rgba(255,255,255,0.12);min-width:200px;box-shadow:0 8px 32px rgba(0,0,0,0.6)}
 .mobile-menu.active{display:block!important}
@@ -158,11 +159,11 @@ footer{text-align:center;padding:30px 10px;background:rgba(0,0,0,0.8);backdrop-f
 /* RESPONSIVE */
 @media(max-width:900px){
   header{display:none}body{padding-top:0}
-  .mobile-menu-button{display:block}
+  .mobile-menu-button{display:flex}
   .hero h1{font-size:32px}.section-title{font-size:26px}
   .thumb{flex:0 0 calc((100% - 30px) / 3)}
   .thumb-more{flex:0 0 calc((100% - 30px) / 3)}
-  .category-card{width:calc(50vw - 15px);height:calc(50vw - 15px)}
+  .category-card{width:calc(50vw - 30px);height:calc(50vw - 30px)}
   .banner img{width:90%!important}
   .video-modal-wrapper{width:90vw;height:calc(90vw * 9/16)}
   .row-nav{width:30px;height:30px;font-size:14px}
@@ -201,7 +202,7 @@ footer{text-align:center;padding:30px 10px;background:rgba(0,0,0,0.8);backdrop-f
   </ul></nav>
 </header>
 
-<button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
+<button class="mobile-menu-button" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
 <div class="mobile-menu" id="mobile-menu">
   <ul>
     <li><a href="#uvod" onclick="toggleMobileMenu()">Úvod</a></li>
