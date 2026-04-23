@@ -51,8 +51,8 @@ nav a.active{color:#fff}
 .language-option:hover{color:#fff;background:rgba(255,255,255,0.05)}
 
 /* MOBILE MENU */
-.mobile-menu-button{display:none;position:fixed;top:20px;right:20px;z-index:1001;background:rgba(26,26,26,0.95);border:1px solid rgba(255,255,255,0.2);padding:6px;border-radius:6px;cursor:pointer;backdrop-filter:blur(15px);box-shadow:0 4px 15px rgba(0,0,0,0.5);transition:all 0.3s ease;flex-direction:column;align-items:center;justify-content:center;gap:5px}
-.mobile-menu-button span{display:block;width:22px;height:2px;background:#fff;border-radius:1px}
+.mobile-menu-button{display:none;z-index:1001;background:rgba(26,26,26,0.95);border:1px solid rgba(255,255,255,0.2);padding:9px;border-radius:6px;cursor:pointer;backdrop-filter:blur(15px);box-shadow:0 4px 15px rgba(0,0,0,0.5);transition:all 0.3s ease;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.mobile-menu-button span{display:block;width:26px;height:2px;background:#fff;border-radius:1px}
 @media(min-width:901px){.mobile-menu-button{display:none!important}}
 .mobile-menu{display:none;position:fixed;top:80px;right:20px;z-index:1000;background:rgba(14,14,18,0.98);border:1px solid rgba(255,255,255,0.12);min-width:200px;box-shadow:0 8px 32px rgba(0,0,0,0.6)}
 .mobile-menu.active{display:block!important}
@@ -158,14 +158,14 @@ footer{text-align:center;padding:30px 10px;background:rgba(0,0,0,0.8);backdrop-f
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  header{padding:0.8rem 1.2rem}body{padding-top:0}
+  header{padding:1.2rem 1.5rem}body{padding-top:0}
   header nav ul{display:none}header .language-switcher{display:none}
-  .photo-grid{justify-content:center}
+  .photo-grid{justify-content:center;width:100%}
+  .category-card{flex:1;aspect-ratio:1/1;height:auto;width:auto}
   .mobile-menu-button{display:flex}
   .hero h1{font-size:32px}.section-title{font-size:26px}
   .thumb{flex:0 0 calc((100% - 30px) / 4)}
   .thumb-more{flex:0 0 calc((100% - 30px) / 4)}
-  .category-card{width:calc(50vw - 30px);height:calc(50vw - 30px)}
   .banner img{width:90%!important}
   .video-modal-wrapper{width:90vw;height:calc(90vw * 9/16)}
   .row-nav{width:30px;height:30px;font-size:14px}
@@ -202,9 +202,8 @@ footer{text-align:center;padding:30px 10px;background:rgba(0,0,0,0.8);backdrop-f
       </div>
     </li>
   </ul></nav>
+  <button class="mobile-menu-button" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
 </header>
-
-<button class="mobile-menu-button" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
 <div class="mobile-menu" id="mobile-menu">
   <ul>
     <li><a href="#uvod" onclick="toggleMobileMenu()">Úvod</a></li>
