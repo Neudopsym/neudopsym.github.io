@@ -8,18 +8,23 @@
 <meta name="robots" content="index, follow">
 <meta name="author" content="Filip Kubus">
 <link rel="canonical" href="https://neudopsym.cz">
-<link rel="icon" href="https://neudopsym.cz/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+<link rel="manifest" href="site.webmanifest"/>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
 <meta property="og:title" content="Neudopsym Photo | Foto-video Praha | Portréty, Promo, Eventy">
 <meta property="og:description" content="Neudopsym photo | Profesionální foto a video Praha. Dokument, portrét, eventové a promo fotografie. Kreativní přístup k vizuální tvorbě.">
 <meta property="og:image" content="https://neudopsym.github.io/img/preview.jpg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://neudopsym.cz">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Neudopsym Photo – Fotografie a videa">
-<meta name="twitter:description" content="Zachycené momenty, které říkají příběh. Prohlédněte si portfolio fotografa Neudopsym Photo.">
+<meta name="twitter:title" content="Neudopsym Photo | Foto-video Praha | Portréty, Promo, Eventy">
+<meta name="twitter:description" content="Neudopsym photo | Profesionální foto a video Praha. Dokument, portrét, eventové a promo fotografie. Kreativní přístup k vizuální tvorbě.">
 <meta name="twitter:image" content="https://neudopsym.github.io/img/preview.jpg">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"Neudopsym Photo","url":"https://neudopsym.cz","author":{"@type":"Person","name":"Filip Kubus"},"description":"Portfolio fotografa Neudopsym Photo."}
+{"@context":"https://schema.org","@type":"WebSite","name":"Neudopsym Photo","url":"https://neudopsym.cz","author":{"@type":"Person","name":"Filip Kubus"},"description":"Profesionální fotograf a videograf v Praze. Portrétní, párové, eventové a promo fotografie a videa."}
 </script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -186,7 +191,7 @@ footer{text-align:center;padding:30px 10px;background:rgba(0,0,0,0.8);backdrop-f
 <header>
   <a href="#uvod"><img class="header-logo" src="https://neudopsym.github.io/img/systemove/LOGO_NP_2_nobg_orez.png" alt="Neudopsym Photo"></a>
   <nav><ul>
-    <li><a href="#uvod" class="active">Úvod</a></li>
+    <li><a href="#" class="active">Úvod</a></li>
     <li><a href="#foto">Foto</a></li>
     <li><a href="#video">Video</a></li>
     <li><a href="#o-mne">O mně</a></li>
@@ -206,7 +211,7 @@ footer{text-align:center;padding:30px 10px;background:rgba(0,0,0,0.8);backdrop-f
 </header>
 <div class="mobile-menu" id="mobile-menu">
   <ul>
-    <li><a href="#uvod" onclick="toggleMobileMenu()">Úvod</a></li>
+    <li><a href="#" onclick="toggleMobileMenu()">Úvod</a></li>
     <li><a href="#foto" onclick="toggleMobileMenu()">Foto</a></li>
     <li><a href="#video" onclick="toggleMobileMenu()">Video</a></li>
     <li><a href="#o-mne" onclick="toggleMobileMenu()">O mně</a></li>
@@ -441,14 +446,38 @@ footer{text-align:center;padding:30px 10px;background:rgba(0,0,0,0.8);backdrop-f
     <div class="contact-section">
       <h2>Kontakt</h2>
       <p>Máte zájem o focení, video, tvorbu a správu PPC kampaní nebo komplexnější marketingovou spolupráci?</p>
-      <p>Napište mi na <a href="mailto:f.kubus7@gmail.com">f.kubus7@gmail.com</a></p>
+      <p>Můžete mě kontaktovat přes kontaktní formulář níže.</p>
       <p>Případně se spojme přes <a href="https://www.linkedin.com/in/filip-kubus/" target="_blank">LinkedIn</a></p>
       <p>Sledujte mou tvorbu taky na Instagramu: <a href="https://www.instagram.com/neudopsym.photo/" target="_blank">@neudopsym.photo</a></p>
+      <form id="contact-form" style="margin-top:28px;max-width:540px;">
+        <div style="margin-bottom:16px;"><label for="cf-name" style="display:block;margin-bottom:6px;font-size:14px;color:#bbb;">Jméno a příjmení</label><input type="text" id="cf-name" name="name" required style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:6px;color:#fff;font-size:15px;font-family:inherit;outline:none;"></div>
+        <div style="margin-bottom:16px;"><label for="cf-email" style="display:block;margin-bottom:6px;font-size:14px;color:#bbb;">Email</label><input type="email" id="cf-email" name="email" required style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:6px;color:#fff;font-size:15px;font-family:inherit;outline:none;"></div>
+        <div style="margin-bottom:16px;"><label for="cf-message" style="display:block;margin-bottom:6px;font-size:14px;color:#bbb;">Zpráva</label><textarea id="cf-message" name="message" required rows="5" style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:6px;color:#fff;font-size:15px;font-family:inherit;outline:none;resize:vertical;"></textarea></div>
+        <div style="margin-bottom:20px;display:flex;align-items:flex-start;gap:10px;"><input type="checkbox" id="cf-gdpr" name="gdpr" required style="margin-top:3px;flex-shrink:0;cursor:pointer;accent-color:#4da6ff;"><label for="cf-gdpr" style="font-size:14px;color:#bbb;line-height:1.5;cursor:pointer;">Souhlasím se <a href="#" onclick="showGdpr();return false;" style="color:#4da6ff;">zpracováním osobních údajů</a>.</label></div>
+        <button type="submit" style="padding:11px 28px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;border-radius:6px;cursor:pointer;font-family:inherit;transition:background 0.2s,border-color 0.2s;">Odeslat</button>
+        <p id="cf-msg" style="margin-top:14px;font-size:15px;display:none;"></p>
+      </form>
     </div>
   </section>
 </main>
 
 <footer><p>&copy; 2025 Neudopsym Photo</p></footer>
+
+<section id="gdpr" style="display:none;padding:60px 20px;max-width:800px;margin:0 auto;color:#ccc">
+  <h2 style="font-family:Georgia,serif;font-size:28px;font-weight:400;color:#fff;margin-bottom:24px;">Zásady ochrany osobních údajů</h2>
+  <p style="margin-bottom:16px;">Tento web si zakládá na ochraně vašeho soukromí a zpracovává pouze nezbytné osobní údaje v souladu s platnou legislativou.</p>
+  <h3 style="color:#fff;margin:24px 0 8px;">1. Správce osobních údajů</h3>
+  <p style="margin-bottom:16px;">Filip Kubus, IČO: 19553528, Sídlo: Záhřebská 562/41, Praha – Vinohrady, 120&nbsp;00, E-mail: f.kubus7@gmail.com</p>
+  <h3 style="color:#fff;margin:24px 0 8px;">2. Jaké údaje zpracovávám a proč</h3>
+  <p style="margin-bottom:16px;">Zpracovávám pouze údaje, které mi sami dobrovolně poskytnete: jméno, e-mail, obsah zprávy. Při použití formulářů může být automaticky zaznamenána vaše IP adresa poskytovatelem formulářové služby (Google LLC). Právním základem zpracování je souhlas subjektu údajů.</p>
+  <h3 style="color:#fff;margin:24px 0 8px;">3. Doba uchování údajů</h3>
+  <p style="margin-bottom:16px;">Osobní údaje uchovávám maximálně 12 měsíců od poslední komunikace.</p>
+  <h3 style="color:#fff;margin:24px 0 8px;">4. Předávání údajů třetím stranám</h3>
+  <p style="margin-bottom:16px;">Vaše osobní údaje nejsou předávány třetím stranám pro marketingové účely. Pro sběr dat z formulářů využívám Google Apps Script (Google LLC, USA). Odesláním formuláře souhlasíte s <a href="https://policies.google.com/privacy" target="_blank" style="color:#4da6ff;">Zásadami ochrany soukromí Google</a>.</p>
+  <h3 style="color:#fff;margin:24px 0 8px;">5. Vaše práva</h3>
+  <p style="margin-bottom:16px;">Máte právo požadovat přístup, opravu nebo výmaz svých údajů. Kontaktujte mě na f.kubus7@gmail.com. Máte také právo podat stížnost u <a href="https://www.uoou.cz" target="_blank" style="color:#4da6ff;">Úřadu pro ochranu osobních údajů</a>.</p>
+  <button onclick="hideGdpr()" style="margin-top:32px;padding:11px 28px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:13px;font-weight:600;letter-spacing:1px;border-radius:6px;cursor:pointer;font-family:inherit;transition:background 0.2s,border-color 0.2s;">← Zpět na web</button>
+</section>
 
 <!-- ALBUM PANEL -->
 <div class="album-panel" id="album-panel">
@@ -722,8 +751,29 @@ const navLinks=document.querySelectorAll('header nav a');
 window.addEventListener('scroll',()=>{
   let current='';
   sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)current=s.id});
-  navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current)});
+  navLinks.forEach(a=>{const h=a.getAttribute('href');a.classList.toggle('active',h==='#'+current||(h==='#'&&current==='uvod'));});
 });
+
+// CONTACT FORM
+document.getElementById('contact-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  const btn=this.querySelector('button[type="submit"]');
+  const msg=document.getElementById('cf-msg');
+  btn.disabled=true;btn.textContent='Odesílám…';msg.style.display='none';
+  fetch('https://script.google.com/macros/s/AKfycbyUnOQmQyd4zvlj-ljYlPren2k_io-4s1Gt930uc_eMqFyCcrXxVNl-Tuz5X2lplVc/exec',{
+    method:'POST',mode:'no-cors',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:new URLSearchParams({name:document.getElementById('cf-name').value,email:document.getElementById('cf-email').value,message:document.getElementById('cf-message').value}).toString()
+  }).then(()=>{
+    msg.textContent='Zpráva byla odeslána. Děkujeme!';msg.style.color='#6fcf97';msg.style.display='block';this.reset();
+  }).catch(()=>{
+    msg.textContent='Něco se nepovedlo. Zkuste to prosím znovu.';msg.style.color='#eb5757';msg.style.display='block';
+  }).finally(()=>{btn.disabled=false;btn.textContent='Odeslat';});
+});
+
+// GDPR
+function showGdpr(){document.querySelector('main').style.display='none';document.getElementById('gdpr').style.display='block';window.scrollTo(0,0);}
+function hideGdpr(){document.getElementById('gdpr').style.display='none';document.querySelector('main').style.display='';window.scrollTo(0,0);}
 </script>
 </body>
 </html>
