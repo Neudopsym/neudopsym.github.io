@@ -128,12 +128,10 @@ main{max-width:1400px;margin:0 auto;padding:0 20px}
 .review-author{text-align:left;padding-left:16px;font-weight:600;color:#aaa;font-size:0.95em}
 
 /* FOOTER */
-footer{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(0,0,0,0.8);backdrop-filter:blur(10px);font-size:14px;margin-top:60px;border-top:1px solid rgba(255,255,255,0.1);color:#ccc}
-.footer-left{flex:1}
-.footer-nav{flex:1;text-align:center}
-.footer-nav ul{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 16px;list-style:none;padding:0}
-.footer-nav a{font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:#ccc}
-.footer-copy{flex:1;text-align:right;font-size:14px;color:#ccc;white-space:nowrap}
+footer{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;background:rgba(0,0,0,0.8);backdrop-filter:blur(10px);font-size:14px;margin-top:60px;border-top:1px solid rgba(255,255,255,0.1);color:#ccc}
+.footer-copy{font-size:14px;color:#ccc;white-space:nowrap}
+.footer-nav{display:flex;align-items:center;gap:12px;flex-wrap:nowrap}
+.footer-nav a{font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:#ccc;white-space:nowrap}
 
 /* ALBUM PANEL */
 .album-panel{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#1e1e20 0%,#0f0f12 50%,#08080c 100%);z-index:2000;overflow-y:auto;transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94)}
@@ -185,15 +183,13 @@ footer{display:flex;justify-content:space-between;align-items:center;padding:20p
   .row-nav.prev{left:-15px}.row-nav.next{right:-15px}
   .album-panel-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;padding:16px}
   .album-panel-title{font-size:16px}
-  footer{flex-direction:column;padding:20px;gap:12px}
-  .footer-left{display:none}
-  .footer-copy{text-align:center}
 }
 @media(max-width:600px){
   .thumb{flex:0 0 calc((100% - 20px) / 3)}
   .thumb-more{flex:0 0 calc((100% - 20px) / 3)}
   .album-row{gap:6px}
   .album-panel-grid{grid-template-columns:repeat(3,1fr);gap:6px;padding:12px}
+  footer{flex-direction:column;text-align:center;padding:16px 20px;gap:10px}
 }
 </style>
 </head>
@@ -489,19 +485,16 @@ footer{display:flex;justify-content:space-between;align-items:center;padding:20p
 </section>
 
 <footer>
-  <div class="footer-left"></div>
-  <nav class="footer-nav">
-    <ul>
-      <li><a href="#" onclick="navTo('');return false;">Úvod</a></li>
-      <li><a href="#foto" onclick="navTo('foto');return false;">Foto</a></li>
-      <li><a href="#video" onclick="navTo('video');return false;">Video</a></li>
-      <li><a href="#o-mne" onclick="navTo('o-mne');return false;">O mně</a></li>
-      <li><a href="#recenze" onclick="navTo('recenze');return false;">Recenze</a></li>
-      <li><a href="#kontakt" onclick="navTo('kontakt');return false;">Kontakt</a></li>
-      <li><a href="#" onclick="showGdpr();return false;">GDPR</a></li>
-    </ul>
-  </nav>
   <p class="footer-copy">&copy; 2025 Neudopsym Photo</p>
+  <nav class="footer-nav">
+    <a href="#" onclick="navTo('');return false;">Úvod</a>
+    <a href="#foto" onclick="navTo('foto');return false;">Foto</a>
+    <a href="#video" onclick="navTo('video');return false;">Video</a>
+    <a href="#o-mne" onclick="navTo('o-mne');return false;">O mně</a>
+    <a href="#recenze" onclick="navTo('recenze');return false;">Recenze</a>
+    <a href="#kontakt" onclick="navTo('kontakt');return false;">Kontakt</a>
+    <a href="#" onclick="showGdpr();return false;">GDPR</a>
+  </nav>
 </footer>
 
 <!-- ALBUM PANEL -->
