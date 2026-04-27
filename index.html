@@ -191,12 +191,12 @@ footer{text-align:center;padding:30px 10px;background:rgba(0,0,0,0.8);backdrop-f
 <header>
   <a href="#uvod"><img class="header-logo" src="https://neudopsym.github.io/img/systemove/LOGO_NP_2_nobg_orez.png" alt="Neudopsym Photo"></a>
   <nav><ul>
-    <li><a href="#" class="active">Úvod</a></li>
-    <li><a href="#foto">Foto</a></li>
-    <li><a href="#video">Video</a></li>
-    <li><a href="#o-mne">O mně</a></li>
-    <li><a href="#recenze">Recenze</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="#" onclick="navTo('');return false;" class="active">Úvod</a></li>
+    <li><a href="#foto" onclick="navTo('foto');return false;">Foto</a></li>
+    <li><a href="#video" onclick="navTo('video');return false;">Video</a></li>
+    <li><a href="#o-mne" onclick="navTo('o-mne');return false;">O mně</a></li>
+    <li><a href="#recenze" onclick="navTo('recenze');return false;">Recenze</a></li>
+    <li><a href="#kontakt" onclick="navTo('kontakt');return false;">Kontakt</a></li>
     <li class="language-switcher">
       <div class="language-dropdown">
         <button class="language-button" onclick="toggleLanguageDropdown()">CZ <span class="arrow">▼</span></button>
@@ -211,12 +211,12 @@ footer{text-align:center;padding:30px 10px;background:rgba(0,0,0,0.8);backdrop-f
 </header>
 <div class="mobile-menu" id="mobile-menu">
   <ul>
-    <li><a href="#" onclick="toggleMobileMenu()">Úvod</a></li>
-    <li><a href="#foto" onclick="toggleMobileMenu()">Foto</a></li>
-    <li><a href="#video" onclick="toggleMobileMenu()">Video</a></li>
-    <li><a href="#o-mne" onclick="toggleMobileMenu()">O mně</a></li>
-    <li><a href="#recenze" onclick="toggleMobileMenu()">Recenze</a></li>
-    <li><a href="#kontakt" onclick="toggleMobileMenu()">Kontakt</a></li>
+    <li><a href="#" onclick="navTo('');toggleMobileMenu();return false;">Úvod</a></li>
+    <li><a href="#foto" onclick="navTo('foto');toggleMobileMenu();return false;">Foto</a></li>
+    <li><a href="#video" onclick="navTo('video');toggleMobileMenu();return false;">Video</a></li>
+    <li><a href="#o-mne" onclick="navTo('o-mne');toggleMobileMenu();return false;">O mně</a></li>
+    <li><a href="#recenze" onclick="navTo('recenze');toggleMobileMenu();return false;">Recenze</a></li>
+    <li><a href="#kontakt" onclick="navTo('kontakt');toggleMobileMenu();return false;">Kontakt</a></li>
   </ul>
 </div>
 
@@ -461,8 +461,6 @@ footer{text-align:center;padding:30px 10px;background:rgba(0,0,0,0.8);backdrop-f
   </section>
 </main>
 
-<footer><p>&copy; 2025 Neudopsym Photo</p></footer>
-
 <section id="gdpr" style="display:none;padding:60px 20px;max-width:800px;margin:0 auto;color:#ccc">
   <h2 style="font-family:Georgia,serif;font-size:28px;font-weight:400;color:#fff;margin-bottom:24px;">Zásady ochrany osobních údajů</h2>
   <p style="margin-bottom:16px;">Tento web si zakládá na ochraně vašeho soukromí a zpracovává pouze nezbytné osobní údaje v souladu s platnou legislativou.</p>
@@ -478,6 +476,21 @@ footer{text-align:center;padding:30px 10px;background:rgba(0,0,0,0.8);backdrop-f
   <p style="margin-bottom:16px;">Máte právo požadovat přístup, opravu nebo výmaz svých údajů. Kontaktujte mě na f.kubus7@gmail.com. Máte také právo podat stížnost u <a href="https://www.uoou.cz" target="_blank" style="color:#4da6ff;">Úřadu pro ochranu osobních údajů</a>.</p>
   <button onclick="hideGdpr()" style="margin-top:32px;padding:11px 28px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:13px;font-weight:600;letter-spacing:1px;border-radius:6px;cursor:pointer;font-family:inherit;transition:background 0.2s,border-color 0.2s;">← Zpět na web</button>
 </section>
+
+<footer>
+  <p>&copy; 2025 Neudopsym Photo</p>
+  <nav style="margin-top:14px;">
+    <ul style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px 16px;list-style:none;padding:0;">
+      <li><a href="#" onclick="navTo('');return false;" style="font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:#ccc;">Úvod</a></li>
+      <li><a href="#foto" onclick="navTo('foto');return false;" style="font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:#ccc;">Foto</a></li>
+      <li><a href="#video" onclick="navTo('video');return false;" style="font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:#ccc;">Video</a></li>
+      <li><a href="#o-mne" onclick="navTo('o-mne');return false;" style="font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:#ccc;">O mně</a></li>
+      <li><a href="#recenze" onclick="navTo('recenze');return false;" style="font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:#ccc;">Recenze</a></li>
+      <li><a href="#kontakt" onclick="navTo('kontakt');return false;" style="font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:#ccc;">Kontakt</a></li>
+      <li><a href="#" onclick="showGdpr();return false;" style="font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:#ccc;">GDPR</a></li>
+    </ul>
+  </nav>
+</footer>
 
 <!-- ALBUM PANEL -->
 <div class="album-panel" id="album-panel">
@@ -760,7 +773,7 @@ document.getElementById('contact-form').addEventListener('submit',function(e){
   const btn=this.querySelector('button[type="submit"]');
   const msg=document.getElementById('cf-msg');
   btn.disabled=true;btn.textContent='Odesílám…';msg.style.display='none';
-  fetch('https://script.google.com/macros/s/AKfycbyUnOQmQyd4zvlj-ljYlPren2k_io-4s1Gt930uc_eMqFyCcrXxVNl-Tuz5X2lplVc/exec',{
+  fetch('https://script.google.com/macros/s/AKfycbyGs_001inpCGciKSUL3ubAvJWM6zHp2kVNj85EFTLs9P8D0IuljsNI0OEH18V-tNlA/exec',{
     method:'POST',mode:'no-cors',
     headers:{'Content-Type':'application/x-www-form-urlencoded'},
     body:new URLSearchParams({name:document.getElementById('cf-name').value,email:document.getElementById('cf-email').value,message:document.getElementById('cf-message').value}).toString()
@@ -774,6 +787,7 @@ document.getElementById('contact-form').addEventListener('submit',function(e){
 // GDPR
 function showGdpr(){document.querySelector('main').style.display='none';document.getElementById('gdpr').style.display='block';window.scrollTo(0,0);}
 function hideGdpr(){document.getElementById('gdpr').style.display='none';document.querySelector('main').style.display='';window.scrollTo(0,0);}
+function navTo(hash){document.getElementById('gdpr').style.display='none';document.querySelector('main').style.display='';if(hash){const el=document.getElementById(hash);if(el)el.scrollIntoView({behavior:'smooth'});}else{window.scrollTo({top:0,behavior:'smooth'});}}
 </script>
 </body>
 </html>
