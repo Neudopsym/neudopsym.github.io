@@ -46,12 +46,29 @@ body.no-scroll{overflow:hidden!important;position:fixed!important;width:100%!imp
 a{color:inherit;text-decoration:none}ul{list-style:none}
 
 /* HEADER */
-header{position:fixed;top:0;width:100%;background:rgba(26,26,26,0.95);backdrop-filter:blur(15px);border-bottom:1px solid rgba(255,255,255,0.1);z-index:999;box-shadow:0 2px 20px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:flex-start;padding:1.2rem 4rem}
+/* 1. ZÁKLADNÍ NASTAVENÍ (PRO MOBILY A TABLETY DO 900px) */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 999;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Na mobilu hodí logo doleva a burger doprava */
+  padding: 1.2rem 1.5rem;          /* Menší boční okraj, aby se to na mobil vešlo */
+}
+
+/* 2. ROZŠÍŘENÍ PRO LAPTOPY A POČÍTAČE (OD 901px NAHORU) */
 @media (min-width: 901px) {
   header {
-    justify-content: flex-start; /* Vrátí zarovnání na začátek */
-    gap: 21.5rem;                /* Tady je tvůj rozměr pro desktop */
-    padding: 1.2rem 4rem;        /* Větší padding pro laptopy */
+    justify-content: flex-start;  /* Vrátí desktopové řazení prvků za sebou */
+    gap: 21.5rem;                 /* Tvůj přesný rozměr a mezera pro desktop */
+    padding: 1.2rem 4rem;         /* Větší luxusní okraje pro laptopy */
   }
 }
 .header-logo{height:48px;width:auto;display:block}
