@@ -46,68 +46,14 @@ body.no-scroll{overflow:hidden!important;position:fixed!important;width:100%!imp
 a{color:inherit;text-decoration:none}ul{list-style:none}
 
 /* HEADER */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(26, 26, 26, 0.95);
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 999;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Změna z space-between na center */
-  padding: 1.2rem 4rem;
-}
-
-.header-logo {
-  height: 48px;
-  width: auto;
-  display: block;
-  position: absolute; /* Vyjme logo z flexbox proudu */
-  left: 4rem; /* Zarovná logo na levou stranu podle paddingu headeru */
-}
-
-nav {
-  /* Odstraněno flex: 1 */
-  display: flex;
-  justify-content: center;
-}
-
-nav ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  flex-wrap: wrap;
-  margin: 0; /* Přidáno pro jistotu, aby si prohlížeč neplodil vlastní okraje */
-}
-
-nav li {
-  margin: 0 6px;
-}
-
-nav a {
-  font-weight: 400;
-  text-transform: uppercase;
-  font-size: 0.82rem;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.7);
-  padding: 6px 12px;
-  display: inline-block;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
-}
-
-nav a:hover {
-  color: #fff;
-  transform: scale(1.05) translateY(-1px);
-}
-
-nav a.active {
-  color: #fff;
-}
+header{position:fixed;top:0;width:100%;background:rgba(26,26,26,0.95);backdrop-filter:blur(15px);border-bottom:1px solid rgba(255,255,255,0.1);z-index:999;box-shadow:0 2px 20px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:flex-start;gap:3rem;padding:1.2rem 4rem}
+.header-logo{height:48px;width:auto;display:block}
+nav{display:flex;justify-content:center}
+nav ul{display:flex;justify-content:center;align-items:center;padding:0;flex-wrap:wrap}
+nav li{margin:0 6px}
+nav a{font-weight:400;text-transform:uppercase;font-size:0.82rem;letter-spacing:0.18em;color:rgba(255,255,255,0.7);padding:6px 12px;display:inline-block;transition:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Segoe UI','Roboto','Arial',sans-serif}
+nav a:hover{color:#fff;transform:scale(1.05) translateY(-1px)}
+nav a.active{color:#fff}
 
 /* MOBILE MENU */
 .mobile-menu-button{display:none;z-index:1001;background:rgba(26,26,26,0.95);border:1px solid rgba(255,255,255,0.2);padding:9px;border-radius:6px;cursor:pointer;backdrop-filter:blur(15px);box-shadow:0 4px 15px rgba(0,0,0,0.5);transition:all 0.3s ease;flex-direction:column;align-items:center;justify-content:center;gap:5px}
