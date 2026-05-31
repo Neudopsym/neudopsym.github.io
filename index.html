@@ -54,17 +54,6 @@ nav li{margin:0 6px}
 nav a{font-weight:400;text-transform:uppercase;font-size:0.82rem;letter-spacing:0.18em;color:rgba(255,255,255,0.7);padding:6px 12px;display:inline-block;transition:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Segoe UI','Roboto','Arial',sans-serif}
 nav a:hover{color:#fff;transform:scale(1.05) translateY(-1px)}
 nav a.active{color:#fff}
-.language-switcher{position:relative}
-.language-dropdown{position:relative}
-.language-button{font-weight:400;text-transform:uppercase;font-size:0.82rem;letter-spacing:0.18em;color:rgba(255,255,255,0.7);padding:6px 12px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Segoe UI','Roboto','Arial',sans-serif;transition:color 0.3s}
-.language-button:hover{color:#fff}
-.arrow{font-size:10px;transition:transform 0.3s ease;opacity:0.6}
-.language-dropdown.active .arrow{transform:rotate(180deg)}
-.language-options{position:absolute;top:calc(100% + 8px);right:0;left:auto;background:rgba(20,20,22,0.98);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,0.1);border-radius:4px;min-width:70px;z-index:1001;display:none;box-shadow:0 8px 24px rgba(0,0,0,0.5)}
-.language-options.active{display:block}
-.language-option{display:block;padding:8px 14px;color:rgba(255,255,255,0.65);font-weight:400;text-transform:uppercase;font-size:0.82rem;letter-spacing:0.18em;font-family:'Segoe UI','Roboto','Arial',sans-serif;transition:all 0.2s ease;border-bottom:1px solid rgba(255,255,255,0.06)}
-.language-option:last-child{border-bottom:none}
-.language-option:hover{color:#fff;background:rgba(255,255,255,0.05)}
 
 /* MOBILE MENU */
 .mobile-menu-button{display:none;z-index:1001;background:rgba(26,26,26,0.95);border:1px solid rgba(255,255,255,0.2);padding:9px;border-radius:6px;cursor:pointer;backdrop-filter:blur(15px);box-shadow:0 4px 15px rgba(0,0,0,0.5);transition:all 0.3s ease;flex-direction:column;align-items:center;justify-content:center;gap:5px}
@@ -215,14 +204,6 @@ footer{display:flex;justify-content:space-between;align-items:center;padding:16p
     <li><a href="#o-mne" onclick="navTo('o-mne');return false;">O mně</a></li>
     <li><a href="#recenze" onclick="navTo('recenze');return false;">Recenze</a></li>
     <li><a href="#kontakt" onclick="navTo('kontakt');return false;">Kontakt</a></li>
-    <li class="language-switcher">
-      <div class="language-dropdown">
-        <button class="language-button" onclick="toggleLanguageDropdown()">CZ <span class="arrow">▼</span></button>
-        <div class="language-options" id="language-options">
-          <a href="https://neudopsym.github.io/index-sk.html" class="language-option">SK</a>
-          <a href="https://neudopsym.github.io/index-en.html" class="language-option">EN</a>
-        </div>
-      </div>
     </li>
   </ul></nav>
   <button class="mobile-menu-button" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
