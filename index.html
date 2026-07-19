@@ -684,7 +684,6 @@ function openVideo(videoId,title,ratio){
   wrapper.style.height=Math.round(h)+'px';
   const p=new URLSearchParams({autoplay:'true',loop:'false',disable_player_controls:'false',background:'false'});
   wrapper.innerHTML=`<iframe src="https://play.gumlet.io/embed/${videoId}?${p}" frameborder="0" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
-});
 }
 
 function closeVideo(){
