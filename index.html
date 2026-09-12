@@ -30,12 +30,12 @@ var cpm = {};
 window.cookiehub.load(cpm);
 });
 </script>
-  
+
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"Neudopsym Photo","url":"https://neudopsym.cz","author":{"@type":"Person","name":"Filip Kubus"},"description":"Profesionální fotograf a videograf v Praze. Portrétní, párové, eventové a promo fotografie a videa."}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Filip Kubus","alternateName":"Neudopsym","url":"https://neudopsym.cz","email":"f.kubus7@gmail.com","image":"https://neudopsym.github.io/img/preview.jpg","jobTitle":["Photographer","Videographer","Content Creator","Digital Marketer"],"description":"Profesionální fotograf a videograf v Praze. Specializace na portrétní, párové, eventové a promo fotografie a videa. Tvorba kreativního obsahu, grafiky a PPC kampaní.","address":{"@type":"PostalAddress","streetAddress":"Záhřebská 562/41","addressLocality":"Praha – Vinohrady","postalCode":"120 00","addressCountry":"CZ"},"sameAs":["https://www.instagram.com/neudopsym.photo/","https://www.linkedin.com/in/filip-kubus/"]}
+{"@context":"https://schema.org","@type":"Person","name":"Filip Kubus","alternateName":"Neudopsym","url":"https://neudopsym.cz","email":"f.kubus7@gmail.com","image":"https://neudopsym.github.io/img/preview.jpg","jobTitle":["Photographer","Videographer","Content Creator","Digital Marketer"],"description":"Profesionální fotograf a videograf v Praze. Specializace na portrétní, párové, eventové a promo fotografie a videa. Tvorba kreativního obsahu, grafiky a PPC kampaní.","address":{"@type":"PostalAddress","streetAddress":"Záhřebská 562/41","addressLocality":"Praha 2 – Vinohrady","postalCode":"120 00","addressCountry":"CZ"},"sameAs":["https://www.instagram.com/neudopsym.photo/","https://www.linkedin.com/in/filip-kubus/"]}
 </script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -56,7 +56,7 @@ header {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 999;
   box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-  
+
   display: flex;
   align-items: center;
   justify-content: space-between; /* Na mobilu hodí logo doleva a burger doprava */
@@ -142,6 +142,8 @@ main{max-width:1400px;margin:0 auto;padding:0 20px}
 .about-section h2,.contact-section h2,.reviews-section h2{font-family:Georgia,serif;font-size:28px;font-weight:400;font-style:italic;letter-spacing:0.5px;margin-bottom:24px;border-left:3px solid rgba(255,255,255,0.4);padding-left:12px;text-shadow:2px 2px 6px rgba(0,0,0,0.6);color:#fff;line-height:1;display:block}
 .about-section img.profile-photo{max-width:180px;border-radius:50%;margin:0 auto 28px;display:block;box-shadow:0 8px 20px rgba(0,0,0,0.4);border:2px solid rgba(255,255,255,0.1)}
 .about-section p,.contact-section p{font-size:16px;color:#ccc;margin-bottom:14px;line-height:1.7}
+.about-section a{color:#4da6ff}
+.about-section a:hover{color:#66b3ff}
 .contact-section a{color:#4da6ff}
 .contact-section a:hover{color:#66b3ff}
 .review{margin:28px 0;padding:0}
@@ -192,7 +194,7 @@ footer{display:flex;justify-content:space-between;align-items:center;padding:16p
 /* RESPONSIVE */
 @media(max-width:900px){
   header{padding:1.2rem 2rem}body{padding-top:0}
-  header nav ul{display:none}header .language-switcher{display:none}
+  header nav ul{display:none}
   .photo-grid{justify-content:center;width:100%}
   .category-card{flex:1;aspect-ratio:1/1;height:auto;width:auto}
   .mobile-menu-button{display:flex}
@@ -228,7 +230,6 @@ footer{display:flex;justify-content:space-between;align-items:center;padding:16p
     <li><a href="#o-mne" onclick="navTo('o-mne');return false;">O mně</a></li>
     <li><a href="#recenze" onclick="navTo('recenze');return false;">Recenze</a></li>
     <li><a href="#kontakt" onclick="navTo('kontakt');return false;">Kontakt</a></li>
-    </li>
   </ul></nav>
   <button class="mobile-menu-button" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
 </header>
@@ -397,7 +398,7 @@ footer{display:flex;justify-content:space-between;align-items:center;padding:16p
         <div class="thumb thumb-video" onclick="openAlbum('promo-videa')"><img src="https://neudopsym.github.io/img/systemove/NKR_nahlad.png" alt="Na Karmeli" loading="lazy"><div class="video-title">Rezidence Na Karmeli</div></div>
         <div class="thumb thumb-video" onclick="openAlbum('promo-videa')"><img src="https://neudopsym.github.io/img/systemove/vsj_video.jpg" alt="Vily Stodůlky" loading="lazy"><div class="video-title">Vily Stodůlky</div></div>
         <div class="thumb thumb-video" onclick="openAlbum('promo-videa')"><img src="https://neudopsym.github.io/img/systemove/VCG_2.png" alt="Vily Crystal Gardens" loading="lazy"><div class="video-title">Vily Crystal Gardens</div></div>
-        <div class="thumb thumb-video" onclick="openAlbum('promo-videa')"><img src="https://neudopsym.github.io/img/systemove/auhacek_luk_auha.png" alt="AuHa luk" loading="lazy"><div class="video-title">AuHa_ Výroba luku</div></div>
+        <div class="thumb thumb-video" onclick="openAlbum('promo-videa')"><img src="https://neudopsym.github.io/img/systemove/auhacek_luk_auha.png" alt="AuHa luk" loading="lazy"><div class="video-title">AuHa: Výroba luku</div></div>
         <div class="thumb thumb-video" onclick="openAlbum('promo-videa')"><img src="https://neudopsym.github.io/img/systemove/auha_auticko.png" alt="AuHa autíčko" loading="lazy"><div class="video-title">AuHa: Výroba autíčka</div></div>
         <div class="thumb-more" onclick="openAlbum('promo-videa')"><span class="more-icon">🎬</span><span class="more-text">Zobrazit album</span></div>
       </div></div>
@@ -425,7 +426,7 @@ footer{display:flex;justify-content:space-between;align-items:center;padding:16p
       <button class="row-nav prev hidden" onclick="slideRow(this,-1)">&#8249;</button>
       <div class="album-row-container"><div class="album-row" data-current="0">
         <div class="thumb thumb-video" onclick="openAlbum('lifestyle-videa')"><img src="https://neudopsym.github.io/img/systemove/caro_zizkova_nahlad.jpg" alt="Čaro Žižkova" loading="lazy"><div class="video-title">Čaro nočného Žižkova</div></div>
-        <div class="thumb thumb-video" onclick="openAlbum('lifestyle-videa')"><img src="https://neudopsym.github.io/img/systemove/timea_vrsovice.png" alt="Noc ve Vršovicích" loading="lazy"><div class="video-title">Noc ve Vršovicích</div></div>        
+        <div class="thumb thumb-video" onclick="openAlbum('lifestyle-videa')"><img src="https://neudopsym.github.io/img/systemove/timea_vrsovice.png" alt="Noc ve Vršovicích" loading="lazy"><div class="video-title">Noc ve Vršovicích</div></div>
         <div class="thumb-more" onclick="openAlbum('lifestyle-videa')"><span class="more-icon">🎬</span><span class="more-text">Zobrazit album</span></div>
       </div></div>
       <button class="row-nav next" onclick="slideRow(this,1)">&#8250;</button>
@@ -439,10 +440,10 @@ footer{display:flex;justify-content:space-between;align-items:center;padding:16p
     <div class="about-section">
       <h2>O mně</h2>
 
-      <p>Jmenuji se Filip Kubus alias Neudopsym. Věnuji se portrétní, párové, eventové a promo fotografii a experimentuji s AI videem. Fotím lidi – jejich tváře, příběhy a emoce. Fotím v ateliéru i v ulicích, v soukromých prostorech či v přírodě, avšak vždy s důrazem na autenticitu a výraz. Mojí snahou je maximálně splnit přání klienta.</p>
-      <p>Kromě focení se věnuji také tvorbě videí, grafice a marketingu. Tvorba kreativního obsahu, reklamy a PPC kampaní (Google Ads, Meta, Sklik) mi rozhodně není cizí. Mým cílem je propojovat umělecký přístup s moderní technologií – ať už jde o promo pro značky, dokumentování akcí nebo osobní portréty. Tento web je průřezem mé tvorby.</p>
-      <p>Hledáte fotografa a tvůrce kreativního obsahu? Nebo zkušeného digitálního marketéra, který vytvoří kompletní obsah, reklamy či bannery a nastaví PPC kampaně? V tom případě už nehledejte, jste na správném místě. Moje heslo zní: „Zázraky na počkání, nemožné ihned!"</p>
-      <p>Pokud jsem vás zaujal, neváhejte se mi ozvat.</p>
+      <p>Jmenuji se Filip Kubus alias Neudopsym. Jsem fotograf z Prahy. Věnuji se portrétní, párové, eventové a promo fotografii. Fotím lidi – jejich tváře, příběhy a emoce. Fotím v ateliéru i v ulicích, v soukromých prostorech či v přírodě, vždy s důrazem na autenticitu a výraz. Mým cílem je maximálně splnit přání klienta.</p>
+      <p>Vedle fotografování mám přesah do marketingu, grafiky a tvorby digitálního obsahu. Vytvářím grafiku a bannery, natáčím a stříhám, pracuji s AI při tvorbě obrazového i video obsahu, spravuji sociální sítě a nastavuji PPC kampaně. Dokážu tak zajistit obsah i jeho propagaci od prvního vizuálu až po reklamu.</p>
+      <p>Samostatnou část mé práce tvoří tvorba webů se zaměřením na SEO a GEO. Řeším nejen samotný web, ale také jeho strukturu, obsah, dohledatelnost a celkovou online prezentaci. Stojím například za webem <a href="https://sobeer.cz/" target="_blank" rel="noopener">SOBEER</a>, nezávislým přehledem nealkoholické pivní kultury v Česku, a webem <a href="https://malir-zednik-praha.cz/" target="_blank" rel="noopener">Milan Hubený – Malířské a zednické práce</a>.</p>
+      <p>Hledáte fotografa, marketéra, tvůrce obsahu nebo někoho, kdo zvládne od vizuálu přes web až po reklamu? Ozvěte se. Možná jste právě našli člověka, který to zvládne celé.</p>
     </div>
   </section>
 
@@ -472,13 +473,13 @@ footer{display:flex;justify-content:space-between;align-items:center;padding:16p
       <h2>Kontakt</h2>
       <p>Máte zájem o focení, video, tvorbu a správu PPC kampaní nebo komplexnější marketingovou spolupráci?</p>
       <p>Můžete mě kontaktovat přes kontaktní formulář níže.</p>
-      <p>Případně se spojme přes <a href="https://www.linkedin.com/in/filip-kubus/" target="_blank">LinkedIn</a></p>
-      <p>Sledujte mou tvorbu taky na Instagramu: <a href="https://www.instagram.com/neudopsym.photo/" target="_blank">@neudopsym.photo</a></p>
+      <p>Případně se spojme přes <a href="https://www.linkedin.com/in/filip-kubus/" target="_blank" rel="noopener">LinkedIn</a></p>
+      <p>Sledujte mou tvorbu taky na Instagramu: <a href="https://www.instagram.com/neudopsym.photo/" target="_blank" rel="noopener">@neudopsym.photo</a></p>
       <form id="contact-form" style="margin-top:28px;max-width:540px;">
         <div style="margin-bottom:16px;"><label for="cf-name" style="display:block;margin-bottom:6px;font-size:14px;color:#bbb;">Jméno a příjmení</label><input type="text" id="cf-name" name="name" required style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:6px;color:#fff;font-size:15px;font-family:inherit;outline:none;"></div>
         <div style="margin-bottom:16px;"><label for="cf-email" style="display:block;margin-bottom:6px;font-size:14px;color:#bbb;">Email</label><input type="email" id="cf-email" name="email" required style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:6px;color:#fff;font-size:15px;font-family:inherit;outline:none;"></div>
         <div style="margin-bottom:16px;"><label for="cf-message" style="display:block;margin-bottom:6px;font-size:14px;color:#bbb;">Zpráva</label><textarea id="cf-message" name="message" required rows="5" style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:6px;color:#fff;font-size:15px;font-family:inherit;outline:none;resize:vertical;"></textarea></div>
-        <div style="margin-bottom:20px;display:flex;align-items:flex-start;gap:10px;"><input type="checkbox" id="cf-gdpr" name="gdpr" required style="margin-top:3px;flex-shrink:0;cursor:pointer;accent-color:#4da6ff;"><label for="cf-gdpr" style="font-size:14px;color:#bbb;line-height:1.5;cursor:pointer;">Souhlasím se <a href="#" onclick="showGdpr();return false;" style="color:#4da6ff;">zpracováním osobních údajů</a>.</label></div>
+        <div style="margin-bottom:20px;display:flex;align-items:flex-start;gap:10px;"><input type="checkbox" id="cf-gdpr" name="gdpr" required style="margin-top:3px;flex-shrink:0;cursor:pointer;accent-color:#4da6ff;"><label for="cf-gdpr" style="font-size:14px;color:#bbb;line-height:1.5;cursor:pointer;">Potvrzuji, že jsem se seznámil/-a se <a href="zasady-ochrany-osobnich-udaju.html" style="color:#4da6ff;">zásadami zpracování osobních údajů</a>.</label></div>
         <button type="submit" style="padding:11px 28px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;border-radius:6px;cursor:pointer;font-family:inherit;transition:background 0.2s,border-color 0.2s;">Odeslat</button>
         <p id="cf-msg" style="margin-top:14px;font-size:15px;display:none;"></p>
       </form>
@@ -486,24 +487,8 @@ footer{display:flex;justify-content:space-between;align-items:center;padding:16p
   </section>
 </main>
 
-<section id="gdpr" style="display:none;padding:60px 20px;max-width:800px;margin:0 auto;color:#ccc">
-  <h2 style="font-family:Georgia,serif;font-size:28px;font-weight:400;color:#fff;margin-bottom:24px;">Zásady ochrany osobních údajů</h2>
-  <p style="margin-bottom:16px;">Tento web si zakládá na ochraně vašeho soukromí a zpracovává pouze nezbytné osobní údaje v souladu s platnou legislativou.</p>
-  <h3 style="color:#fff;margin:24px 0 8px;">1. Správce osobních údajů</h3>
-  <p style="margin-bottom:16px;">Filip Kubus, IČO: 19553528, Sídlo: Záhřebská 562/41, Praha – Vinohrady, 120&nbsp;00, E-mail: f.kubus7@gmail.com</p>
-  <h3 style="color:#fff;margin:24px 0 8px;">2. Jaké údaje zpracovávám a proč</h3>
-  <p style="margin-bottom:16px;">Zpracovávám pouze údaje, které mi sami dobrovolně poskytnete: jméno, e-mail, obsah zprávy. Při použití formulářů může být automaticky zaznamenána vaše IP adresa poskytovatelem formulářové služby (Google LLC). Právním základem zpracování je souhlas subjektu údajů.</p>
-  <h3 style="color:#fff;margin:24px 0 8px;">3. Doba uchování údajů</h3>
-  <p style="margin-bottom:16px;">Osobní údaje uchovávám maximálně 12 měsíců od poslední komunikace.</p>
-  <h3 style="color:#fff;margin:24px 0 8px;">4. Předávání údajů třetím stranám</h3>
-  <p style="margin-bottom:16px;">Vaše osobní údaje nejsou předávány třetím stranám pro marketingové účely. Pro sběr dat z formulářů využívám Google Apps Script (Google LLC, USA). Odesláním formuláře souhlasíte s <a href="https://policies.google.com/privacy" target="_blank" style="color:#4da6ff;">Zásadami ochrany soukromí Google</a>.</p>
-  <h3 style="color:#fff;margin:24px 0 8px;">5. Vaše práva</h3>
-  <p style="margin-bottom:16px;">Máte právo požadovat přístup, opravu nebo výmaz svých údajů. Kontaktujte mě na f.kubus7@gmail.com. Máte také právo podat stížnost u <a href="https://www.uoou.cz" target="_blank" style="color:#4da6ff;">Úřadu pro ochranu osobních údajů</a>.</p>
-  <button onclick="hideGdpr()" style="margin-top:32px;padding:11px 28px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:13px;font-weight:600;letter-spacing:1px;border-radius:6px;cursor:pointer;font-family:inherit;transition:background 0.2s,border-color 0.2s;">← Zpět na web</button>
-</section>
-
 <footer>
-  <p class="footer-copy">&copy; 2025 Neudopsym Photo</p>
+  <p class="footer-copy">&copy; 2026 Neudopsym Photo</p>
   <nav class="footer-nav">
     <a href="#" onclick="navTo('');return false;">Úvod</a>
     <a href="#foto" onclick="navTo('foto');return false;">Foto</a>
@@ -511,7 +496,7 @@ footer{display:flex;justify-content:space-between;align-items:center;padding:16p
     <a href="#o-mne" onclick="navTo('o-mne');return false;">O mně</a>
     <a href="#recenze" onclick="navTo('recenze');return false;">Recenze</a>
     <a href="#kontakt" onclick="navTo('kontakt');return false;">Kontakt</a>
-    <a href="#" onclick="showGdpr();return false;">GDPR</a>
+    <a href="zasady-ochrany-osobnich-udaju.html">GDPR</a>
   </nav>
   <div class="footer-right"></div>
 </footer>
@@ -560,40 +545,37 @@ const ALBUMS = {
     {src:'https://neudopsym.github.io/img/parove-fotografie/par6.JPG',alt:'Pár 6'},
   ]},
   turnaje:{title:'Turnajové fotografie',type:'photo',images:Array.from({length:23},(_,i)=>({src:`https://neudopsym.github.io/img/turnaje/turnaj${i+1}.jpg`,alt:`Turnaj ${i+1}`}))},
-  eventy:{title:'Eventové fotografie',type:'photo',images:[
-    ...Array.from({length:32},(_,i)=>({src:`https://neudopsym.github.io/img/eventy/event${i+1}.jpg`,alt:`Event ${i+1}`})),
-  ]},
-    
+  eventy:{title:'Eventové fotografie',type:'photo',images:Array.from({length:32},(_,i)=>({src:`https://neudopsym.github.io/img/eventy/event${i+1}.jpg`,alt:`Event ${i+1}`}))},
   dokument:{title:'Dokumentární fotografie',type:'photo',images:Array.from({length:13},(_,i)=>({src:`https://neudopsym.github.io/img/dokument/dokument${i+1}.JPG`,alt:`Dokument ${i+1}`}))},
-'promo-videa':{title:'Promo videa',type:'video',videos:[
-  {id:'6a5cdef0af8068270276ccd6',title:'Trash Royalty Streetwear',thumb:'https://neudopsym.github.io/img/systemove/trash_royalty_1.png',ratio:9/16},
-  {id:'6a5cdec9ea2cda78ea80d265',title:'Kino Aero: Léto v kině Aero',thumb:'https://neudopsym.github.io/img/systemove/Aero_Leto_v_Aeru_nahled.jpg',ratio:9/16},
-  {id:'6a5cdec9ea2cda78ea80d25f',title:'Kino Aero: Chambord Spritz',thumb:'https://neudopsym.github.io/img/systemove/aero_chambord_spritz_nahlad_1.jpg',ratio:9/16},
-  {id:'6a5cdec99c3fca7761f88a02',title:'Kino Aero: Apple Jack Sour',thumb:'https://neudopsym.github.io/img/systemove/Aero_Apple_Jack_Sour_nahled1.jpg',ratio:9/16},
-  {id:'6a5cdec9af8068270276ca0b',title:'Rezidence Na Karmeli',thumb:'https://neudopsym.github.io/img/systemove/NKR_nahlad.png',ratio:16/9},
-  {id:'6a5cdef49c3fca7761f88d3c',title:'Vily Crystal Gardens',thumb:'https://neudopsym.github.io/img/systemove/VCG_2.png',ratio:4/5},
-  {id:'6a5cdec99c3fca7761f88a26',title:'Costa del Sol, Španělsko',thumb:'https://neudopsym.github.io/img/systemove/CostaDelSol_Spanelsko2.png',ratio:16/9},
-  {id:'6a5cdec9af8068270276ca05',title:'GIF: Vily Crystal Gardens',thumb:'https://neudopsym.github.io/img/systemove/vcg_gif.png',ratio:4/5},
-  {id:'6a5cdef5af8068270276cd13',title:'GIF: Vily Stodulky',thumb:'https://neudopsym.github.io/img/systemove/vsj_gif.png',ratio:4/5},
-  {id:'6a5cdef49c3fca7761f88d58',title:'Vily Stodulky',thumb:'https://neudopsym.github.io/img/systemove/vsj_video.jpg',ratio:16/9},
-  {id:'6a5ce582af80682702773068',title:'AuHa: Výroba autíčka',thumb:'https://neudopsym.github.io/img/systemove/auha_auticko.png',ratio:9/16},
-  {id:'6a5cdec9ea2cda78ea80d279',title:'AuHa: Kouzelný batoh',thumb:'https://neudopsym.github.io/img/systemove/auha_batoh.png',ratio:4/5},
-  {id:'6a5cdec9af8068270276ca14',title:'AuHa: Výroba luku',thumb:'https://neudopsym.github.io/img/systemove/auhacek_luk_auha.png',ratio:9/16},
-  {id:'6a5cdec99c3fca7761f88a07',title:'AuHa: Ve škole',thumb:'https://neudopsym.github.io/img/systemove/auha_skola.png',ratio:9/16},
-]},
-'ai-videa':{title:'AI videa',type:'video',videos:[
-  {id:'6a5cdef0af8068270276ccd6',title:'Trash Royalty Streetwear',thumb:'https://neudopsym.github.io/img/systemove/trash_royalty_1.png',ratio:9/16},
-  {id:'6a5cdec9af8068270276ca0b',title:'Rezidence Na Karmeli',thumb:'https://neudopsym.github.io/img/systemove/NKR_nahlad.png',ratio:16/9},
-  {id:'6a5cdec9af8068270276ca05',title:'GIF: Vily Crystal Gardens',thumb:'https://neudopsym.github.io/img/systemove/vcg_gif.png',ratio:4/5},
-  {id:'6a5cdef5af8068270276cd13',title:'GIF: Vily Stodulky',thumb:'https://neudopsym.github.io/img/systemove/vsj_gif.png',ratio:4/5},
-  {id:'6a5cdec99c3fca7761f88a07',title:'AuHa: Ve škole',thumb:'https://neudopsym.github.io/img/systemove/auha_skola.png',ratio:9/16},
-  {id:'6a5cdec9ea2cda78ea80d279',title:'AuHa: Kouzelný batoh',thumb:'https://neudopsym.github.io/img/systemove/auha_batoh.png',ratio:4/5},
-  {id:'6a5cdec9af8068270276ca14',title:'AuHa: Výroba luku',thumb:'https://neudopsym.github.io/img/systemove/auhacek_luk_auha.png',ratio:9/16},
-]},
-'lifestyle-videa':{title:'Lifestyle videa',type:'video',videos:[
-  {id:'6a5cdec99c3fca7761f88a12',title:'Čaro nočného Žižkova',thumb:'https://neudopsym.github.io/img/systemove/caro_zizkova_nahlad.jpg',ratio:9/16},
-  {id:'6a5d2dd1ea2cda78ea864ae8',title:'Noc ve Vršovicích',thumb:'https://neudopsym.github.io/img/systemove/timea_vrsovice.png',ratio:9/16},
-]},
+  'promo-videa':{title:'Promo videa',type:'video',videos:[
+    {id:'6a5cdef0af8068270276ccd6',title:'Trash Royalty Streetwear',thumb:'https://neudopsym.github.io/img/systemove/trash_royalty_1.png',ratio:9/16},
+    {id:'6a5cdec9ea2cda78ea80d265',title:'Kino Aero: Léto v kině Aero',thumb:'https://neudopsym.github.io/img/systemove/Aero_Leto_v_Aeru_nahled.jpg',ratio:9/16},
+    {id:'6a5cdec9ea2cda78ea80d25f',title:'Kino Aero: Chambord Spritz',thumb:'https://neudopsym.github.io/img/systemove/aero_chambord_spritz_nahlad_1.jpg',ratio:9/16},
+    {id:'6a5cdec99c3fca7761f88a02',title:'Kino Aero: Apple Jack Sour',thumb:'https://neudopsym.github.io/img/systemove/Aero_Apple_Jack_Sour_nahled1.jpg',ratio:9/16},
+    {id:'6a5cdec9af8068270276ca0b',title:'Rezidence Na Karmeli',thumb:'https://neudopsym.github.io/img/systemove/NKR_nahlad.png',ratio:16/9},
+    {id:'6a5cdef49c3fca7761f88d3c',title:'Vily Crystal Gardens',thumb:'https://neudopsym.github.io/img/systemove/VCG_2.png',ratio:4/5},
+    {id:'6a5cdec99c3fca7761f88a26',title:'Costa del Sol, Španělsko',thumb:'https://neudopsym.github.io/img/systemove/CostaDelSol_Spanelsko2.png',ratio:16/9},
+    {id:'6a5cdec9af8068270276ca05',title:'GIF: Vily Crystal Gardens',thumb:'https://neudopsym.github.io/img/systemove/vcg_gif.png',ratio:4/5},
+    {id:'6a5cdef5af8068270276cd13',title:'GIF: Vily Stodulky',thumb:'https://neudopsym.github.io/img/systemove/vsj_gif.png',ratio:4/5},
+    {id:'6a5cdef49c3fca7761f88d58',title:'Vily Stodulky',thumb:'https://neudopsym.github.io/img/systemove/vsj_video.jpg',ratio:16/9},
+    {id:'6a5ce582af80682702773068',title:'AuHa: Výroba autíčka',thumb:'https://neudopsym.github.io/img/systemove/auha_auticko.png',ratio:9/16},
+    {id:'6a5cdec9ea2cda78ea80d279',title:'AuHa: Kouzelný batoh',thumb:'https://neudopsym.github.io/img/systemove/auha_batoh.png',ratio:4/5},
+    {id:'6a5cdec9af8068270276ca14',title:'AuHa: Výroba luku',thumb:'https://neudopsym.github.io/img/systemove/auhacek_luk_auha.png',ratio:9/16},
+    {id:'6a5cdec99c3fca7761f88a07',title:'AuHa: Ve škole',thumb:'https://neudopsym.github.io/img/systemove/auha_skola.png',ratio:9/16},
+  ]},
+  'ai-videa':{title:'AI videa',type:'video',videos:[
+    {id:'6a5cdef0af8068270276ccd6',title:'Trash Royalty Streetwear',thumb:'https://neudopsym.github.io/img/systemove/trash_royalty_1.png',ratio:9/16},
+    {id:'6a5cdec9af8068270276ca0b',title:'Rezidence Na Karmeli',thumb:'https://neudopsym.github.io/img/systemove/NKR_nahlad.png',ratio:16/9},
+    {id:'6a5cdec9af8068270276ca05',title:'GIF: Vily Crystal Gardens',thumb:'https://neudopsym.github.io/img/systemove/vcg_gif.png',ratio:4/5},
+    {id:'6a5cdef5af8068270276cd13',title:'GIF: Vily Stodulky',thumb:'https://neudopsym.github.io/img/systemove/vsj_gif.png',ratio:4/5},
+    {id:'6a5cdec99c3fca7761f88a07',title:'AuHa: Ve škole',thumb:'https://neudopsym.github.io/img/systemove/auha_skola.png',ratio:9/16},
+    {id:'6a5cdec9ea2cda78ea80d279',title:'AuHa: Kouzelný batoh',thumb:'https://neudopsym.github.io/img/systemove/auha_batoh.png',ratio:4/5},
+    {id:'6a5cdec9af8068270276ca14',title:'AuHa: Výroba luku',thumb:'https://neudopsym.github.io/img/systemove/auhacek_luk_auha.png',ratio:9/16},
+  ]},
+  'lifestyle-videa':{title:'Lifestyle videa',type:'video',videos:[
+    {id:'6a5cdec99c3fca7761f88a12',title:'Čaro nočného Žižkova',thumb:'https://neudopsym.github.io/img/systemove/caro_zizkova_nahlad.jpg',ratio:9/16},
+    {id:'6a5d2dd1ea2cda78ea864ae8',title:'Noc ve Vršovicích',thumb:'https://neudopsym.github.io/img/systemove/timea_vrsovice.png',ratio:9/16},
+  ]},
 };
 
 let currentAlbumImages=[];
@@ -747,25 +729,9 @@ function toggleMobileMenu(){
 document.addEventListener('click',function(e){
   const menu=document.getElementById('mobile-menu');
   const btn=document.querySelector('.mobile-menu-button');
-  if(menu.classList.contains('active')&&!menu.contains(e.target)&&!btn.contains(e.target)){
+  if(menu&&btn&&menu.classList.contains('active')&&!menu.contains(e.target)&&!btn.contains(e.target)){
     menu.classList.remove('active');
   }
-});
-function toggleLanguageDropdown(){
-  const dd=document.querySelector('header .language-dropdown');
-  const opts=document.getElementById('language-options');
-  if(dd&&opts){dd.classList.toggle('active');opts.classList.toggle('active')}
-}
-function toggleMobileLanguageDropdown(){
-  const dd=document.querySelector('.mobile-menu .language-dropdown');
-  const opts=document.getElementById('mobile-language-options');
-  if(dd&&opts){dd.classList.toggle('active');opts.classList.toggle('active')}
-}
-document.addEventListener('click',function(e){
-  const ddd=document.querySelector('header .language-dropdown');
-  if(ddd&&!ddd.contains(e.target)){ddd.classList.remove('active');const o=document.getElementById('language-options');if(o)o.classList.remove('active')}
-  const mdd=document.querySelector('.mobile-menu .language-dropdown');
-  if(mdd&&!mdd.contains(e.target)){mdd.classList.remove('active');const o=document.getElementById('mobile-language-options');if(o)o.classList.remove('active')}
 });
 
 // Active nav on scroll
@@ -794,10 +760,11 @@ document.getElementById('contact-form').addEventListener('submit',function(e){
   }).finally(()=>{btn.disabled=false;btn.textContent='Odeslat';});
 });
 
-// GDPR
-function showGdpr(){document.querySelector('main').style.display='none';document.getElementById('gdpr').style.display='block';window.scrollTo(0,0);}
-function hideGdpr(){document.getElementById('gdpr').style.display='none';document.querySelector('main').style.display='';window.scrollTo(0,0);}
-function navTo(hash){document.getElementById('gdpr').style.display='none';document.querySelector('main').style.display='';if(hash){const el=document.getElementById(hash);if(el)el.scrollIntoView({behavior:'smooth'});}else{window.scrollTo({top:0,behavior:'smooth'});}}
+// NAVIGACE PO SEKCÍCH
+function navTo(hash){
+  if(hash){const el=document.getElementById(hash);if(el)el.scrollIntoView({behavior:'smooth'});}
+  else{window.scrollTo({top:0,behavior:'smooth'});}
+}
 </script>
 </body>
 </html>
